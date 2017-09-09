@@ -101,6 +101,7 @@ Hello
 [Tworzenie pakietu dpkg](Tworzenie_pakietu_dpkg.md)
 [Ustawienie hostname w Linux (systemd)](Ustawienie_hostname_w_Linux_%28systemd%29.md)
 [Vagrant - zdalny dostęp do MySQL](Vagrant_-_zdalny_dostęp_do_MySQL.md)
+[Vagrant - Connection timeout](Vagrant-Connection-timeout.md)
 [Vim - kasowanie całej zawartości pliku](Vim_-_kasowanie_całej_zawartości_pliku.md)
 [Vim - kolorowanie składni](Vim_-_kolorowanie_składni.md)
 [Vim - odczyt z stdin](Vim_-_odczyt_z_stdin.md)
