@@ -22,6 +22,7 @@ Hello
 [Docker - kopiowanie pliku](Docker_-_kopiowanie_pliku.md)
 [Docker - własny bazowy obraz](Docker_-_własny_bazowy_obraz.md)
 [Docker - zarządzanie /etc/hosts](Docker_-_zarządzanie__SLASH_etc_SLASH_hosts.md)
+[drm/i915: Resetting chip after gpu hang](drm-i915-resetting-chip-after-gpu-hang.md)
 [Excel - osadzenie kolumny tekstowej bezpośrednio w pliku XML content](Excel_-_osadzenie_kolumny_tekstowej_bezpośrednio_w_pliku_XML_content.md)
 [Facter - facterlib env](Facter_-_facterlib_env.md)
 [Fetchmail - przykładowy plik konfiguracyjny (GMAIL)](Fetchmail_-_przykładowy_plik_konfiguracyjny_%28GMAIL%29.md)
