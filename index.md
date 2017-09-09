@@ -8,6 +8,7 @@ Hello
 [Bash - podstawianie (parameter substitution)](Bash_-_podstawianie_%28parameter_substitution%29.md)
 [Bash - uruchomienie powłoki bez wczytywania plików profile i bashrc](Bash_-_uruchomienie_powłoki_bez_wczytywania_plików_profile_i_bashrc.md)
 [Bash - wyświetlenie definicji aliasu/funkcji](Bash_-_wyświetlenie_definicji_aliasu_SLASH_funkcji.md)
+[Bash: fork: retry: Resource temporarily unavailable](bash-fork-retry-resource-temporarily-unavailable.md)
 [Bundler - pobieranie gemów z repozytoriów git](Bundler_-_pobieranie_gemów_z_repozytoriów_git.md)
 [Chrome/Chromium proxy](Chrome_SLASH_Chromium_proxy.md)
 [Column - wyrównywanie kolumn](Column_-_wyrównywanie_kolumn.md)
