@@ -108,6 +108,7 @@ Hello
 [Vim - podgląd pliku tylko do odczytu](Vim_-_podgląd_pliku_tylko_do_odczytu.md)
 [Vim - śledzenie wywołań funkcji](Vim_-_śledzenie_wywołań_funkcji.md)
 [Vim - tips & tricks](Vim_-_tips_&_tricks.md)
+[Vim - brak obsługi schowka w opensuse leap 42.3](Vim-brak-obslugi-clipboard-w-opensuse-leap-423.md)
 [Weryfikacja typu pliku zakodowanego przez algorytm base64](Weryfikacja_typu_pliku_zakodowanego_przez_algorytm_base64.md)
 [Wordpress - wygenerowanie nowego hasła](Wordpress_-_wygenerowanie_nowego_hasła.md)
 [Współpraca twiga i angulara](Współpraca_twiga_i_angulara.md)
