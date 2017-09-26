@@ -121,3 +121,4 @@ Hello
 [Xterm-256color](Xterm-256color.md)
 [Yii2 - main local](Yii2_-_main_local.md)
 [Zabbix - monitorowanie własnych parametrów](Zabbix_-_monitorowanie_własnych_parametrów.md)
+[zip - bzip2](zip-bzip2.md)
