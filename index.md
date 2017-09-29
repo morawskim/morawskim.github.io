@@ -72,6 +72,7 @@ Hello
 [Pakiet rpm - sprawdzenie uprawnień plików](Pakiet_rpm_-_sprawdzenie_uprawnień_plików.md)
 [Phing - budowanie pliku phar](Phing_-_budowanie_pliku_phar.md)
 [PHP/SOAP - Can't load WSDL](PHP_SLASH_SOAP_-_Can't_load_WSDL.md)
+[PHP - funkcja transliterate](php-funkcja-transliterate.md)
 [Postfix - Kasowanie maili z kolejki](Postfix_-_Kasowanie_maili_z_kolejki.md)
 [Postfix - podgląd wiadomości zalegającej w kolejce](Postfix_-_podgląd_wiadomości_zalegającej_w_kolejce.md)
 [Postfix relay host Gmail](Postfix_relay_host_Gmail.md)
