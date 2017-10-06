@@ -63,6 +63,7 @@ Hello
 [MySQL - strefa czasowa](MySQL_-_strefa_czasowa.md)
 [Mysql - tee](Mysql_-_tee.md)
 [MySQL - zdalne logowanie](MySQL_-_zdalne_logowanie.md)
+[MySQL - pobranie wersji serwera mysql](mysql-pobranie-wersji-serwera-mysql.md)
 [Ngrok](Ngrok.md)
 [NTP - synchronizacja czasu](NTP_-_synchronizacja_czasu.md)
 [Określenie kiedy proces został uruchomiony](Określenie_kiedy_proces_został_uruchomiony.md)
