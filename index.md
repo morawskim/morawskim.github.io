@@ -65,6 +65,7 @@ Hello
 [MySQL - zdalne logowanie](MySQL_-_zdalne_logowanie.md)
 [MySQL - pobranie wersji serwera mysql](mysql-pobranie-wersji-serwera-mysql.md)
 [Ngrok](Ngrok.md)
+[nmap - lista otwartch portów](nmap-lista-otwartch-portow.md)
 [NTP - synchronizacja czasu](NTP_-_synchronizacja_czasu.md)
 [Określenie kiedy proces został uruchomiony](Określenie_kiedy_proces_został_uruchomiony.md)
 [Openssl generowanie certyfikatu x509](Openssl_generowanie_certyfikatu_x509.md)
