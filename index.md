@@ -42,6 +42,7 @@ Hello
 [Hieradata - pobieranie wartości facts](Hieradata_-_pobieranie_wartości_facts.md)
 [Hieradata - pobieranie wartość innego klucza w pliku yaml](Hieradata_-_pobieranie_wartość_innego_klucza_w_pliku_yaml.md)
 [Hieradata - wartość nil](Hieradata_-_wartość_nil.md)
+[iconv - przekształcenie tekstu do znaków ASCII](iconv-przeksztalcenie-tekstu-do-znakow-ascii.md)
 [INDEX](index.md)
 [Iptables - przekierowanie portów](Iptables_-_przekierowanie_portów.md)
 [Jetbrains - shortcuts](Jetbrains_-_shortcuts.md)
