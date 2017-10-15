@@ -100,6 +100,7 @@ Hello
 [Ssh-copy-id](Ssh-copy-id.md)
 [Sshd sprawdzanie poprawności pliku konfiguracyjnego](Sshd_sprawdzanie_poprawności_pliku_konfiguracyjnego.md)
 [SSH - tunel](SSH_-_tunel.md)
+[SSL termination i PHP $_SERVER['HTTPS']](ssl-termination-i-php-serverhttps.md)
 [Strona główna](Strona_główna.md)
 [Symfony2 - aplikacja konsolowa globalna opcja](Symfony2_-_aplikacja_konsolowa_globalna_opcja.md)
 [Tail -f i grep](Tail_-f_i_grep.md)
