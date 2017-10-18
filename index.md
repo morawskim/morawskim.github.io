@@ -3,6 +3,7 @@ Hello
 
 [Angular promise - pobierz wszystkie dane](Angular_promise_-_pobierz_wszystkie_dane.md)
 [Apache - Ustawienie środowiska deweloperskiego dla aplikacji PHP](Apache_-_Ustawienie_środowiska_deweloperskiego_dla_aplikacji_PHP.md)
+[Audit - sprawdzenie kto odczytuje plik](audit-sprawdzenie-kto-odczytuje-plik.md)
 [Bash - odwołanie do argumentów poprzedniego polecenia](Bash_-_odwołanie_do_argumentów_poprzedniego_polecenia.md)
 [Bash - pipe](Bash_-_pipe.md)
 [Bash - podstawianie (parameter substitution)](Bash_-_podstawianie_%28parameter_substitution%29.md)
