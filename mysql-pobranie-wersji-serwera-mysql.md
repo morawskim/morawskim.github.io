@@ -11,7 +11,7 @@ SELECT VERSION();
 1 row in set (0.00 sec)
 ```
 
-```
+``` sql
 SELECT VERSION();
 +-----------------+
 | VERSION()       |
