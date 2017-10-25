@@ -86,6 +86,7 @@ Hello
 [Postfix relay host Gmail](Postfix_relay_host_Gmail.md)
 [Postfix - wymuszenie wysłania wiadomości](Postfix_-_wymuszenie_wysłania_wiadomości.md)
 [Przydatne adresy](Przydatne_adresy.md)
+[puppet-resource - dodanie ścieżki z dodatkowymi typami](puppet-resource-dodanie-sciezki-z-dodatkowymi-typami.md)
 [Rbenv - błąd podczas kompilacji](Rbenv_-_błąd_podczas_kompilacji.md)
 [Resetowanie hasła roota MySQL](Resetowanie_hasła_roota_MySQL.md)
 ["Rozpakowanie" pakietu RPM]("Rozpakowanie"_pakietu_RPM.md)
