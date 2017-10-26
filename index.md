@@ -39,6 +39,7 @@ Hello
 [Git - usunięcie pliku z kontroli gita](Git_-_usunięcie_pliku_z_kontroli_gita.md)
 [Git - wyświetlenie zawartości drzewa objektów](Git_-_wyświetlenie_zawartości_drzewa_objektów.md)
 [Git - zmiana adresu repozytorium](Git_-_zmiana_adresu_repozytorium.md)
+[Git - zmiana dat komitu](git-zmiana-dat-komitu.md)
 [Grep podswietlenie frazy i wyświetlenie całego pliku](Grep_podswietlenie_frazy_i_wyświetlenie_całego_pliku.md)
 [Hieradata - pobieranie wartości facts](Hieradata_-_pobieranie_wartości_facts.md)
 [Hieradata - pobieranie wartość innego klucza w pliku yaml](Hieradata_-_pobieranie_wartość_innego_klucza_w_pliku_yaml.md)
