@@ -4,8 +4,10 @@ Pakiet `audit` umożliwia dodanie zasad monitorowania dostępu do pliku.
 Może to być przydatne jeśli wiemy, który plik konfiguracyjny trzeba zmienić, ale nie wiemy jaki program je wczytuje.
 
 W dystrybucji openSUSE mamy dwa pliki, do których możemy dodawać zasaday.
-Z moich testów wychodzi, że tylko zasady dodane do pliku `/etc/audit/audit.rules` są wczytywane.
-Plik `/etc/audit/rules.d/audit.rules` jest ignorowany.
+Tylko zasady z pliku `/etc/audit/audit.rules` są wczytywane.
+Można utworzyć dodatkowy plik z zasadami w katalogu `/etc/audit/rules.d`. Wtedy trzeba uruchomić program `augenrules`.
+W tym przypadku modyfikowałem bezpośrednio plik `/etc/audit/audit.rules`.
+
 
 Listę aktualnych reguł możemy wyświetlić poprzez komendę:
 ``` bash
