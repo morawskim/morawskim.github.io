@@ -35,3 +35,26 @@ cat /etc/security/limits.d/mmo.conf
 marcin           soft    nproc   3934
 marcin           hard    nproc   4096
 ```
+
+Aby sprawdzić ile wątków ma proces możemy skorzystac z polecenia:
+``` bash
+ps -u1000 -Lf
+
+UID        PID  PPID   LWP  C NLWP STIME TTY          TIME CMD
+marcin    4863     1  4863  0    1 wrz08 ?        00:00:00 /usr/lib/systemd/systemd —user
+marcin    4865  4863  4865  0    1 wrz08 ?        00:00:00 (sd-pam)
+marcin    4869  4862  4869  0    1 wrz08 ?        00:00:00 /bin/sh /usr/bin/startkde
+marcin    5038     1  5038  0    1 wrz08 ?        00:00:00 /usr/bin/dbus-launch —sh-syntax —exit-with-session /usr/bin/ssh-agent /usr/bin/gpg-agent —sh —daemon —keep-display —write-env-file /home/marcin/.gnupg/agent.info-linux-o4go:0 /etc/X11/xinit/xinitrc
+marcin    5039     1  5039  0    1 wrz08 ?        00:00:09 /bin/dbus-daemon —fork —print-pid 5 —print-address 15 —session
+marcin    5040  4869  5040  0    1 wrz08 ?        00:00:00 /usr/bin/ssh-agent /usr/bin/gpg-agent —sh —daemon —keep-display —write-env-file /home/marcin/.gnupg/agent.info-linux-o4go:0 /etc/X11/xinit/xinitrc
+marcin    5041  4869  5041  0    1 wrz08 ?        00:00:03 /usr/bin/gpg-agent —sh —daemon —keep-display —write-env-file /home/marcin/.gnupg/agent.info-linux-o4go:0 /etc/X11/xinit/xinitrc
+marcin    5076     1  5076  0    1 wrz08 ?        00:00:00 /usr/lib64/libexec/kf5/start_kdeinit —kded +kcminit_startup
+................................
+```
+
+Aby zliczyć liczbę wątków/procesów dla użytkownika z uid=1000 wywołujemy polecenie:
+``` bash
+ps -u1000 -Lf --no-headers | wc -l
+1373
+```
+
