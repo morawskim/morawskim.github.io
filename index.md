@@ -67,6 +67,7 @@ Hello
 [MySQL - strefa czasowa](MySQL_-_strefa_czasowa.md)
 [Mysql - tee](Mysql_-_tee.md)
 [MySQL - zdalne logowanie](MySQL_-_zdalne_logowanie.md)
+[Mysql - only_full_group_by](mysql-only-full-group-by.md)
 [MySQL - pobranie wersji serwera mysql](mysql-pobranie-wersji-serwera-mysql.md)
 [Ngrok](Ngrok.md)
 [nmap - lista otwartch portów](nmap-lista-otwartch-portow.md)
