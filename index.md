@@ -129,6 +129,7 @@ Hello
 [Współpraca twiga i angulara](Współpraca_twiga_i_angulara.md)
 [Wykaz wszystkich zainstalowanych drukarek](Wykaz_wszystkich_zainstalowanych_drukarek.md)
 [Wyłączanie dysku po okresie bezczyności](Wyłączanie_dysku_po_okresie_bezczyności.md)
+[Wyświetlenie kodu źródłowego C po fazie preprocessor (Błąd kompilacji pyhon-cryptography)](wyswietlenie-kodu-zrodlowego-c-po-fazie-preprocessor-blad-kompilacji-pyhon-cryptography.md)
 [Wyświetlenie zainstalowanych i załadowanych modułów apache](Wyświetlenie_zainstalowanych_i_załadowanych_modułów_apache.md)
 [Xdebug - zdalne debugowanie kodu](Xdebug_-_zdalne_debugowanie_kodu.md)
 [Xdg - domyślny program do otwierania plików cachegrind](Xdg_-_domyślny_program_do_otwierania_plików_cachegrind.md)
