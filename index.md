@@ -111,6 +111,7 @@ Hello
 [Tail -f i grep](Tail_-f_i_grep.md)
 [Tar - podążanie za dowiązaniami symbolicznymi](Tar_-_podążanie_za_dowiązaniami_symbolicznymi.md)
 [TinyMCE - usunięcie elementu p](tinymce-usuniecie-elementu-p.md)
+[TinyMCE: wartość textarea nie jest przesyłana](tinymce-wartosc-textarea-nie-jest-przesylana.md)
 [Tr - zastępowanie sekwencji powtórzonych znaków](Tr_-_zastępowanie_sekwencji_powtórzonych_znaków.md)
 [Tworzenie pakietu dpkg](Tworzenie_pakietu_dpkg.md)
 [Ustawienie hostname w Linux (systemd)](Ustawienie_hostname_w_Linux_%28systemd%29.md)
