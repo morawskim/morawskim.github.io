@@ -96,6 +96,7 @@ Hello
 [RPM - sprawdzenie zależności od danego pakietu](RPM_-_sprawdzenie_zależności_od_danego_pakietu.md)
 [RPM - towrzenie łat (ang. patch)](RPM_-_towrzenie_łat_%28ang._patch%29.md)
 [Ruby - $LOADED FEATURES](Ruby_-_$LOADED_FEATURES.md)
+[RubyGems - uruchomienie konkretnej wersji pakietu gem](rubygems-uruchomienie-konkretnej-wersji-pakietu-gem.md)
 [Sed - skasowanie tekstu pomiędzy dwoma frazami](Sed_-_skasowanie_tekstu_pomiędzy_dwoma_frazami.md)
 [Sed - wyświetlenie tekstu pomiędzy dwiema frazami](Sed_-_wyświetlenie_tekstu_pomiędzy_dwiema_frazami.md)
 [Skrypt do kompilacji i instalacji PHP](Skrypt_do_kompilacji_i_instalacji_PHP.md)
