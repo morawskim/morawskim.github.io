@@ -3,7 +3,7 @@ Xdebug - zdalne debugowanie kodu
 
 Na serwerze musimy mieć zainstalowany PHP wraz z rozszerzeniem Xdebug. Do pliku php.ini dodajemy minimalną konfigurację dla tego modułu:
 
-``` ini
+```
 [xdebug]
 zend_extension=xdebug.so
 xdebug.remote_enable=1

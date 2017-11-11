@@ -3,7 +3,7 @@ MySQL - query log
 
 Kiedy chcemy dowiedzieć się jakie zapytania wysyła aplikacja do serwera MySQL to musimy włączyć logowanie wszystkich zapytań. Jest to czynność bardzo prosta. Do pliku konfiguracyjnego MySQL należy dodać dwie dyrektywy w sekcji mysqld.
 
-``` ini
+```
 [mysqld]
 general_log = 1
 general_log_file=/var/log/mysql/query.log

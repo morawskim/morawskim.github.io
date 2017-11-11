@@ -23,7 +23,7 @@ dmesg | grep -i sda
 ```
 
 ``` bash
-dmesg | grep -i sda
+dmesg -T | grep -i sda
 [pon sty  2 09:13:47 2017] Command line: BOOT_IMAGE=/boot/vmlinuz-3.16.7-53-desktop root=UUID=0642d108-0639-4e11-95b1-3aa692b1b75f ro resume=/dev/sda2 splash=silent quiet showopts
 [pon sty  2 09:13:47 2017] Kernel command line: BOOT_IMAGE=/boot/vmlinuz-3.16.7-53-desktop root=UUID=0642d108-0639-4e11-95b1-3aa692b1b75f ro resume=/dev/sda2 splash=silent quiet showopts
 [pon sty  2 09:13:48 2017] PM: Checking hibernation image partition /dev/sda2

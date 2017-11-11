@@ -5,7 +5,7 @@ Należy zmienić zmienną BACKUPDIR. Domyślnie backup jest zapisywany do /tmp/m
 
 Przykładowy plik .my.cnf
 
-``` ini
+```
 [mysqldump]
 user=root
 password="password"

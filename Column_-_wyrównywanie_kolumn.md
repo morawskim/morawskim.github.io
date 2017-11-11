@@ -22,7 +22,7 @@ ff ff       5 55    v v
 
 Podobnie jeśli otworzymy taki plik w edytorze vim, możemy całą zawartość pliku przefiltrować przez program column. W trybie poleceń wpisujemy i zatwierdzamy:
 
-``` vim
+```
 %!column -t -s'^I'
 ```
 

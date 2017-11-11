@@ -3,7 +3,7 @@ Apache - Ustawienie środowiska deweloperskiego dla aplikacji PHP
 
 Podczas tworzenia aplikacji PHP, chcemy wyświetlać stos wywołań funkcji na stronie błędów. Jednak te informacje chcemy ukryć na serwerze produkcyjnym. Możemy przekazać do aplikacji PHP zmienną środowiskową, która będzie włączać lub wyłączać tryb deweloperski aplikacji. Na serwerze produkcyjnym ta zmienna środowiskowa nie będzie ustawiona, więc tryb deweloperski nigdy się nie włączy. Do poprawnego działania, potrzebny jest włączony moduł [mod_env serwera Apache](http://httpd.apache.org/docs/2.2/mod/mod_env.html). Do konfiguracji VirtualHost'a dodajemy dyrektywę "SetEnv".
 
-``` apache
+```
  <VirtualHost *:80>
     ServerAdmin developer@morawskim.local
     DocumentRoot "/var/www/app.local"

@@ -1,7 +1,7 @@
 Phing - budowanie pliku phar
 ============================
 
-``` xml
+```
 <project name="mail2print" default="phar">
     <target name="phar">
         <pharpackage
