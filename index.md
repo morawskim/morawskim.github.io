@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2017-11
+[raspberry - aktualizacja czasu (sntp)](raspberry-aktualizacja-czasu-sntp.md)
 [jQuery - pobieranie zawartości HTML elementu wraz z kodowaniem encji](jquery-pobieranie-zawartosci-html-elementu-wraz-z-kodowaniem-encji.md)
 [RubyGems - uruchomienie konkretnej wersji pakietu gem](rubygems-uruchomienie-konkretnej-wersji-pakietu-gem.md)
 [TinyMCE: wartość textarea nie jest przesyłana](tinymce-wartosc-textarea-nie-jest-przesylana.md)
