@@ -34,6 +34,7 @@ return [
             ],
         ],
         'assetManager' => [
+            // Instead of publishing assets by file copying, use symbolic links
             /** @see  http://www.yiiframework.com/doc-2.0/yii-web-assetmanager.html#$linkAssets-detail */
             'linkAssets' => true
         ],
