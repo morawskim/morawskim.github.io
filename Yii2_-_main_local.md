@@ -30,6 +30,7 @@ return [
                 [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning', 'info', 'trace'],
+                    'exportInterval' => 1
                 ],
             ],
         ],
