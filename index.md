@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2017-12
+[composer - aktualizacja pakietu](composer-aktualizacja-pakietu.md)
+
 ## 2017-11
 [JQuery UI - modyfikacja widgetu](jquery-ui-modyfikacja-widgetu.md)
 [Apache2 - lista wszystkich wirtualnych hostów](apache2-lista-wszystkich-wirtualnych-hostow.md)
