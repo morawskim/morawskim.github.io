@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2017-12
+[composer - wyświetlenie odwołań do pakietu  w projekcie](composer-wyswietlenie-odwolan-do-pakietu-w-projekcie.md)
 [composer - aktualizacja pakietu](composer-aktualizacja-pakietu.md)
 
 ## 2017-11
