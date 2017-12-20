@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2017-12
+[perl - znajdź i zastąp](perl-znajdz-i-zastap.md)
 [KDE - domyślne aplikacje](kde-domyslne-aplikacje.md)
 [ngrok - tunel do strony](ngrok-tunel-do-strony.md)
 [netsed](netsed.md)
