@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2017-12
+[docker history](docker-history.md)
 [HTML5 FormData](html5-formdata.md)
 [PHP profiler bazujący na ticks](php-profiler-bazujacy-na-ticks.md)
 [perl - znajdź i zastąp](perl-znajdz-i-zastap.md)
