@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2018-01
+[MySQL 5.7 hasło roota](mysql-57-haslo-roota.md)
 [apache2 - dyrektywy zwiększające bezpieczeństwo serwera HTTP](apache2-dyrektywy-zwiekszajace-bezpieczenstwo-serwera-http.md)
 [Szukanie pliku w pakietach](szukanie-pliku-w-pakietach.md)
 
