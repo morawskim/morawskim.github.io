@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2018-01
+[Composer - pobranie pakietu z lokalnego forku, gdy jest dodawany przez inny pakiet](composer_fork_depedency.md)
 [systemd snippets](systemd-snippets.md)
 [Testowanie połączeń TCP bez telnet'u](testowanie-polaczen-tcp-bez-telnetu.md)
 [MySQL 5.7 hasło roota](mysql-57-haslo-roota.md)
