@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2018-01
+[quilt - zarządzanie łatami (patches)](quilt.md)
 [Composer - pobranie pakietu z lokalnego forku](composer_fork_biblioteki.md)
 [Composer - pobranie pakietu z lokalnego forku, gdy jest dodawany przez inny pakiet](composer_fork_depedency.md)
 [systemd snippets](systemd-snippets.md)
