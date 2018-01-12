@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2018-01
+[composer - instalacja pakietu z kanału pear](composer-instalacja-pakietu-z-kanalu-pear.md)
 [quilt - zarządzanie łatami (patches)](quilt.md)
 [Composer - pobranie pakietu z lokalnego forku](composer_fork_biblioteki.md)
 [Composer - pobranie pakietu z lokalnego forku, gdy jest dodawany przez inny pakiet](composer_fork_depedency.md)
