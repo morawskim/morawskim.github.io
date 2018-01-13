@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2018-01
+[git log - zmiany w metodzie PHP](git-log-zmiany-w-metodzie-php.md)
 [composer - instalacja pakietu z kanału pear](composer-instalacja-pakietu-z-kanalu-pear.md)
 [quilt - zarządzanie łatami (patches)](quilt.md)
 [Composer - pobranie pakietu z lokalnego forku](composer_fork_biblioteki.md)
