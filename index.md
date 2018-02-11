@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2018-02
+[Sed - skasowanie tekstu pomiędzy frazą i n następnych linii](sed-skasowanie-tekstu-pomiedzy-fraza-i-n-nastepnych-linii.md)
 [vagrant - atlas.hashicorp.com 404 Not found](vagrant-atlashashicorpcom-404.md)
 
 ## 2018-01
