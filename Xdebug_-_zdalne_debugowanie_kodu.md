@@ -7,6 +7,7 @@ Na serwerze musimy mieć zainstalowany PHP wraz z rozszerzeniem Xdebug. Do pliku
 [xdebug]
 zend_extension=xdebug.so
 xdebug.remote_enable=1
+xdebug.remote_connect_back=0
 xdebug.remote_host=127.0.0.1
 xdebug.remote_port=9000
 ```
@@ -24,3 +25,12 @@ export XDEBUG_CONFIG="idekey=PHPSTORM"
 ```
 
 Od tego momentu środowisko programistyczne (jeśli nasłuchuje na porcie 9000) pozwoli nam debugować kod.
+
+
+## Konfiguracja xdebug dla maszyny vagrant
+```
+xdebug.remote_connect_back=0
+xdebug.remote_enable=1
+xdebug.remote_host=10.0.2.2
+xdebug.remote_port=9000
+```
