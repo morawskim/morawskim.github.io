@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2018-02
+[debian/ubuntu wkhtmltopdf - QXcbConnection: Could not connect to display](debian-ubuntu-wkhtmltopdf-qxcbconnection-could-not-connect-to-display.md)
 [RubyMine i zdalne debugowanie kodu](rubymine-i-zdalne-debugowanie-kodu.md)
 [gitattributes - wył automatycznej normalizacji końca linii](gitattributes-wyl-automtycznej-normalizacji-konca-linii.md)
 [Sed - skasowanie tekstu pomiędzy frazą i n następnych linii](sed-skasowanie-tekstu-pomiedzy-fraza-i-n-nastepnych-linii.md)
