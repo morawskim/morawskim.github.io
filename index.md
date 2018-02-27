@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2018-02
+[apache2 - htaccess i auth basic](apache2-htaccess-i-auth-basic.md)
 [iproute2 - snippets](iproute2-snippets.md)
 [debian/ubuntu wkhtmltopdf - QXcbConnection: Could not connect to display](debian-ubuntu-wkhtmltopdf-qxcbconnection-could-not-connect-to-display.md)
 [RubyMine i zdalne debugowanie kodu](rubymine-i-zdalne-debugowanie-kodu.md)
