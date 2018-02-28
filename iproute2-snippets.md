@@ -31,3 +31,9 @@ ip a
 ...
 ```
 
+## Tworzenie mostu (bridge)
+```
+ip link add br0 type bridge
+ip addr add 192.168.40.1/24 dev br0
+ip link set br0 up
+```
