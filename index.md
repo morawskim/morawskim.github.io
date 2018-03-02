@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2018-03
+[git - snippets](git-snippets.md)
 [Tworzenie CA - certyfikat serwera i klienta](tworzenie-ca-certyfikat-serwera-i-klienta.md)
 
 ## 2018-02
