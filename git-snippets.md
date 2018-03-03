@@ -11,3 +11,20 @@ git log --format='format:%m %h %ae %s' --left-right feature-GOLL-2032...feature-
 < 104e91e7b marcin.morawski@sensilabs.pl GOLL-2032 Wyl. blokady wysylania formularza umowy
 ...
 ````
+
+## check-ignore
+Polecenie check-ignore informuje nas, która reguła w pliku gitignore powoduje, że dany plik jest ignorowany.
+
+```
+git check-ignore -v ./opensuse-15.0/yadm/rpmbuild.log
+opensuse-15.0/yadm/.gitignore:3:rpmbuild.log ./opensuse-15.0/yadm/rpmbuild.log
+```
+
+To polecenie analizuje też reguły z globalnego pliku .gitignore
+
+```
+git check-ignore -v .directory
+/home/marcin/.config/git/ignore:3:.directory .directory
+
+```
+
