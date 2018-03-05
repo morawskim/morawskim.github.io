@@ -4,7 +4,7 @@ Tworzenie klucza i certyfikatu CA
 ```
 openssl genrsa -aes256 -out ca-key.pem 2048
 openssl req -new -x509 -days 365 -key ca-key.pem -sha256 -out ca.pem
-``
+```
 
 Tworzenie klucza i CSR serwera
 ```
