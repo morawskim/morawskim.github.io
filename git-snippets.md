@@ -28,3 +28,8 @@ git check-ignore -v .directory
 
 ```
 
+## .git/info/exclude
+Reguły ignorowania plików przez gita umieszcza się w pliku `.gitignore`. Nie jest to jednak jedyny sposób.
+Możemy to także zrobić globalnie (core.excludesfile). Prócz tego możemy dodać reguły tylko dla lokalnej kopii repozytorium.
+Takie reguły dodaje się właśnie do pliku `.git/info/exclude`.
+
