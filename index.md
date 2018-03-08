@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2018-03
+[pip - instalacja pakietu do określonego katalogu](pip-instalacja-pakietu-do-okreslonego-katalogu.md)
 [git - snippets](git-snippets.md)
 [Tworzenie CA - certyfikat serwera i klienta](tworzenie-ca-certyfikat-serwera-i-klienta.md)
 
