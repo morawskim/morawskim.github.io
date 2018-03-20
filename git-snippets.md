@@ -33,3 +33,21 @@ Reguły ignorowania plików przez gita umieszcza się w pliku `.gitignore`. Nie 
 Możemy to także zrobić globalnie (core.excludesfile). Prócz tego możemy dodać reguły tylko dla lokalnej kopii repozytorium.
 Takie reguły dodaje się właśnie do pliku `.git/info/exclude`.
 
+
+## Ignoruj zmienione pliki tylko na lokalnej maszynie
+
+```
+git update-index --skip-worktree <file>
+```
+
+Aby przestać ignorować zmiany:
+```
+git update-index --no-skip-worktree <file>
+```
+
+Więcej informacji
+ * https://medium.com/@igloude/git-skip-worktree-and-how-i-used-to-hate-config-files-e84a44a8c859
+ * https://hashrocket.com/blog/posts/ignore-specific-file-changes-only-on-current-machine-in-git
+ * https://fallengamer.livejournal.com/93321.html
+ * http://ideasintosoftware.com/git-tips-ignore-changes-to-a-local-file/
+
