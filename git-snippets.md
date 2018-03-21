@@ -51,3 +51,15 @@ Więcej informacji
  * https://fallengamer.livejournal.com/93321.html
  * http://ideasintosoftware.com/git-tips-ignore-changes-to-a-local-file/
 
+## Branche, które jeszcze nie zostały scalone
+
+```
+git branch --no-merged release-5.9.0
+* feature-GOLL-2409
+  feature-GOLL-1778
+  feature-GOLL-1782
+  feature-GOLL-2031
+  feature-GOLL-2032
+  feature-GOLL-2045
+  feature-GOLL-2253
+```
