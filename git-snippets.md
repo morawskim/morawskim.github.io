@@ -63,3 +63,9 @@ git branch --no-merged release-5.9.0
   feature-GOLL-2045
   feature-GOLL-2253
 ```
+
+## Najnowszy wspólny przodek dwóch gałęzi Git
+```
+git merge-base branch2 branch3
+050dc022f3a65bdc78d97e2b1ac9b595a924c3f2
+```
