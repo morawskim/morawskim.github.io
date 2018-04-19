@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2018-04
+[Drupal - dodatkowa konfiguracja dla dev w settings.php](drupal-dodatkowa-konfiguracja-dla-dev-w-settingsphp.md)
 [opensuse leap 42.2 - docker i suse firewall](opensuse-leap-422-docker-i-suse-firewall.md)
 
 ## 2018-03
