@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2018-05
+[certbot - snippets](certbot_-_snippets.md)
 [Linux find snippets](find-snippets.md)
 
 ## 2018-04
