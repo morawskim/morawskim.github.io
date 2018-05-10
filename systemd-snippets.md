@@ -220,3 +220,14 @@ systemd-run -p IPAccounting=yes --wait wget https://cfp.all-systems-go.io/en/ASG
 ```
 systemctl edit UNIT
 ```
+
+## Lista timerów (unit timer)
+```
+systemctl list-timers
+NEXT                          LEFT        LAST                          PASSED       UNIT                         ACTIVATES
+wto 2018-05-08 17:53:50 CEST  23h left    pon 2018-05-07 17:53:50 CEST  29min ago    systemd-tmpfiles-clean.timer systemd-tmpfiles-clean.service
+pon 2018-05-14 00:00:00 CEST  6 days left pon 2018-05-07 17:10:54 CEST  1h 12min ago fstrim.timer                 fstrim.service
+
+2 timers listed.
+Pass --all to see loaded but inactive timers, too.
+```
