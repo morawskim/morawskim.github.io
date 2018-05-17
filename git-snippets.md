@@ -69,3 +69,8 @@ git branch --no-merged release-5.9.0
 git merge-base branch2 branch3
 050dc022f3a65bdc78d97e2b1ac9b595a924c3f2
 ```
+
+## Przeniesienie brancha na nowy komit
+```
+git branch -f branch-name commit-sha
+```
