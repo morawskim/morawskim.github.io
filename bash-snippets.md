@@ -13,3 +13,11 @@ echo hello > /dev/null
 echo $_
 hello
 ```
+
+## Here string
+
+```
+cat <<< 'hi there'
+hi there
+```
+
