@@ -74,3 +74,23 @@ git merge-base branch2 branch3
 ```
 git branch -f branch-name commit-sha
 ```
+
+## Generowanie wersji paczki
+
+Przykład
+```
+git describe
+v0.1.1-45-gee6039a
+```
+
+Jeśli nigdy nie korzystalismy z tagowania, to musimy użyć flagi `--always`.
+Wynik jednak będzie zawierał, tylko skrót hasza komita.
+```
+git describe —always
+```
+
+Przykład
+```
+git describe --always
+b369748
+```
