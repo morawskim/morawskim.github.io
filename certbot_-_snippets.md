@@ -33,3 +33,17 @@ Before continuing, verify the record is deployed.
 ```
 
 Po weryfikacji certyfikat znajduje się w `/etc/certbot/archive/DOMENA`.
+
+
+## Generowanie certyfikatu wildcard
+
+Aby móc wygenerować certyfikat wildcard muszą być spełnione następujące warunki:
+* certbot w wersji >= 0.22
+* certyfikat musi być wygenerowany przez APIv2 (https://acme-v02.api.letsencrypt.org/directory)
+
+Jeśli w pliku konfiguracyjnym certbota korzystamy z apiv1 to podczas wywoływania certbota możemy nadpisać ten parametr. Dodając argument `--server https://acme-v02.api.letsencrypt.org/directory`
+
+```
+certbot -d *.morawskim.pl -d morawskim.pl --manual --preferred-challenges dns certonly
+```
+
