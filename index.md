@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2018-06
+[cheatsheets i zeal](cheatsheets-i-zeal.md)
+
 ## 2018-05
 [Bash snippets](bash-snippets.md)
 [sed - snippets](sed-snippets.md)
