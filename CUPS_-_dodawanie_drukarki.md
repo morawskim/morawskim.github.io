@@ -53,3 +53,16 @@ Możemy zacząć drukować dokumenty.
 ``` bash
 echo "Print this simle text" | /usr/bin/lpr
 ```
+
+Jeśli nie mamy pliku wykonywalnego `/usr/bin/lpr` to musimy zainstalować pakiet `cups-bsd`.
+
+## 400 Bad Request
+
+Po udostępnieniu drukarki, próbując wejść na stronę drukarki poprzez FQDN dostajemy błąd `400 Bad Request`.
+
+Prawdopodobnie oznacza to, że nie ustawiliśmy alternatywnych nazw serwera CUPS.
+Do pliku `/etc/cups/cupsd.conf` dodajemy alias z swoją nazwą FQDN np. "print.morawskim.pl".
+
+```
+ServerAlias print.morawskim.pl
+```
