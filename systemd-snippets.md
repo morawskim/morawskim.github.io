@@ -231,3 +231,17 @@ pon 2018-05-14 00:00:00 CEST  6 days left pon 2018-05-07 17:10:54 CEST  1h 12min
 2 timers listed.
 Pass --all to see loaded but inactive timers, too.
 ```
+
+## systemd-run jako alternatywa dla atd
+
+Atd to usługa, która wykonywała jakieś polecenia o zadanej godzinie w przyszłości.
+Obecnie tą funkcję może spełniać systemd.
+
+Aby wywołać polecenie `notify-send` z konta użytkownika za 2 minuty wywołujemy polecenie:
+
+```
+systemd-run --user --on-active="2m" /usr/bin/notify-send "komunikat"
+```
+
+Jeśli nie podamy jednostki czasu to systemd potraktuje wartość jako liczbę sekund.
+Czyli 50 oznacza 50 sekund.
