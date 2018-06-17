@@ -61,6 +61,11 @@ Jeśli nie mamy pliku wykonywalnego `/usr/bin/lpr` to musimy zainstalować pakie
 Po udostępnieniu drukarki, próbując wejść na stronę drukarki poprzez FQDN dostajemy błąd `400 Bad Request`.
 
 Prawdopodobnie oznacza to, że nie ustawiliśmy alternatywnych nazw serwera CUPS.
+W logu usługi cups (`/var/log/cups/error_log`) powinien pojawić się wpis
+```
+E [16/Jun/2018:11:59:26 +0000] [Client 45] Request from "192.168.0.102" using invalid Host: field "print.morawskim.pl:631".
+```
+
 Do pliku `/etc/cups/cupsd.conf` dodajemy alias z swoją nazwą FQDN np. "print.morawskim.pl".
 
 ```
