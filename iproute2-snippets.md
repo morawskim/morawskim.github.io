@@ -37,3 +37,9 @@ ip link add br0 type bridge
 ip addr add 192.168.40.1/24 dev br0
 ip link set br0 up
 ```
+
+## Dodanie ruting
+```
+sudo ip route add  172.17.161.0/24 via 192.168.15.1 dev wlan0
+```
+
