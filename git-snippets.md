@@ -94,3 +94,8 @@ Przykład
 git describe --always
 b369748
 ```
+
+## Częściowe cofnięcie poprzedniego komita
+```
+git show <commit> -- <path> | git apply -R
+```
