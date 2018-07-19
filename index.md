@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2018-07
+[powerline - snippets](powerline-snippets.md)
 [phpspec - snippets](phpspec-snippets.md)
 [Virtualbox i NetworkManager](virtualbox-i-networkmanager.md)
 
