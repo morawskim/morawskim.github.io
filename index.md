@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2018-07
+[Proxy - socat](proxy.md)
 [Zmiana domyślnego programu do otwierania plików](zmiana-domyslnego-programu-do-otwierania-plikow.md)
 [powerline - snippets](powerline-snippets.md)
 [phpspec - snippets](phpspec-snippets.md)
