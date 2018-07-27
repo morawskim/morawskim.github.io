@@ -21,3 +21,10 @@ cat <<< 'hi there'
 hi there
 ```
 
+## Lista wszystkich sekwencji klawiszy powiązanych z poleceniami powłoki
+
+```
+bind -X
+"\C-t": "fzf-file-widget"
+```
+
