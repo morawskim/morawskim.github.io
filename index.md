@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2018-07
+[vboxfs i serwer HTTP (sendfile system call)](vboxfs-i-serwer-http-sendfile-system-call.md)
 [Proxy - socat](proxy.md)
 [Zmiana domyślnego programu do otwierania plików](zmiana-domyslnego-programu-do-otwierania-plikow.md)
 [powerline - snippets](powerline-snippets.md)
