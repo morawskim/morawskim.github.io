@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2018-07
+[linux - ustawienie strefy czasowej](linux-ustawienie-strefy-czasowej.md)
 [vboxfs i serwer HTTP (sendfile system call)](vboxfs-i-serwer-http-sendfile-system-call.md)
 [Proxy - socat](proxy.md)
 [Zmiana domyślnego programu do otwierania plików](zmiana-domyslnego-programu-do-otwierania-plikow.md)
