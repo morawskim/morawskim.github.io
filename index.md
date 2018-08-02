@@ -1,6 +1,9 @@
 Hello
 =====
 
+##2018-08
+[mysql - skasowanie danych z wszystkich tabel](mysql-skasowanie-danych-z-wszystkich-tabel.md)
+
 ## 2018-07
 [linux - ustawienie strefy czasowej](linux-ustawienie-strefy-czasowej.md)
 [vboxfs i serwer HTTP (sendfile system call)](vboxfs-i-serwer-http-sendfile-system-call.md)
