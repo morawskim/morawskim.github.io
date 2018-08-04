@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2018-08
+[vagrant, virtualbox 5.2 - no provider](vagrant-virtualbox-52-no-provider.md)
 [KDE - pokazanie ukrytego paska menu](kde-pokazanie-ukrytego-paska-menu.md)
 [mysql - skasowanie danych z wszystkich tabel](mysql-skasowanie-danych-z-wszystkich-tabel.md)
 
