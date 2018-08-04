@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2018-08
+[KDE - pokazanie ukrytego paska menu](kde-pokazanie-ukrytego-paska-menu.md)
 [mysql - skasowanie danych z wszystkich tabel](mysql-skasowanie-danych-z-wszystkich-tabel.md)
 
 ## 2018-07
