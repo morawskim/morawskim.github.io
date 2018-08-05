@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2018-08
+[ruby-debug-ide i ruby_assert.h not found](ruby-debug-ide-i-ruby-asserth-not-found.md)
 [Jak znaleźć funkcję, która zmieniła atrybut value elementu input](jak-znalezc-funkcje-ktora-zmienila-atrybut-value-elementu-input.md)
 [vagrant, virtualbox 5.2 - no provider](vagrant-virtualbox-52-no-provider.md)
 [KDE - pokazanie ukrytego paska menu](kde-pokazanie-ukrytego-paska-menu.md)
