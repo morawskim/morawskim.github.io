@@ -127,7 +127,7 @@ Hello
 [Git - wyświetlenie zawartości drzewa objektów](Git_-_wyświetlenie_zawartości_drzewa_objektów.md)
 [Kdeexamples - link do cgit](Kdeexamples_-_link_do_cgit.md)
 [Opensuse - link do niewspieranych wydań](Opensuse_-_link_do_niewspieranych_wydań.md)
-[Ustawienie hostname w Linux (systemd)](Ustawienie_hostname_w_Linux_%28systemd%29.md)
+[linux - ustawienie hostname](linux-ustawienie-hostname)
 [Docker - kopiowanie pliku](Docker_-_kopiowanie_pliku.md)
 [Docker - zarządzanie /etc/hosts](Docker_-_zarządzanie__SLASH_etc_SLASH_hosts.md)
 [Rbenv - błąd podczas kompilacji](Rbenv_-_błąd_podczas_kompilacji.md)
