@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2018-08
+[yii2 - nadpisanie konfiguracji AssetBundle](yii2-nadpisanie-konfiguracji-assetbundle.md)
 [journalctl, rsyslog i openSuSE 15](journalctl-rsyslog-i-opensuse-15.md)
 [ruby-debug-ide i ruby_assert.h not found](ruby-debug-ide-i-ruby-asserth-not-found.md)
 [Jak znaleźć funkcję, która zmieniła atrybut value elementu input](jak-znalezc-funkcje-ktora-zmienila-atrybut-value-elementu-input.md)
