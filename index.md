@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2018-08
+[Ustawienie limitu na wielkość ciała żadania HTTP](ustawienie-limitu-na-wielkosc-ciala-zadania-http.md)
 [yii2 - nadpisanie konfiguracji AssetBundle](yii2-nadpisanie-konfiguracji-assetbundle.md)
 [journalctl, rsyslog i openSuSE 15](journalctl-rsyslog-i-opensuse-15.md)
 [ruby-debug-ide i ruby_assert.h not found](ruby-debug-ide-i-ruby-asserth-not-found.md)
