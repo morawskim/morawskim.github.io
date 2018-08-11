@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2018-08
+[Chrome/Chromium - flagi](chrome-chromium-flagi.md)
 [Docker - dostęp do portu hosta z kontenera](docker-dostep-do-portu-hosta-z-kontenera.md)
 [Ustawienie limitu na wielkość ciała żadania HTTP](ustawienie-limitu-na-wielkosc-ciala-zadania-http.md)
 [yii2 - nadpisanie konfiguracji AssetBundle](yii2-nadpisanie-konfiguracji-assetbundle.md)
