@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2018-08
+[linux - zmiana języka systemu](linux-zmiana-jezyka-systemu.md)
 [Chrome/Chromium - flagi](chrome-chromium-flagi.md)
 [Docker - dostęp do portu hosta z kontenera](docker-dostep-do-portu-hosta-z-kontenera.md)
 [Ustawienie limitu na wielkość ciała żadania HTTP](ustawienie-limitu-na-wielkosc-ciala-zadania-http.md)
