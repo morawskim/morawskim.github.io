@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2018-08
+[Budowanie książki TypeScript Handbook za pomocą gitbook](budowanie-ksiazki-typescript-handbook-za-pomoca-gitbook.md)
 [Regex - snippets](regex-snippets.md)
 [linux - zmiana języka systemu](linux-zmiana-jezyka-systemu.md)
 [Chrome/Chromium - flagi](chrome-chromium-flagi.md)
