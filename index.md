@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2018-08
+[Redis - debugging](redis-debugging.md)
 [geodistance](geodistance.md)
 [Budowanie książki TypeScript Handbook za pomocą gitbook](budowanie-ksiazki-typescript-handbook-za-pomoca-gitbook.md)
 [Regex - snippets](regex-snippets.md)
