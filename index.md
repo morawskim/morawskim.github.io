@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2018-08
+[vagrant 2.1 fork/exec error](vagrant-21-fork-exec-error.md)
 [Redis - debugging](redis-debugging.md)
 [geodistance](geodistance.md)
 [Budowanie książki TypeScript Handbook za pomocą gitbook](budowanie-ksiazki-typescript-handbook-za-pomoca-gitbook.md)
