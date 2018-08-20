@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2018-08
+[yii2 - snippets](yii2-snippets.md)
 [vagrant 2.1 fork/exec error](vagrant-21-fork-exec-error.md)
 [Redis - debugging](redis-debugging.md)
 [geodistance](geodistance.md)
