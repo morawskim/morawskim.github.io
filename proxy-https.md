@@ -19,3 +19,13 @@ checkServerIdentity: function (host, cert) {
 return undefined;
 }
 ```
+
+
+## OWASP ZAP ROOTCA
+
+RootCa możemy pobrać z konfiguracji programu (Narzędzia -> Opcje -> Dynamiczne certyfikaty SSL).
+Możemy też pobrać z API (jeśli jest włączona taka opcja w konfiguracji).
+W przeglądarce internetowej wchodzimy na adres `http://127.0.0.1:8088/UI/core/other/rootcert/`.
+Gdzie `127.0.0.1` to adres naszego serwera proxy. A `8088` to port na którym proxy nasłuchuje.
+Po podaniu `apikey`, plik root ca będzie można zapisać.
+
