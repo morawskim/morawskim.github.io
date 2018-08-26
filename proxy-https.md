@@ -29,3 +29,20 @@ W przeglądarce internetowej wchodzimy na adres `http://127.0.0.1:8088/UI/core/o
 Gdzie `127.0.0.1` to adres naszego serwera proxy. A `8088` to port na którym proxy nasłuchuje.
 Po podaniu `apikey`, plik root ca będzie można zapisać.
 
+
+## Sparsowanie certyfikatu SSL (wygenerowanego przez proxy) przez openssl s_client
+
+`play.minio.io` to nasz serwer, z którym chcemy się połączyć przez HTTPS.
+
+```
+proxychains4 bash -c 'echo | openssl s_client -showcerts -servername play.minio.io -connect play.minio.io:9000 2>/dev/null | openssl x509 -inform pem -noout -text'
+```
+
+Minimalny plik konfiguracyjny dla `proxychains`
+```
+[ProxyList]
+http 172.17.0.1 8088
+
+```
+
+Gdzie `172.17.0.1 8088` to nasz adres IP i port serwera proxy.
