@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2018-08
+[Linux - globalne dodanie zaufanego certyfikatu SSL](linux-globalne-dodanie-zaufanego-certyfikatu-ssl.md)
 [proxychains](proxychains.md)
 [mysql - collation](mysql-collation.md)
 [html5 - wyłączenie autocomplete nazwy użytkownika i hasła](html5-wylaczenie-autocomplete-nazwy-uzytkownika-i-hasla.md)
