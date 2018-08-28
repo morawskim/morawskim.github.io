@@ -25,3 +25,20 @@ Ponieważ jest to kolejka zadań, a yii nie flushuje wpisów ustawiłem jeszcze 
 ],
 ...
 ```
+
+## Domyślny kontroler modułu
+
+W pliku `[MODUL]/config/main.php` ustawiamy klucz `defaultRoute`.
+Zgodnie z dokumentacją:
+> the default route of this module. Defaults to `default`.
+ * The route may consist of child module ID, controller ID, and/or action ID.
+ * For example, `help`, `post/create`, `admin/post/create`.
+ * If action ID is not given, it will take the default value as specified in
+ * [[Controller::defaultAction]].
+
+```
+return [
+...
+    'defaultRoute' => 'proxy',
+...
+```
