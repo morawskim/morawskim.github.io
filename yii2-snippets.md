@@ -36,6 +36,7 @@ Zgodnie z dokumentacją:
  * If action ID is not given, it will take the default value as specified in
  * [[Controller::defaultAction]].
 
+Ustawienie tego klucza, powoduje nadpisaniw właściwości `defaultRoute` w klasie `\yii\web\Application` dla aplikacji web. Albo w klasie `\yii\console\Application` dla aplikacji konsolowej.
 ```
 return [
 ...
