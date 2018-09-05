@@ -1,6 +1,9 @@
 Hello
 =====
 
+##2018-09
+[php - htmlspecialchars vs htmlentities](php-htmlspecialchars-vs-htmlentities.md)
+
 ##2018-08
 [proxy HTTPS](proxy-https.md)
 [Linux - globalne dodanie zaufanego certyfikatu SSL](linux-globalne-dodanie-zaufanego-certyfikatu-ssl.md)
