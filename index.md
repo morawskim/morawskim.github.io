@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2018-09
+[php - empty() i metody magiczne __get/__isset](php-zablokowanie-przesylania-plikow.md)
 [php - htmlspecialchars vs htmlentities](php-htmlspecialchars-vs-htmlentities.md)
 
 ##2018-08
