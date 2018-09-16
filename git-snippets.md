@@ -99,3 +99,11 @@ b369748
 ```
 git show <commit> -- <path> | git apply -R
 ```
+
+## Przed złączeniem zmian z innej gałęzi, chce je przejrzeć
+
+```
+git merge [nazwa-brancha] --no-commit --no-ff
+```
+
+Tym poleceniem próbujemy połączyć zmiany z gałęzi `nazwa-brancha`, ale nie zostanie utworzony żaden merge commit. Daje nam to możliwość przejrzenia jak będzie wyglądał kod po złączeniu. Po przejrzeniu kodu możemy normalnie zatwierdzić zmiany.
