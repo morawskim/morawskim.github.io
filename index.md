@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2018-09
+[docker pull - x509: certificate signed by unknown authority](docker-pull-x509-certificate-signed-by-unknown-authority.md)
 [php - pcre i utf8](php-pcre-i-utf8.md)
 [css - ponter-events](css-ponter-events.md)
 [php - empty() i metody magiczne __get/__isset](php-zablokowanie-przesylania-plikow.md)
