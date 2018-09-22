@@ -107,3 +107,12 @@ git merge [nazwa-brancha] --no-commit --no-ff
 ```
 
 Tym poleceniem próbujemy połączyć zmiany z gałęzi `nazwa-brancha`, ale nie zostanie utworzony żaden merge commit. Daje nam to możliwość przejrzenia jak będzie wyglądał kod po złączeniu. Po przejrzeniu kodu możemy normalnie zatwierdzić zmiany.
+
+## Adnotacje (git blame) do poprzedniej wersji pliku
+
+Modyfikując plik, środowiska programistyczne przestają wyświetlać kto i kiedy ostatni raz modyfikował daną linię.
+Te informację mogą się przydać przy opisie błędu. Możemy je wyświetlić nie cofając się do poprzedniej wersji pliku za pomocą poniższego polecenia.
+
+```
+git blame HEAD^ -- /sciezka/do/pliku
+```
