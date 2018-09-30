@@ -11,3 +11,12 @@ docker exec -it --user root rocketchat_rocketchat_1 bash
 ```
 
 Po wywołaniu polecenia uruchomi się powłoka bash z uprawnieniami użytkownika root, anie rocketchat.
+
+## Budowanie obrazków bez korzystania z warstw buforowanych (cached)
+
+W momencie, kiedy niezbędne jest zbudowanie obrazku od podstaw, na przykład chcemy wymusić aktualizacje systemu musimy wyłączyć korzystanie z warstw buforowanych.
+
+Robimy to dodając parametr `--no-cache` do polecenia `docker build`.
+```
+docker build -t test --no-cache .
+```
