@@ -34,3 +34,18 @@ xdebug.remote_enable=1
 xdebug.remote_host=10.0.2.2
 xdebug.remote_port=9000
 ```
+
+## Docker, PHPStorm i debugowanie skryptu CLI
+
+Jeśli chcemy debugować skrypty lub aplikacje CLI (np. testy jednostkowe) w PHPStorm to musimy na kontenerze ustawić zmienną środowiskową `PHP_IDE_CONFIG`. Najprościej jest to zrobić dodając taką zmienną do definicji kontenera PHP w pliku `docker-compose.yml`. Wartość tej zmiennej środowiskowej musi wskazywać nazwę serwera, którą nadaliśmy w opcjach PHPStorm (Settings / Preferences | Languages & Frameworks | PHP | Servers).
+Więcej informacji:
+https://confluence.jetbrains.com/display/PhpStorm/Debugging+PHP+CLI+scripts+with+PhpStorm
+
+```
+php:
+environment:
+- XDEBUG_CONFIG=remote_connect_back=0 remote_host=${XDEBUG_HOST}
+- PHP_IDE_CONFIG=serverName=${SERVER_NAME}
+```
+
+W takim przypadku w pliku `.env` musimy mieć zdefiniowane zmienne `XDEBUG_HOST` i `SERVER_NAME`.
