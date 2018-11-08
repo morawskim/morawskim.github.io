@@ -20,3 +20,9 @@ Robimy to dodając parametr `--no-cache` do polecenia `docker build`.
 ```
 docker build -t test --no-cache .
 ```
+
+## Wczytanie dump'a bd na kontener (docker-compose)
+
+```
+docker exec -i $(docker-compose ps -q mysql) mysql -uroot -ppassword  -D DBNAE < dump.sql
+```
