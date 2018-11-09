@@ -43,3 +43,28 @@ return [
     'defaultRoute' => 'proxy',
 ...
 ```
+
+## Yii2 - DI definicje w main.php
+
+```
+return [
+    'id' => 'app-frontend',
+    'basePath' => dirname(__DIR__),
+    'bootstrap' => ['log'],
+    'controllerNamespace' => 'frontend\controllers',
+    'sourceLanguage' => 'en_GB',
+    'container' => [
+        'definitions' => [
+            yii\grid\GridView::class => [
+                'tableOptions' => [
+                    'class' => 'table table-condensed table-striped table-hover',
+                ],
+                'pager' => [
+                    'class' => 'justinvoelker\separatedpager\LinkPager',
+                ],
+            ],
+        ],
+    ],
+    'components' => [
+....
+```
