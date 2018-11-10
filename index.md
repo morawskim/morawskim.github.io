@@ -1,6 +1,9 @@
 Hello
 =====
 
+##2018-11
+[linux - ustawienie hostname](Ustawienie_hostname_w_Linux.md)
+
 ##2018-09
 [docker - snippets](docker-snippets.md)
 [docker pull - x509: certificate signed by unknown authority](docker-pull-x509-certificate-signed-by-unknown-authority.md)
