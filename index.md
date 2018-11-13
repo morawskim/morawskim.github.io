@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2018-11
+[minio/amazon s3 - polityka dostępu do bucket](minio-amazon-s3-polityka-dostepu-do-bucket.md)
 [linux - ustawienie hostname](Ustawienie_hostname_w_Linux.md)
 
 ##2018-09
