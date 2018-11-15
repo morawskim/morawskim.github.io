@@ -116,3 +116,9 @@ Te informację mogą się przydać przy opisie błędu. Możemy je wyświetlić 
 ```
 git blame HEAD^ -- /sciezka/do/pliku
 ```
+
+## Przygotowanie archiwum z wydaniem
+
+```
+git archive master --prefix='PROJEKT/' | gzip > `git describe master`.tar.gz
+```
