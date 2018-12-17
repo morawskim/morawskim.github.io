@@ -1,6 +1,9 @@
 Hello
 =====
 
+##2018-12
+[angular - jawne wywołanie detektora zmian (change detection)](angular-jawne-wywolanie-detektora-zmian-change-detection.md)
+
 ##2018-11
 [minio/amazon s3 - polityka dostępu do bucket](minio-amazon-s3-polityka-dostepu-do-bucket.md)
 [linux - ustawienie hostname](Ustawienie_hostname_w_Linux.md)
