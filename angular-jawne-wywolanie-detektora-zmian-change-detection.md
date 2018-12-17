@@ -24,3 +24,11 @@ W konsoli JS przeglądarki mając wcześniej zaznaczony nasz element DOM możemy
 ng.probe($0)._debugContext.component.post.title = "aaaaaaa"
 ng.profiler.appRef.tick()
 ```
+
+## Pobranie referencji do ApplicationRef z injector
+
+W konsoli JS przeglądarki mając wcześniej zaznaczony nasz element DOM możemy wywołać detektor zmian w następujący sposób.
+
+```
+ng.probe($0).injector.get(ng.coreTokens.ApplicationRef).tick()
+```
