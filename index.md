@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2018-12
+[Postman snippets](postman-snippets.md)
 [mock-http-server](mock-http-server.md)
 [angular - jawne wywołanie detektora zmian (change detection)](angular-jawne-wywolanie-detektora-zmian-change-detection.md)
 
