@@ -1,5 +1,7 @@
 # Docker - dostęp do portu hosta z kontenera
 
+## bridge docker0
+
 Na openSuSE Leap 15 dostarczany jest docker w wersji `17.09.1-ce`.
 
 ```
@@ -44,4 +46,50 @@ sudo firewall-cmd --permanent --zone=trusted --add-interface=docker0
 
 # w przeciwnym przypadku
 sudo firewall-cmd --zone=trusted --add-interface=docker0
+```
+
+## docker-compose
+
+W przypadku uruchomienia kontenerów poprzez docker-compose dodanie interfejsu `docker0` do strefy `trusted` nic nie da. Domyślnie docker-compose tworzy oddzielną sieć dla kontenerów zdefiniowanych w pliku `docker-compose.yml`.
+
+Dostępne sieci docker'a.
+```
+> docker network ls
+NETWORK ID          NAME                 DRIVER              SCOPE
+1f9bb35b2e1c        bridge               bridge              local
+f9150e758ad4        gollfront_default    bridge              local
+75149565020b        host                 host                local
+8ac8acac3b59        noipclient_default   bridge              local
+61c42305e922        none                 null                local
+995a20d94ec2        ssorder_default      bridge              local
+```
+
+Przypisanie interfejsów do bridge.
+```
+/usr/sbin/brctl show
+bridge name     bridge id               STP enabled     interfaces
+br-8ac8acac3b59         8000.02426fae8dc2       no
+br-995a20d94ec2         8000.02426763f62d       no              veth149a6d1
+                                                        veth3ed13e9
+                                                        veth763c193
+                                                        vethb1b8b69
+                                                        vethef30a30
+                                                        vethfb231de
+br-f9150e758ad4         8000.0242f84a441a       no
+docker0         8000.024217d3758e       no              veth3308d41
+```
+
+Musimy dodać zakres IP do strefy interfejsu, do którego chcemy się podłączyć. Mój interfejs `wlan0` jest przypisany do strefy `internal`. Jeśli została utworzona sieć 172.18.0.0/24 przez docker-compose to wywołujemy poniższe polecenie
+
+```
+sudo firewall-cmd --zone=internal --add-source=172.18.0.0/24
+```
+
+Jeśli chcemy zachować zmianę na stałe to dodajemy flagę `--permanent` - `sudo firewall-cmd --permanent --zone=internal --add-source=172.18.0.0/24`
+
+```
+> sudo firewall-cmd --get-active-zones
+internal
+  interfaces: wlan0
+  sources: 172.17.0.0/24 172.19.0.0/24
 ```
