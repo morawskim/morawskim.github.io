@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2018-12
+[grep - snippets](grep-snippets.md)
 [guzzle3 - mock plugin](guzzle3-mock-plugin.md)
 [guzzle3 - budowanie dokumentacji](guzzle3-budowanie-dokumentacji.md)
 [selinux - blokowanie połączenia do mysql](selinux-blokowanie-polaczenia-do-mysql.md)
