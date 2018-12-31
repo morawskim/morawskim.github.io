@@ -79,3 +79,7 @@ b4cefa2f850f9632afdb63beb90c6d1b9db8540db680491da4cd921674310c3b   0            
 Build cache usage: 0B
 ```
 
+## docker-compose config
+
+Polecenie `docker-compose config` ma dwa zadania. Po pierwsze weryfikuje poprawność pliku/plików `docker-compose.yml`. Po drugie wyświetla na wyjściu końcowy plik yml. Jeśli nadpisujemy konfigurację poprzez `docker-override.yml` to zobaczymy połączony plik yaml. Dodatkowo wszystkie wartości zmiennych środowiskowych zostaną podstawione.
+
