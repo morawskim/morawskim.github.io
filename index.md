@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2018-12
+[Docker Compose - połącz kontenery nie zdefiniowane w pliku compose wykorzystując external_links](docker-compose-polacz-kontenery-nie-zdefiniowane-w-pliku-compose-wykorzystujac-external-links.md)
 [javascript - snippets](javascript-snippets.md)
 [docker-compose - ERROR: for rocketchat_mongo_1  dictionary update sequence element #0 has length 20; 2 is required](docker-compose-error-for-rocketchat-mongo-1-dictionary-update-sequence-element-0-has-length-20-2-is-required.md)
 [grep - snippets](grep-snippets.md)
