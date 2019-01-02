@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2019-01
+[Bootstrap4 - izolacja Bs4 i Bs3](bootstrap4-izolacja-bs4-i-bs3.md)
 [Curl - snippets](curl-snippets.md)
 
 ##2018-12
