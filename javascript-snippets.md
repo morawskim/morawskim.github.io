@@ -11,3 +11,7 @@ Np. losowa liczba z zakresu 2 i 10 będzie `8 + Math.random() + 2`
 
 `"HelloWorldFromJavaScript".replace(/[A-Z]/g, "_$&");`
 Wynik to `_Hello_World_From_Java_Script`.
+
+## Zamiana arguments na tablice
+
+`Array.prototype.slice.call(arguments)`
