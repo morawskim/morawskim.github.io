@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2019-01
+[angular - snippets](angular-snippets.md)
 [typescript - snippets](typescript-snippets.md)
 [SSLKEYLOGFILE badanie ruchu SSL](sslkeylogfile-badanie-ruchu-ssl.md)
 [Bootstrap4 - izolacja Bs4 i Bs3](bootstrap4-izolacja-bs4-i-bs3.md)
