@@ -25,3 +25,11 @@ public function it_should_return_item_if_age_from_and_to_are_null()
 }
 ```
 
+## Mockery - sprawdzanie typów argumentów przekazanych do metody
+
+``` php
+$callbackMock = \Mockery::mock('Foo');
+$callbackMock->shouldReceive('bar')
+    ->with(\Mockery::type(ResponseXMLType::class), \Mockery::type(Factory::class))
+    ->andReturn($responseMock);
+```
