@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2019-01
+[Włączenie komunikatów diagnostycznych dla aplikacji KDE](wlaczenie-komunikatow-diagnostycznych-dla-aplikacji-kde.md)
 [angular - snippets](angular-snippets.md)
 [typescript - snippets](typescript-snippets.md)
 [SSLKEYLOGFILE badanie ruchu SSL](sslkeylogfile-badanie-ruchu-ssl.md)
