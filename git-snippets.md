@@ -122,3 +122,8 @@ git blame HEAD^ -- /sciezka/do/pliku
 ```
 git archive master --prefix='PROJEKT/' | gzip > `git describe master`.tar.gz
 ```
+
+## fetch i cherry-pick na aktualny branch
+
+`git fetch gerrit refs/changes/25/20625/9 && git cherry-pick FETCH_HEAD`
+
