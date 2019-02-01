@@ -17,3 +17,15 @@ Dzięki słowu kluczowemu `typeof`, w szablonie będzie działać podpowiadanie 
 ```
 public refundValueTypeEnum: typeof RefundValueTypeEnum = RefundValueTypeEnum;
 ```
+
+## User-Defined Type Guards
+W TypeScript nie możemy używac operatora `instanceof` do sprawdzenia, czy objekt implementuje interfejs.
+Operator `instanceof` sprawdza tylko typ konstruktora funkcji. Musimy skorzystać z tzw. User-Defined Type Guards - https://www.typescriptlang.org/docs/handbook/advanced-types.html#user-defined-type-guards
+
+```
+export function isRootControlErrorStateMatcher(errorStateMatcher: ErrorStateMatcher): errorStateMatcher is RootControlErrorStateMatcher {
+    const matcher: RootControlErrorStateMatcher = errorStateMatcher as RootControlErrorStateMatcher;
+    return typeof matcher.setRootControl === 'function' && typeof matcher.getRootControl === 'function';
+}
+```
+
