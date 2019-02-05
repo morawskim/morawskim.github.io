@@ -8,3 +8,8 @@ Przykładowe wywołanie:
 ``` bash
 curl --header "Content-Type: text/xml;charset=UTF-8" --data @/home/marcin/.PhpStorm2017.1/config/scratches/scratch_15.xml 'ws.dpd-city.dev/?ws=1
 ```
+Możemy także sformatować wyjściowy plik XML za pomocą programu xmllint
+
+```
+curl -sb --header "Content-Type: text/xml;charset=UTF-8" --data @/home/marcin/.PhpStorm2017.1/config/scratches/scratch_15.xml 'ws.dpd-city.dev/?ws=1 | xmllint --format -
+```
