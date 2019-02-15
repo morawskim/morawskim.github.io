@@ -15,3 +15,11 @@ Wynik to `_Hello_World_From_Java_Script`.
 ## Zamiana arguments na tablice
 
 `Array.prototype.slice.call(arguments)`
+
+## Wyświetlenie pobranej zawartości dokumentu PDF w nowym oknie
+
+```
+const file = new Blob([data], {type: 'application/pdf'});
+const fileURL = URL.createObjectURL(file);
+window.open(fileURL);
+```
