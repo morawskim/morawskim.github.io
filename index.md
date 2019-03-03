@@ -1,6 +1,9 @@
 Hello
 =====
 
+##2019-03
+[maven - snippets](maven-snippets.md)
+
 ##2019-01
 [Włączenie komunikatów diagnostycznych dla aplikacji KDE](wlaczenie-komunikatow-diagnostycznych-dla-aplikacji-kde.md)
 [angular - snippets](angular-snippets.md)
