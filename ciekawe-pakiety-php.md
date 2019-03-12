@@ -16,3 +16,13 @@ Supercharge your unit tests that use Guzzle with a mock-like syntax. Guzzler cov
 `composer require --dev --prefer-dist blastcloud/guzzler`
 
 https://github.com/blastcloud/guzzler
+
+
+## symfony-meta
+
+PhpStorm meta data for expected arguments completion.
+
+`composer require thomas-schulz/symfony-meta --dev`
+
+https://github.com/King2500/symfony-meta
+https://blog.jetbrains.com/phpstorm/2019/02/new-phpstorm-meta-php-features/
