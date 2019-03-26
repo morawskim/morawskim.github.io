@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2019-03
+[nerd fonts](nerd-fonts.md)
 [CSS snippets](css-snippets.md)
 [symfony snippets](symfony-snippets.md)
 [Apache, fastcgi i HTTP Authorization](apache-fastcgi-i-http-authorization.md)
