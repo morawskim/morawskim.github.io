@@ -8,3 +8,8 @@ html {
     background-size: cover;
 }
 ```
+
+## Kolekcja efektów CSS
+
+https://emilkowalski.github.io/css-effects-snippets/
+
