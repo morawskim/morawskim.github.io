@@ -22,3 +22,13 @@ Jeśli w konfiguracji encore wywołaliśmy metodę `enableSingleRuntimeChunk` i 
 Jeśli wywołamy metodę `disableSingleRuntimeChunk` to nasze pliki js dostaną różne obiekty wczytywanego modułu.
 
 W przypadku aplikacji, które nie są tzw. "single-page app", to najpewniej będziemy chcieli korzystać z `runtime.js`.
+
+
+## Domyślna wartość dla pola w Doctrine2
+
+``` php
+/**
+ * @ORM\Column(type="decimal", precision=10, scale=4, options={"default" : 0})
+ */
+private $avg30;
+```
