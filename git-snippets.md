@@ -127,3 +127,7 @@ git archive master --prefix='PROJEKT/' | gzip > `git describe master`.tar.gz
 
 `git fetch gerrit refs/changes/25/20625/9 && git cherry-pick FETCH_HEAD`
 
+
+## Lista plików, których nazwa zaczyna się od 'Dockerfile'
+
+`git ls-files --exclude='Dockerfile*' --ignored | xargs --max-lines=1  echo`
