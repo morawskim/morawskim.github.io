@@ -26,3 +26,7 @@ PhpStorm meta data for expected arguments completion.
 
 https://github.com/King2500/symfony-meta
 https://blog.jetbrains.com/phpstorm/2019/02/new-phpstorm-meta-php-features/
+
+## Lista jednorazowych i tymczasowych domen adresów e-mail
+
+https://github.com/martenson/disposable-email-domains
