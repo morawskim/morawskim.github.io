@@ -1,6 +1,9 @@
 Hello
 =====
 
+##2019-04
+[Bundler - instalacja gem'a z lokalnej ścieżki](bundler-instalacja-gema-z-lokalnej-sciezki.md)
+
 ##2019-03
 [Sprawdzenie czy proces jest uruchomiony w kontenerze docker'a](sprawdzenie-czy-proces-jest-uruchomiony-w-kontenerze-dockera.md)
 [gitlab ci - pobieranie artefaktów zadania](gitlab-ci-pobieranie-artefaktow-zadania.md)
