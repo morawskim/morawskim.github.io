@@ -43,3 +43,6 @@ ip link set br0 up
 sudo ip route add  172.17.161.0/24 via 192.168.15.1 dev wlan0
 ```
 
+## Skasowanie interfejsu
+
+`ip link delete [INTERFACE_NAME]`
