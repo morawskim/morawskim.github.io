@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2019-04
+[Gitlab-CI - snippets](gitlab-ci-snippet.md)
 [vagrant package - nominatim](vagrant-package-nominatim.md)
 [Bundler - instalacja gem'a z lokalnej ścieżki](bundler-instalacja-gema-z-lokalnej-sciezki.md)
 
