@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2019-04
+[MySQL - wyłączenie sprawdzania poprawności kluczy obcych](mysql-wylaczenie-sprawdzania-poprawnosci-kluczy-obcych.md)
 [CKEditor - snippets](ckeditor-snippets.md)
 [Gitlab-CI - snippets](gitlab-ci-snippet.md)
 [vagrant package - nominatim](vagrant-package-nominatim.md)
