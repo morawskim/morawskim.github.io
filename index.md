@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2019-04
+[nmap - snippets](nmap-snippets.md)
 [docker-compose build - ERROR: Couldn't connect to Docker daemon](docker-compose-build-error-couldnt-connect-to-docker-daemon.md)
 [MySQL - wyłączenie sprawdzania poprawności kluczy obcych](mysql-wylaczenie-sprawdzania-poprawnosci-kluczy-obcych.md)
 [CKEditor - snippets](ckeditor-snippets.md)
