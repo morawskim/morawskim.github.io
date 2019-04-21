@@ -13,3 +13,8 @@ job_name:
 ```
 
 https://docs.gitlab.com/ee/ci/variables/#debug-tracing
+
+## Tymczasowe wyłączenie zadania w potoku
+
+Zamiast komentować i kasować cały fragment z konfiguracją zadania w potoku możemy dodać znak `.` przed nazwą zadania.
+Np. `.phpunit`.Dzięki temu zadanie `phpunit` nie zostanie wywołane.
