@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2019-04
+[composer - snippets](composer-snippets.md)
 [w3af - instalacja](w3af-instalacja.md)
 [composer - wymuszenie specyficznej wersji PHP](composer-wymuszenie-specyficznej-wersji-php.md)
 [nmap - snippets](nmap-snippets.md)
