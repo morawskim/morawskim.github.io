@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2019-04
+[mysql - ERROR 2006 (HY000): MySQL server has gone away](mysql-error-2006-hy000-mysql-server-has-gone-away.md)
 [composer - snippets](composer-snippets.md)
 [w3af - instalacja](w3af-instalacja.md)
 [composer - wymuszenie specyficznej wersji PHP](composer-wymuszenie-specyficznej-wersji-php.md)
