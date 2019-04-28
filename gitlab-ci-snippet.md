@@ -18,3 +18,10 @@ https://docs.gitlab.com/ee/ci/variables/#debug-tracing
 
 Zamiast komentować i kasować cały fragment z konfiguracją zadania w potoku możemy dodać znak `.` przed nazwą zadania.
 Np. `.phpunit`.Dzięki temu zadanie `phpunit` nie zostanie wywołane.
+
+## Pominięcie potoku
+
+Jeśli w treści wiadomości komita znajdzie się fraza `[ci skip]` or `[skip ci]` to potok nie zostanie uruchomiony.
+
+https://docs.gitlab.com/ee/ci/yaml/#skipping-jobs
+
