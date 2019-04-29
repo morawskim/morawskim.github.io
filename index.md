@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2019-04
+[MySQL - zmiana atrybutu DEFINER widoku](mysql-zmiana-atrybutu-definer-widoku.md)
 [dpkg vs rpm](dpkg-vs-rpm.md)
 [JAVA_HOME](java-home.md)
 [mysql - ERROR 2006 (HY000): MySQL server has gone away](mysql-error-2006-hy000-mysql-server-has-gone-away.md)
