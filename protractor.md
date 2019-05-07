@@ -15,3 +15,11 @@ Uruchamianie wszystkich testów e2e może być czasochłonne.
 W takim przypadku możemy uruchomić tylko test, nad którym obecnie pracujemy.
 Wystarczy wywołać polecenie `protractor --specs='e2e/spec/plik.e2e-spec.ts' --grep="NazwaTestu"`
 
+## Pluginy
+
+Funkcjonalność protractora, możemy rozszerzać przez instalacje pluginów.
+
+| Plugin | Opis |
+|---|---|
+| protractor-console-plugin | Plugin sprawdza po każdym teście logi przeglądarki pod względem wystąpień ostrzeżeń i błędów. Działa jedynie z przeglądarką chrome. |
+
