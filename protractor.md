@@ -8,3 +8,10 @@ Aby wymusić tworzenie testów w oparciu o async/await, musimy do pliku konfigur
 https://www.protractortest.org/#/control-flow
 https://github.com/SeleniumHQ/selenium/issues/2969
 https://github.com/SeleniumHQ/selenium/wiki/WebDriverJs#moving-to-asyncawait
+
+## Uruchomienie pojedynczego testu e2e
+
+Uruchamianie wszystkich testów e2e może być czasochłonne.
+W takim przypadku możemy uruchomić tylko test, nad którym obecnie pracujemy.
+Wystarczy wywołać polecenie `protractor --specs='e2e/spec/plik.e2e-spec.ts' --grep="NazwaTestu"`
+
