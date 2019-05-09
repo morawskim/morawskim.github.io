@@ -32,3 +32,17 @@ W przypadku aplikacji, które nie są tzw. "single-page app", to najpewniej będ
  */
 private $avg30;
 ```
+
+## Twig - zmienna globalna z zmiennej zdefiniowanej w pliku .env
+
+Chciałem w pliku widoku, pobrać token dostępu do API dostawcy usługi mapy.
+W pliku `.env` utworzyłem nową zmienną środowiskową `LEAFLET_ACCESS_TOKEN="xxxxx"`
+
+Następnie w pliku `config/packages/twig.yaml` dodawałem zmienną globalną `leaflet_access_token` i jej wartość pobrałem z zmiennej środowiskowej.
+```
+twig:
+    globals:
+        leaflet_access_token: '%env(LEAFLET_ACCESS_TOKEN)%'
+```
+
+Dzięki temu w pliku widoku, mogłem pobrać i token dostępu za pomocą zmiennej `leaflet_access_token`.
