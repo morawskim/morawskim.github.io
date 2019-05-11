@@ -23,3 +23,9 @@ Funkcjonalność protractora, możemy rozszerzać przez instalacje pluginów.
 |---|---|
 | protractor-console-plugin | Plugin sprawdza po każdym teście logi przeglądarki pod względem wystąpień ostrzeżeń i błędów. Działa jedynie z przeglądarką chrome. |
 
+## Debugowanie testów (lokalnie)
+
+Jeśli nasze testy nie działają, musimy je debugować. Wraz z implementacją async/await debugowanie testów e2e protractora jest proste. Wywołujemy polecenie `node --inspect-brk node_modules/.bin/protractor <config_file.js>`.
+W przeglądarce chrome wchodzimy na adres `chrome://inspect/#devices` i klikamy w link `inspect` przy naszym uruchomionym skrypcie protractora. Otwarte zostanie nowe okno chrome-devtools. Wykonywanie testów zostało wstrzymane. Ustawiamy breakpointy w wymaganym pliku spec i zezwalamy na dalsze wykonywanie skryptu.
+
+https://www.protractortest.org/#/debugging
