@@ -29,3 +29,10 @@ Jeśli nasze testy nie działają, musimy je debugować. Wraz z implementacją a
 W przeglądarce chrome wchodzimy na adres `chrome://inspect/#devices` i klikamy w link `inspect` przy naszym uruchomionym skrypcie protractora. Otwarte zostanie nowe okno chrome-devtools. Wykonywanie testów zostało wstrzymane. Ustawiamy breakpointy w wymaganym pliku spec i zezwalamy na dalsze wykonywanie skryptu.
 
 https://www.protractortest.org/#/debugging
+
+## onPrepare
+
+W właściwości `onPrepare` konfiguracji protractora możemy zwrócić promise. W takim przypadku protractor będzie czekał na spełnienie promise, przed wykonaniem testów. Często wykorzystuje się tą funkcjonalność do zalogowania użytkownika do systemu. `onPrepare` może być zarówno funkcją jak i nazwą pliku. W przypadku pliku, protractor wczyta  i wykona zawartość pliku.
+
+Przykład z logowaniem użytkownika
+https://github.com/angular/protractor/blob/master/spec/withLoginConf.js
