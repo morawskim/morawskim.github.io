@@ -28,6 +28,14 @@ Funkcjonalność protractora, możemy rozszerzać przez instalacje pluginów.
 Jeśli nasze testy nie działają, musimy je debugować. Wraz z implementacją async/await debugowanie testów e2e protractora jest proste. Wywołujemy polecenie `node --inspect-brk node_modules/.bin/protractor <config_file.js>`.
 W przeglądarce chrome wchodzimy na adres `chrome://inspect/#devices` i klikamy w link `inspect` przy naszym uruchomionym skrypcie protractora. Otwarte zostanie nowe okno chrome-devtools. Wykonywanie testów zostało wstrzymane. Ustawiamy breakpointy w wymaganym pliku spec i zezwalamy na dalsze wykonywanie skryptu.
 
+Podczas debugowania testu, możemy otrzymać następujący błąd - `Error: Timeout - Async callback was not invoked within timeout specified by jasmine.DEFAULT_TIMEOUT_INTERVAL`.
+W takim przypadku, możemy jedynie zwiększyć w konfiguracji protractora czas oczekiwania na wykonanie testu:
+```
+jasmineNodeOpts: {
+    defaultTimeoutInterval: 90000
+},
+```
+
 https://www.protractortest.org/#/debugging
 
 ## onPrepare
