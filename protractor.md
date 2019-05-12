@@ -79,3 +79,7 @@ e2e:
 ```
 
 Gdzie komenda `npm run e2e` to alias dla `protractor protractor.conf.js` zapisany w pliku `package.json` (sekcja scripts).
+
+## Zdalne debugowanie testów e2e (uruchomionych na kontenerze docker'a)
+
+Mając konfigurację przygotowaną do uruchamiania testów e2e na kontenerze, wystarczy dodać dwa argumenty do opcji startowych przeglądarki chrome. `--remote-debugging-address=0.0.0.0` spowoduje nasłuchiwanie na połączenia, na wszystkich interfejsach sieciowych kontenera. `--remote-debugging-port=9222` ustawia domyślny port, na którym przeglądarka chrome będzie oczekiwała na połączenia. W `docker-compose.yml` musimy przekierować ruch na ten port. Po w prowadzeniu tych zmian, wywołujemy polecenie `node --inspect-brk=0.0.0.0:9229 ./node_modules/.bin/protractor protractor.conf.js` na kontenerze. W IDE np. PHPStorm musimy utworzyć nową konfigurację Run/Debug "Attach do node.js/chrome". Należy poprawnie ustawić mapowanie ścieżek między lokalnym systemem plików, a zdalnym (na kontenerze).
