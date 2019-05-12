@@ -36,3 +36,46 @@ W właściwości `onPrepare` konfiguracji protractora możemy zwrócić promise.
 
 Przykład z logowaniem użytkownika
 https://github.com/angular/protractor/blob/master/spec/withLoginConf.js
+
+## Uruchamianie testów e2e na kontenerze docker
+
+Do odpalenia testów na kontenerze dockera potrzebujemy obrazu z node i przeglądarką chrome - np. `morawskim/node10-google-chrome:74.0.3729.131`. Ten obraz zawiera także sterownik chromedriver. Dzięki temu, nie potrzebujemy uruchamiać serwera selenium do przeprowadzenia testów e2e.
+
+W pliku konfiguracyjnym protractor ustawiamy następujące właściwości:
+
+
+```
+    directConnect: true,
+    capabilities: {
+        'browserName': 'chrome',
+        'chromeOptions': {
+            'args': [
+                '--no-sandbox',
+                '--headless',
+                '--window-size=1920,1080',
+                '--disable-dev-shm-usage'
+            ]
+        },
+    },
+    chromeDriver: '/usr/local/bin/chromedriver',
+```
+
+Opcja `directConnect` jest wspierana tylko przez sterownik chrome i firefox. Za jej pomocą nie musimy łączyć się z serwerem selenium do przeprowadzenia testów e2e. `chromeDriver` to ścieżka to pliku z sterownikiem dla przeglądarki chrome. Testy odpalamy w kontenerze, który nie ma środowiska graficznego, dlatego musimy ustawić niezbędne argumenty startowe do uruchomienia chrome.
+
+Przykładowa konfiguracja kontenera w `docker-compose.yml` może wyglądać następująco:
+```
+e2e:
+        image: morawskim/node10-google-chrome:74.0.3729.131
+        command: npm run e2e
+        volumes:
+            - ./:/app
+        working_dir: /app
+        depends_on:
+            - traefik
+        links:
+            - traefik
+        external_links:
+            - traefik:ssorder.lvh.me
+```
+
+Gdzie komenda `npm run e2e` to alias dla `protractor protractor.conf.js` zapisany w pliku `package.json` (sekcja scripts).
