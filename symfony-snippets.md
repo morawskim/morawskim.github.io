@@ -46,3 +46,32 @@ twig:
 ```
 
 Dzięki temu w pliku widoku, mogłem pobrać i token dostępu za pomocą zmiennej `leaflet_access_token`.
+
+## Twig - zmienna globalna
+
+``` php
+<?php
+
+namespace App\DependencyInjection\Compiler;
+
+use App\Twig\CompanyVariable;
+use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Reference;
+
+class TwigCompanyVariablePass implements CompilerPassInterface
+{
+    public function process(ContainerBuilder $container)
+    {
+        $id = 'twig';
+        if ($container->hasDefinition($id)) {
+            $container
+                ->findDefinition($id)
+                ->addMethodCall('addGlobal', array('company', new Reference(CompanyVariable::class)));
+        }
+    }
+}
+```
+
+Czasami utworzenie zmiennej globalnej Twiga w oparciu o stałą wartość, nie jest tym czego oczekujemy.
+Chcemy skorzystać z usług Symfony. W takim przypadku tworzymy plik `TwigCompanyVariablePass.php` w katalogu `src/DependencyInjection/Compiler`. Ma on za zadanie dodać do Twiga, zmienną globalną `company`. Będzie to instancja klasy `App\Twig\CompanyVariable`. Ta klasa, może korzystać z wstrzykiwania usług z DI Symfony.
