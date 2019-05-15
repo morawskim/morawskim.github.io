@@ -28,3 +28,4 @@ Aby zapewnić, że tekst będzie widoczny podczas wczytywania pliku z czcionką 
 }
 ```
 https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display
+https://www.zachleat.com/web/google-fonts-display/
