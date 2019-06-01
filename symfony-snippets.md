@@ -75,3 +75,17 @@ class TwigCompanyVariablePass implements CompilerPassInterface
 
 Czasami utworzenie zmiennej globalnej Twiga w oparciu o stałą wartość, nie jest tym czego oczekujemy.
 Chcemy skorzystać z usług Symfony. W takim przypadku tworzymy plik `TwigCompanyVariablePass.php` w katalogu `src/DependencyInjection/Compiler`. Ma on za zadanie dodać do Twiga, zmienną globalną `company`. Będzie to instancja klasy `App\Twig\CompanyVariable`. Ta klasa, może korzystać z wstrzykiwania usług z DI Symfony.
+
+## ParamConvert
+
+Adnotacja `ParamConvert` pozwala skonfigurować mapowanie parametry routingu z właściwością encji.
+I tak dla poniższego fragmentu. `poiGroup` to nazwa zmiennej w akcji kontrolera.
+Klucz w mappingu to nazwa parametru routingu, a wartość to nazwa właściwości encji doctrine.
+
+```
+/**
+ * @Route("/import/poi/{poiGroupId}", name="import_poi")
+ * @ParamConverter("poiGroup", options={"mapping": {"poiGroupId" : "id"}})
+ */
+public function index(PoiGroup $poiGroup)
+```
