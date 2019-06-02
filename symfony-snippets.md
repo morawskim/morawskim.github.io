@@ -89,3 +89,20 @@ Klucz w mappingu to nazwa parametru routingu, a wartość to nazwa właściwośc
  */
 public function index(PoiGroup $poiGroup)
 ```
+
+## DI wstrzykiwanie wartości zmiennej środowiskowej jako parametr konstruktora
+
+```
+App\Service\NominatimGeocodingService:
+    arguments:
+        $baseUrl: '%env(resolve:NOMINATIM_BASE_URL)%'
+```
+
+Konstruktor klasy `App\Service\NominatimGeocodingService` wygląda następująco:
+
+```
+public function __construct(string $baseUrl)
+{
+    $this->baseUrl = $baseUrl;
+}
+```
