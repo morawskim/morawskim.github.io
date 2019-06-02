@@ -46,3 +46,10 @@ sudo ip route add  172.17.161.0/24 via 192.168.15.1 dev wlan0
 ## Skasowanie interfejsu
 
 `ip link delete [INTERFACE_NAME]`
+
+## Dodanie domyślnego rutingu
+
+```
+sudo ip route add default via 172.16.10.65
+```
+
