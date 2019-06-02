@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2019-06
+[nodejs snippets](nodejs-snippets.md)
+
 ## 2019-05
 [Dockerfile - Warning: apt-key output should not be parsed (stdout is not a terminal)](dockerfile-warning-apt-key-output-should-not-be-parsed-stdout-is-not-a-terminal.md)
 [Protractor](protractor.md)
