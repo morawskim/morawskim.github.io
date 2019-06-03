@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-06
+[Ciekawe strony](linki.md)
 [nodejs snippets](nodejs-snippets.md)
 
 ## 2019-05
