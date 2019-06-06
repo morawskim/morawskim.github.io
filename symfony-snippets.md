@@ -106,3 +106,7 @@ public function __construct(string $baseUrl)
     $this->baseUrl = $baseUrl;
 }
 ```
+
+## Generowanie encji z schematu bazy danych
+
+`./bin/console doctrine:mapping:import App\\Entity annotation --path=src/Entity`
