@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-06
+[Postgres snippets](postgres-snippets.md)
 [Ciekawe programy](software.md)
 [Ciekawe biblioteki Golang](biblioteki-golang.md)
 [Ciekawe strony](linki.md)
