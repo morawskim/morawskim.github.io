@@ -30,3 +30,25 @@ https://blog.jetbrains.com/phpstorm/2019/02/new-phpstorm-meta-php-features/
 ## Lista jednorazowych i tymczasowych domen adresów e-mail
 
 https://github.com/martenson/disposable-email-domains
+
+## Rector - Upgrade your Legacy App to Modern Codebase
+
+Rector is a reconstructor tool - it does instant upgrades and instant refactoring of your code. Why doing it manually if 80% Rector can handle for you?
+
+`composer require rector/rector --dev`
+
+https://github.com/rectorphp/rector
+
+## Gaufrette
+
+PHP library that provides a filesystem abstraction layer − will be a feast for your files!
+
+`composer require knplabs/gaufrette`
+
+https://github.com/KnpLabs/Gaufrette
+
+## Laravel extra validation rules
+
+https://github.com/alphametric/laravel-validation-rules
+
+https://github.com/laravel-validation-rules
