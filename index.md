@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-06
+[Doctrine batch update](doctrine-batch-update.md)
 [doctrine ignorowanie różnic schematu tabeli z encją](doctrine-ignorowanie-roznic-schematu-tabeli-z-encja)
 [Postgres snippets](postgres-snippets.md)
 [Ciekawe programy](software.md)
