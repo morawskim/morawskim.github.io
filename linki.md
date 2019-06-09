@@ -33,3 +33,10 @@ Using xip.io,
 https://endoflife.date/
 
 This site maintains quick links for checking End Of Life dates for various tools and technologies.
+
+## Postgres Explain Viewer
+
+http://tatiyants.com/pev/#/plans/new
+
+Postgres Explain Viewer (PEV) is a tool to simplify reading query plans. It provides a horizontal tree with each node representing a node in the query plan. It includes timing information, the error amount in the planned versus actual times, and badges for interesting nodes like “costliest” or “bad estimate”.
+
