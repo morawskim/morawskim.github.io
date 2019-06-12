@@ -86,3 +86,7 @@ Polecenie `docker-compose config` ma dwa zadania. Po pierwsze weryfikuje poprawn
 ## Pobranie specyficznej wersji obrazu
 
 `docker pull ubuntu@sha256:HASH`
+
+## Kasowanie lokalnej bazy z konfiguracją sieci dockera
+
+Plik z bazą danych nazwany jest `local-kv.db` i jest przechowywany w katalogu `/var/lib/docker/network/files`.
