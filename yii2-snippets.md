@@ -68,3 +68,17 @@ return [
     'components' => [
 ....
 ```
+
+## Konfiguracja modułu usługi REST - wyłączenie CSRF i sesji
+
+W klasie modułu w metodzie `init` wyłączamy sesję i weryfikację tokenów CSRF.
+Dzięki temu, w response nie będziemy dostawać nagłówków `Set-Cookie`.
+
+``` php
+public function init()
+{
+    parent::init();
+    \Yii::$app->user->enableSession = false;
+    \Yii::$app->request->enableCsrfCookie = false;
+}
+```
