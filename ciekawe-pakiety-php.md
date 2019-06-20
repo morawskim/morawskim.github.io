@@ -52,3 +52,30 @@ https://github.com/KnpLabs/Gaufrette
 https://github.com/alphametric/laravel-validation-rules
 
 https://github.com/laravel-validation-rules
+
+## Słowniki do przeprowadzania ataków na bezpieczeństwo aplikacji
+
+https://github.com/fuzzdb-project/fuzzdb
+
+## composer-lock-diff
+
+Wyświetla, co się zmieniło po instalacji/aktualziacji pakietów composera.
+
+`composer require davidrjonas/composer-lock-diff`
+
+`composer-lock-diff --from HEAD~10 `
+
+```
++--------------------------+------+--------+---------+
+| Dev Changes              | From | To     | Compare |
++--------------------------+------+--------+---------+
+| docopt/docopt            | NEW  | 1.0.2  |         |
+| wapmorgan/php-code-fixer | NEW  | 2.0.17 |         |
++--------------------------+------+--------+---------+
+```
+
+## ronanguilloux/IsoCodes
+
+PHP library - Validators for standards from ISO, International Finance, Public Administrations, GS1, Book Industry, Phone numbers & Zipcodes for many countries
+
+https://github.com/ronanguilloux/IsoCodes
