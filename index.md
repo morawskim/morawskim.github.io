@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-06
+[symfony easyadmin form type configuration](symfony-easyadmin-form-type-configuration.md)
 [Odległość między punktami geograficznymi](odleglosc-miedzy-punktami-geograficznymi.md)
 [Doctrine batch update](doctrine-batch-update.md)
 [doctrine ignorowanie różnic schematu tabeli z encją](doctrine-ignorowanie-roznic-schematu-tabeli-z-encja)
