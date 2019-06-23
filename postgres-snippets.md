@@ -22,3 +22,30 @@ UPDATE poi
     SET tags = jsonb_set(to_jsonb(coalesce(tags, '{}')), '{networks}', '[54212, 235841]')::json
     WHERE id = 45;
 ```
+
+## Cluster number
+
+``` sql
+SELECT q.clst_id, COUNT(*) FROM (SELECT ST_ClusterDBSCAN(
+    ST_SetSRID(ST_MakePoint(a.lon, a.lat), 4326),
+                                        200/111111.0,
+    1
+    ) OVER () AS clst_id
+FROM (
+    SELECT 10.0001 as lat, 10.00001 as lon
+    UNION ALL
+    SELECT 10.0002 as lat, 10.00002 as lon
+    UNION ALL
+    SELECT 55.0002 as lat, 24.00002 as lon
+         ) a
+) q
+GROUP BY q.clst_id
+```
+
+## Window functions
+
+[Window function](https://www.postgresql.org/docs/9.6/tutorial-window.html) - wykonuje obliczenia dla całego zestawu wierszy, które są w jakiś sposób powiązane z bieżącym wierszem.
+
+``` sql
+SELECT depname, empno, salary, avg(salary) OVER (PARTITION BY depname) FROM empsalary;
+```
