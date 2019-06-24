@@ -79,3 +79,21 @@ Wyświetla, co się zmieniło po instalacji/aktualziacji pakietów composera.
 PHP library - Validators for standards from ISO, International Finance, Public Administrations, GS1, Book Industry, Phone numbers & Zipcodes for many countries
 
 https://github.com/ronanguilloux/IsoCodes
+
+## Geocoder
+
+Geocoder jest biblioteką PHP, która zapewnia funkcjionalność geocodingu i reverse geocoding. Oferuje obsługę wiele dostawców.
+
+Quick start - instalacja adaptera guzzle i google maps
+
+```
+composer require geocoder-php/google-maps-provider php-http/guzzle6-adapter php-http/message
+```
+
+https://github.com/geocoder-php/Geocoder
+
+## PHP-HTTP/HTTPPlug
+
+Biblioteka, która dostarcza niezależny interfejs dla wielu klientów HTTP np. Guzzle.  Biblioteki powinny wymagać wirtualnego pakietu `php-http/client-implementation`.
+
+http://docs.php-http.org/en/latest/httplug/library-developers.html
