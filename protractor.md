@@ -112,3 +112,7 @@ capabilities: {
   }
 }
 ```
+
+## Cookbooks
+
+[Przykłady użycia Protractora w różnych typowych scenariuszach.](https://github.com/angular/protractor-cookbook)
