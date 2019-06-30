@@ -38,3 +38,20 @@ false
 ```
 
 Dostępne są także inne implementacje np. https://developer.mozilla.org/pl/docs/Web/JavaScript/Referencje/Obiekty/Number/isInteger#Polyfill
+
+## String.charAt i unicode
+
+Obsługa znaków unicode w javascript nie jest doskonała. Jeśli będziemy korzystać z metody `String.charAt` zamiast znaku, możemy dostać dziwny symbol `�`. W celu rozwiązania tego problemu możemy skorzystać z metod `String.codePointAt` i `String.fromCodePoint`.
+
+``` javascript
+[...'\ud83d\udc0e\ud83d\udc71\u2764']
+  .map(cp => cp.normalize().codePointAt(0))
+  .map(cp => String.fromCodePoint(cp))
+  .join('')
+```
+
+Więcej informacji:
+
+* [https://ponyfoo.com/articles/es6-strings-and-unicode-in-depth#unicode](https://mathiasbynens.be/notes/javascript-unicode)
+* [https://mathiasbynens.be/notes/javascript-unicode](https://mathiasbynens.be/notes/javascript-unicode)
+* [You Don't Know JS: ES6 & Beyond](https://books.google.pl/books?id=rec6CwAAQBAJ&lpg=PA77&ots=RMU7j2_slj&dq=ecmascript%203%20charAt%20unicode&hl=pl&pg=PA77#v=onepage&q=ecmascript%203%20charAt%20unicode&f=false)
