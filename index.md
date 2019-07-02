@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2019-07
+[docker prune](docker-prune.md)
+
 ## 2019-06
 [symfony easyadmin form type configuration](symfony-easyadmin-form-type-configuration.md)
 [Odległość między punktami geograficznymi](odleglosc-miedzy-punktami-geograficznymi.md)
