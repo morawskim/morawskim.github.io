@@ -58,7 +58,7 @@ class EntityTypeConfigurator implements TypeConfiguratorInterface
 
 W pliku `services.yml` klasie `App\Form\Type\Configurator\EntityTypeConfigurator` przypisujemy tag `easyadmin.form.type.configurator`.
 
-``` yml
+```
 App\Form\Type\Configurator\EntityTypeConfigurator:
         tags:
             - { name: "easyadmin.form.type.configurator" }
