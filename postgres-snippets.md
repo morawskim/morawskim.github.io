@@ -49,3 +49,12 @@ GROUP BY q.clst_id
 ``` sql
 SELECT depname, empno, salary, avg(salary) OVER (PARTITION BY depname) FROM empsalary;
 ```
+
+## Wersja postgres
+
+``` sql
+SELECT version();
+```
+
+Przykładowy wynik:
+`PostgreSQL 11.3 (Ubuntu 11.3-1.pgdg18.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.4.0-1ubuntu1~18.04) 7.4.0, 64-bit`
