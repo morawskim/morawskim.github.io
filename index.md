@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-07
+[doctrine2 - snippets](doctrine2-snippets.md)
 [Pakiety npm](pakiety-npm.md)
 [docker prune](docker-prune.md)
 
