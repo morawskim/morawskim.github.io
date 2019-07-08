@@ -39,6 +39,16 @@ false
 
 Dostępne są także inne implementacje np. https://developer.mozilla.org/pl/docs/Web/JavaScript/Referencje/Obiekty/Number/isInteger#Polyfill
 
+``` javascript
+function isFloat(x) {
+ return Number.isFinite(x) && !Number.isInteger(x);
+}
+isFloat(4.2); // true
+isFloat(4); // false
+isFloat(NaN); // false
+isFloat(Infinity); // false
+```
+
 ## String.charAt i unicode
 
 Obsługa znaków unicode w javascript nie jest doskonała. Jeśli będziemy korzystać z metody `String.charAt` zamiast znaku, możemy dostać dziwny symbol `�`. W celu rozwiązania tego problemu możemy skorzystać z metod `String.codePointAt` i `String.fromCodePoint`.
