@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-07
+[Pakiety npm](pakiety-npm.md)
 [docker prune](docker-prune.md)
 
 ## 2019-06
