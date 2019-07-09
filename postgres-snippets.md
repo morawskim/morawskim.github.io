@@ -58,3 +58,22 @@ SELECT version();
 
 Przykładowy wynik:
 `PostgreSQL 11.3 (Ubuntu 11.3-1.pgdg18.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 7.4.0-1ubuntu1~18.04) 7.4.0, 64-bit`
+
+## array_agg - zwraca tablicę z zbioru wartości
+
+``` sql
+ sql
+
+SELECT q.network_id, q.ssid, COUNT(*) aps_count, array_to_string(array_agg(distinct "id"), ',') AS aps_id
+FROM (
+         select w.id,  rn.ssid, w.network_id FROM reports.aps w
+            join reports.networks rn on w.network_id = rn.id
+         where (ssid ILIKE '%Ikea%')
+           and ssid not ilike 'MB WLAN %'
+     ) q
+GROUP BY q.network_id, q.ssid
+limit 100;
+```
+
+Przykładowy wiersz:
+`29459629  IKEA Centrum dla Firm  4  47542,47663,47714,47717`
