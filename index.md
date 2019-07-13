@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-07
+[Single table inheritance](single-table-inheritance.md)
 [Docker - dołączanie do przestrzeni procesów kontenera](docker-dolaczanie-do-przestrzeni-procesow-kontenera.md)
 [php - CSV i znak końca lini MAC](php-csv-i-znak-konca-lini-mac.md)
 [doctrine2 - snippets](doctrine2-snippets.md)
