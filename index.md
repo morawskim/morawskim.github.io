@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-07
+[GitLab CI/CD - deploy token](gitlab-ci-cd-deploy-token.md)
 [Bash - jak określić plik gdzie zdefiniowano funkcję](bash-jak-okreslic-plik-gdzie-zdefiniowano-funkcje.md)
 [Single table inheritance](single-table-inheritance.md)
 [Docker - dołączanie do przestrzeni procesów kontenera](docker-dolaczanie-do-przestrzeni-procesow-kontenera.md)
