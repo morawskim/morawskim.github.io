@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-07
+[symfony/doctrine - ResultSetMappingBuilder](symfony-doctrine-resultsetmappingbuilder.md)
 [GitLab CI/CD - deploy token](gitlab-ci-cd-deploy-token.md)
 [Bash - jak określić plik gdzie zdefiniowano funkcję](bash-jak-okreslic-plik-gdzie-zdefiniowano-funkcje.md)
 [Single table inheritance](single-table-inheritance.md)
