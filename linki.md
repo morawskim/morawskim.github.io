@@ -45,3 +45,9 @@ Postgres Explain Viewer (PEV) is a tool to simplify reading query plans. It prov
 A collection of loading indicators animated with CSS
 
 https://tobiasahlin.com/spinkit/
+
+## Sass Color Functions
+
+A Visual Guide to Sass & Compass Color Functions by Jackie Balzer
+
+http://jackiebalzer.com/color
