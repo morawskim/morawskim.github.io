@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-07
+[postgres - backup i restore](postgres-backup-i-restore.md)
 [SQL - FROM VALUES](sql-from-values.md)
 [symfony/doctrine - ResultSetMappingBuilder](symfony-doctrine-resultsetmappingbuilder.md)
 [GitLab CI/CD - deploy token](gitlab-ci-cd-deploy-token.md)
