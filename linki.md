@@ -51,3 +51,10 @@ https://tobiasahlin.com/spinkit/
 A Visual Guide to Sass & Compass Color Functions by Jackie Balzer
 
 http://jackiebalzer.com/color
+
+## Sass playground
+
+SassMeister is a playground for Sass. Add some Sass and SassMeister will show you the rendered CSS.
+
+https://www.sassmeister.com/
+
