@@ -58,3 +58,8 @@ SassMeister is a playground for Sass. Add some Sass and SassMeister will show yo
 
 https://www.sassmeister.com/
 
+## SQL playground
+
+An online SQL database playground for testing, debugging and sharing SQL snippets.
+
+[https://www.db-fiddle.com/](https://www.db-fiddle.com/)
