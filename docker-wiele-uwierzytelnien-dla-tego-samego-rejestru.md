@@ -5,14 +5,13 @@ Na maszynie, gdzie chcemy wdrożyć obrazy dockera, możemy jednak przechowywać
 
 Rozwiązaniem tego problemu jest poinstruowanie dockera, aby korzystał z różnych plików konfiguracyjnych.
 Możemy stworzyć plik json z danymi uwierzytelniającymi ręcznie albo skorzystać z polecenia:
-`docker --config ~/project1/config.json login registry.example.com -u <username>`
+`docker --config ~/project1/ login registry.example.com -u <username>`
 
 ```
 {
     "auths": {
         "registry.example.com": {
-            "username": "<nazwaUzytkownika>",
-            "password": "<haslo>"
+            "auth": "<base64:username:password>"
         }
     }
 }
@@ -20,4 +19,4 @@ Możemy stworzyć plik json z danymi uwierzytelniającymi ręcznie albo skorzyst
 Podobnie robimy to dla kolejnych projektów, ale dane konfiguracyjne dockera zapisujemy w innym katalogu.
 Możemy też wygenerować plik json podczas uruchamiania zadania wdrożenia (wykorzystując zmienne środowiskowe gitlaba) i przesłać go na serwer dockera.
 
-Podczas wywoływania standardowych poleceń dockera, musimy dodać globalny parametr `--config` z ścieżką do konfiguracji dockera - `docker --config ~/project1/config.json pull registry.example.com/project1`
+Podczas wywoływania standardowych poleceń dockera, musimy dodać globalny parametr `--config` z ścieżką do konfiguracji dockera - `docker --config ~/project1/ pull registry.example.com/project1`
