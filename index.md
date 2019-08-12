@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-08
+[git .mailmap](git-mailmap.md)
 [systemd timer i usługa crond](systemd-timer-i-usluga-crond.md)
 [docker - wiele uwierzytelnień dla tego samego rejestru](docker-wiele-uwierzytelnien-dla-tego-samego-rejestru.md)
 
