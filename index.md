@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-08
+[bazy danych z dużymi zestawami danych](bazy-danych-z-duzymi-zestawami-danych.md)
 [composer - biblioteki frontend (bower/npm)](composer-biblioteki-frontend-bower-npm.md)
 [git .mailmap](git-mailmap.md)
 [systemd timer i usługa crond](systemd-timer-i-usluga-crond.md)
