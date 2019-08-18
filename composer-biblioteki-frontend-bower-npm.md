@@ -41,3 +41,16 @@ Te repozytorium zawiera najpopularniejsze pakiety npm/bower.
 Dodatkowo nie spowalnia działania composera, tak jak robi to plugin `fxp/composer-asset-plugin`.
 
 [https://asset-packagist.org/](https://asset-packagist.org/)
+
+## Migracja z fxp/composer-asset-plugin na asset packagist
+
+Zgodnie z dokumentacją plugin `fxp/composer-asset-plugin` nie działa dobrze z asset packagist.
+Jeśli na serwerze mamy projekty, które ciągle wymagają tego pakietu to dla niektórych projektów możemy wyłączyć ten plugin. Wymagana jest do tego wersja `>= 1.3`. W pliku `composer.json` dodajemy:
+
+```
+"config": {
+    "fxp-asset": {
+        "enabled": false
+    }
+}
+```
