@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-08
+[Puppet - graf zależności](puppet-graf-zaleznosci.md)
 [travis - budowanie i publikowanie obrazów docker](travis-budowanie-i-publikowanie-obrazow-docker.md)
 [bazy danych z dużymi zestawami danych](bazy-danych-z-duzymi-zestawami-danych.md)
 [composer - biblioteki frontend (bower/npm)](composer-biblioteki-frontend-bower-npm.md)
