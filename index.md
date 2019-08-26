@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-08
+[YAML - snippets](yaml-snippets.md)
 [GPG - generowanie podpisanego archiwum z wydaniem](gpg-generowanie-podpisanego-archiwum-z-wydaniem.md)
 [Puppet - graf zależności](puppet-graf-zaleznosci.md)
 [travis - budowanie i publikowanie obrazów docker](travis-budowanie-i-publikowanie-obrazow-docker.md)
