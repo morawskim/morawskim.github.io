@@ -110,3 +110,16 @@ public function __construct(string $baseUrl)
 ## Generowanie encji z schematu bazy danych
 
 `./bin/console doctrine:mapping:import App\\Entity annotation --path=src/Entity`
+
+## Wyłączenie walidacji tokenu CSRF na wybranym formularzu
+
+
+``` php
+public function configureOptions(OptionsResolver $resolver)
+{
+    $resolver->setDefaults([
+        'csrf_protection' => false,
+        //...
+    ]);
+}
+```
