@@ -53,7 +53,7 @@ Hello
 [mysql - ERROR 2006 (HY000): MySQL server has gone away](mysql-error-2006-hy000-mysql-server-has-gone-away.md)
 [composer - snippets](composer-snippets.md)
 [w3af - instalacja](w3af-instalacja.md)
-[composer - wymuszenie specyficznej wersji PHP](composer-wymuszenie-specyficznej-wersji-php.md)
+[composer - wymuszenie specyficznej wersji PHP (rozszerzeń)](composer-wymuszenie-specyficznej-wersji-php.md)
 [nmap - snippets](nmap-snippets.md)
 [docker-compose build - ERROR: Couldn't connect to Docker daemon](docker-compose-build-error-couldnt-connect-to-docker-daemon.md)
 [MySQL - wyłączenie sprawdzania poprawności kluczy obcych](mysql-wylaczenie-sprawdzania-poprawnosci-kluczy-obcych.md)
