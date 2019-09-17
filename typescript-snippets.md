@@ -29,3 +29,11 @@ export function isRootControlErrorStateMatcher(errorStateMatcher: ErrorStateMatc
 }
 ```
 
+Type guards są wykorzystywane wraz z deklarowaniem zmiennej o typie `unknown`.
+Różnica między `any` a `unknown` polega na tym, że ta pierwsza wyłącza sprawdzanie typów.
+W przypadku typu `unknown` musimy korzystać z operatora `typeof` lub type guards.
+
+```
+const b: unknown = {a: 'b'};
+console.log(b.a); // błąd kompilacji Property 'a' does not exist on type 'unknown'.
+```
