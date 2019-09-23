@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-09
+[React 16+ - obsługa błędów (error boundary)](react-16-obsluga-bledow.md)
 [Aktualizacja PHP](aktualizacja-php.md)
 [React & JSX](react-jsx.md)
 
