@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-09
+[React i eslint](react-i-eslint.md)
 [yii2 - walidator po stronie klienta (JavaScript)](yii2-walidator-po-stronie-klienta-javascript.md)
 [nullmailer](nullmailer.md)
 [JavaScript analiza błędu z zminimalizowanego stack trace](javascript-analiza-bledu-z-zminimalizowanego-stack-trace.md)
