@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-09
+[apt-get install i plik deb](apt-get-install-i-plik-deb)
 [React i eslint](react-i-eslint.md)
 [yii2 - walidator po stronie klienta (JavaScript)](yii2-walidator-po-stronie-klienta-javascript.md)
 [nullmailer](nullmailer.md)
