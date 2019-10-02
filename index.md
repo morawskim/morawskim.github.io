@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2019-10
+[vagrant VBOX_E_INVALID_OBJECT_STATE (0x80bb0007)](vagrant-vbox-e-invalid-object-state-0x80bb0007.md)
+
 ## 2019-09
 [apt-get install i plik deb](apt-get-install-i-plik-deb)
 [packer - budowanie obrazów docker](packer-budowanie-obrazow-docker.md)
