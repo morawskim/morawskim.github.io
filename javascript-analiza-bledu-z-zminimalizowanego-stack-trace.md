@@ -70,3 +70,7 @@ export function addItemToShoppingList(name) {
 W pliku `src/actions/shoppingListActions.js:4:10` zrzucamy błąd `"Ohh"` i to jest przyczyna błędu.
 
 [Demo](https://github.com/morawskim/html5-examples/tree/master/webpack/tracking-min-js-errors)
+
+## Logowanie błędów do Google Analytics
+
+Błąd po stronie klienta można przechwycić jak powyżej i przesłać do narzędzia GA za pomocą choćby takiego kodu: `ga('send', 'event', 'window.error', message, JSON.stringify(errorObj), undefined, { 'NonInteraction': 1 });`
