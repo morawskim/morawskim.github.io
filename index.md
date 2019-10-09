@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-10
+[packer - budowanie obrazu ubuntu dla vagrant](packer-budowanie-obrazu-ubuntu-dla-vagrant.md)
 [node debugger](node-debugger.md)
 [React, typescript i HoC](react-typescript-i-hoc.md)
 [vagrant VBOX_E_INVALID_OBJECT_STATE (0x80bb0007)](vagrant-vbox-e-invalid-object-state-0x80bb0007.md)
