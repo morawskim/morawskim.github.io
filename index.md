@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-10
+[Odczytywanie i wstawianie nowych wartości do bazy debconf](odczytywanie-i-wstawianie-nowych-wartosci-do-bazy-debconf.md)
 [packer - budowanie obrazu ubuntu dla vagrant](packer-budowanie-obrazu-ubuntu-dla-vagrant.md)
 [node debugger](node-debugger.md)
 [React, typescript i HoC](react-typescript-i-hoc.md)
