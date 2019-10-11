@@ -29,3 +29,7 @@ Aby zapewnić, że tekst będzie widoczny podczas wczytywania pliku z czcionką 
 ```
 https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display
 https://www.zachleat.com/web/google-fonts-display/
+
+## Unikaj 100vh w przeglądarkach mobilnych
+
+[Na blogu David, pojawił się artykuł](https://chanind.github.io/javascript/2019/09/28/avoid-100vh-on-mobile-web.html) o ograniczeniach jednostki `vh` na urządzeniach mobilnych. Przeglądarki mobilne traktują `100vh` jako wysokość ekranu bez paska adresu. David zaleca, korzystanie z JavaScript i ustawienie wysokości na wartość pobraną z `window.innerHeight`.
