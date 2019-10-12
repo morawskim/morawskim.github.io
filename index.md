@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-10
+[typescript declare i legacy app](ts-declare-i-legacy-app.md)
 [collectd własny plugin do monitorowania](collectd-wlasny-plugin.md)
 [Odczytywanie i wstawianie nowych wartości do bazy debconf](odczytywanie-i-wstawianie-nowych-wartosci-do-bazy-debconf.md)
 [packer - budowanie obrazu ubuntu dla vagrant](packer-budowanie-obrazu-ubuntu-dla-vagrant.md)
