@@ -36,6 +36,8 @@ W obecnej wersji (w przyszłości ma to się zmienić) musimy ręcznie ustawić 
 
 Teraz wywołując polecenie `eslint --ext .jsx --ext .js src/` sprawdzamy kod Reacta.
 
+[Przykładowa integracja](https://github.com/morawskim/html5-examples/tree/master/react.js/eslint)
+
 ## Dodatkowe reguły react
 
 W rekomendowanym zestawie reguł React'a nie ma włączonej reguły `react/no-access-state-in-setstate`.

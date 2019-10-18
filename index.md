@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-10
+[React i eslint](react-i-eslint.md)
 [Generowanie sourceMaps dla zewnętrznej biblioteki npm](generowanie-sourcemaps-dla-zewnetrznej-biblioteki-npm.md)
 [typescript declare i legacy app](ts-declare-i-legacy-app.md)
 [collectd własny plugin do monitorowania](collectd-wlasny-plugin.md)
