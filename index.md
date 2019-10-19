@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-10
+[Zastana aplikacja PHP i webpack HMR](legacy-php-app-webpack-hmr.md)
 [React i eslint](react-i-eslint.md)
 [Generowanie sourceMaps dla zewnętrznej biblioteki npm](generowanie-sourcemaps-dla-zewnetrznej-biblioteki-npm.md)
 [typescript declare i legacy app](ts-declare-i-legacy-app.md)
