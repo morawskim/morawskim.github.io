@@ -13,11 +13,14 @@ git log --format='format:%m %h %ae %s' --left-right feature-GOLL-2032...feature-
 ````
 
 ## check-ignore
-Polecenie check-ignore informuje nas, która reguła w pliku gitignore powoduje, że dany plik jest ignorowany.
+Jeśli w trakcie dodawania pliku do poczekalni (staged) otrzymamy komunikat `The following paths are ignored by one of your .gitignore files:` polecenie `git check-ignore` wyświetli dokładnie, która reguła z którego pliku `.gitignore` blokuje dodanie pliku do repozytorium.
 
 ```
-git check-ignore -v ./opensuse-15.0/yadm/rpmbuild.log
+> git check-ignore -v ./opensuse-15.0/yadm/rpmbuild.log
 opensuse-15.0/yadm/.gitignore:3:rpmbuild.log ./opensuse-15.0/yadm/rpmbuild.log
+
+> git check-ignore  -v ./nexus.pp
+puppet/modules/.gitignore:1:*   ./nexus.pp
 ```
 
 To polecenie analizuje też reguły z globalnego pliku .gitignore
