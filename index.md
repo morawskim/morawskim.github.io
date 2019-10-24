@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-10
+[eslint](eslint.md)
 [nexus](nexus.md)
 [flex wyśrodkowanie pionowe elementów](flex-wysrodkowanie-pionowe-elementow.md)
 [TS2339: Property does not exist on type](ts2339-property-does-not-exist-on-type.md)
