@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-10
+[docker - dostęp do gospodarza (host)](docker-dostep-do-gospodarza-host.md)
 [eslint](eslint.md)
 [nexus](nexus.md)
 [flex wyśrodkowanie pionowe elementów](flex-wysrodkowanie-pionowe-elementow.md)
