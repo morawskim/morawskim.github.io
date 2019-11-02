@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2019-11
+[JavaScript - zmiana wartości parametrów URL](javascript-zmiana-wartosci-parametrow-url.md)
+
 ## 2019-10
 [docker - dostęp do gospodarza (host)](docker-dostep-do-gospodarza-host.md)
 [eslint](eslint.md)
