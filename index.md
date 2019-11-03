@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-11
+[yii2 - rozszerzenia](yii2-rozszerzenia.md)
 [JavaScript - zmiana wartości parametrów URL](javascript-zmiana-wartosci-parametrow-url.md)
 
 ## 2019-10
