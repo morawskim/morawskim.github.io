@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-11
+[Funkcje](funkcje.md)
 [Odległość między dwoma punktami algorytmy](odleglosc-miedzy-dwoma-punktami-algorytmy.md)
 [yii2 - rozszerzenia](yii2-rozszerzenia.md)
 [JavaScript - zmiana wartości parametrów URL](javascript-zmiana-wartosci-parametrow-url.md)
