@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-11
+[CSS - przyklejony nagłówek tabeli](css-przyklejony-naglowek-tabeli.md)
 [Funkcje](funkcje.md)
 [Odległość między dwoma punktami algorytmy](odleglosc-miedzy-dwoma-punktami-algorytmy.md)
 [yii2 - rozszerzenia](yii2-rozszerzenia.md)
