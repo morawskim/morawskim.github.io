@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-11
+[pseudo-localization](pseudo-localization.md)
 [CSS - przyklejony nagłówek tabeli](css-przyklejony-naglowek-tabeli.md)
 [Funkcje](funkcje.md)
 [Odległość między dwoma punktami algorytmy](odleglosc-miedzy-dwoma-punktami-algorytmy.md)
