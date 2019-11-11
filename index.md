@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-11
+[bootstrap4 - modyfikacje SCSS](bootstrap4-modyfikacje-scss.md)
 [pseudo-localization](pseudo-localization.md)
 [CSS - przyklejony nagłówek tabeli](css-przyklejony-naglowek-tabeli.md)
 [Funkcje](funkcje.md)
