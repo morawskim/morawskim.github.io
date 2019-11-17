@@ -33,3 +33,18 @@ https://www.zachleat.com/web/google-fonts-display/
 ## Unikaj 100vh w przeglądarkach mobilnych
 
 [Na blogu David, pojawił się artykuł](https://chanind.github.io/javascript/2019/09/28/avoid-100vh-on-mobile-web.html) o ograniczeniach jednostki `vh` na urządzeniach mobilnych. Przeglądarki mobilne traktują `100vh` jako wysokość ekranu bez paska adresu. David zaleca, korzystanie z JavaScript i ustawienie wysokości na wartość pobraną z `window.innerHeight`.
+
+## Text truncate
+
+https://github.com/twbs/bootstrap/blob/ff29c1224c20b8fcf2d1e7c28426470f1dc3e40d/scss/mixins/_text-truncate.scss#L4
+
+```
+// Text truncate
+// Requires inline-block or block for proper styling
+
+@mixin text-truncate() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+```
