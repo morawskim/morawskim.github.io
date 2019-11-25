@@ -14,6 +14,12 @@ pg_dump --host 127.0.0.1 --port 5432 --username www --format plain  --verbose --
 psql -h 127.0.0.1 -p 5432 -U postgres -d dbname -fpoi.backup
 ```
 
+### Zrzut tylko definicji tabeli
+
+```
+pg_dump -U postgres -t <schema.table> --schema-only <database>
+```
+
 ## MySQL
 
 ### backup całej bazy
