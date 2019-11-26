@@ -37,3 +37,30 @@ W przypadku typu `unknown` musimy korzystać z operatora `typeof` lub type guard
 const b: unknown = {a: 'b'};
 console.log(b.a); // błąd kompilacji Property 'a' does not exist on type 'unknown'.
 ```
+
+## Enum type checking
+
+Deklarujemy nasz typ wyliczeniowy `Roles`.
+
+```
+export enum Roles {
+    ROLE_ADMIN = 'ROLE_ADMIN',
+    ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN',
+    ROLE_USER = 'ROLE_USER',
+}
+```
+Następnie definiujemy klasę lub interfejs, gdzie mamy właściwość `roles` typu `Roles[]`.
+
+```
+export default interface User {
+    id: number
+    roles: Roles[]
+}
+```
+
+Finalnie możemy sprawdzić, czy użytkownik posiada wymaganą rolę tworząc metodę/funkcję
+```
+export function isSuperAdmin(user: User) {
+    return user.roles.indexOf(Roles.ROLE_SUPER_ADMIN) > -1;
+}
+```
