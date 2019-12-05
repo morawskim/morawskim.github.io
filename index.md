@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2019-12
+[Przyśpieszenie zapisu danych dla testów wydajnościowych zapytań bd](przyspieszenie-zapisu-danych-dla-testow-wydajnosciowych-zapytan-bd.md)
+
 ## 2019-11
 [bootstrap4 - modyfikacje SCSS](bootstrap4-modyfikacje-scss.md)
 [pseudo-localization](pseudo-localization.md)
