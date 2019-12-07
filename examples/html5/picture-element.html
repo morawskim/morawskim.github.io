@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>picture HTML5 element</title>
+    </head>
+    <body>
+        <p>Resize the viewport to min-width 200px or to 650px to see different images</p>
+        <p id="dimensions"></p>
+        <picture>
+            <source media="(min-width: 650px)" srcset="https://placehold.jp/500x500.png">
+            <source media="(min-width: 200px)" srcset="https://placehold.jp/150x150.png">
+            <img src="https://placehold.jp/100x100.png" alt="Flowers" style="width:auto;">
+        </picture> 
+         
+         <script>
+            function onResize() {
+            const w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+            const h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+                document.getElementById('dimensions').innerHTML = `Viewport: ${w},${h}`;
+            }
+
+            window.addEventListener('resize', onResize);
+            onResize();
+        </script>
+    </body>
+</html>
