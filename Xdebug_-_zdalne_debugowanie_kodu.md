@@ -1,5 +1,4 @@
-Xdebug - zdalne debugowanie kodu
-================================
+# Xdebug - zdalne debugowanie kodu
 
 Na serwerze musimy mieć zainstalowany PHP wraz z rozszerzeniem Xdebug. Do pliku php.ini dodajemy minimalną konfigurację dla tego modułu:
 
@@ -41,11 +40,13 @@ Jeśli chcemy debugować skrypty lub aplikacje CLI (np. testy jednostkowe) w PHP
 Więcej informacji:
 https://confluence.jetbrains.com/display/PhpStorm/Debugging+PHP+CLI+scripts+with+PhpStorm
 
+Domyślna wartość dla `XDEBUG_HOST` to `172.17.0.1`. Dzięki temu nie musimy jej ustawiać w pliku `.env`. [W notatce](docker-dostep-do-gospodarza-host.md) opisuje, jak dostać się do gospodarza z kontenera docker.
+
 ```
 php:
-environment:
-- XDEBUG_CONFIG=remote_connect_back=0 remote_host=${XDEBUG_HOST}
-- PHP_IDE_CONFIG=serverName=${SERVER_NAME}
+  environment:
+    - XDEBUG_CONFIG=remote_connect_back=0 remote_host=${XDEBUG_HOST:-172.17.0.1} remote_enable=1
+    - PHP_IDE_CONFIG=serverName=${SERVER_NAME}
 ```
 
-W takim przypadku w pliku `.env` musimy mieć zdefiniowane zmienne `XDEBUG_HOST` i `SERVER_NAME`.
+W pliku `.env` musimy mieć zdefiniowaną zmienną `SERVER_NAME` i ewentualnie `XDEBUG_HOST`.
