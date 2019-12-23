@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2019-12
+[skopeo](skopeo.md)
 [Nexus 3 - repozytoria proxy](nexus-3-repozytoria-proxy.md)
 [phpunit](phpunit-snippets.md)
 [Doctrine i StreamResponse](doctrine-i-streamresponse.md)
