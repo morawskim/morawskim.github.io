@@ -82,3 +82,24 @@ public function init()
     \Yii::$app->request->enableCsrfCookie = false;
 }
 ```
+
+## Generowanie modeli przez gii w konsoli
+
+Tworząc środowisko deweloperskie na kontenerach docker, pojawia się problem z uprawnieniami zapisu do plików i katalogów. Framework yii2 posiada skrypt `init`, który ustawia uprawnienia `777` do katalogów takich jak `runtime` czy `assets`. Kontener z serwerem HTTP + PHP działa z uprawnieniami `www-data`. Uid tego użytkownika to 33.
+Najczęściej nasz lokalny użytkownik ma uid równy `1000`. Próbując wygenerować pliki modeli przez gii w przeglądarce dostaniemy błąd zapisu - brak uprawnień. Ja nie korzystam z przeglądarki do generowania modeli/modułów tylko tworzę kontener cli. Najczęściej taki kontener wygląda:
+
+```
+cli:
+    image: edbizarro/gitlab-ci-pipeline-php:7.3
+    volumes:
+        - ./:/app
+    user: ${MY_UID:-1000}
+    tty: true
+    working_dir: /app
+    depends_on:
+      - mysql
+    links:
+      - mysql
+```
+Podłączamy się do uruchomionego kontenera cli poleceniem `docker-compose exec cli bash`. A następnie wywołuje polecenie `./yii gii/model --tableName food_rating --modelClass FoodRating --ns 'common\models' --enableI18N 1`.
+Model zostanie utworzony. Ich właścicielem będzie użytkownik o uid 1000. Dzięki temu w środowisku programistycznym możemy je edytować, nie zmieniając uprawnień do plików.
