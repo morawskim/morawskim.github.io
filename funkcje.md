@@ -37,3 +37,27 @@ travis_retry() {
 ```
 
 Przykładowe użycie `travis_retry composer install`
+
+## shuffle
+
+```
+function shuffle<T>(array: Array<T>): Array<T> {
+    let count = array.length;
+    let rnd, temp;
+
+    while (count) {
+        rnd = Math.floor(Math.random() * count--);
+        temp = array[count];
+        array[count] = array[rnd];
+        array[rnd] = temp;
+    }
+    return array;
+}
+```
+
+Użycie:
+```
+console.log(shuffle([1,2,3,4,5]));
+// output
+// [ 5, 1, 4, 3, 2 ]
+```
