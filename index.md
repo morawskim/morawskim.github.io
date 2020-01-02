@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2020-01
+[KVM - Dostosowanie obrazów cloud](kvm-dostosowanie-obrazow-cloud.md)
+
 ## 2019-12
 [skopeo](skopeo.md)
 [Nexus 3 - repozytoria proxy](nexus-3-repozytoria-proxy.md)
