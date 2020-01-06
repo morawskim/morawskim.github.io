@@ -239,7 +239,7 @@ Hello
 [KDE - domyślne aplikacje](kde-domyslne-aplikacje.md)
 [ngrok - tunel do strony](ngrok-tunel-do-strony.md)
 [netsed](netsed.md)
-[awk - filtrowane linii](awk-filtrowane-linii.md)
+[awk - snippets](awk-snippets.md)
 [composer - wyświetlenie odwołań do pakietu  w projekcie](composer-wyswietlenie-odwolan-do-pakietu-w-projekcie.md)
 [composer - aktualizacja pakietu](composer-aktualizacja-pakietu.md)
 
