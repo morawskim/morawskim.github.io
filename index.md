@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2020-01
+[Stylowanie kontrolki select](stylowanie-kontrolki-select.md)
 [KVM](kvm.md)
 [KVM - Zagnieżdżona wirtualizacja](kvm-zagniezdzona-wirtualizacja.md)
 [KVM - Dostosowanie obrazów cloud](kvm-dostosowanie-obrazow-cloud.md)
