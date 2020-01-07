@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>window.error event</title>
+    </head>
+    <body>
+        <a id="throw" href="#">Throw a error!</a>
+        <a id="throw-async" href="#">Throw a error (async)!</a>
+
+        <script>
+            window.addEventListener('error', function(e) {
+                const {message, filename, lineno, colno, error} = e;
+                let stack = null;
+                if (error && error instanceof Error) {
+                    stack = error.stack || null;
+                }
+                const userAgent = navigator.userAgent;
+                console.error('ERROR:',  message, filename, lineno, colno, stack, userAgent);
+            });
+
+            document.getElementById('throw').addEventListener('click', function(e) {
+                throw new Error("test");
+            });
+
+            document.getElementById('throw-async').addEventListener('click', function clickListenerForAsync(e) {
+                setTimeout(function throwErrorAsync() {
+                throw new Error("test");
+                }, 0);
+            });
+        </script>
+    </body>
+</html>
