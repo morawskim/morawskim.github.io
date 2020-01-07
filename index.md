@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2020-01
+[Wyświetlanie zmiennych mod_rewrite](wyswietlanie-zmiennych-mod-rewrite.md)
 [python - snippets](python-snippets.md)
 [Stylowanie kontrolki select](stylowanie-kontrolki-select.md)
 [KVM](kvm.md)
