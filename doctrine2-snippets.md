@@ -8,3 +8,19 @@ Jeśli nie potrzebujemy zdarzeń doctrine `preDelete`/`postDelete` to wtedy moż
 ```
 @ORM\JoinColumn(name="poi_id", referencedColumnName="id", onDelete="CASCADE")
 ```
+
+## WHERE IN
+
+W zapytaniach SQL często korzystamy z operatora `IN`, który pozwala nam określić wiele wartości w klauzuli `WHERE`.
+Aby mieć zabezpieczone wartości musimy ustawić odpowiedni typ parametru.
+
+``` php
+$query->andWhere($query->expr()->in('pgpc.poi_category_id', ':categories'));
+$query->setParameter(
+    'categories',
+    $filter->getCategories(),
+    \Doctrine\DBAL\Connection::PARAM_INT_ARRAY
+);
+```
+
+Jeśli zamiast liczb, korzystamy z ciągów znaków nasz typ parametru musi być ustawiony na wartość stałej `\Doctrine\DBAL\Connection::PARAM_STR_ARRAY`.
