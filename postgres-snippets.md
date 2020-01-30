@@ -77,3 +77,16 @@ limit 100;
 
 Przykładowy wiersz:
 `29459629  IKEA Centrum dla Firm  4  47542,47663,47714,47717`
+
+## Kto blokuje zapytanie
+
+``` sql
+SELECT datname
+, usename
+, wait_event_type
+, wait_event
+, pg_blocking_pids(pid) AS blocked_by
+, query
+FROM pg_stat_activity
+WHERE wait_event IS NOT NULL;
+```
