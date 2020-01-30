@@ -11,4 +11,15 @@ Nie otrzymuje fałszywych informacji o niepowodzeniu testów wynikających z bra
 O pozostałych warunkach wstępnych, które ograniczają wykonywanie testów można przeczytać w [dokumentacji](https://phpunit.readthedocs.io/en/8.5/incomplete-and-skipped-tests.html#skipping-tests-using-requires).
 
 
+## Atrapa (Mock) dynamicznej metody
 
+Klasa `\yii\redis\Connection` dostarcza wiele wirtualnych metod np. `publish`. Odwzorują one polecenia redisa. Klasa nie zawiera ich definicji – są wywoływane poprzez magiczną metodę `__call`. Przy próbie stworzenia atrapy w phpunit, otrzymałem ostrzeżenie `[PHPUnit\Framework\Warning] Trying to configure method "publish" which cannot be configured because it does not exist, has not been specified, is final, or is static`.
+
+Rozwiązaniem jest jawne określenie metod, które nie istnieją w klasie, a chcemy je mieć w naszej atrapie.
+
+``` php
+$redisMock = $this->getMockBuilder(Connection::class)->addMethods(['publish'])->getMock();
+$redisMock->expects($this->once())
+    ->method('publish')
+    ->with($this->equalTo('sse'), $this->isType('string'));
+```
