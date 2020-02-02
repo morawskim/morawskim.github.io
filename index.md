@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2020-02
+[Google Analytics - wzorzec command queue](google-analytics-wzorzec-command-queue.md)
 [HTML - getBoundingClientRect](html-getboundingclientrect.md)
 
 ## 2020-01
