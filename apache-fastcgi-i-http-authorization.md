@@ -1,6 +1,8 @@
-# Apache, fastcgi i HTTP Authorization
+# Apache, fastcgi (PHP-FPM) i HTTP Authorization
 
-Jeśli serwer apache nie korzysta z modułu php, a z fcgi to pojawi się problem z obsługą nagłówka `HTTP_AUTHORIZATION`.
-Musimy dodać do pliku vhost lub `.htaccess` poniższą regułą mod-rewrite.
+Gdy PHP działa przez moduł `mod_proxy_fcgi` Apache (np. z PHP-FPM), nagłówki autoryzacji nie są przekazywane do aplikacji. W takim przypadku należy dodać następującą dyrektywę konfiguracji:
 
 `RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]`
+
+W przypadku braku modułu `mod_rewrite` (wymaga `mod_setenvif`):
+`SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1`
