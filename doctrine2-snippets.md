@@ -24,3 +24,16 @@ $query->setParameter(
 ```
 
 Jeśli zamiast liczb, korzystamy z ciągów znaków nasz typ parametru musi być ustawiony na wartość stałej `\Doctrine\DBAL\Connection::PARAM_STR_ARRAY`.
+
+## Doctrine transkacja DQL i ORM
+
+Chcąc zachować spójność danych modyfikując encję przez ORM i kasując powiązane dane przez DQL musimy obje te operacje opakować w transakcję. Doctrine dostarcza metodę `transactional` (https://www.doctrine-project.org/projects/doctrine-orm/en/2.7/reference/transactions-and-concurrency.html#approach-2-explicitly), która sama odpowiada za uruchomienie i cofanie transakcji w przypadku błędu.
+
+``` php
+$connection->transactional(function () use ($connection, $entity) {
+    // modify entity ...
+    $this->managerRegistry->getManager()->persist($entity);
+    $connection->delete('some_table', ['entity_id' => $entity->getId()]);
+    $this->managerRegistry->getManager()->flush();
+});
+```
