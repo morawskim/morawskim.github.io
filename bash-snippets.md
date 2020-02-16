@@ -50,3 +50,18 @@ Powłoka bash oferuje także specjalny operator, który wymusza ustawienie zmien
 Jednak jego zachowanie jest inne od rozwiązania powyżej. W pierwszym rozwiązaniu sprawdzaliśmy długość ciągu znaków. Wbudowany operator zezwala na pusty ciąg znaków. Wywołanie `VERSION= bash test.sh` nie spowoduje wyświetlenie błędu.
 
 Jeśli w całym skrypcie chcemy włączyć weryfikację czy zmienna istnieje, to możemy zastosować instrukcję `set -o nounset`. Od miejsca zdefiniowania powłoka bash przerwie działanie skryptu, gdy użyta zmienna nie została zdefiniowana. Podobnie jak w przypadku wbudowanego operatora, pusta wartość zmiennej jest dozwolona.
+
+## Skrypt do uruchomienia programu z lokalizacją en_US
+
+Szukając rozwiązania problemu warto uruchomić program w angielskiej wersji językowej. Wyświetlone komunikaty błędów ułatwią nam wyszukanie informacji w internecie.
+
+Skrypt powłoki `sh` do ustawienia niezbędnych zmiennych środowiskowych. Możemy go zapisać pod nazwą `inglish` i korzystać w następujący sposób: `inglish kate`
+
+``` bash
+#!/bin/sh
+LANG=en_US.UTF-8 \
+  LC_ALL=en_US.UTF-8 \
+  DICTIONARY=english \
+  KDE_LANG=en_US.UTF-8 \
+  exec "$@"
+```
