@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2020-02
+[npm - snippets](npm-snippets.md)
 [Entity i array_diff_assoc](entity-i-array-diff-assoc.md)
 [Unit test - clock wrapper](unit-test-clock-wrapper.md)
 [Guzzle - socks5 proxy](guzzle-socks5-proxy.md)
