@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2020-02
+[Zwiększenie rozmiaru partycji (growpart)](zwiekszenie-rozmiaru-partycji-growpart.md)
 [MUI - Nadpisanie motywu zakładki (Tab Theme)](mui-nadpisanie-motywu-zakladki-tab-theme.md)
 [npm - snippets](npm-snippets.md)
 [Entity i array_diff_assoc](entity-i-array-diff-assoc.md)
