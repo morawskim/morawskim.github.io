@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2020-02
+[TypeScript TS7016 Could not find a declaration file for module](typescript-ts7016-could-not-find-a-declaration-file-for-module.md)
 [Zwiększenie rozmiaru partycji (growpart)](zwiekszenie-rozmiaru-partycji-growpart.md)
 [MUI - Nadpisanie motywu zakładki (Tab Theme)](mui-nadpisanie-motywu-zakladki-tab-theme.md)
 [npm - snippets](npm-snippets.md)
