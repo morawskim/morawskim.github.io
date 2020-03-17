@@ -29,3 +29,9 @@ Finalnie możemy przekazać do naszego komponentu `Container` w prop `element` i
 ```
 
 [Demo online](https://codesandbox.io/s/react-pass-component-to-other-component-q6fff)
+
+## ReactDOM.createPortal
+
+Za pomocą portali możemy wyrenderować potomny komponent w innym węźle DOM, który istnieje poza hierarchią komponentu nadrzędnego. Komponent nadrzędny może przechwycić zdarzenia pochodzące z potomnych komponentów niezależnie od tego, czy został zaimplementowany przy użyciu portali.
+
+[Demo online](https://codesandbox.io/s/6yx5o1qpz)
