@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2020-03
+[React - snippets](react-snippets.md)
 [React hooks vs class components](react-hooks-vs-class-components.md)
 
 ## 2020-02
