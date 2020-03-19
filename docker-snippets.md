@@ -90,3 +90,8 @@ Polecenie `docker-compose config` ma dwa zadania. Po pierwsze weryfikuje poprawn
 ## Kasowanie lokalnej bazy z konfiguracją sieci dockera
 
 Plik z bazą danych nazwany jest `local-kv.db` i jest przechowywany w katalogu `/var/lib/docker/network/files`.
+
+## Wymagania docker
+
+Do poprawnego działania docker'a wymagane są włączone parametry jądra `namespaces` i `cgroups`.
+Za pomocą poleceń `zgrep -i namespace /proc/config.gz` i  `zgrep -i cgroups /proc/config.gz` uzyskamy odpowiedź, czy jądro jest skompilowane z odpowiednimi parametrami. W wyniku tych poleceń powinniśmy widzieć `CONFIG_NAMESPACES=y` i `CONFIG_CGROUPS=y`. Dodatkowo docker może korzystać z device-mapper. Aby sprawdzić czy jądro obsługuje ten typ urządzenia wywołujemy polecenie `grep device-mapper /proc/devices`. W przypadku powodzenia uzyskamy wynik podobny do  `254 device-mapper`. Dodatkowo możemy wywołać polecenie `docker info`, które wyświetli obsługiwane tryby sieci, sterownik magazynu (ang. storage driver) itp. Dodatkowo w przypadku problemu z konfiguracją jądra otrzymamy ostrzeżenia.
