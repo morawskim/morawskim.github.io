@@ -64,3 +64,18 @@ export function isSuperAdmin(user: User) {
     return user.roles.indexOf(Roles.ROLE_SUPER_ADMIN) > -1;
 }
 ```
+
+## Generyczna fabryka
+
+```
+function factory<T extends MainClass<string>>(id: string, className: Type<T>): T {
+  const obj = new className();
+  obj.id = id;
+  return obj;
+}
+
+const a = factory<MainClass<string>>("instance A", MainClass);
+const b = factory<ChildClass>("instance b", ChildClass);
+```
+
+[Online demo](https://codepen.io/morawskim/pen/wvaxVvG)
