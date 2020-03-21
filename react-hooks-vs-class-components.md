@@ -26,3 +26,10 @@ useEffect(() => {
     }
 }, []);
 ```
+
+## useState vs useReducer
+
+Preferuje używanie hooka `useReducer` niż `useState` gdy:
+* w stanie chce przechowywać typ złożony (obiekt lub tablica)
+* nowy stan wyliczany jest na podstawie poprzedniego stanu
+* musimy skorzystać z logiki biznesowej
