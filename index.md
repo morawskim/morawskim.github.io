@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2020-03
+[Docker php-redis extension](docker-php-redis-ext.md)
 [yii2-queue](yii2-queue.md)
 [React - snippets](react-snippets.md)
 [React hooks vs class components](react-hooks-vs-class-components.md)
