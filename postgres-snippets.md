@@ -42,14 +42,6 @@ FROM (
 GROUP BY q.clst_id
 ```
 
-## Window functions
-
-[Window function](https://www.postgresql.org/docs/9.6/tutorial-window.html) - wykonuje obliczenia dla całego zestawu wierszy, które są w jakiś sposób powiązane z bieżącym wierszem.
-
-``` sql
-SELECT depname, empno, salary, avg(salary) OVER (PARTITION BY depname) FROM empsalary;
-```
-
 ## Wersja postgres
 
 ``` sql
