@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2020-04
+[Design patterns - specification](design-patterns-specification.md)
+
 ## 2020-03
 [Kontrolowanie gotowości usług w Docker Compose](kontrolowanie-gotowosci-uslug-w-docker-compose.md)
 [SQL - window function](sql-window-function.md)
