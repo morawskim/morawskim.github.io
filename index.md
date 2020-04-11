@@ -353,7 +353,7 @@ Hello
 [Tar - podążanie za dowiązaniami symbolicznymi](Tar_-_podążanie_za_dowiązaniami_symbolicznymi.md)
 [Ls - sortowanie naturalne](Ls_-_sortowanie_naturalne.md)
 [Jetbrains - shortcuts](Jetbrains_-_shortcuts.md)
-[Git - odzyskanie zatwierdzonych zmian (commits) po wywołaniu git reset --hard](Git_-_odzyskanie_zatwierdzonych_zmian_%28commits%29_po_wywołaniu_git_reset_--hard.md)
+[Git - odzyskanie zatwierdzonych zmian (commits) po wywołaniu git reset --hard](git-odzyskanie-zatwierdzonych-zmian-commits-po-wywolaniu-git-reset-hard)
 [Curlftpfs - montowanie serwera FTP do lokalnego katalogu](Curlftpfs_-_montowanie_serwera_FTP_do_lokalnego_katalogu.md)
 
 ## 2017-04

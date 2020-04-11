@@ -1,5 +1,4 @@
-Git - odzyskanie zatwierdzonych zmian (commits) po wywołaniu git reset --hard
-=============================================================================
+# Git - odzyskanie zatwierdzonych zmian (commits) po wywołaniu git reset --hard
 
 Jeśli wywołaliśmy polecenie
 
@@ -8,8 +7,13 @@ git reset --hard origin/master
 ```
 
 ale wcześniej zatwierdziliśmy zmiany poprzez git commit, to jesteśmy w stanie odzyskać utracone zmiany. A przynajmniej do momentu kiedy git nie wykona garbage collection.
+Możemy to zrobić za pomocą polecenia `git reflog` albo `git fsck`.
 
-Wpier wywołujemy polecenie git reflog
+## reflog
+
+Polecenie `reflog` wyświetla informacje o aktualizacji wskaźnika `HEAD` w Git. Pokazuje do którego zatwierdzenia (commit) wskazywał wskaźnik HEAD. To jest historia, która mówi jak poruszaliśmy się po naszym repozytorium. Zasadniczo wszystko co powoduje, że `HEAD` wskazuje na coś nowego, jest zapisywane w dzienniku zmian. Wykonując polecenie `reflog`, możemy znaleźć utracone zatwierdzenia, na które nie wskazuje żadna z gałęzi.
+
+Wywołujemy polecenie `git reflog`
 
 ``` bash
 git reflog
@@ -80,3 +84,10 @@ git log --oneline
 c7c64e5 alias climate
 19e1532 composer bash autocomplete
 ```
+
+## fsck
+
+Innym narzędziem, który może nam pomóc w znalezieniu i odzyskaniu zatwierdzeń (commits) jest `git fsck`.
+Polecenie te testuje bazę obiektów i sprawdza połączenia między obiektami. Te polecenie zastosujemy w scenariuszu znalezienia obiektów, które nie są dostępne z żadnej referencji (np. nazwa gałęzi).
+
+`git fsck --unreachable`
