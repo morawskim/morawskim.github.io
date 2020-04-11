@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2020-04
+[puppet - virtual resources](puppet-virtual-resources.md)
 [Design patterns - specification](design-patterns-specification.md)
 
 ## 2020-03
