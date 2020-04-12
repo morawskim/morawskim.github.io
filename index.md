@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2020-04
+[JavaScript - toJSON](javascript-tojson.md)
 [puppet - virtual resources](puppet-virtual-resources.md)
 [Design patterns - specification](design-patterns-specification.md)
 
