@@ -31,3 +31,14 @@ Jednemu z klientów musiałem dostarczyć plik CSV z wynikiem zapytania SQL. Oso
 Zamiast podawać hasło do konta jako parametr polecenia, możemy przekazać hasło w zmiennej środowiskowej `MYSQL_PWD`.
 
 `MYSQL_PWD='<password>' mysqldump --databases <database> -u<user>`
+
+### backup wybranych wierszy tabeli
+
+`mysqldump` umożliwia nam wykonania zrzutu wybranych wierszy przez podany warunek `WHERE`. Z tej opcji korzystam, kiedy muszę zresetować dane, które są wyliczane.
+Wykonuje zrzut wybranych wierszy. Modyfikuje dane do stanu początkowego. Następnie uruchamiam skrypt do przeliczenia i porównuje dane. W tym przypadku nie mamy testów jednostkowych i mamy wiele aplikacji w różnych językach, korzystających z jednej bazy danych.
+
+Ten proces można zautomatyzować, jednak `dbunit` [nie jest dalej rozwijany](https://github.com/sebastianbergmann/dbunit/issues/217) i [obecnie nie ma alternatywy.](https://github.com/sebastianbergmann/phpunit/issues/3477)
+
+Prócz dodania parametru `--where` z instrukcją SQL `WHERE` ustawiam także parametr `--no-create-info`. Parametr ten nie tworzy instrukcji `CREATE TABLE`.
+
+`mysqldump -u <user> -p --where 'payment_time IS NOT NULL' --no-create-info <database> <table>`
