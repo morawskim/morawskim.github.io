@@ -17,6 +17,13 @@ Menedżery pakietów automatyzują procesy instalacji, aktualizacji oraz usuwani
 | apt-get  | `apt-get install <package>=<version>`  |
 | zypper  | `zypper in -f <package>-<version>`  |
 
+## Importowanie klucza publicznego repozytorium
+
+| Narzędzie  | Komenda  |
+|---|---|
+| apt-get  | <code>curl &lt;pubkeyUrl.asc&gt; &#124; apt-key add -</code>  |
+| rpm  | `rpm --import </path/to/keyfile>`  |
+
 ## dpkg vs rpm
 
 |   | rpm  | dpkg  |
