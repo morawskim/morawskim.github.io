@@ -36,3 +36,40 @@ Podręcznik man opisuje ten parametr w taki sposób:
 
 Obsługiwane modele procesorów gości architektury `x86_64` możemy wyświetlić poleceniem `virsh cpu-models x86_64` (lub `cat /usr/share/libvirt/cpu_map.xml`).
 Możemy także jako model podać `host-passthrough`.
+
+## vagrant
+
+`Vagrant` to narzędzie do tworzenia maszyny wirtualnej najczęściej w środowisku developerskim. Vagrant skraca czas potrzebny do konfiguracji środowiska i pomaga w rozwiązaniu problemu "u mnie działa". Jeśli do wirtualizacji korzystamy z KVM, możemy uruchomić w maszynie wirtualnej stworzonej przez `vagrant` kolejną maszynę wirtualną. Korzystam z tej funkcji w celu budowania obrazów vagrant dla virtualbox.
+
+Tworzymy plik `Vagrantfile`. Musimy skorzystać z obrazu, który działa z libvirt.
+``` ruby
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure("2") do |config|
+  # Every Vagrant development environment requires a box. You can search for
+  # boxes at https://vagrantcloud.com/search.
+  config.vm.box = "morawskim/Ubuntu-18.04-amd64-minimal"
+  config.vm.box_version = "0.1.0.2020-04-26"
+  config.vm.provider :libvirt do |libvirt|
+      libvirt.cpus = 2
+      libvirt.memory = 2048
+      libvirt.nested = true
+      libvirt.cpu_feature :name => 'vmx', :policy => 'require'
+  end
+
+  # Disable default synced folder
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+end
+```
+
+W systemie openSUSE 15.1 z zainstalowanym pluginem vagrant-libvirt w wersji 0.0.45 powyższy Vagrantfile działa bez żadnej modyfikacji. Na systemie ubuntu 18.04 z pluginem vagrant-libvirt w wersji 0.0.43 otrzymamy błąd
+```
+Error while creating domain: Error saving the server: Call to virDomainDefineXML failed: XML error: CPU feature 'vmx' specified more than once (VagrantPlugins::ProviderLibvirt::Errors::FogCreateServerError)
+```
+W takim przypadku w naszym pliku `Vagrantfile` musimy zakomentować linię `libvirt.cpu_feature :name => 'vmx', :policy => 'require'`. I ponowić próbę.
+
+Wywołujemy polecenie `vagrant up`, a następnie `vagrant ssh`.
+W maszynie wirtualnej możemy upewnić się, że nasz procesor wspiera sprzętową wirtualizację wywołując polecenie `cat /proc/cpuinfo | grep -E 'vmx|svm'`. Jeśli widzimy jedną z tych flag, oznacza to, że zagnieżdżona wirtualizacja działa.
+
+W maszynie wirtualnej vagrant, instaluje pakiet z nagłówkami jądra Linux <code>sudo apt-get install linux-headers-`uname -r`</code>. Są one potrzebne do zbudowania modułów jądra niezbędnych dla `virtualbox`. Instalujemy więc `virtualbox` - `sudo apt-get install virtualbox`. Jeśli nie zainstalujemy odpowiedniego pakietu linux-headers, to nie będziemy w stanie uruchomić usługi `virtualbox`,  z powodu braku modułów jądra.
+Po instalacji usługa `virtualbox` będzie uruchomiona.
