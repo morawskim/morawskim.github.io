@@ -29,3 +29,24 @@ Aby porać listę obsługiwanych wartości instalujemy pakiet `libosinfo` (openS
 Instalując maszynę wirtualną z środowiskiem graficznym warto zainstalować pakiet `spice-vdagent`.
 Instalator systemu tumbleweed sam zainstalował ten pakiet. W przypadku innych systemów, być może będziemy musieli ręcznie go zainstalować i uruchomić usługę systemową `spice-vdagentd.service` jeśli nie jest uruchomiona - `systemctl status spice-vdagentd.service`.
 Za pomocą tego pakietu współdzielony jest schowek, a także nie ma potrzeby przechwytywania myszy. Możemy także kopiować pliki z systemy gospodarza do gościa. A to wszystko także podłączając się do zdalnego serwera qemu/kvm.
+
+## vagrant libvirt provider
+
+W systemie openSUSE Leap 15.1 podczas instalacji pluginu `vagrant-libvirt` natrafiłem na podobny błąd co w [zgłoszeniu](https://github.com/hashicorp/vagrant/issues/8986). [Podobny problem](https://github.com/hashicorp/vagrant/issues/10019) występuje w wersji 15 i edycji Tumbleweed.
+
+```
+"gcc -o conftest -I/opt/vagrant/embedded/include/ruby-2.4.0/x86_64-linux -I/opt/vagrant/embedded/include/ruby-2.4.0/ruby/backward -I/opt/vagrant/embedded/include/ruby-2.4.0 -I.  -I/opt/vagrant/embedded/include   -I/opt/vagrant/embedded/include -I/vagrant-substrate/cache/ruby-2.4.4/include -O3 -fPIC  conftest.c  -L. -L/opt/vagrant/embedded/lib -Wl,-rpath,/opt/vagrant/embedded/lib -L/opt/vagrant/embedded/lib -Wl,-rpath,/opt/vagrant/embedded/lib -L. -L/opt/vagrant/embedded/lib -Wl,-rpath=XORIGIN/../lib:/opt/vagrant/embedded/lib -fstack-protector -rdynamic -Wl,-export-dynamic -L/opt/vagrant/embedded/lib  -Wl,-rpath,/opt/vagrant/embedded/lib     -Wl,-rpath,'/../lib' -Wl,-rpath,'/../lib' -lruby  -lpthread -lrt -lgmp -ldl -lcrypt -lm   -lc "
+sh: /opt/vagrant/embedded/lib/libreadline.so.7: no version information available (required by sh)
+sh: symbol lookup error: /opt/vagrant/embedded/lib/libreadline.so.7: undefined symbol: PC
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2:
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+```
+
+Użytkownik aspiers ma gotowe [rozwiązanie](https://github.com/hashicorp/vagrant/issues/8986#issuecomment-331713397). W nowszej wersji vagrant zawiera bibliotekę `libreadline` w wersji 7. Musiałem więc dostosować polecenie `sudo mv /opt/vagrant/embedded/lib/libreadline.so.7{,.disabled}`. Następnie ponowiłem próbę instalacji pluginu `vagrant-libvirt`, która tym razem zakończyła się sukcesem (potrzebujemy także pakietu `libvirt-devel`).
