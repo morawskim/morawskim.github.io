@@ -42,3 +42,4 @@ W naszym głównym pliku `scss` w którym importujemy pliki cząstkowe musimy wc
 ```
 
 Dzięki temu nie musimy nadpisywać klas bootstrapa własnymi, tylko dostosować style bootstrapa do projektu.
+[Demo online](https://codesandbox.io/s/bootstrap-scss-with-overrides-iq9m9?file=/scss/main.scss)
