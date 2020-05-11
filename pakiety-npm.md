@@ -23,3 +23,11 @@ http://apidocjs.com/
 A community host for shims and polyfills that are compliant to EcmaScript specs.
 
 [ECMAScript Shims](https://github.com/es-shims)
+
+## query-string
+
+[Parse and stringify URL query strings](https://github.com/sindresorhus/query-string)
+
+## reasonink/clack
+
+[A modern keyboard shortcut library written in Typescript](https://github.com/reasonink/clack)
