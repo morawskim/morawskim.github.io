@@ -22,3 +22,9 @@ Za pomocą słowa kluczowego `@keyframes` i właściwości `animation` tworzymy 
 ## Modal dialog (backdrop filter)
 
 Nowa właściwość CSS `backdrop-filter` pozwala nam uzyskać [kilka efektów](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter). Skorzystałem z efektu rozmycia do zbudowania [okna modalnego](https://codepen.io/morawskim/full/jObxvJr). [Firefox nie obsługuje tej właściwości, jeśli nie włączymy odpowiednich flag w konfiguracji](https://caniuse.com/#feat=css-backdrop-filter). Za pomocą reguły `@supports` [(tzw. at rules)](https://developer.mozilla.org/en-US/docs/Web/CSS/@supports) możemy określić style dla elementu, które zostaną zastosowane jeśli przeglądarka internetowa interpretuje zapis, który podaliśmy w nawiasie. W tym przypadku przeglądarka obsługująca właściwość `backdrop-filter` rozmyje nam tło pod warstwą okna modalnego, a także zwiększy przezroczystość warstwy tła.
+
+## CSS selection
+
+Za pomocą selektor `::selection` ustawiamy style do części dokumentu, który został zaznaczony przez użytkownika. W regule możemy korzystać tylko z określonych właściwości CSS. Są to `color`, `background` i `text-shadow`. Reguła `user-select` umożliwia nam kontrolowanie, czy zawartość danego element możemy zaznaczyć. Elementy `button` domyślnie mają ustawioną tą właściwość na wartość `none` przez co nie możemy zaznaczyć tekstu na tych elementach. Ustawiając tą właściwość na wartość `all` umożliwiamy zaznaczenie całej zawartości tekstowej.
+
+[Demo](https://codepen.io/morawskim/full/WNQXNXx)
