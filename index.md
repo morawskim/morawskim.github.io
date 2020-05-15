@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2020-05
+[EasyAdminBundle](easyadminbundle.md)
 [React - obsługa akcji asynchronicznych](react-obsluga-akcji-asynchronicznych.md)
 [docker-compose - traefik i wiele projektów](docker-compose-traefik-i-wiele-projektow.md)
 [Nowoczesny CSS](nowoczesny-css.md)
@@ -116,7 +117,6 @@ Hello
 [docker prune](docker-prune.md)
 
 ## 2019-06
-[symfony easyadmin form type configuration](symfony-easyadmin-form-type-configuration.md)
 [Odległość między punktami geograficznymi](odleglosc-miedzy-punktami-geograficznymi.md)
 [Doctrine batch update](doctrine-batch-update.md)
 [doctrine ignorowanie różnic schematu tabeli z encją](doctrine-ignorowanie-roznic-schematu-tabeli-z-encja)
