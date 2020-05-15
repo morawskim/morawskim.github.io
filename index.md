@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2020-05
+[Webpack Analyzer Bundle](webpack-analyzer-bundle.md)
 [EasyAdminBundle](easyadminbundle.md)
 [React - obsługa akcji asynchronicznych](react-obsluga-akcji-asynchronicznych.md)
 [docker-compose - traefik i wiele projektów](docker-compose-traefik-i-wiele-projektow.md)
