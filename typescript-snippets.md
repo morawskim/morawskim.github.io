@@ -79,3 +79,9 @@ const b = factory<ChildClass>("instance b", ChildClass);
 ```
 
 [Online demo](https://codepen.io/morawskim/pen/wvaxVvG)
+
+## allowSyntheticDefaultImports
+
+Ustawiając opcję kompilatora `allowSyntheticDefaultImports` na wartość true, możemy korzystać z składni domyślnego importu w przypadku gdy wybrany moduł nie posiada domyślnego eksportu. Zamiast `import * as …` możemy pisać `import Foo from 'foo';`.
+
+https://www.typescriptlang.org/docs/handbook/compiler-options.html#compiler-options
