@@ -72,7 +72,7 @@ Hello
 [Zastana aplikacja PHP i webpack HMR](legacy-php-app-webpack-hmr.md)
 [React i eslint](react-i-eslint.md)
 [Generowanie sourceMaps dla zewnętrznej biblioteki npm](generowanie-sourcemaps-dla-zewnetrznej-biblioteki-npm.md)
-[typescript declare i legacy app](ts-declare-i-legacy-app.md)
+[TypeScript - pliki definicji](typescript-pliki-definicji.md)
 [collectd własny plugin do monitorowania](collectd-wlasny-plugin.md)
 [Odczytywanie i wstawianie nowych wartości do bazy debconf](odczytywanie-i-wstawianie-nowych-wartosci-do-bazy-debconf.md)
 [packer - budowanie obrazu ubuntu dla vagrant](packer-budowanie-obrazu-ubuntu-dla-vagrant.md)
