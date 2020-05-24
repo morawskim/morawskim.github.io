@@ -23,3 +23,15 @@ Swagger schema validation failed.
 
 JSON_OBJECT_VALIDATION_FAILE
 ```
+
+## CORS
+
+Jeśli nasze API i dokumentacja znajdują się na różnych domenach, wymagana będzie konfiguracja polityki `CORS`. Większość frameworków posiada wsparcie (middlewar) do konfigurowania polityki `CORS`. W przypadku frameworka `yii2` możemy skorzystać z filtru `\yii\filters\Cors`. W przypadku symfony mamy [NelmioCorsBundle](https://github.com/nelmio/NelmioCorsBundle). Korzystając z `curl` sprawdzamy nagłówki `CORS` - `curl -v -X OPTIONS   -H "Origin: https://developer.ssorder.snlb.pl"   -H 'Access-Control-Request-Method: GET'   https://ssorder.snlb.pl/v1/restaurants`
+
+## Proxy
+
+Prócz sprawdzania poprawności pliku definicji openAPI, warto upewnić się że nasz schemat jest aktualny i odzwierciedla nasze API. Do tego celu wykorzystujemy serwery proxy lub middleware, które sprawdzają poprawność odpowiedzi i żądań HTTP względem schematu openAPI.
+
+[Node EXXETA/openapi-cop](https://github.com/EXXETA/openapi-cop)
+
+[PHP thephpleague/openapi-psr7-validator](https://github.com/thephpleague/openapi-psr7-validator)
