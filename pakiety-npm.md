@@ -26,7 +26,10 @@ A community host for shims and polyfills that are compliant to EcmaScript specs.
 
 ## query-string
 
-[Parse and stringify URL query strings](https://github.com/sindresorhus/query-string)
+Do parsowania query string w przeglądarce możemy użyć natywnego rozwiazania `URLSearchParams`. Dla przeglądarki IE11 potrzebujemy polyfill - https://caniuse.com/#feat=urlsearchparams
+
+Innym rozwiązaniem jest użycie biblioteki [query-string](https://github.com/sindresorhus/query-string).
+[DEMO online](https://codesandbox.io/s/query-string-demo-4mqur)
 
 ## reasonink/clack
 
