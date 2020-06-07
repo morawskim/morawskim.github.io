@@ -34,3 +34,26 @@ Aby aplikację można było zainstalować na telefonie muszą być spełnione wa
 * nasza aplikacja powinna przejść audyt Lighthouse PWA/Installable
 * [What does it take to be installable?](https://web.dev/en/install-criteria/)
 * [Provide a custom install experience](https://web.dev/en/customize-install/)
+
+
+## Web push
+
+Push API umożliwia aplikacji internetowej otrzymanie wiadomości z serwera, niezależnie od tego czy aplikacja czy też przeglądarka jest uruchomiona. W celu implementacji web push musimy wykonać następujące kroki:
+
+1. Ten krok jest opcjonalny. Akceptacja web push powoduje nadanie uprawnień do wyświetlenia powiadomień (Notification API). Możemy wykorzystać bibliotekę [Push](https://pushjs.org/). Dobrą praktyką jest wykorzystanie wzorca `Double Permission` podczas pytania o różnego pozwolenia - https://web-push-book.gauntface.com/permission-ux/
+
+1. Mając zgodę na wyświetlanie powiadomień możemy utworzyć prośbę o subskrypcję push. Podobnie jak w przypadku Notification API warto korzystać z wzorca `Double Permission`. Za pomocą metody `PushManager.permissionState` sprawdzimy aktualny stan uprawnienia.
+
+1. Jeśli użytkownik zgodził się na powiadomienia metoda `PushManager.subscribe()` zwróci Promise, z obiektem `PushSubscription`. Zawiera on szczegóły subskrypcji. Podczas wywoływania metody `subscribe` musimy podać klucz VAPID, który często nazywany jest także application server key. Jest to klucz publiczny, który generowaliśmy np. za pomocą polecenia `bin/console webpush:generate:keys`. Umożliwia on usłudze push potwierdzenie kto wysłał wiadomość. Po stronie serwera przechowujemy klucz prywatny, którym podpisujemy naszą wiadomość push. Usługodawca mając nasz klucz publiczny, będzie mógł potwierdzić dostęp. Dodatkowo parametr `userVisibleOnly` musi być ustawiony na wartość `true` - [https://web-push-book.gauntface.com/subscribing-a-user/#uservisibleonly-options](https://web-push-book.gauntface.com/subscribing-a-user/#uservisibleonly-options)
+
+1. Obiekt `PushSubscription` przesyłamy na serwer (serializując go do formatu JSON), zapisując w bazie danych. W przypadku PHP/Symfony możemy skorzystać z biblioteki [bentools/webpush-bundle](https://github.com/bpolaszek/webpush-bundle).
+
+1. W SW dodajemy handler dla zdarzeń `push` i `notificationclick`. Opcjonalnie także dla `notificationclose`. Powiadomienie musimy wyświetlić w odpowiednim momencie [inaczej przeglądarka wyświetli domyślny komunikat](https://web-push-book.gauntface.com/faq/#why-do-i-get-the-this-site-has-been-updated-in-the-background).
+
+[Web Push Book (Online)](https://web-push-book.gauntface.com/)
+
+[MDN Push API](https://developer.mozilla.org/en-US/docs/Web/API/Push_API)
+
+[Building a PWA in Vanilla JavaScript - Part 2: Push API](https://alligator.io/js/push-api/)
+
+[Developing Progressive Web Apps 08.0: Integrating web push](https://codelabs.developers.google.com/codelabs/pwa-integrating-push/#0)
