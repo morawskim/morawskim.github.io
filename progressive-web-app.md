@@ -57,3 +57,18 @@ Push API umożliwia aplikacji internetowej otrzymanie wiadomości z serwera, nie
 [Building a PWA in Vanilla JavaScript - Part 2: Push API](https://alligator.io/js/push-api/)
 
 [Developing Progressive Web Apps 08.0: Integrating web push](https://codelabs.developers.google.com/codelabs/pwa-integrating-push/#0)
+
+## Service Workers
+
+Service Workers (SW) umożliwiają aplikacji przechwytywanie i buforowanie zapytań i odpowiedzi HTTP. SW to punkt startowy do implementowania funkcjonalności, które sprawiają, że aplikacja zaczyna działać jak natywna. Niektóre API:
+
+* [Notification API](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API)
+
+* [Push API](https://developer.mozilla.org/en-US/docs/Web/API/Push_API)
+
+* [Background Sync API](https://wicg.github.io/background-sync/spec/)
+
+Nie mamy większego wpływu na cykl życia SW. Przeglądarka decyduje kiedy zresetować/uruchomić wątek SW i kiedy go zakończyć. Dlatego w funkcjach obsługi zdarzeń korzystamy z metody `event.waitUntil`, aby poinformować przeglądarkę że ciągle robimy ważne rzeczy. Przeglądarka będzie oczekiwać aż obiekt `Promise` który przekazujemy osiągnie status `settled`.  Nie możemy bazować na globalnym stanie wewnątrz SW. Jeśli chcemy coś utrwalić musimy korzystać z IndexedDB API.
+
+Przeglądarki gwarantują, że jednocześnie działa tylko jedna wersja SW. Większość przeglądarek domyślnie ignoruje nagłówki cache, kiedy sprawdzają czy jest dostępna aktualizacja skryptu SW.
+Automatycznie sprawdzana jest dostępność aktualizacji SW, ale możemy [wymusić to programowo](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle#manual_updates). Dodatkowo możemy nasłuchiwać na zdarzenie [updatefound](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration#Examples) i powiadomić użytkowników o dostępnej nowej wersji SW.
