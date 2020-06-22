@@ -40,3 +40,18 @@ pm.test("Header is set and have correct value", function () {
    pm.response.to.be.header("Content-Type", "application/json");
 });
 ```
+
+## Używanie zmiennych w skryptach
+
+Aktualną wartość zmiennej w skrypcie możemy pobrać wywołując jedną z poniższych metod. [Dokumentacja](https://learning.postman.com/docs/postman/variables-and-environments/variables/#using-variables-in-scripts)
+
+```
+//access a variable at any scope including local
+pm.variables.get("variable_key");
+//access a global variable
+pm.globals.get("variable_key");
+//access a collection variable
+pm.collectionVariables.get("variable_key");
+//access an environment variable
+pm.environment.get("variable_key");
+```
