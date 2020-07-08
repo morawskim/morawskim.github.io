@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2020-07
+[Praca / Współpraca](praca-wspolpraca.md)
+
 ## 2020-06
 [webp](webp.md)
 [Symfony Command](symfony-command.md)
