@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2020-07
+[Czysty kod](czysty-kod.md)
 [Praca / Współpraca](praca-wspolpraca.md)
 
 ## 2020-06
