@@ -36,3 +36,33 @@ services:
 
 W momencie gdy, chcemy debugować nasz test, przydatną opcją jest uruchomienie tylko jednego testu. Uruchamiamy phpunit z dodatkowym parametrem `--filter <TEST_NAME>`.
 Jeśli test przyjmuje dane od dostawcy danych to możemy ograniczyć się tylko do konkretnego zestawu danych. Jeśli nie korzystamy z nazwanych zestawu danych to podajemy indeks tablicy - `--filter '<testMethod> #<index>'`. W przeciwnym przypadku `--filter '<testMethod> @<name>'`.
+
+## Guzzle MockHandler
+
+`Guzzle` to popularny klient HTTP, który upraszcza integrację z usługami REST. Dostarcza zbiór klas, które umożliwiają nam łatwo tworzyć atrapy (mocks) i testować warstwę HTTP bez wysyłania żądań HTTP przez internet.
+Zamiast korzystać z domyślnego handlera, do metody `GuzzleHttp\HandlerStack::create` przekazujemy instancję `GuzzleHttp\Handler\MockHandler`. Za jej pomocą definiujemy gotowe odpowiedzi HTTP. Możemy, więc z łatwością zasymulować różnego rodzaju błędy API. Wykorzystując middleware history przechowujemy historię wysyłanych requestów HTTP, które możemy przetestować pod kątem zgodności z API.
+
+``` php
+<?php
+// ....
+$container = [];
+$history = \GuzzleHttp\Middleware::history($container);
+$mock = new \GuzzleHttp\Handler\MockHandler([
+    new \GuzzleHttp\Psr7\Response(200, [], '<root />'),
+]);
+$handlerStack = \GuzzleHttp\HandlerStack::create($mock);
+$handlerStack->push($history);
+$client = new \GuzzleHttp\Client(['handler' => $handlerStack]);
+$service = new FooApiClient($client, $apiKey);
+$report = $service->getReportForProject(1);
+
+$this->assertCount(1, $container);
+/** @var \GuzzleHttp\Psr7\Request $request */
+$request = $container[0]['request'];
+$this->assertEquals('GET', $request->getMethod());
+$this->assertEquals("api/projects/$projectId/reports", $request->getUri()->getPath());
+$this->assertNull($report);
+// ....
+```
+
+[Testing Guzzle Clients](http://docs.guzzlephp.org/en/stable/testing.html)
