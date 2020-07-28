@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2020-07
+[symfony bundles](symfony-bundles.md)
 [Czysty kod](czysty-kod.md)
 [Praca / Współpraca](praca-wspolpraca.md)
 
