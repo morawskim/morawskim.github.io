@@ -6,6 +6,8 @@
 
 [Bootstrap SVG Icons](https://icons.getbootstrap.com/)
 
+[Free SVG icons for popular brands](https://simpleicons.org/)
+
 ## Tools
 
 [Generator of CSS @Keyframes animations, box shadows, colors and more](https://keyframes.app/animate/)
@@ -20,6 +22,10 @@
 
 [Google Search Console](https://search.google.com/search-console/about)
 
+[CSS Vocabulary](http://apps.workflower.fi/vocabs/css/en)
+
 ## Libraries
 
 [A collection of CSS hover effects](https://emilkowalski.github.io/css-effects-snippets/)
+
+[CSS3 loaders and spinner](https://vineethtrv.github.io/loader/)
