@@ -26,6 +26,14 @@
 
 ## Libraries
 
+[CSS3 loaders and spinner](https://vineethtrv.github.io/loader/)
+
+### Hover effects
+
 [A collection of CSS hover effects](https://emilkowalski.github.io/css-effects-snippets/)
 
-[CSS3 loaders and spinner](https://vineethtrv.github.io/loader/)
+[CSS3 hover effects pack](https://gudh.github.io/ihover/dist/)
+
+[Pure CSS Image Hover Effect Library](https://imagehover.io/)
+
+[A collection of CSS3 powered hover effects](https://ianlunn.github.io/Hover/)
