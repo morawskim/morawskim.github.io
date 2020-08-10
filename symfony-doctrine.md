@@ -10,6 +10,7 @@ public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $pla
     return $platform->getJsonTypeDeclarationSQL($fieldDeclaration);
 }
 ```
+Nasz typ mapuje do istniejącego typu (json), więc musimy nadpisać metodę `s`. Doctrine nie może odróżnić typu i w migracjach ciągle modyfikuje tą kolumnę. Zwracanie z tej metody wartości `true` spowoduje, użycie przez Doctrine komentarza SQL do wskazania właściwego typu.
 
 Metoda `convertToDatabaseValue` odpowiada za przekształcenie wartości PHP do reprezentacji rozumianej przez sterownik BD. Zaś `convertToPHPValue` przekształca wartość z bazy danych na obiekt PHP. Jeśli korzystamy w projekcie z MySQL w wersji 8 możemy [ustawić wartość domyślną dla pola JSON](https://dbfiddle.uk/?rdbms=mysql_8.0&fiddle=57a9cb839d838075eced99d68f0a832a)
 
@@ -18,6 +19,8 @@ Finalnie musimy w konfiguracji frameworka Symfony [zarejestrować nasz nowy typ]
 types:
     box:  App\Doctrine\Type\BoxType
 ```
+
+Jeśłi wywołamy narzędzie `./bin/console make:entity` i podczas wyboru typu pola wpiszemy `?`, aby zobaczyć wszystkie dostępne typy, to na liście ujrzymy nasz nowy typ.
 
 [doctrine-enum-type](https://github.com/acelaya/doctrine-enum-type)
 
