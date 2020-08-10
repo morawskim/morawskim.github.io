@@ -28,6 +28,8 @@
 
 [CSS3 loaders and spinner](https://vineethtrv.github.io/loader/)
 
+[Simple CSS Spinners](https://tobiasahlin.com/spinkit/)
+
 ### Hover effects
 
 [A collection of CSS hover effects](https://emilkowalski.github.io/css-effects-snippets/)
