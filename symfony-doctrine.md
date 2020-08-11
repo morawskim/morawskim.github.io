@@ -28,3 +28,40 @@ Jeśłi wywołamy narzędzie `./bin/console make:entity` i podczas wyboru typu p
 
 [Advanced field value conversion using custom mapping types](https://www.doctrine-project.org/projects/doctrine-orm/en/2.7/cookbook/advanced-field-value-conversion-using-custom-mapping-types.html#advanced-field-value-conversion-using-custom-mapping-types)
 
+## Testy bazy danych
+
+Do testów bazy danych warto zainstalować pakiet `dama/doctrine-test-bundle`. Ten pakiet nasłuchuje na zdarzenia PHPUnit i rozpoczyna transakcję przed każdym testem i wycofuje transakcję po teście. Daje to znacznie lepszą wydajność, ponieważ nie musimy przed każdym testem czyścić i importować dane do bazy danych. W przypadku korzystania z phpunit w wersji co najmniej 7.5 do pliku `phpunit.xml.dist` dodajemy:
+```
+<extensions>
+    <extension class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension"/>
+</extensions>
+```
+
+Tworzymy nowy test, który dziedziczy po klasie `Symfony\Bundle\FrameworkBundle\Test\KernelTestCase`. Następnie w metodzie testującej możemy pobrać z kontenera usługę `doctrine`, wpierw jednak musimy dokonać rozruchu kernela.
+
+```
+$kernel = self::bootKernel();
+$container = $kernel->getContainer();
+
+/** @var Registry $doctrine */
+$doctrine = $container->get('doctrine');
+/** @var Connection $connection */
+$connection = $doctrine->getConnection();
+
+$service = new InventoryProjectorAction($connection);
+//....
+```
+Warto nasz test oznaczyć adnotacją `@group <NAZWA>`. Dzięki temu będziemy mogli wykluczyć testy bazy danych podczas domyślnego wywołania phpunit. Aby wywołać tylko testy w ramach grupy np. `database` musimy wywołać phpunit z parametrem `--group database`. W pliku konfiguracyjnym `phpunit.xml.dist` dodajemy konfigurację dla grup:
+
+```
+<groups>
+    <exclude>
+        <group>database</group>
+    </exclude>
+</groups>
+```
+
+
+[How to Test Code that Interacts with the Database](https://symfony.com/doc/4.4/testing/database.html)
+[phpunit  configuration group](https://phpunit.readthedocs.io/en/9.3/configuration.html#the-groups-element)
+[phpunit annotation group](https://phpunit.readthedocs.io/en/9.3/annotations.html#appendixes-annotations-group)
