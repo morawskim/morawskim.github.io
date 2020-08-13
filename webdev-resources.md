@@ -8,6 +8,8 @@
 
 [Free SVG icons for popular brands](https://simpleicons.org/)
 
+[300+ right mix of SVG icons for your project.](https://icons.theforgesmith.com/)
+
 ## Tools
 
 [Generator of CSS @Keyframes animations, box shadows, colors and more](https://keyframes.app/animate/)
@@ -23,6 +25,8 @@
 [Google Search Console](https://search.google.com/search-console/about)
 
 [CSS Vocabulary](http://apps.workflower.fi/vocabs/css/en)
+
+[Color schemes generator](https://coolors.co/)
 
 ## Libraries
 
