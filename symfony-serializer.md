@@ -27,3 +27,14 @@ App\Factory\AddressesFactory:
 ```
 
 Wywołując polecenie `./bin/console debug:container --tag serializer.normalizer` możemy się upewnić, że nasz nowe usługi są poprawnie skonfigurowane i gotowe do użycia. Warto zwrócić uwagę, że nasza usługa ma wyższy piorytet i będzie wykorzysywana zamiast oryginalnej implementacji.
+
+## Symfony Framework konfiguracja serializer name_converter
+
+Korzystając z frameworka Symfony, możemy globalnie skonfigurować wykorzystywany tramsformer nazw. w pliku `config/packages/framework.yaml` dodajemy konfigurację dla komponentu `serializer`:
+
+```
+serializer:
+        name_converter: 'serializer.name_converter.camel_case_to_snake_case'
+```
+
+[Framework Configuration Reference (FrameworkBundle)](https://symfony.com/doc/current/reference/configuration/framework.html#serializer)
