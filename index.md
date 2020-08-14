@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2020-08
+[Symfony Serializer](symfony-serializer.md)
 [Symfony Twig](symfony-twig.md)
 [Symfony Doctrine](symfony-doctrine.md)
 [Symfony Service Container](symfony-service-container.md)
