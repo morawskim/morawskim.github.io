@@ -38,3 +38,14 @@ serializer:
 ```
 
 [Framework Configuration Reference (FrameworkBundle)](https://symfony.com/doc/current/reference/configuration/framework.html#serializer)
+
+## FOSRestBundle
+
+Pakiet `friendsofsymfony/rest-bundle`  często jest wykorzystywany przy budowaniu API REST. Bundle też może korzystać z Symfonowego komponentu serializacji. Poniższy fragment kodu, przedstawia jak ustawić specyficzne opcje kontekstu serializatora Symfony. Do serializacji wybranych pól, lepiej skorzystać z [groups](https://symfony.com/doc/current/components/serializer.html#attributes-groups).
+
+```
+$ctx = new Context();
+$view = $this->view($order, 200);
+$view->setContext($ctx);
+$ctx->setAttribute(AbstractNormalizer::ATTRIBUTES, ['id', 'shippingAddress' => ['firstName', 'lastName', 'street']]);
+```
