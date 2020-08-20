@@ -65,3 +65,43 @@ Warto nasz test oznaczyć adnotacją `@group <NAZWA>`. Dzięki temu będziemy mo
 [How to Test Code that Interacts with the Database](https://symfony.com/doc/4.4/testing/database.html)
 [phpunit  configuration group](https://phpunit.readthedocs.io/en/9.3/configuration.html#the-groups-element)
 [phpunit annotation group](https://phpunit.readthedocs.io/en/9.3/annotations.html#appendixes-annotations-group)
+
+## liip/test-fixtures-bundle
+
+Pakiet `dama/doctrine-test-bundle` umożliwia nam przeprowadzenie testów z wykorzystaniem bazy danych. Jednak jeśli potrzebujemy dokonać zmian w bazie i zatwierdzić transakcję potrzebujemy dodatkowo `liip/test-fixtures-bundle`. Pakiet ten zawiera trait `Liip\TestFixturesBundle\Test\FixturesTrait` za pomocą którego możemy załadować fixtures po wykonaniu testu. Instalujemy pakiet wywołując polecenie `composer require --dev liip/test-fixtures-bundle`. Następnie tworzymy plik `config/packages/test/liip_test_fixtures.yaml` o zawartości [Conflicts with DAMADoctrineTestBundle](https://github.com/liip/LiipTestFixturesBundle/blob/master/doc/caveats.md#damadoctrinetestbundle):
+
+```
+liip_test_fixtures:
+  keep_database_and_schema: true
+```
+
+W pliku z testem dołączamy wymieniony wcześniej trait `use FixturesTrait;`. W metodzie `tearDown` możemy wczytać wybrane klasy fixtures:
+
+```
+$this->loadFixtures([
+    AppFixtures::class,
+]);
+```
+
+[Using Doctrine DataFixtures and testing dynamic responses with PHPUnit in Symfony applications](http://www.inanzzz.com/index.php/post/vx0y/using-doctrine-data-fixtures-and-testing-dynamic-responses-with-phpunit-in-symfony-applications)
+
+```
+// from http://www.inanzzz.com/index.php/post/vx0y/using-doctrine-data-fixtures-and-testing-dynamic-responses-with-phpunit-in-symfony-applications
+
+private static function reloadDataFixtures(): void
+{
+    $kernel = static::createKernel();
+    $kernel->boot();
+    $entityManager = $kernel->getContainer()->get('doctrine')->getManager();
+
+    $loader = new Loader();
+    foreach (self::getFixtures() as $fixture) {
+        $loader->addFixture($fixture);
+    }
+
+    $purger = new ORMPurger();
+    $purger->setPurgeMode(ORMPurger::PURGE_MODE_DELETE);
+    $executor = new ORMExecutor($entityManager, $purger);
+    $executor->execute($loader->getFixtures());
+}
+```
