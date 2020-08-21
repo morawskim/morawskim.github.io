@@ -26,3 +26,15 @@ gedmo_loggable:
 1. W encji importujemy adnotacje - `use Gedmo\Mapping\Annotation as Gedmo;`
 1. Korzystamy z adnotacji `@Gedmo\Loggable()` (na poziomie klasy), aby oznaczyć włączyć rozszerzenie loggable dla encji.
 1. Jeśli przy aktualizacji chcemy logować, które pola zostały zmienione musimy je oznaczyć adnotacją `@Gedmo\Versioned()`. W przeciwnym przypadku nic nie zostanie zalogowane.
+
+## happyr/entity-exists-validation-constraint
+
+Ten bundle dostarcza walidator do sprawdzenia, czy encja istnieje w bazie danych. W pliku `config/services.yaml` rejestrujemy usługę `Happyr\Validator\Constraint\EntityExistValidator`:
+
+```
+Happyr\Validator\Constraint\EntityExistValidator:
+    arguments: ['@doctrine.orm.entity_manager']
+    tags: [ 'validator.constraint_validator' ]
+```
+
+Następnie możemy korzystać z adnotacji `\Happyr\Validator\Constraint\EntityExist` przy encjach/DTO -  `@EntityExist(entity="App\Entity\Foo", property="bar_id")`.
