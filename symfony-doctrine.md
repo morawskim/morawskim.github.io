@@ -61,6 +61,7 @@ Warto nasz test oznaczyć adnotacją `@group <NAZWA>`. Dzięki temu będziemy mo
 </groups>
 ```
 
+Aby wyświetlić dostępne grupy wywołujemy polecenie `./bin/phpunit --list-groups`
 
 [How to Test Code that Interacts with the Database](https://symfony.com/doc/4.4/testing/database.html)
 [phpunit  configuration group](https://phpunit.readthedocs.io/en/9.3/configuration.html#the-groups-element)
