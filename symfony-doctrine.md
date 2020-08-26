@@ -106,3 +106,31 @@ private static function reloadDataFixtures(): void
     $executor->execute($loader->getFixtures());
 }
 ```
+
+## Load fixtures
+
+W frameworku Symfony dostępne jest polecenie `doctrine:fixtures:load`, które wczytuje data fixtures do bazy danych. Za pomocą parametru `--group` możemy wybrać którą grupę zaimportować. Polecenie domyślnie kasuje dane z tabel. Jednak jeśli w bazie danych istnieją tabele, których nie chcemy czyścić możemy je pominąć. W pliku `config/packages/doctrine.yaml` ustawiamy opcję `schema_filter`.
+
+```
+doctrine:
+    dbal:
+        schema_filter: ~^(?!TABELA$)~
+```
+
+Ustawiając tą opcję konfiguracji DBAL, framework zarejestruje usługę `doctrine.dbal.default_regex_schema_filter` i przypisze jej tag `doctrine.dbal.schema_filter`. Usługa ta będzie odnosić się do klasy `\Doctrine\Bundle\DoctrineBundle\Dbal\RegexSchemaAssetFilter`. Możemy utworzyć własną usługę i przypisać jej ten tag, jeśli domyślna funkcjonalność nam nie wystarcza.
+
+Analizując kod polecenia `doctrine:fixtures:load` natrafimy na fragment:
+
+```
+$purger = new ORMPurger($em);
+$purger->setPurgeMode($input->getOption('purge-with-truncate') ? ORMPurger::PURGE_MODE_TRUNCATE : ORMPurger::PURGE_MODE_DELETE);
+$executor = new ORMExecutor($em, $purger);
+$executor->setLogger(static function ($message) use ($ui) : void {
+    $ui->text(sprintf('  <comment>></comment> <info>%s</info>', $message));
+});
+$executor->execute($fixtures, $input->getOption('append'));
+```
+
+Podczas inicjowania klasy `\Doctrine\Common\DataFixtures\Purger\ORMPurger` możemy przekazać argument `$excluded` z tablicą nazw tabel/widoków, które mają być wykluczone z wyczyszczenia.
+
+[DoctrineMigrationsBundle - Manual Tables](https://symfony.com/doc/current/bundles/DoctrineMigrationsBundle/index.html#manual-tables)
