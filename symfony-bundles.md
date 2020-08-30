@@ -43,6 +43,8 @@ Następnie możemy korzystać z adnotacji `\Happyr\Validator\Constraint\EntityEx
 
 Bundle `LogBridgeBundle` umożliwia logowanie żądań i odpowiedzi HTTP za pomocą biblioteki monolog. Bundle ten nie jest automatycznie konfigurowany podczas instalacji pakietu - `composer require m6web/log-bridge-bundle`. Musimy więc ręcznie dodać bundle i utworzyć plik konfiguracyjny. Plik [README opisuje niezbędne kroki](https://github.com/M6Web/LogBridgeBundle/blob/master/README.md). Dodatkowo nie jest wspierana wersja 5 Symfony.
 
+Możemy ignorować nagłówki HTTP. Najczęściej ignorujemy nagłówki zawierające wrażliwe dane taki jak np. `Authorization`. W konfiguracji `config/packages/m6_web_log_bridge.yaml` w kluczu `ignore_headers` ustawiamy ignorowane nagłówki.
+
 Warto skonfigurować dla monolog dodatkowy kanał `api`. Komunikaty z tego kanału powiniśmy logować do oddzielnego pliku. W konfiguracji `m6_web_log_bridge` ustawiamy parametr `channel`, aby dane byłby przesyłane do kanału `api`.
 
 ```
