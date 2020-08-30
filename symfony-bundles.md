@@ -38,3 +38,22 @@ Happyr\Validator\Constraint\EntityExistValidator:
 ```
 
 Następnie możemy korzystać z adnotacji `\Happyr\Validator\Constraint\EntityExist` przy encjach/DTO -  `@EntityExist(entity="App\Entity\Foo", property="bar_id")`.
+
+## LogBridgeBundle
+
+Bundle `LogBridgeBundle` umożliwia logowanie żądań i odpowiedzi HTTP za pomocą biblioteki monolog. Bundle ten nie jest automatycznie konfigurowany podczas instalacji pakietu - `composer require m6web/log-bridge-bundle`. Musimy więc ręcznie dodać bundle i utworzyć plik konfiguracyjny. Plik [README opisuje niezbędne kroki](https://github.com/M6Web/LogBridgeBundle/blob/master/README.md). Dodatkowo nie jest wspierana wersja 5 Symfony.
+
+Warto skonfigurować dla monolog dodatkowy kanał `api`. Komunikaty z tego kanału powiniśmy logować do oddzielnego pliku. W konfiguracji `m6_web_log_bridge` ustawiamy parametr `channel`, aby dane byłby przesyłane do kanału `api`.
+
+```
+monolog:
+  channels: ['api']
+  handlers:
+    apilog:
+      type: rotating_file
+      path: "%kernel.logs_dir%/api.log"
+      level: debug
+      channels: [api]
+      max_files: 70
+
+```
