@@ -28,6 +28,10 @@ Jeśłi wywołamy narzędzie `./bin/console make:entity` i podczas wyboru typu p
 
 [Advanced field value conversion using custom mapping types](https://www.doctrine-project.org/projects/doctrine-orm/en/2.7/cookbook/advanced-field-value-conversion-using-custom-mapping-types.html#advanced-field-value-conversion-using-custom-mapping-types)
 
+[Custom type test](https://github.com/odolbeau/phone-number-bundle/blob/7f9530b521f4baaf55232f47a13b737b9343e895/tests/Doctrine/DBAL/Types/PhoneNumberTypeTest.php)
+
+[Custom type test](https://github.com/acelaya/doctrine-enum-type/blob/4db8de01d8044446c6e5ec4958e082a2be65000c/test/Type/PhpEnumTypeTest.php)
+
 ## Testy bazy danych
 
 Do testów bazy danych warto zainstalować pakiet `dama/doctrine-test-bundle`. Ten pakiet nasłuchuje na zdarzenia PHPUnit i rozpoczyna transakcję przed każdym testem i wycofuje transakcję po teście. Daje to znacznie lepszą wydajność, ponieważ nie musimy przed każdym testem czyścić i importować dane do bazy danych. W przypadku korzystania z phpunit w wersji co najmniej 7.5 do pliku `phpunit.xml.dist` dodajemy:
