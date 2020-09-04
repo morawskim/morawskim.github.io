@@ -22,3 +22,40 @@ $kernel = self::bootKernel();
 /** @var OrderApiFactory $orderApiFactory */
 $orderApiFactory = $kernel->getContainer()->get('test.order.apifactory');
 ```
+
+## Service tags
+
+Tagi nie zmieniają funkcjonowania usługi. Możemy jednak odpytać się kontener o listę usług, które zostały oznaczone określonym tagiem. W frameworku Symfony [mamy wiele wbudowanych tagów](https://symfony.com/doc/4.4/reference/dic_tags.html). Możemy także wyświetlić je korzystając z narzędzia konsolowego `./bin/console debug:container --tags | grep -E '^".*? tag$'``. Dzięki funkcji auto konfiguracji frameworka, nie musimy jawnie tagować usług. Usługi implementujące odpowiednie interfejsy lub rozszerzające wybrane klasy zostaną automatycznie oznaczone odpowiednim tagiem.
+
+W aplikacji Symfony w metodzie `build` klasy `Kernel` (`src/Kernel.php`) możemy automatycznie przypisywać tag `app.custom_tag` usługom które implementują interfejs `CustomInterface`.
+
+```
+protected function build(ContainerBuilder $container)
+{
+    $container->registerForAutoconfiguration(CustomInterface::class)
+        ->addTag('app.custom_tag')
+    ;
+}
+```
+
+W innej usłudze, możemy wstrzyknąć wszystkie usługi, które są oznaczone tagiem np. `app.custom_tag`. W pliku `config/services.yaml`
+
+```
+services:
+    #.....
+    App\HandlerCollection:
+        # inject all services tagged with app.custom_tag as first argument
+        arguments:
+            - !tagged_iterator app.custom_tag
+```
+
+W przypadku konfiguracji w pliku `xml`:
+
+```
+<service id="App\HandlerCollection">
+    <!-- inject all services tagged with app.custom_tag as first argument -->
+    <argument type="tagged_iterator" tag="app.custom_tag"/>
+</service>
+```
+
+[How to Work with Service Tags](https://symfony.com/doc/4.4/service_container/tags.html)
