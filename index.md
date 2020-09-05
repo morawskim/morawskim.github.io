@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2020-09
+[Maintenance page](maintenance-page.md)
 [Kafka](kafka.md)
 [Symfony WebTest](symfony-webtest.md)
 
