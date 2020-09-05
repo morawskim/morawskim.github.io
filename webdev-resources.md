@@ -43,3 +43,7 @@
 [Pure CSS Image Hover Effect Library](https://imagehover.io/)
 
 [A collection of CSS3 powered hover effects](https://ianlunn.github.io/Hover/)
+
+## Tips
+
+[A series examining modern CSS solutions to problems](https://moderncss.dev/)
