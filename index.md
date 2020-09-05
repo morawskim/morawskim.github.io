@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2020-09
+[Kafka](kafka.md)
 [Symfony WebTest](symfony-webtest.md)
 
 ## 2020-08
