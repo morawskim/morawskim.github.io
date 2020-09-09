@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2020-09
+[Iterator](iterator.md)
 [Import danych z pliku CSV do bazy danych](import-danych-z-pliku-csv-do-bazy-danych.md)
 [Maintenance page](maintenance-page.md)
 [Kafka](kafka.md)
