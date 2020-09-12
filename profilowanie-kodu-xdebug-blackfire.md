@@ -32,3 +32,34 @@ Jeśli chcemy także profilować skrypty PHP lub żadania AJAX to niezbędny jes
 
 Kiedy korzystamy z rozszerzenia Blackfire w przeglądarce, do strony dołączany jest iframe Blackfire. Jeśli na stronie zdefiniowaliśmy `Content Security Policy` to iframe może zostać zablokowany. W takim przypadku musimy zadeklarować domenę `blackfire.io` jako zaufaną - `Content-Security-Policy: frame-src 'self' blackfire.io`.
 
+### Asserts
+
+Instalując pakiet `blackfire/php-sdk` możemy utworzyć test PHPUnit, w który wykorzystamy metryki `blackfire` do badania wydajności kodu. Tak jak przy instalacji klienta CLI, musimy dokonać konfiguracji. Ustawić odpowiednie zmienne środowiskowe lub utworzyć plik konfiguracyjny w katalogu domowym.
+
+W przypadku frameworka Symfony nasz test powinien dziedziczyć po klasie `Symfony\Bundle\FrameworkBundle\Test\WebTestCase`. Dzięki temu uzyskujemy dostęp do metody statycznej `createClient`. Musimy do testu dołączyć trait `Blackfire\Bridge\PhpUnit\TestCaseTrait`. Następnie możemy już utworzyć metodę testującą.
+
+```
+/**
+ * @group blackfire
+ * @requires extension blackfire
+ */
+public function testGetTaskBlackfireSqlQueries(): void
+{
+    //wczytywanie testowych danych, tworzenie client
+
+    $blackfireConfig = (new Configuration())
+        ->assert('metrics.sql.count < 2');
+    $this->assertBlackfire($blackfireConfig, function() use ($client, $task) {
+        $client->request('GET', sprintf('/api/tasks/%d', $task->getId()), [], [], ['HTTP_ACCEPT' => 'application/json', 'CONTENT_TYPE' => 'application/json']);
+    });
+}
+```
+
+Adnotacja `group` umożliwiamy wywołanie (lub wykluczenie) testów blackfire, które trwają dłużej niż testy jednostkowe - `./bin/phpunit --group blackfire`.
+
+Adnotacja `requires` pomija test, jeśli rozszerzenie `blackfire` nie jest dostępne. W przypadku, gdy mamy zainstalowane rozszerzenie, ale ciągle nasz test ma status "skipped" to wywołując phpunit dodajemy parametr `-v`. Wtedy otrzymamy komunikat z błędem.
+
+```
+1) App\Tests\Controller\TaskControllerTest::testGetTaskBlackfireSqlQueries
+401:  while calling GET https://blackfire.io/api/v1/collab-tokens [context: NULL]
+```
