@@ -11,3 +11,16 @@ docker run --rm -it --network host python:3.7 bash
 pip install PyMySQL psycopg2 csvkit
 csvsql --db 'mysql+pymysql://username:password@HOST:PORT/DB_NAME' --insert ./file.csv
 ```
+
+Możemy także skorzystać z gotowego obrazu dockera `morawskim/csvsql-mysql:1.0.5`. W takim przypadku, aby zaimportować dane do bazy danych, która znajduje się w sieci dockera korzystamy z polecenia `docker run --rm -it --network=DOCKER_COMPOSE_NETWORK -v $PWD:/app morawskim/csvsql-mysql:1.0.5 --db 'mysql+pymysql://USERNAME:PASSWORD@DB_HOST:3306/DB_NAME' --insert /app/filename.csv`.
+
+W pliku `docker-compose.yaml` możemy dodać definicję nowego kontenera.
+
+```
+csvkit:
+    image: morawskim/csvsql-mysql:1.0.5
+    volumes:
+        - ./:/app
+```
+
+Wywołując polecenie `docker-compose run csvkit --db 'mysql+pymysql://<DB_USER>:<DB_PASSWORD>@<DB_HOST>:3306/<DB_NAME>' --insert /app/<CSV_FILE>` zaimportujemy plik CSV do bazy danych.
