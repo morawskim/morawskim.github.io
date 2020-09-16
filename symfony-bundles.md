@@ -59,3 +59,34 @@ monolog:
       max_files: 70
 
 ```
+
+## NelmioApiDocBundle
+
+Ten bundle generuje dokumentację w formacie OpenAPI dla REST API z adnotacji. Obecnie dostępna jest wersja beta, która obsługuje specyfikację OpenAPI w wersji 3. Aby ją zainstalować wydajemy polecenie `composer require nelmio/api-doc-bundle:^4.0`. Jeśli dostaniemy błąd podobny do poniższego:
+
+` The requested package nelmio/api-doc-bundle ^4.0 is satisfiable by nelmio/api-doc-bundle[4.0.x-dev, v4.0.0-BETA1, v4.0.0-BETA2] but these conflict with your requirements or minimum-stability.`
+
+Możemy wymusić zainstalowanie wersji beta wywołując polecenie `composer require nelmio/api-doc-bundle:^4.0-BETA2`.
+Jeśli korzystamy z Symfony Flex to początkowa konfiguracja zostanie utworzona. Jednak dostęp do dokumentacji, może być blokowany przez konfigurację firewalla. W sekcji `firewalls` pliku `config/packages/security.yaml` wyłączamy mechanizm bezpieczeństwa dla ścieżek `/api/doc` i `/api/doc.json`.
+
+```
+apiDoc:
+    pattern: ^/api/(doc|doc\.json)$
+    security: false
+```
+
+W przypadku włączenia rutera do pliku JSON specyfikacji OpenAPI możemy wykluczyć tą końcówkę z dokumentacji. W pliku `config/packages/nelmio_api_doc.yaml` modyfikujemy wyrażenie regularne w kluczu `areas.path_patterns` z domyślnej wartości `^/api(?!/doc$)` na `^/api(?!/doc|/doc\.json$)`.
+
+W pliku konfiguracyjnym `config/packages/nelmio_api_doc.yaml` dodajemy mechanizm autoryzacji (przykład dla tokenów JWT):
+
+```
+components:
+    securitySchemes:
+        Bearer:
+            type: http
+            description: 'Value: Bearer {jwt}'
+            scheme: bearer
+            bearerFormat: JWT
+```
+
+W kontrolerze możemy określić, że nasza końcówka wymaga autoryzacji korzystając z adnotacji `Nelmio\ApiDocBundle\Annotation\Security`. Jeśli zadeklarowaliśmy mechanizm bezpieczeństwa pod nazwą `Bearer` to naszą akcję kontrolera oznaczamy przez `@Security(name="Bearer")`. W celu nadania końcówce API podsumowanie i opis korzystamy z domyślnej konwencji PHPDocs. Pierwsza linia to krótkie podsumowanie. Następnie możemy podać dłuższy opis.
