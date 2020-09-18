@@ -11,6 +11,10 @@ Dzięki npx nie musimy dodawać do naszego projektu zależności. W przypadku br
 
 Możemy także skorzystać z innego narzędzia do budowania dokumentacji - `swagger-api/swagger-ui`. Ten pakiet dostępny jest także dla PHP. Wystarczy wywołać polecenie - `composer require swagger-api/swagger-ui`. Po instalacji pakietu, musimy skopiować pliki z katalogu `vendor/swagger-api/swagger-ui/dist` do naszego publicznego katalogu (DOCUMENT_ROOT). Musimy zmodyfikować tylko plik `index.html`. Musimy zmodyfikować ścieżkę do pliku json z schematem naszego API. Domyślnie parametr `url` ma wartość `https://petstore.swagger.io/v2/swagger.json`. Dostosowujemy ten parametr do naszych potrzeb np. `/openAPI.json`.
 
+[Swagger Editor](https://editor.swagger.io/#/)
+
+[Swagger 2.0 to OpenAPI 3.0.0 converter](https://openapi-converter.herokuapp.com/)
+
 ## Walidacja pliku definicji
 
 Do weryfikacji poprawności definicji schematu openAPI używam pakietu npm `swagger-cli`.
