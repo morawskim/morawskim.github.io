@@ -9,7 +9,7 @@ Cechami `unified log` są:
 
 ## PHP
 
-Jeśli korzystamy z obrazu dockera `php:7.4` to musimy doinstalować pakiet `librdkafka-dev`, a następnie wywołać standardowe polecenia do instalacji (`pecl install rdkafka`) i włączenia rozszerzenia PHP (`docker-php-ext-enable rdkafka`).
+Jeśli korzystamy z obrazu dockera `php:7.4` to musimy doinstalować pakiet `librdkafka-dev`, a następnie wywołać standardowe polecenia do instalacji (`pecl install rdkafka`) i włączenia rozszerzenia PHP (`docker-php-ext-enable rdkafka`). Przydata jest także biblioteka [kwn/php-rdkafka-stubs](https://github.com/kwn/php-rdkafka-stubs), która dostarcza stubs dla rozszerzenia RdKafka. Dzięki temu w IDE będzie działać m.in. inspekcja i podpowiadanie kodu.
 
 [Installaton rphp-rdkafka](https://github.com/arnaud-lb/php-rdkafka#installation)
 
