@@ -90,3 +90,9 @@ components:
 ```
 
 W kontrolerze możemy określić, że nasza końcówka wymaga autoryzacji korzystając z adnotacji `Nelmio\ApiDocBundle\Annotation\Security`. Jeśli zadeklarowaliśmy mechanizm bezpieczeństwa pod nazwą `Bearer` to naszą akcję kontrolera oznaczamy przez `@Security(name="Bearer")`. W celu nadania końcówce API podsumowanie i opis korzystamy z domyślnej konwencji PHPDocs. Pierwsza linia to krótkie podsumowanie. Następnie możemy podać dłuższy opis.
+
+### Klasy
+
+`Nelmio\ApiDocBundle\Routing\FilteredRouteCollectionBuilder` - Filtruje końcówki, które będą wyświetlane w dokumentacji OpenAPI. Końcówka musi pasować do przynajmniej jednego matchera.
+
+`Nelmio\ApiDocBundle\ApiDocGenerator` - Klasa odpowiada za wygenerowanie pliku schematu OpenAPI
