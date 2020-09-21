@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2020-09
+[Symfony Controller](symfony-controller.md)
 [Profilowanie kodu Xdebug/Blackfire](profilowanie-kodu-xdebug-blackfire.md)
 [Iterator](iterator.md)
 [Import danych z pliku CSV do bazy danych](import-danych-z-pliku-csv-do-bazy-danych.md)
