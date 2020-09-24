@@ -36,3 +36,48 @@ Upewniamy się że temat został utworzony wywołując polecenie `bin/kafka-topi
 Uruchamiamy skrypt (producer), który wyśle zdarzenia z strumienia stdin `./bin/kafka-console-producer.sh --topic raw-events --broker-list localhost:9092`
 
 Na końcu odpalamy skrypt consumer `./bin/kafka-console-consumer.sh --topic raw-events --from-beginning --bootstrap-server localhost:9092`.
+
+## Topic
+
+W celu utworzenia nowego tematu (ang. topic) korzystamy z narzędzia konsolowego `kafka-topics.sh`. Jeśli podczas tworzenia tematu nie nadpiszemy parametrów konfiguracyjnych zostaną wykorzystane wartości domyślne serwera. Rozszerzenie PHP (rdkafka) obecnie nie obsługuje Topic API. Planowana jest dodanie obsługi Topic API w wersji 5.
+
+Kafka potrafi automatycznie tworzyć temat w brokerze podczas subskrybowania. Temat zostanie utworzony tylko wtedy gdy parametr `auto.create.topics.enable` brokera jest ustawiony na wartość `true` (domyślna wartość).
+
+Główne atrybuty konfiguracyjne to:
+
+* [cleanup.policy](https://kafka.apache.org/26/documentation.html#cleanup.policy)
+* [retention.bytes](https://kafka.apache.org/26/documentation.html#retention.bytes)
+* [retention.ms](https://kafka.apache.org/26/documentation.html#retention.ms)
+
+Przykładowe wywołanie z najczęściej wykorzystywanymi opcjami:
+
+```
+kafka-topics.sh --create \
+	--bootstrap-server localhost:9092
+	--replication-factor 1 \
+	--partitions 3 \
+	--topic TOPIC_NAME \
+	--config retention.bytes=1000000000 \
+	--config retention.ms=86400000
+```
+
+Jeśli podczas zakładania tematu wartość argumentu `replication-factor` przekroczy liczbę dostępnych brokerów do otrzymamy błąd:
+```
+[2020-09-24 12:14:50,659] ERROR org.apache.kafka.common.errors.InvalidReplicationFactorException: replication factor: 2 larger than available brokers: 1
+ (kafka.admin.TopicCommand$)
+```
+
+|Argument kafka-topic   | Domyślna wartość z parametru serwera  |   |
+|---|---|---|
+| `--replication-factor <VALUE>`  |   |   |
+| `--partitions <VALUE>`  | `num.partitions`  |   |
+| `--config retention.bytes=<VALUE>`  | `log.retention.bytes`  |   |
+| `--config retention.ms=<VALUE>`  | `log.retention.ms`  |   |
+| `--config cleanup.policy=<VALUE>`  | `log.cleanup.policy`  |   |
+|   |   |   |
+
+[How do I specify the number of partitions for a new topic?](https://github.com/arnaud-lb/php-rdkafka/issues/163)
+
+[Implement librdkafka Topic API ](https://github.com/arnaud-lb/php-rdkafka/issues/215)
+
+[Topic Configs](https://kafka.apache.org/26/documentation.html#topicconfigs)
