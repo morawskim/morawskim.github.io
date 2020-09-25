@@ -81,3 +81,19 @@ Jeśli podczas zakładania tematu wartość argumentu `replication-factor` przek
 [Implement librdkafka Topic API ](https://github.com/arnaud-lb/php-rdkafka/issues/215)
 
 [Topic Configs](https://kafka.apache.org/26/documentation.html#topicconfigs)
+
+## Nadawca
+
+Nadawca (ang. producer) przesyła wiadomości do Kafki. Wiadomości, które chcemy przesłać są zbierane w batche. Batch to zgrupowane wiadomości przez kombinacje brokera i numeru partycji do której ta wiadomość jest wysyłana. Zbieranie wiadomości ma na celu polepszenie przepustowości. Zastosowanie kompresji wiadomości ma lepszy wynik w przypadku batcha niż pojedynczej wiadomości. W przypadku gdy choć jedna wiadomość w batchu nie powiedzie się, wtedy cały batch dla tej partycji jest odrzucany. Parametr `retry` automatycznie ponawia próby przesłania wiadomości. Jednak jeśli kolejność wiadomości jest ważna, wtedy oprócz ustawienia parametru `retry`, wartość parametru `max.in.flight.requests.per.connection` nie powinna być inna niż 1.
+
+Główne atrybuty konfiguracyjne to:
+
+* [acks ](https://kafka.apache.org/26/documentation/#acks)
+
+* [bootstrap.servers](https://kafka.apache.org/26/documentation/#bootstrap.servers)
+
+* [compression.type](https://kafka.apache.org/26/documentation/#compression.type)
+
+* [retries](https://kafka.apache.org/26/documentation/#retries)
+
+* [delivery.timeout.ms](https://kafka.apache.org/26/documentation/#delivery.timeout.ms)
