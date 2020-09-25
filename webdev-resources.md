@@ -28,6 +28,8 @@
 
 [Color schemes generator](https://coolors.co/)
 
+[Photopea | Online Photo Editor](https://www.photopea.com/)
+
 ## Libraries
 
 [CSS3 loaders and spinner](https://vineethtrv.github.io/loader/)
