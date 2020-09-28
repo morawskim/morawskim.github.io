@@ -1,5 +1,29 @@
 # ansible
 
+## Zmienne
+
+Zmienne `playbook` mogą być definiowane bezpośrednio w kluczu `vars`, lub wczytane z zewnętrznego pliku przez klucz `vars_files`. Ostania możliwość to interaktywnie pytania o wartości zmiennych używając klucza `vars_prompt`. Wszystkie tak zdefiniowane zmienne mogą być używane w zakresie playbooka, w dowolnym zadaniu lub dołączonych zadaniach.
+
+```
+---
+- hosts: all
+  vars:
+    foo: blue
+  vars_files:
+    - vars.yml
+  vars_prompt:
+    - name: username
+      prompt: "What is your username?"
+      private: no
+....
+```
+
+[Using Variables](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html)
+
+[Understanding variable precedence](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#understanding-variable-precedence)
+
+[Interactive input: prompts](https://docs.ansible.com/ansible/latest/user_guide/playbooks_prompts.html)
+
 ## ansible-vault
 
 `ansible-vault` to narzędzie do szyfrowania/deszyfrowania plików. Zaszyfrowany plik tworzymy wywołując polecenie `ansible-vault create filename.yml`. Zawartość pliku powinna być w formacie listy YAML. W przeciwnym przypadku otrzymamy komunikat `ERROR! variable files must contain either a dictionary of variables, or a list of dictionaries.` podczas wykonywania playbook. Zapisujemy dane i wychodzimy z edytora. Wszystkie zaszyfrowane pliki do którego odwołuje się playbook muszą być zaszyfrowane tym samym kluczem, inaczej `ansible-playbook` nie będzie zdolne do odczytania ich.
