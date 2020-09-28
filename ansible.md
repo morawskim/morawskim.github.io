@@ -24,6 +24,22 @@ Zmienne `playbook` mogą być definiowane bezpośrednio w kluczu `vars`, lub wcz
 
 [Interactive input: prompts](https://docs.ansible.com/ansible/latest/user_guide/playbooks_prompts.html)
 
+## Inventory
+
+Uruchomienie ansible playbook lokalnie - `ansible-playbook --connection=local --inventory 127.0.0.1, playbook.yml`
+
+### Dynamiczne dodawanie hostów przez moduł add_host
+
+Za pomocą `ansible` można tworzyć nowe serwery. Plik inventory jest przetwarzany przed wykonywaniem zadań z playbooka, więc nowo utworzony serwer nie będzie znajdował się w inventory. Dzięki pomocy modułu [add_host](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/add_host_module.html) jesteśmy w stanie dynamicznie dodać utworzony serwer do inventory. Nie zostanie on zapisany - będzie znajdował się wyłącznie w pamięci. Moduł ten pozwala nam za pomocą jednego wywołania playbooka utworzyć i skonfigurować serwer.
+
+```
+- name: Add a host with a non-standard port local to your machines
+  add_host:
+    name: "server_name"
+    ansible_ssh_host: "{{ server_ip }}"
+    ansiblee_ssh_user: "username"
+```
+
 ## ansible-vault
 
 `ansible-vault` to narzędzie do szyfrowania/deszyfrowania plików. Zaszyfrowany plik tworzymy wywołując polecenie `ansible-vault create filename.yml`. Zawartość pliku powinna być w formacie listy YAML. W przeciwnym przypadku otrzymamy komunikat `ERROR! variable files must contain either a dictionary of variables, or a list of dictionaries.` podczas wykonywania playbook. Zapisujemy dane i wychodzimy z edytora. Wszystkie zaszyfrowane pliki do którego odwołuje się playbook muszą być zaszyfrowane tym samym kluczem, inaczej `ansible-playbook` nie będzie zdolne do odczytania ich.
