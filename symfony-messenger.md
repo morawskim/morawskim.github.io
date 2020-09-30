@@ -34,3 +34,29 @@ retry_strategy:
     # Max time in ms that a retry should ever be delayed (0 = infinite)
     max_delay:            0
 ```
+
+Domyślnie wykorzystywana jest klasa `Symfony\Component\Messenger\Retry\MultiplierRetryStrategy` jako strategia do ponawiania. Bazuje ona na wzorze `delay = (delay * (multiple ^ retries))`. Możemy utworzyć własną strategię implementując interfejs `Symfony\Component\Messenger\Retry\RetryStrategyInterface`.
+
+Konfiguracja dla kolejki wywołań webhook może wyglądać następująco:
+
+```
+retry_strategy:
+    max_retries: 9
+    # milliseconds delay
+    delay: 300000
+    max_delay: 86400000
+    multiplier: 3
+```
+
+Da nam to następujący efekt:
+```
+Retry 1: 15 min
+Retry 2: 45 min
+Retry 3: 2 hours 15 min
+Retry 4: 6 hours 45 min
+Retry 5: 20 hours 15 min
+Retry 6: 24 hours
+Retry 7: 24 hours
+Retry 8: 24 hours
+Retry 9: 24 hours
+```
