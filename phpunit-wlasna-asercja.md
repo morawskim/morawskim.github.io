@@ -118,3 +118,42 @@ Dołączając trait `BoxAssertTrait` do TestCase jesteśmy w stanie zweryfikowa�
 [Asercje symfony/framework-bundle](https://github.com/symfony/framework-bundle/blob/2be18ce7e3c4ecd880a2fd219fcc48990a5340a4/Test/BrowserKitAssertionsTrait.php)
 
 [Write custom assertions](https://phpunit.readthedocs.io/en/9.3/extending-phpunit.html#extending-phpunit-custom-assertions)
+
+## Constraint test
+
+Mając własną klasę Constraint możemy napisać do niej test jednostkowy. Procedura nie różni się niczym od pisaniem testów dla innych klas. Tworzymy nowy przypadek testowy (TestCase). Definiujemy metodę testującą `testConstraint`. Metoda ta powinna tworzyć instancję Constraint i na tym obiekcje wywoływać metodę `evaluate`.
+
+Przykładowa metoda testująca z pakietu `/symfony/http-foundation`:
+
+```
+# ...
+use PHPUnit\Framework\ExpectationFailedException;
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestFailure;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Test\Constraint\ResponseIsSuccessful;
+
+# ....
+
+public function testConstraint(): void
+{
+    $constraint = new ResponseIsSuccessful();
+
+    $this->assertTrue($constraint->evaluate(new Response(), '', true));
+    $this->assertFalse($constraint->evaluate(new Response('', 404), '', true));
+
+    try {
+        $constraint->evaluate(new Response('', 404));
+    } catch (ExpectationFailedException $e) {
+        $this->assertStringContainsString("Failed asserting that the Response is successful.\nHTTP/1.0 404 Not Found", TestFailure::exceptionToString($e));
+
+        return;
+    }
+
+    $this->fail();
+}
+```
+
+[Constraints tests for symfony/http-foundation](https://github.com/symfony/http-foundation/tree/5139321b2b54dd2859540c9dbadf6fddf63ad1a5/Tests/Test/Constraint)
+
+[PHPUnit Constraints tests](https://github.com/sebastianbergmann/phpunit/tree/3e541657ad6c1104935f6a6d3924b7226083aceb/tests/unit/Framework/Constraint)
