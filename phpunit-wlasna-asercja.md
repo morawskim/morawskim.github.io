@@ -119,9 +119,11 @@ Dołączając trait `BoxAssertTrait` do TestCase jesteśmy w stanie zweryfikowa�
 
 [Write custom assertions](https://phpunit.readthedocs.io/en/9.3/extending-phpunit.html#extending-phpunit-custom-assertions)
 
-## Constraint test
+## Test
 
-Mając własną klasę Constraint możemy napisać do niej test jednostkowy. Procedura nie różni się niczym od pisaniem testów dla innych klas. Tworzymy nowy przypadek testowy (TestCase). Definiujemy metodę testującą `testConstraint`. Metoda ta powinna tworzyć instancję Constraint i na tym obiekcje wywoływać metodę `evaluate`.
+### Constraint
+
+Mając własną klasę Constraint możemy napisać do niej test jednostkowy. Procedura nie różni się niczym od pisaniem testów dla innych klas. Tworzymy nowy przypadek testowy (TestCase). Definiujemy metodę testującą `testConstraint`. Metoda ta powinna tworzyć instancję Constraint i na tym obiekcje wywoływać metodę `evaluate`. Trzeci parametr (`returnResult`) określa czy chcemy zwrócić wynik, czy rzucić wyjątkiem w przypadku niepowodzenia.
 
 Przykładowa metoda testująca z pakietu `/symfony/http-foundation`:
 
@@ -157,3 +159,28 @@ public function testConstraint(): void
 [Constraints tests for symfony/http-foundation](https://github.com/symfony/http-foundation/tree/5139321b2b54dd2859540c9dbadf6fddf63ad1a5/Tests/Test/Constraint)
 
 [PHPUnit Constraints tests](https://github.com/sebastianbergmann/phpunit/tree/3e541657ad6c1104935f6a6d3924b7226083aceb/tests/unit/Framework/Constraint)
+
+### Asercja
+
+Testowanie asercji wymaga utworzenie anonimowej klasy przypadku testowego, do którego dołączamy nasz trait z asercjami.
+
+```
+private function getTester(): TestCase
+{
+    $tester = new class() extends TestCase {
+        use BoxAssertTrait;
+    };
+
+    return $tester;
+}
+```
+
+W metodzie testującej oczekujemy zrzucenia wyjątku w przypadku niepowodzenia i wywołujemy naszą utworzoną asercję.
+
+```
+$this->expectException(AssertionFailedError::class);
+$this->expectExceptionMessage('Box has value "1-2"');
+$this->getTester()->assertBoxIsEqual($boxExpected, $boxActual);
+```
+
+[symfony/framework-bundle - WebTestCaseTest](https://github.com/symfony/framework-bundle/blob/2be18ce7e3c4ecd880a2fd219fcc48990a5340a4/Tests/Test/WebTestCaseTest.php)
