@@ -1,6 +1,10 @@
 Hello
 =====
 
+## 2020-10
+[PHPUnit - własna asercja](phpunit-wlasna-asercja.md)
+[Ansible](ansible.md)
+
 ## 2020-09
 [Symfony Controller](symfony-controller.md)
 [Profilowanie kodu Xdebug/Blackfire](profilowanie-kodu-xdebug-blackfire.md)
