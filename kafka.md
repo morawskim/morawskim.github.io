@@ -99,3 +99,38 @@ Główne atrybuty konfiguracyjne to:
 * [retries](https://kafka.apache.org/26/documentation/#retries)
 
 * [delivery.timeout.ms](https://kafka.apache.org/26/documentation/#delivery.timeout.ms)
+
+## systemd units
+
+Zookeeper Unit File
+
+```
+[Unit]
+Requires=network.target remote-fs.target
+After=network.target remote-fs.target
+
+[Service]
+Type=simple
+ExecStart=/opt/kafka/bin/zookeeper-server-start.sh /opt/kafka/config/zookeeper.properties
+ExecStop=/opt/kafka/bin/zookeeper-server-stop.sh
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Kafka Unit File
+```
+[Unit]
+Requires=zookeeper.service
+After=zookeeper.service
+
+[Service]
+Type=simple
+ExecStart=/opt/kafka/bin/kafka-server-start.sh /opt/kafka/bin/config/server.properties
+ExecStop=/home/kafka/kafka/bin/kafka-server-stop.sh
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target
+```
