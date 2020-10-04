@@ -60,3 +60,41 @@ Retry 7: 24 hours
 Retry 8: 24 hours
 Retry 9: 24 hours
 ```
+
+## Standalone
+
+Z komponentu możemy korzystać w dowolnym projekcie PHP. Punktem wejścia (entrypoint) jest interfejs `Symfony\Component\Messenger \MessageBusInterface`, który umożliwia nam przesłanie wiadomości do magistrali. Cała pracę związaną z przesłaniem wiadomości wykonują middlewares. Implementacje `MessageBusInterface` odpowiadają tylko za wywołanie kolejnych middlewerów. Jednym z najważniejszych middleware jest `SendMessageMiddleware`, który utrwala przesłaną wiadomość wykorzystując określony transport. Najprostsza implementacja transportu to `InMemoryTransport`, który jest wykorzystywany w testach jednostkowych. Prócz niego możemy przekazać wiadomość do Doctrine, RabbitMQ czy  Redis. Mając wiele możliwości utrwalenia wiadomości musimy powiązać wiadomość z kolejką. Interfejs `SendersLocatorInterface` wymaga utworzenia metody `getSenders`, która zwróci nam tablicę transportów dla wiadomości. Domyślna implementacja tego interfejsu - `SendersLocator` - oczekuje jako pierwszy parametr tablicę, gdzie klucz to nazwa klasy wiadomości (albo `*` jeśli dla każdej wiadomości chcemy wykorzystać dany transport), a wartość to tablica nazw transportów zarejestrowanych w ServiceContainer.
+
+```
+<?php
+
+use Psr\Container\ContainerInterface;
+use Symfony\Component\Messenger\MessageBus;
+use Symfony\Component\Messenger\Middleware\SendMessageMiddleware;
+use Symfony\Component\Messenger\Transport\InMemoryTransport;
+use Symfony\Component\Messenger\Transport\Sender\SendersLocator;
+use Symfony\Contracts\Service\ServiceLocatorTrait;
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+$connection = DriverManager::getConnection(['url' => 'sqlite:///db.sqlite']);
+
+
+$transport = new InMemoryTransport();
+$container = new class([
+    'memory' => function () use ($transport) {
+        return $transport;
+    }
+]) implements ContainerInterface {
+    use ServiceLocatorTrait;
+};
+
+$locator = new SendersLocator(['*' => ['memory']], $container);
+$sendMessageMiddleware = new SendMessageMiddleware($locator);
+
+$middlewareHandlers = [$sendMessageMiddleware];
+$bus = new MessageBus($middlewareHandlers);
+
+$message = new stdClass();
+$bus->dispatch($message);
+```
