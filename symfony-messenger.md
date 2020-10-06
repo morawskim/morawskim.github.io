@@ -98,3 +98,20 @@ $bus = new MessageBus($middlewareHandlers);
 $message = new stdClass();
 $bus->dispatch($message);
 ```
+
+W pliku `Resources/config/messenger.xml` pakietu `symfony/framework-bundle` rejestrowane są domyślne middlewary komponentu Messenger. Domyślnie Rejestrowane są poniższe middlewary.
+
+```
+$defaultMiddleware = [
+    'before' => [
+        ['id' => 'add_bus_name_stamp_middleware'],
+        ['id' => 'reject_redelivered_message_middleware'],
+        ['id' => 'dispatch_after_current_bus'],
+        ['id' => 'failed_message_processing_middleware'],
+    ],
+    'after' => [
+        ['id' => 'send_message'],
+        ['id' => 'handle_message'],
+    ],
+];
+```
