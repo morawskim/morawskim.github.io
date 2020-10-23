@@ -38,6 +38,8 @@
 
 [Knopf.css - Open source button system leveraging CSS variables](https://knopf.dev/)
 
+[cssbuttons: HTML & CSS Button Collection](https://cssbuttons.vercel.app/)
+
 ### Hover effects
 
 [A collection of CSS hover effects](https://emilkowalski.github.io/css-effects-snippets/)
