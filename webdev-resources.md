@@ -30,6 +30,8 @@
 
 [Photopea | Online Photo Editor](https://www.photopea.com/)
 
+[CSS Grids layouts made easy!](https://grid.layoutit.com/)
+
 ## Libraries
 
 [CSS3 loaders and spinner](https://vineethtrv.github.io/loader/)
@@ -39,6 +41,10 @@
 [Knopf.css - Open source button system leveraging CSS variables](https://knopf.dev/)
 
 [cssbuttons: HTML & CSS Button Collection](https://cssbuttons.vercel.app/)
+
+[Animated hamburger menu icons for modern web apps](https://github.com/web-padawan/vanilla-hamburger)
+
+[BVSelect - VanillaJS Fully Customizable SelectBox](https://bmsvieira.github.io/BVSelect-VanillaJS/)
 
 ### Hover effects
 
