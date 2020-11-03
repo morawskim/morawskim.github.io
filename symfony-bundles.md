@@ -96,3 +96,15 @@ W kontrolerze możemy określić, że nasza końcówka wymaga autoryzacji korzys
 `Nelmio\ApiDocBundle\Routing\FilteredRouteCollectionBuilder` - Filtruje końcówki, które będą wyświetlane w dokumentacji OpenAPI. Końcówka musi pasować do przynajmniej jednego matchera.
 
 `Nelmio\ApiDocBundle\ApiDocGenerator` - Klasa odpowiada za wygenerowanie pliku schematu OpenAPI
+
+## lexik/jwt-authentication-bundle
+
+Mikrousługi często oferują API REST zabezpieczone tokenem JWT. Taki token może być tworzony przez inną usługę. Domyślnie bundle `lexik/jwt-authentication-bundle` skonfigurowany jest do podpisywania i weryfikowania tokenów przez parę kluczy. Jeśli nie korzystamy z tego rozwiązania musimy odpowiednio skonfigurować bundle pod HMAC. Zamiast ustawiać klucze `public_key`, `secret_key` i `pass_phrase` ustawiamy tylko tajny współdzielony klucz w `secret_key`. Dodatkowo musimy ustawić z jakiego algorytmu podpisywania chcemy skorzystać. W moim przypadku `HS256`. Taką wartość podajemy w kluczu `signature_algorithm` elementu konfiguracji `encoder`.
+
+```
+lexik_jwt_authentication:
+    secret_key: '%env(resolve:JWT_KEY)%'
+    encoder:
+        # encryption algorithm used by the encoder service
+        signature_algorithm: HS256
+```
