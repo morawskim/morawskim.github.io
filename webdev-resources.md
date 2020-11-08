@@ -32,6 +32,8 @@
 
 [CSS Grids layouts made easy!](https://grid.layoutit.com/)
 
+[Animista CSS animations on demand](https://animista.net)
+
 ## Libraries
 
 [CSS3 loaders and spinner](https://vineethtrv.github.io/loader/)
