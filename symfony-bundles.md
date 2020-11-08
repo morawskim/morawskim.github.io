@@ -108,3 +108,11 @@ lexik_jwt_authentication:
         # encryption algorithm used by the encoder service
         signature_algorithm: HS256
 ```
+
+Tokeny JWT mogą przechowywać claim z identyfikatorem użytkownika w innym polu niż encja użytkownika. W claim możemy przechowywać login, a naszym identyfikatorem użytkownika będzie kolumna `id`. W takim przypadku musimy skonfigurować parametry `user_identity_field` i `user_id_claim`. Pierwszy przechowuje nazwę pole w naszej encji, zaś drugi nazwę pola w tokenie JWT. W moim przypadku encja użytkownika wykorzystuje pole `id` do identyfikacji. Zaś w tokenie identyfikator użytkownika jest przechowywany w claim `uid`.
+
+```
+lexik_jwt_authentication:
+    user_identity_field: id
+    user_id_claim: uid
+```
