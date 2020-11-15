@@ -1,6 +1,6 @@
 # Progressive web app
 
-PWA to aplikacja internetowa, która stwarza wrażenie działania jako natywna aplikacja mobilna.
+PWA to aplikacja internetowa, która stwarza wrażenie działania jako natywna aplikacja mobilna. To strona internetowa utworzona w technologiach webowych (HTML, CSS i JavaScript), ale oferuje użytkownikom lepsze wrażenia.
 Jednym z wymogów działania PWA jest dostęp do strony tylko przez protokół HTTPS (nie dotyczy 127.0.0.1).
 Jeśli korzystamy z wirtualnych hostów to możemy w przeglądarce chrome, wymusić aby traktował taką domenę jako bezpieczną. Musimy w przeglądarce przejść pod adres `chrome://flags/`. Następnie szukamy flagi `insecure`. Lista zostanie zawężona, a my szukamy flagi `Insecure origins treated as secure`. w polu tekstowym wpisujemy nazwę naszej domeny. Kolejne domeny rozdzielamy przecinkiem. Nazwa domeny musi zawierać protokół - `http`. Obok znajduje się przycisk pozwalający włączyć flagę. Włączamy flagę i klikamy w przycisk restartu przeglądarki.
 
@@ -67,6 +67,13 @@ Service Workers (SW) umożliwiają aplikacji przechwytywanie i buforowanie zapyt
 * [Push API](https://developer.mozilla.org/en-US/docs/Web/API/Push_API)
 
 * [Background Sync API](https://wicg.github.io/background-sync/spec/)
+
+Właściwości Service Worker:
+* działa w oddzielnej globalnej przestrzeni
+* nie jest powiązany z konkretną stroną witryny
+* nie ma dostępu do DOM
+* wymaga SSL
+* w pełni asynchroniczne API (brak dostępu do synchronicznego API np. `localStorage`)
 
 Nie mamy większego wpływu na cykl życia SW. Przeglądarka decyduje kiedy zresetować/uruchomić wątek SW i kiedy go zakończyć. Dlatego w funkcjach obsługi zdarzeń korzystamy z metody `event.waitUntil`, aby poinformować przeglądarkę że ciągle robimy ważne rzeczy. Przeglądarka będzie oczekiwać aż obiekt `Promise` który przekazujemy osiągnie status `settled`.  Nie możemy bazować na globalnym stanie wewnątrz SW. Jeśli chcemy coś utrwalić musimy korzystać z IndexedDB API.
 
