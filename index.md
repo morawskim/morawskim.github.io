@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2020-11
+[DevOps apps](devops-apps.md)
 [Symfony Monolog](symfony-monolog.md)
 [Docker przydatne obrazy](docker-przydatne-obrazy)
 [Uncaught ReferenceError: regeneratorRuntime is not defined](uncaught-referenceerror-regeneratorruntime-is-not-defined.md)
