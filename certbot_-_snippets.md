@@ -47,3 +47,8 @@ Jeśli w pliku konfiguracyjnym certbota korzystamy z apiv1 to podczas wywoływan
 certbot -d *.morawskim.pl -d morawskim.pl --manual --preferred-challenges dns certonly
 ```
 
+## certonly
+
+`certbot certonly --standalone --agree-tos --email your_email -d your_domain`
+
+Powyższe polecenie pobierze certyfikat SSL bez wykonywania innych zmian w systemie wykorzystując wbudowany serwer HTTP.
