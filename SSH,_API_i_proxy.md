@@ -6,7 +6,8 @@ Podczas integracji z API REST, wykorzystuje bibliotekę Guzzle. Pozwala ona usta
 ``` php
 //konfiguracja klienta guzzle
 //...
-'proxy' => '127.0.0.1:8080'
+'proxy' => 'http://172.17.0.1:8080',
+'verify' => false,
 //...
 ```
 
