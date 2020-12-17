@@ -25,3 +25,15 @@ decorate_workers_output = no
 [Logs to stdout get prefixed with warning in php-fpm image #207](https://github.com/docker-library/php/issues/207)
 
 [Docker and php-fpm truncated logs workaround and configuration for php](https://ypereirareis.github.io/blog/2019/07/30/php-fpm-truncated-log-workaround-solution-trick/)
+
+## Dostrojenie konfiguracji nginx
+
+Serwer HTTP `nginx` generuje unikalny identyfikator żądania. Możemy go przekazać do PHP, lub ustawić w nagłówku HTTP, kiedy nginx pełni rolę serwera proxy.
+
+```
+# przekazanie do PHP
+fastcgi_param HTTP_X_REQUEST_ID $request_id;
+
+# ustawienie nagłówka X-Request-Id
+proxy_set_header X-Request-Id $request_id;
+```
