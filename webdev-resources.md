@@ -34,6 +34,8 @@
 
 [Animista CSS animations on demand](https://animista.net)
 
+[Make and generate beautiful gradients](https://www.css-gradient.com/)
+
 ## Libraries
 
 [CSS3 loaders and spinner](https://vineethtrv.github.io/loader/)
