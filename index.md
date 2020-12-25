@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2020-12
+[Generowanie kodu z specyfikacji OpenAPI](generowanie-kodu-z-specyfikacji-openapi.md)
+
 ## 2020-11
 [DevOps apps](devops-apps.md)
 [Symfony Monolog](symfony-monolog.md)
