@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2020-12
+[PHP Quality Assurance](php-quality-assurance.md)
 [Generowanie kodu z specyfikacji OpenAPI](generowanie-kodu-z-specyfikacji-openapi.md)
 
 ## 2020-11
