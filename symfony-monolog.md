@@ -37,3 +37,5 @@ fastcgi_param HTTP_X_REQUEST_ID $request_id;
 # ustawienie nagłówka X-Request-Id
 proxy_set_header X-Request-Id $request_id;
 ```
+
+W aplikacji Symfony możemy doinstalować bundle `chrisguitarguy/request-id-bundle`. Pobiera on identyfikator żądania  z nagłówka HTTP, albo generuje własny identyfikator. Identyfikator ten zwracany jest w nagłówku odpowiedzi HTTP (nazwa nagłówka jest konfigurowana przez parametr `response_header`). Ustawiając parametr `enable_monolog` możemy włączyć integrację z biblioteką `monolog` dzięki czemu w logach będzie rejestrowany także identyfikator `request_id`. Dzięki temu łatwo odszukamy wpisy dotyczące konkretnego żądania HTTP.
