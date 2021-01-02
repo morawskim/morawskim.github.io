@@ -36,6 +36,8 @@
 
 [Make and generate beautiful gradients](https://www.css-gradient.com/)
 
+[CSS Gradient — Generator, Maker, and Background](https://cssgradient.io/)
+
 ## Libraries
 
 [CSS3 loaders and spinner](https://vineethtrv.github.io/loader/)
