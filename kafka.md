@@ -21,6 +21,12 @@ Jeśli korzystamy z obrazu dockera `php:7.4` to musimy doinstalować pakiet `lib
 
 Instalacja, konfiguracja i zarządzanie klastrem Kafki zajmuje sporo czasu. [Cloudkarafka](https://www.cloudkarafka.com/) dostarcza w pełni zarządzane klastry. Posiada także darmowy pakiet, który jest wystarczający dla programistów jak i wersji demo aplikacji.
 
+### Docker image
+
+Większość obrazów zawiera starą wersję Kafki (np. [0.11 od spotify](https://hub.docker.com/r/spotify/kafka)).
+
+Pewnym wyjątkiem są obrazy [confluentinc/cp-kafka](https://hub.docker.com/r/confluentinc/cp-kafka). Obrazy te zawierają Kafkę dostarczaną przez Confluent Community. Przykładowy plik compose - jest dostępny w [repozytorium](https://github.com/confluentinc/kafka-images/blob/master/examples/kafka-single-node/docker-compose.yml)
+
 ## CLI DEMO
 
 Ze [strony](https://kafka.apache.org/downloads) pobieramy Kafke np. `kafka_2.13-2.6.0` , rozpakowujemy archiwum i przechodzimy do nowego utworzonego katalogu.
