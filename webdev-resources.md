@@ -62,6 +62,8 @@
 
 [A collection of CSS3 powered hover effects](https://ianlunn.github.io/Hover/)
 
+[Sunset offers a collection of different CSS-powered transitions](https://sunsetcss.com/)
+
 ## Tips
 
 [A series examining modern CSS solutions to problems](https://moderncss.dev/)
