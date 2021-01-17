@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2021-01
+[fail2ban](fail2ban.md)
 [JS/TS Quality Assurance](js-ts-quality-assurance.md)
 
 ## 2020-12
