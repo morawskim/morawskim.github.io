@@ -125,3 +125,13 @@ $b->addCallable(function (int $p) {
 });
 
 ```
+
+## PHP_CodeSniffer
+
+Pakiet `slevomat/coding-standard` zawiera dodatkowe reguły dla `PHP_CodeSniffer`.
+
+Pakiet `phpcompatibility/php-compatibility` zawiera reguły do sprawdzenia zgodności z różnymi wersjami PHP.
+
+[slevomat/coding-standard](https://github.com/slevomat/coding-standard)
+
+[phpcompatibility/php-compatibility](https://github.com/PHPCompatibility/PHPCompatibility)
