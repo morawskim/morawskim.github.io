@@ -66,3 +66,31 @@ module.exports = (on, config) => {
     return getConfigurationByFile(file)
 }
 ```
+
+## Docker i CI
+
+Cypress dostarcza kilka rodzaj [obrazów dockera](https://docs.cypress.io/examples/examples/docker.html#Images) do uruchamiana testów lokalnie czy też w procesie CI. Do uruchamiania testów lokalnie możemy skorzystać z obrazu `cypress/included:<VCYPRESS_VERSION>` - `docker run --rm -it -v $(PWD)/frontend/e2e:/e2e -w /e2e cypress/included:6.2.1 --env configFile=ssorder-develop`. Chcąc zintegrować cypresss z GitLab CI/CD korzystamy z obrazów `cypress/browsers` np. `cypress/browsers:node14.7.0-chrome84`, który zawiera przeglądarkę chrome. Dostępne są także wariant z chromem i firefoxem. Następnie instalujemy cypress i uruchamiamy testy wywołujące polecenie - `npx cypress run --browser chrome --env configFile=ssorder-develop`
+
+[Run Cypress with a single Docker command](https://www.cypress.io/blog/2019/05/02/run-cypress-with-a-single-docker-command/)
+
+Przykładowe zadanie dla GitLab CI/CD do uruchomienia testów e2e wykorzystując przeglądarkę chrome wraz z przechowywaniem artefaktów z testów:
+
+```
+cypress:
+  image: cypress/browsers:node14.7.0-chrome84
+  stage: qa
+  script:
+    - pushd frontend/e2e
+    - npm ci
+    - $(npm bin)/cypress verify
+    - $(npm bin)/cypress run --browser chrome --env configFile=ssorder-develop
+  artifacts:
+    expire_in: 1 week
+    when: always
+    paths:
+      - frontend/e2e/cypress/
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+```
+
+[Cypress tests in Docker on GitLab](https://gitlab.com/cypress-io/cypress-example-docker-gitlab)
