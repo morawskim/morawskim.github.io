@@ -10,6 +10,8 @@
 
 [300+ right mix of SVG icons for your project.](https://icons.theforgesmith.com/)
 
+[Free Open Source SVG Icon Library](https://heroicons.dev/)
+
 ## Tools
 
 [Generator of CSS @Keyframes animations, box shadows, colors and more](https://keyframes.app/animate/)
