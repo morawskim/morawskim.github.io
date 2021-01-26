@@ -126,6 +126,26 @@ $b->addCallable(function (int $p) {
 
 ```
 
+Psalm umożliwia nam kontrolowanie ograniczenie wartości stringów tylko do tych występujących jako klucze w tablicy. Służy do tego Magical type `key-if`.
+
+Przykład deklaracji:
+
+```
+/**
+ * @template T of key-of<self::MAP>
+ *
+ * @param T $key
+ *
+ * @return string
+ */
+public function getValue(string $key): string
+{
+    return self::MAP[$key];
+}
+```
+
+[DEMO](https://psalm.dev/r/db71e09250)
+
 ## PHP_CodeSniffer
 
 Pakiet `slevomat/coding-standard` zawiera dodatkowe reguły dla `PHP_CodeSniffer`.
