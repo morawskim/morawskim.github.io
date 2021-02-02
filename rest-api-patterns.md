@@ -42,3 +42,13 @@ paths:
 [LHS BracketsPermalink](https://www.moesif.com/blog/technical/api-design/REST-API-Design-Filtering-Sorting-and-Pagination/#lhs-brackets)
 
 [Range Filter](https://api-platform.com/docs/core/filters/#range-filter)
+
+## Dobre praktyki
+
+* Końcówki powinny zwracać dane w formacie umożliwiającym rozszerzenie (dodanie metadanych np. informacji o łącznej liczbie elementów). Dane powinny być opakowane w obiekt. [Wrap collection in object](https://github.com/allegro/restapi-guideline#wrap-collection-in-object)
+
+* Ograniczajmy korzystanie z typu boolean dla pól reprezentujących status (np. isPublished). Wartość logiczna uniemożliwia dodanie dodatkowych statusów.
+
+* Nie stosujmy "magicznych liczb" (np. dla pól status), a zamiast nich korzystajmy z kodów w formie łańcucha znaków.
+
+* [Zagnieżdżajmy obce relacje](https://github.com/allegro/restapi-guideline#nesting-foreign-resources-relations)
