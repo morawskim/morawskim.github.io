@@ -37,6 +37,9 @@ module.exports = () => {
 }
 ```
 
+Do naszej eksportowanej funkcji przekazywany jest także obiekt konfiguracji (webpack z dodatkowymi danymi Shopware).
+Jeśli chcemy coś zmienić w domyślnej konfiguracji, to możemy to zrobić modyfikując ten obiekt.
+
 W zależności gdzie mamy katalog `node_modules` będziemy musieli dostosować ściezki do katalogów. Musimy korzystać z składni `use` a nie bezpośrednio z `loader`, ponieważ moduł npm Shopware `@shopware-ag/webpack-plugin-injector` nadpisuje właściwość `include` - [https://github.com/shopware/webpack-plugin-injector/blob/515f4f78bf09a031d8bdbc13a4494bea9536511d/index.js#L285](https://github.com/shopware/webpack-plugin-injector/blob/515f4f78bf09a031d8bdbc13a4494bea9536511d/index.js#L285)
 
 ## Tagi Shopware
@@ -51,7 +54,9 @@ Implementując interfejs `\Shopware\Core\Checkout\Cart\CartProcessorInterface` i
 
 ### Cart collector
 
-Implementując interfejs `\Shopware\Core\Checkout\Cart\CartDataCollectorInterface` i oznaczając usługę tagiem `shopware.cart.collector` możemy zaimplementować logikę, która np. doda do każdej pozycji koszyka dodatkowe właściwości np. dodatkowe atrybuty produktów.
+Implementując interfejs `\Shopware\Core\Checkout\Cart\CartDataCollectorInterface` i oznaczając usługę
+tagiem `shopware.cart.collector` możemy zaimplementować logikę, która np. doda do każdej pozycji koszyka
+dodatkowe właściwości np. dodatkowe atrybuty produktów.
 
 ### CMS data resolver
 
