@@ -52,3 +52,11 @@ Implementując interfejs `\Shopware\Core\Checkout\Cart\CartProcessorInterface` i
 ### Cart collector
 
 Implementując interfejs `\Shopware\Core\Checkout\Cart\CartDataCollectorInterface` i oznaczając usługę tagiem `shopware.cart.collector` możemy zaimplementować logikę, która np. doda do każdej pozycji koszyka dodatkowe właściwości np. dodatkowe atrybuty produktów.
+
+### CMS data resolver
+
+Tworząc własne elementy CMS, najczęściej musimy dynamicznie pobierać dane. W takim przypadku tworzymy usługę,
+która implementuje interfejs `\Shopware\Core\Content\Cms\DataResolver\Element\CmsElementResolverInterface` i
+oznaczyć ją tagiem `shopware.cms.data_resolver`. Warto wzorować się na domyślnych implementacjach Shopware.
+
+Do pobrania podstawowych danych na stronie (np. nawigacja) wstrzykujemy usługę implementującą interfejs `\Shopware\Storefront\Page\GenericPageLoaderInterface` i wywołujemy metodę `load`. Do pobierania strony CMS wstrzykujemy usługę, która implementuje interfejs `\Shopware\Core\Content\Cms\SalesChannel\SalesChannelCmsPageLoaderInterface`. Następnie możemy wywołać metodę `load` - `$page = $this->cmsPageLoader->load($request, $salesChannelContext);`. W zmiennej `$page` będziemy mieć dostępne wszystkie bloki z danymi niezbędnymi do wyświetlenia strony. Możemy skorzystać z domyślnego widoku `@Storefront/storefront/page/content/index.html.twig` do wyświetlenia strony.
