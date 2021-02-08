@@ -1,6 +1,9 @@
 Hello
 =====
 
+##2021-02
+[REST API patterns](rest-api-patterns.md)
+
 ##2021-01
 [cypress](cypress.md)
 [fail2ban](fail2ban.md)

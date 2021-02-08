@@ -52,3 +52,22 @@ paths:
 * Nie stosujmy "magicznych liczb" (np. dla pól status), a zamiast nich korzystajmy z kodów w formie łańcucha znaków.
 
 * [Zagnieżdżajmy obce relacje](https://github.com/allegro/restapi-guideline#nesting-foreign-resources-relations)
+
+* Nie powinniśmy umieszczać w parametrach ścieżki ani w query string wrażliwych danych
+
+* Klient HTTP powinien traktować każdy nierozpoznany kod status HTTP jako odpowiednik kodu statusu x00 klasy np. "201 Created" traktujemy jak "200 OK"
+
+* Włączmy kompresje dla protokołu HTTP1.1 (i persistent connection), a najlepiej migrujmy do protokołu HTTP2
+
+* Zasób REST powinien być rzeczownikiem w formie mnogiej [Resource Name](https://github.com/allegro/restapi-guideline#name)
+
+* Tworząc końcówki batch musimy zwracać status i błędy/ostrzeżenia dla wszystkich elementów z żądania. Możemy wykorzystać kod HTTP 207 (MULTI Status) [Zalando HTTP 207](https://opensource.zalando.com/restful-api-guidelines/#152)
+
+## Webhook
+
+Webhooki możemy zabezpieczyć wykorzystując jedną z poniższych metod:
+
+* biała lista adresów IP (trudne w utrzymaniu)
+* wysyłanie tajnego tokenu w nagłówku zadania HTTP
+* szyfrowanie i podpisywanie żądania HTTP
+* użycie certyfikatów x509
