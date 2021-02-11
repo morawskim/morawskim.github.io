@@ -66,6 +66,8 @@
 
 [Sunset offers a collection of different CSS-powered transitions](https://sunsetcss.com/)
 
+[Drop-in CSS transitions](https://transition.style)
+
 ## Tips
 
 [A series examining modern CSS solutions to problems](https://moderncss.dev/)
