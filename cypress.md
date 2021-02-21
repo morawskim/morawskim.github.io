@@ -118,3 +118,23 @@ Testy uruchomione na serwerze ciągłej integracji mogą czasem się nie powieś
 ```
 
 [Test Retries](https://docs.cypress.io/guides/guides/test-retries.html)
+
+## Typy TypeScript
+
+Definiując własne polecenia w cypress i korzystając z TypeScript musimy rozszerzyć interfejs `Chainable` o deklarację naszych poleceń. Musimy utworzyć plik `support/index.d.ts` z zawartością:
+
+```
+/// <reference types="cypress" />
+
+declare namespace Cypress {
+    interface Chainable {
+        /**
+         * A command for receiving an access token
+         */
+        getAuthToken(userName: string, password: string): Chainable<string>;
+    }
+}
+
+```
+
+[Types for custom commands](https://docs.cypress.io/guides/tooling/typescript-support.html#Types-for-custom-commands)
