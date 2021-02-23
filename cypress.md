@@ -49,8 +49,9 @@ const path = require('path')
 
 function getConfigurationByFile(file) {
     const pathToConfigFile = path.resolve('./cypress', 'config', `${file}.json`)
+    const raw = fs.readFileSync(pathToConfigFile);
 
-    return fs.readJson(pathToConfigFile)
+    return JSON.parse(raw);
 }
 
 /**
@@ -61,9 +62,10 @@ module.exports = (on, config) => {
     // `config` is the resolved Cypress config
 
     // accept a configFile value or use development by default
-    const file = config.env.configFile || 'docker'
+    const file = config.env.configFile || 'docker';
+    const configurationFromFile = getConfigurationByFile(file);
 
-    return getConfigurationByFile(file)
+    return { ...configurationFromFile, env: { ...configurationFromFile.env, ...config.env } };
 }
 ```
 
