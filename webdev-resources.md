@@ -12,6 +12,8 @@
 
 [Free Open Source SVG Icon Library](https://heroicons.dev/)
 
+[olicons](https://github.com/owlling/olicons)
+
 ## Tools
 
 [Generator of CSS @Keyframes animations, box shadows, colors and more](https://keyframes.app/animate/)
