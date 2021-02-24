@@ -42,6 +42,10 @@
 
 [CSS Gradient — Generator, Maker, and Background](https://cssgradient.io/)
 
+[yourbrowser - Sprawdź, jakiej przeglądarki używa Twój klient](http://yourbrowser.is/)
+
+[What browser am I using?](https://www.whatismybrowser.com/)
+
 ## Libraries
 
 [CSS3 loaders and spinner](https://vineethtrv.github.io/loader/)
