@@ -167,3 +167,9 @@ Po tych zmianach i zbudowaniu części administracyjnej rozszerzenie dewelopersk
          }),
          new MiniCssExtractPlugin({
 ```
+
+## Reguły
+
+Dla każdej metody płatności/wysyłki możemy przypisać regułę dostępności. W przypadku gdy np. zawartość koszyka nie będzie spełniać wymogów reguły dana opcja wysyłki/płatności zostanie zablokowana i nie będzie można złożyć zamówienia. Shopware dostarcza wiele wbudowanych reguł. Wystarczy wyszukać klasy z tagiem `shopware.rule.definition` - `./bin/console debug:container --tag shopware.rule.definition`. Jeśli chcemy utworzyć własną regułę musi ona także dziedziczyć po klasie `\Shopware\Core\Framework\Rule\Rule`. Aby pokazać naszą nową regułę w panelu administratora, musimy utworzyć dekorator dla usługi RuleConditionService (`vendor/shopware/platform/src/Administration/Resources/app/administration/src/app/service/rule-condition.service.js`). Przykładowy dekorator z rejestracją domyślnych reguł shopware jest zdefiniowany w pliku `vendor/shopware/platform/src/Administration/Resources/app/administration/src/app/decorator/condition-type-data-provider.decorator.js`.
+
+[Register a custom rule via plugin](https://docs.shopware.com/en/shopware-platform-dev-en/how-to/custom-rule)
