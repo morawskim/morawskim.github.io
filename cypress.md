@@ -140,3 +140,53 @@ declare namespace Cypress {
 ```
 
 [Types for custom commands](https://docs.cypress.io/guides/tooling/typescript-support.html#Types-for-custom-commands)
+
+## Filmy i zrzuty ekranu w wysokiej rozdzielczości
+
+Zrzuty ekranu i film z przebiegu testu są ważną częścią w analizie niepoprawnych testów. W trybie headless testy są odpalane w przeglądarce z rozdzielczością 1000 x 660. Możemy zmienić te ustawienia, ale musimy to zrobić dla każdej przeglądarki oddzielnie.
+
+W pliku `plugins/index.js` w eksportowanej funkcji (`module.exports`) dodajemy poniższy kod:
+
+```
+// let's increase the browser window size when running headlessly
+// this will produce higher resolution images and videos
+// https://on.cypress.io/browser-launch-api
+on('before:browser:launch', (browser = {}, launchOptions) => {
+    console.log(
+        'launching browser %s is headless? %s',
+        browser.name,
+        browser.isHeadless,
+    )
+
+    // the browser width and height we want to get
+    // our screenshots and videos will be of that resolution
+    const width = 1920
+    const height = 1080
+
+    console.log('setting the browser window size to %d x %d', width, height)
+
+    if (browser.name === 'chrome' && browser.isHeadless) {
+        launchOptions.args.push(`--window-size=${width},${height}`)
+
+        // force screen to be non-retina and just use our given resolution
+        launchOptions.args.push('--force-device-scale-factor=1')
+    }
+
+    if (browser.name === 'electron' && browser.isHeadless) {
+        // might not work on CI for some reason
+        launchOptions.preferences.width = width
+        launchOptions.preferences.height = height
+    }
+
+    if (browser.name === 'firefox' && browser.isHeadless) {
+        launchOptions.args.push(`--width=${width}`)
+        launchOptions.args.push(`--height=${height}`)
+    }
+
+    return launchOptions
+});
+```
+
+[Generate High-Resolution Videos and Screenshots](https://cypress-io.ghost.io/blog/2021/03/01/generate-high-resolution-videos-and-screenshots/)
+
+[DEMO](https://github.com/bahmutov/cypress-wikipedia/tree/abc02b74e12ba3f3c38de5635fef6bf4b2875213)
