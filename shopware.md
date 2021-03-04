@@ -46,7 +46,7 @@ W zależności gdzie mamy katalog `node_modules` będziemy musieli dostosować �
 
 ### Walidator koszyka
 
-Implementując interfejs `\Shopware\Core\Checkout\Cart\CartValidatorInterface` jesteśmy w stanie weryfikować stan koszyka. Możemy ją wykorzystać w celu sprawdzenia reguł biznesowych np. dotyczących adresu wysyłkowego. Naszą usługę musimy oznaczyć tagiem `shopware.cart.validator`.
+Implementując interfejs `\Shopware\Core\Checkout\Cart\CartValidatorInterface` jesteśmy w stanie weryfikować stan koszyka. Możemy ją wykorzystać w celu sprawdzenia reguł biznesowych np. dotyczących adresu wysyłkowego. Naszą usługę musimy oznaczyć tagiem `shopware.cart.validator`. W pewnym konkretnych momentach Shopware wywołuje metodę kontrolera `\Shopware\Storefront\Controller\StorefrontController::addCartErrors`, aby błędy z koszyka dodać do komunikatów flash. Najczęściej powoduje to wyświetlenie dwukrotnie komunikatów.
 
 ### Cart processor
 
@@ -185,3 +185,8 @@ bin/console feature:dump
 Dla każdej metody płatności/wysyłki możemy przypisać regułę dostępności. W przypadku gdy np. zawartość koszyka nie będzie spełniać wymogów reguły dana opcja wysyłki/płatności zostanie zablokowana i nie będzie można złożyć zamówienia. Shopware dostarcza wiele wbudowanych reguł. Wystarczy wyszukać klasy z tagiem `shopware.rule.definition` - `./bin/console debug:container --tag shopware.rule.definition`. Jeśli chcemy utworzyć własną regułę musi ona także dziedziczyć po klasie `\Shopware\Core\Framework\Rule\Rule`. Aby pokazać naszą nową regułę w panelu administratora, musimy utworzyć dekorator dla usługi RuleConditionService (`vendor/shopware/platform/src/Administration/Resources/app/administration/src/app/service/rule-condition.service.js`). Przykładowy dekorator z rejestracją domyślnych reguł shopware jest zdefiniowany w pliku `vendor/shopware/platform/src/Administration/Resources/app/administration/src/app/decorator/condition-type-data-provider.decorator.js`.
 
 [Register a custom rule via plugin](https://docs.shopware.com/en/shopware-platform-dev-en/how-to/custom-rule)
+
+
+## Zamówienia
+
+Aby dodać walidatory do dodatkowych pól na formularzu składania zamówienia musimy podłączyć się do zdarzenia `framework.validation.order.create`. Do naszej metody zostanie przekazany obiekt zdarzenia `\Shopware\Core\Framework\Validation\BuildValidationEvent`. Wywołując na nim metodę `getDefinition` jesteśmy w stanie dodać dodatkowe reguły walidacji. Shopware domyślnie tłumaczy komunikaty walidacji dlatego ważne jest nadpisanie metody statycznej `getErrorName` klasy `\Symfony\Component\Validator\Constraint` w innym przypadku zobaczymy komunikaty walidacji `error.VIOLATION::REGEX_FAILED_ERROR`. Blok `page_checkout_confirm_alerts` z widoku `vendor/shopware/platform/src/Storefront/Resources/views/storefront/page/checkout/confirm/index.html.twig` odpowiada za wyświetlanie błędów walidacji.
