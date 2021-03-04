@@ -168,6 +168,18 @@ Po tych zmianach i zbudowaniu części administracyjnej rozszerzenie dewelopersk
          new MiniCssExtractPlugin({
 ```
 
+### watch
+
+Shopware  umożliwia uruchomienie panelu administracyjnego w wersji deweloperskiej.
+`PROJECT_ROOT=/var/www/html PORT=8080 HOST=0.0.0.0 ESLINT_DISABLE=true ENV_FILE=/var/www/html/.env APP_URL=http://127.0.0.1 npm run --prefix vendor/shopware/platform/src/Administration/Resources/app/administration/ dev`
+Gdzie `PORT` i `HOST` służą do konfiguracji serwera HTTP webpack. Port ten powinien być przekazany w konfiguracji dockera. `APP_URL` to adres Shopware.
+
+Przed uruchomieniem tego polecenia wywoływane są także polecenia:
+```
+bin/console bundle:dump
+bin/console feature:dump
+```
+
 ## Reguły
 
 Dla każdej metody płatności/wysyłki możemy przypisać regułę dostępności. W przypadku gdy np. zawartość koszyka nie będzie spełniać wymogów reguły dana opcja wysyłki/płatności zostanie zablokowana i nie będzie można złożyć zamówienia. Shopware dostarcza wiele wbudowanych reguł. Wystarczy wyszukać klasy z tagiem `shopware.rule.definition` - `./bin/console debug:container --tag shopware.rule.definition`. Jeśli chcemy utworzyć własną regułę musi ona także dziedziczyć po klasie `\Shopware\Core\Framework\Rule\Rule`. Aby pokazać naszą nową regułę w panelu administratora, musimy utworzyć dekorator dla usługi RuleConditionService (`vendor/shopware/platform/src/Administration/Resources/app/administration/src/app/service/rule-condition.service.js`). Przykładowy dekorator z rejestracją domyślnych reguł shopware jest zdefiniowany w pliku `vendor/shopware/platform/src/Administration/Resources/app/administration/src/app/decorator/condition-type-data-provider.decorator.js`.
