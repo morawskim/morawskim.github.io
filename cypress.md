@@ -75,6 +75,8 @@ Cypress dostarcza kilka rodzaj [obrazów dockera](https://docs.cypress.io/exampl
 
 [Run Cypress with a single Docker command](https://www.cypress.io/blog/2019/05/02/run-cypress-with-a-single-docker-command/)
 
+W przypadku problemów z działaniem przeglądarki Chrome w Docker możemy spróbować przekazać dodatkowe flagi do chrome - [Add additional flags when running Chrome](https://github.com/cypress-io/cypress/issues/3633)
+
 Przykładowe zadanie dla GitLab CI/CD do uruchomienia testów e2e wykorzystując przeglądarkę chrome wraz z przechowywaniem artefaktów z testów:
 
 ```
@@ -143,7 +145,7 @@ declare namespace Cypress {
 
 ## Filmy i zrzuty ekranu w wysokiej rozdzielczości
 
-Zrzuty ekranu i film z przebiegu testu są ważną częścią w analizie niepoprawnych testów. W trybie headless testy są odpalane w przeglądarce z rozdzielczością 1000 x 660. Możemy zmienić te ustawienia, ale musimy to zrobić dla każdej przeglądarki oddzielnie.
+Zrzuty ekranu i film z przebiegu testu są ważną częścią w analizie niepoprawnych testów. W trybie headless testy są odpalane w przeglądarce z rozdzielczością 1000 x 660. Możemy zmienić te ustawienia, ale musimy to zrobić dla każdej przeglądarki oddzielnie. Dodatkowo w pliku konfiguracyjnym ustawiamy dwa parametry: `viewportWidth` i `viewportHeight`. Możemy je także przekazać jako argumenty `--config viewportWidth=1920,viewportHeight=1080`.
 
 W pliku `plugins/index.js` w eksportowanej funkcji (`module.exports`) dodajemy poniższy kod:
 
