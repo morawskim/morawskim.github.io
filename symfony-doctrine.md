@@ -138,3 +138,9 @@ $executor->execute($fixtures, $input->getOption('append'));
 Podczas inicjowania klasy `\Doctrine\Common\DataFixtures\Purger\ORMPurger` możemy przekazać argument `$excluded` z tablicą nazw tabel/widoków, które mają być wykluczone z wyczyszczenia.
 
 [DoctrineMigrationsBundle - Manual Tables](https://symfony.com/doc/current/bundles/DoctrineMigrationsBundle/index.html#manual-tables)
+
+## Generowanie encji z istniejącej tabeli
+
+Przenosząc projekt na ORM Doctrine możemy na podstawie istniejącej struktury tabeli wygenerować encje. Wystarczy wywołać polecenie `php bin/console doctrine:mapping:import "App\Entity" annotation --path=src/Entity --filter <PATTERN>`. Ustawienie opcji `--filter` umożliwia nam ograniczenie generowanych encji, tylko do tych które pasują do wzorca `PATTERN`.
+
+[How to Generate Entities from an Existing Database](https://symfony.com/doc/current/doctrine/reverse_engineering.html)
