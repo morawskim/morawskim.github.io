@@ -60,6 +60,8 @@
 
 [BVSelect - VanillaJS Fully Customizable SelectBox](https://bmsvieira.github.io/BVSelect-VanillaJS/)
 
+[Modern CSS reset](https://github.com/filipelinhares/ress)
+
 ### Hover effects
 
 [A collection of CSS hover effects](https://emilkowalski.github.io/css-effects-snippets/)
