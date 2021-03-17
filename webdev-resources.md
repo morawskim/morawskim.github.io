@@ -81,3 +81,7 @@
 [A series examining modern CSS solutions to problems](https://moderncss.dev/)
 
 [A collection of popular layouts and patterns made with CSS](https://csslayout.io/patterns/)
+
+## Webcomponents
+
+[GitHub's Web Component collection](https://github.com/github/github-elements)
