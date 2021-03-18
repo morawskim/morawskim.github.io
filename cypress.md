@@ -24,6 +24,8 @@ Instalujemy typescript - `npm install --save-dev typescript`. Następnie tworzym
 Następnie instalujemy pakiet cypress - `npm install cypress --save-dev`.
 Po tych krokach powinniśmy być w stanie otworzyć i zweryfikować czy cypress działa wywołując polecenie - `npx cypress open` i odpalając jeden z przykładowych testów.
 
+Warto dodatkowo zainstalować pakiet `faker` (i pakiet z typami dla TS `@types/faker`). W pliku konfiguracji TypeScript do kluczu `types` należy dodać nowy element `faker`, inaczej TS nie załaduje pliku z definicją dla `faker` - https://www.typescriptlang.org/tsconfig#types. Biblioteka nie wspiera obecnie modułów ES, więc musimy skorzystać z alternatywnej składni `import * as fakerPL from 'faker/locale/pl'`.
+
 W katalogu gdzie instalowaliśmy cypress powinien znajdować się plik konfiguracyjny `cypress.json`. Jeśli go nie ma to go tworzymy i wklejamy minimalną konfigurację:
 
 ```
