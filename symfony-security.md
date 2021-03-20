@@ -22,3 +22,9 @@ usług.
 
 [Using a Custom Query to Load the User](https://symfony.com/doc/current/security/user_provider.html#using-a-custom-query-to-load-the-user)
 [EntityUserProvider](https://github.com/symfony/doctrine-bridge/blob/b8c1485e3a12dda96aa2f40c6f12a109710adcc3/Security/User/EntityUserProvider.php#L52)
+
+## EquatableInterface
+
+Interfejs `\Symfony\Component\Security\Core\User\EquatableInterface` umożliwia implementację własnego algorytmu porównania użytkownika. W zależności od konfiguracji firewalla Symfony może serializować obiekt użytkownika (`UserInterface`) do sesji na końcu żądania HTTP. Klasa `\Symfony\Component\Security\Http\Firewall\ContextListener` na początku obsługi kolejnego żądania deserializuje użytkownika i Symfony próbuje odświeżyć dane użytkownika. Zajmuje się tym metoda [refreshUser](https://github.com/symfony/symfony/blob/1b937403255c9f841d6597b2bcefc0e93fe51545/src/Symfony/Component/Security/Http/Firewall/ContextListener.php#L195)
+
+Metoda [\Symfony\Component\Security\Core\Authentication\Token\AbstractToken::hasUserChanged](https://github.com/symfony/symfony/blob/1b937403255c9f841d6597b2bcefc0e93fe51545/src/Symfony/Component/Security/Core/Authentication/Token/AbstractToken.php#L256) deleguje porównanie dwóch obiektów użytkownika lub wykorzystywana jest domyślna implementacja. Jeśli dane są różne, użytkownik zostanie wylogowany. Zwiększa to bezpieczeństwo aplikacji.
