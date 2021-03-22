@@ -71,3 +71,5 @@ Webhooki możemy zabezpieczyć wykorzystując jedną z poniższych metod:
 * wysyłanie tajnego tokenu w nagłówku zadania HTTP
 * szyfrowanie i podpisywanie żądania HTTP
 * użycie certyfikatów x509
+
+[OpenApi Webhook example](https://github.com/OAI/OpenAPI-Specification/blob/master/examples/v3.1/webhook-example.yaml)
