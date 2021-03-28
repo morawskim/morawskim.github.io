@@ -15,3 +15,9 @@ Za pomocą programu `turbostat` możemy obserwować aktualne zużycie energii - 
 ## rfkill
 
 `rfkill` to narzędzia do włączania i wyłączania urządzeń bezprzewodowych. Wywołując polecenie `sudo rfkill list wifi` otrzymamy aktualny status. W przypadku blokady `Soft blocked` możemy użyć kombinacji klawiszy, aby spróbować wyłączyć tryb samolotowy. Jeśli to nie pomoże, możemy użyć polecenia `sudo rfkill unblock wifi`.
+
+## ventoy
+
+Ventoy to narzędzie przeznaczone do tworzenia rozruchowych nośników USB wykorzystując obrazy ISO z dowolnym systemem operacyjnym. Program można ściągnąć ze strony projektu w serwisie [Github](https://github.com/ventoy/Ventoy/releases). Po ściągnięciu i rozpakowaniu archiwum wywołujemy polecenie `sudo ./Ventoy2Disk.sh -i <IDENTYFIKATOR_URZADZENIA>`, gdzie `<IDENTYFIKATOR_URZADZENIA>` to ścieżka do naszego pendrive np. `/dev/sdb`.
+
+Następnie montujemy partycję z etykietą "Ventoy" i kopiujemy nasze pliki ISO. W niektórych dystrybucjach Linuxa, musimy doinstalować pakiet `fuse-exfat`, aby móc zamontować partycję (exfat) i przekopiować pliki ISO.
