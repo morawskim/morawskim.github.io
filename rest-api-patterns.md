@@ -73,3 +73,30 @@ Webhooki możemy zabezpieczyć wykorzystując jedną z poniższych metod:
 * użycie certyfikatów x509
 
 [OpenApi Webhook example](https://github.com/OAI/OpenAPI-Specification/blob/master/examples/v3.1/webhook-example.yaml)
+
+## Bezpieczeństwo
+
+* [deserialization vulnerability](https://cheatsheetseries.owasp.org/cheatsheets/Deserialization_Cheat_Sheet.html)
+    * jeśli to możliwe korzystamy z formatu JSON
+    * zezwalamy tylko na klasy z białej listy
+
+
+* [session fixation](https://owasp.org/www-community/attacks/Session_fixation)
+    * Zawsze generujemy nowy identyfikator sesji, po uwierzytelnieniu użytkownika
+    * Identyfikator sesji przesyłamy tylko przez cookie
+
+* [ABAC](https://en.wikipedia.org/wiki/Attribute-based_access_control)
+    * ABAC to alternatywa dla RBAC (role-based access control)
+    * Decyzje dotyczące kontroli dostępu są podejmowane dynamicznie dla każdego żądania API przy użyciu atrybutów podzielonych w cztery kategorie:
+        * atrybuty podmiotu (zalogowanego użytkownika)
+        * atrybuty dotyczące zasobu, do którego uzyskiwany jest dostęp
+        * atrybuty dotyczące akcji, którą użytkownik próbuje wykonać (edycja, kasowanie)
+        * atrybut dotyczący środowiska lub kontekstu (np. pora dnia, dzień tygodnia)
+
+* capability token
+    * Często wykorzystywany do współdzielenia dostęp do dokumentu/zasobu
+    * Nie wymaga konta
+
+* Macaroons to rodzaj tokenu kryptograficznego, który można używać do reprezentowania możliwości i innych uprawnień autoryzacyjnych. Można dołączyć nowe obostrzenia do tokenu, które ograniczają sposób, w jaki można go używać.
+
+* Nigdy nie podążamy za przekierowaniami HTTP
