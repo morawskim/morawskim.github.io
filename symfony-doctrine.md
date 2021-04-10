@@ -144,3 +144,8 @@ Podczas inicjowania klasy `\Doctrine\Common\DataFixtures\Purger\ORMPurger` może
 Przenosząc projekt na ORM Doctrine możemy na podstawie istniejącej struktury tabeli wygenerować encje. Wystarczy wywołać polecenie `php bin/console doctrine:mapping:import "App\Entity" annotation --path=src/Entity --filter <PATTERN>`. Ustawienie opcji `--filter` umożliwia nam ograniczenie generowanych encji, tylko do tych które pasują do wzorca `PATTERN`.
 
 [How to Generate Entities from an Existing Database](https://symfony.com/doc/current/doctrine/reverse_engineering.html)
+
+
+## Schema filter
+
+Wykorzystując filtry możemy wykluczyć tabele, którymi zarządza Doctrine. `DoctrineBundle` zawiera klasę `\Doctrine\Bundle\DoctrineBundle\Dbal\SchemaAssetsFilterManager`, która jest punktem wejścia i deleguje filtrowanie do przekazanych klas. W tym samym bundle klasa `WellKnownSchemaFilterPass` rejestruje filtr (`BlacklistSchemaAssetFilter`), który ignoruje wewnętrzne tabele frameworka Symfony, jeśli są wykorzystywane w aplikacji. Klasa `\Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DbalSchemaFilterPass` wyszukuje wszystkie usługi z tagiem `doctrine.dbal.schema_filter` i przekazuje je do  SchemaAssetsFilterManager. Konfigurując klucz `schema_filter` (`doctrine` / `dbal`) możemy zignorować tabele, które pasują do wyrażenia regularnego.  W takim przypadku klasa `\Doctrine\Bundle\DoctrineBundle\DependencyInjection\DoctrineExtension` zarejestruje filtr `\Doctrine\Bundle\DoctrineBundle\Dbal\RegexSchemaAssetFilter`.
