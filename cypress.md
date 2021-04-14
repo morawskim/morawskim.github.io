@@ -194,3 +194,65 @@ on('before:browser:launch', (browser = {}, launchOptions) => {
 [Generate High-Resolution Videos and Screenshots](https://cypress-io.ghost.io/blog/2021/03/01/generate-high-resolution-videos-and-screenshots/)
 
 [DEMO](https://github.com/bahmutov/cypress-wikipedia/tree/abc02b74e12ba3f3c38de5635fef6bf4b2875213)
+
+## API i upload pliku (FormData)
+
+Cypress nie umożliwia nam wysyłanie obiektu FormData przez `cy.request` ([Posting formData using cypress doesn't work #1647](https://github.com/cypress-io/cypress/issues/1647)). Musimy skorzystać z XMLHttpRequest.
+W pliku `support/commands.ts` dodajemy definicję polecenia `uploadFile`.
+
+```
+Cypress.Commands.add('uploadFile', (blob: Blob, fileName: string, jwt: string) => {
+    Cypress.log({
+        name: 'apiUploadFile',
+        displayName: 'API Upload file',
+        message: `Upload file"`,
+        consoleProps: () => {
+            return {
+                'file': blob,
+            }
+        }
+    });
+
+    const formData = new FormData();
+    formData.set('file', blob, fileName);
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "/api/files/upload");
+    xhr.setRequestHeader('Authorization', `Bearer ${jwt}`)
+
+    return new Cypress.Promise((resolve, reject) => {
+        xhr.onload = function () {
+            resolve(xhr);
+        };
+        xhr.onerror = function () {
+            resolve(xhr);
+        };
+
+        xhr.send(formData);
+    })
+})
+```
+W pliku `support/index.d.ts` dodajemy deklarację naszej metody dla TS.
+```
+/// <reference types="cypress" />
+
+declare namespace Cypress {
+    interface Chainable {
+        uploadFile(blog: Blob, fileName: string, token: string): Chainable<XMLHttpRequest>;
+    }
+}
+```
+
+Następnie tworzymy test. Z fixtures pobieramy plik i korzystając z nowego polecenia cypress `uploadFile` przesyłamy plik na serwer.
+
+```
+const fileName = 'huge.jpg';
+
+cy.fixture(fileName, 'binary')
+    .then(Cypress.Blob.binaryStringToBlob)
+    .then( (blob) => {
+        cy.uploadFile(blob, fileName, token).then(response => {
+            expect(response.status).to.eq(201);
+        });
+    });
+```
