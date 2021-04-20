@@ -116,3 +116,15 @@ lexik_jwt_authentication:
     user_identity_field: id
     user_id_claim: uid
 ```
+
+## zenstruck/foundry
+
+Pakiet `zenstruck/foundry` pozwala tworzyć fixtures w Symfony wykorzystując Doctrine.
+Modelując logikę domenową niektóre kolumny w encji mogą być ukryte i nie mają setterów. W takim przypadku nie możemy ustawić wartości. Często są to pola związane z datą, które są automatycznie ustawiane w przypadku zmiany statusu,
+Rozwiązaniem jest skonfigurowanie [instantiation](https://github.com/zenstruck/foundry#instantiation), który ustawi wartości z wykorzystaniem Reflection API.
+
+```
+JobFactory::new([
+    // ...
+])->instantiateWith((new Instantiator())->alwaysForceProperties(['expiredAt']))->create();
+```
