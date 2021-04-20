@@ -128,3 +128,18 @@ JobFactory::new([
     // ...
 ])->instantiateWith((new Instantiator())->alwaysForceProperties(['expiredAt']))->create();
 ```
+
+W przypadku relacji 1 do 1 jak na przykład osoba i adres, możemy wykorzystać metodę `initialize` klasy `Factory` do utworzenia nowego adresu i przypisaniu go do konta.
+
+```
+protected function initialize(): self
+{
+    // see https://github.com/zenstruck/foundry#initialization
+    return $this
+         ->afterInstantiate(function (Person $person) {
+             $person->setAddress(AddressFactory::new()->withoutPersisting()->create()->object());
+             $person->setPassword($this->userPasswordEncoder->encodePassword($person, $person->getPassword()));
+         })
+    ;
+}
+```
