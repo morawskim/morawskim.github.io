@@ -159,6 +159,36 @@ nelmio_api_doc:
         - basicAuth: []
 ```
 
+### Upload pliku (multipart/form-data)
+
+Za pomocą specyfikacji OpenAPI możemy opisać końcówkę do przesyłania plików. Wyświetlając wygenerowaną dokumentację w przeglądarce, będziemy w tanie przesłać wybrany plik.
+Wpierw definiujemy schemat dla żądania HTTP i podłączamy go do obiektu `RequestBody` ustawiając poprawną wartość dla mediaType.
+
+[OpenAPI file-upload](https://swagger.io/docs/specification/describing-request-body/file-upload/)
+
+```
+FileUpload:
+    type: object
+    properties:
+        upload_image_form[file]:
+            type: string
+            format: binary
+```
+
+```
+/**
+ * ...
+ * @OA\RequestBody(
+ *     description="Upload a file",
+ *     @OA\MediaType(
+ *           mediaType="multipart/form-data",
+ *           @OA\Schema(ref="#/components/schemas/FileUpload")
+ *     )
+ * )
+ * ...
+ */
+```
+
 ### Klasy
 
 `Nelmio\ApiDocBundle\Routing\FilteredRouteCollectionBuilder` - Filtruje końcówki, które będą wyświetlane w dokumentacji OpenAPI. Końcówka musi pasować do przynajmniej jednego matchera.
