@@ -120,6 +120,29 @@ Następnie do każdej końcówki API musimy dodać referencję do zdefiniowanego
  * ....
 ```
 
+### Endpoint zewnętrznej biblioteki
+
+`lexik/jwt-authentication-bundle` to popularna biblioteka symfony, która oferuje autoryzację przez token JWT.
+Dostarczana końcówka API przez tą bibliotekę nie znajduje się w wynikowym pliku schematu OpenAPI.
+Rozwiązaniem jest jawne utworzenie dokumentacji dla tego endpointa w pliku konfiguracyjnym `config/packages/nelmio_api_doc.yaml`.
+
+```
+nelmio_api_doc:
+    documentation:
+        paths:
+            /api/sessions:
+                post:
+                    requestBody:
+                        description: 'Login'
+                        content:
+                            application/json:
+                                schema:
+                                    $ref: '#/components/schemas/LoginRequest'
+                    responses:
+                        401:
+                            description: Invalid credentials
+```
+
 ### Klasy
 
 `Nelmio\ApiDocBundle\Routing\FilteredRouteCollectionBuilder` - Filtruje końcówki, które będą wyświetlane w dokumentacji OpenAPI. Końcówka musi pasować do przynajmniej jednego matchera.
