@@ -143,6 +143,22 @@ nelmio_api_doc:
                             description: Invalid credentials
 ```
 
+### HTTP auth basic
+
+Środowiska testowe często są zabezpieczane przez mechanizm Auth Basic. Specyfikacja OpenAPi nie umożliwia nam w sekcji servers osadzić loginu i hasła (https://swagger.io/specification/#server-object). Musimy zdefiniować security scheme i ustawić go globalnie.
+
+```
+nelmio_api_doc:
+    documentation:
+        components:
+            securitySchemes:
+                basicAuth:
+                    type: http
+                    scheme: basic
+    security:
+        - basicAuth: []
+```
+
 ### Klasy
 
 `Nelmio\ApiDocBundle\Routing\FilteredRouteCollectionBuilder` - Filtruje końcówki, które będą wyświetlane w dokumentacji OpenAPI. Końcówka musi pasować do przynajmniej jednego matchera.
