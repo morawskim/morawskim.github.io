@@ -91,6 +91,35 @@ components:
 
 W kontrolerze możemy określić, że nasza końcówka wymaga autoryzacji korzystając z adnotacji `Nelmio\ApiDocBundle\Annotation\Security`. Jeśli zadeklarowaliśmy mechanizm bezpieczeństwa pod nazwą `Bearer` to naszą akcję kontrolera oznaczamy przez `@Security(name="Bearer")`. W celu nadania końcówce API podsumowanie i opis korzystamy z domyślnej konwencji PHPDocs. Pierwsza linia to krótkie podsumowanie. Następnie możemy podać dłuższy opis.
 
+### Globalny nagłówek
+
+W pliku konfiguracyjnym `config/packages/nelmio_api_doc.yaml` deklarujemy nowy parametr.
+
+```
+nelmio_api_doc:
+    documentation:
+        components:
+            parameters:
+                SalesChannel:
+                    name: X-Sales-Channel
+                    in: header
+                    required: true
+                    schema:
+                        type: string
+                        enum: [pl, us]
+```
+
+Następnie do każdej końcówki API musimy dodać referencję do zdefiniowanego parametru.
+
+```
+/**
+ * .....
+ * @OA\Parameter(
+ *     ref="#/components/parameters/SalesChannel"
+ * )
+ * ....
+```
+
 ### Klasy
 
 `Nelmio\ApiDocBundle\Routing\FilteredRouteCollectionBuilder` - Filtruje końcówki, które będą wyświetlane w dokumentacji OpenAPI. Końcówka musi pasować do przynajmniej jednego matchera.
