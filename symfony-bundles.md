@@ -189,6 +189,86 @@ FileUpload:
  */
 ```
 
+### Dziedziczenie i polimorfizm
+
+W API możemy mieć modele, które współdzielą wspólne właściwości. OpenAPI umożliwia nam opisanie takich modeli w formie kompozycji zamiast powtarzać tą samą definicję. Wystarczy skorzystać z `allOf`
+
+[Inheritance and Polymorphism](https://swagger.io/docs/specification/data-models/inheritance-and-polymorphism/)
+
+W przykładzie poniżej definiujemy typ `OfferBaseType`, a także `OfferProductType`. Ten drugi zawiera wszystkie właściwości typu `OfferBaseType` a także definiuje swoje właściwości między innymi `price`.
+
+```
+nelmio_api_doc:
+    documentation:
+        components:
+            schemas:
+                # ....
+                OfferBaseType:
+                    required:
+                        - title
+                        # .....
+                    properties:
+                        title:
+                            type: string
+                        # .......
+                    type: object
+                OfferProductType:
+                    allOf:
+                        - $ref: '#/components/schemas/OfferBaseType'
+                        - type: object
+                          required:
+                            - price
+                            # ....
+                          properties:
+                            price:
+                                $ref: '#/components/schemas/MoneyType'
+                            # ....
+```
+
+W interfejsie API będziemy mieć końcówki, które przyjmują dane z różnych schematów np. różne typy produktów.
+OpenAPI umożliwia nam opisać żądania i odpowiedzi API za pomocą kilku alternatywnych schematów. Wykorzystujemy do tego `oneOf`.
+
+W przykładzie poniżej definiujemy schemat `OfferData`, który może być ogłoszeniem: o pracę, usługi lub produktu.
+Następnie przy opisie końcówki możemy skorzystać z adnotacji `RequestBody` i określić, że body żądania musi być jednym z typów ogłoszenia (`OfferData`).
+
+```
+nelmio_api_doc:
+    documentation:
+        components:
+            schemas:
+                OfferData:
+                    description: Offer
+                    oneOf:
+                        - ref: "#/components/schemas/OfferJobType"
+                        - ref: "#/components/schemas/OfferServiceType"
+                        - ref: "#/components/schemas/OfferProductType"
+                CreateOfferRequest:
+                    type: object
+                    required:
+                        - type
+                        - offer
+                    properties:
+                        type:
+                            type: string
+                            enum:
+                                - service
+                                - product
+                                - job_offer
+                        offer:
+                            $ref: '#/components/schemas/OfferData'
+```
+
+```
+/**
+ * ...
+ * @OA\RequestBody(
+ *     description="Create offer",
+ *     @OA\JsonContent(ref="#/components/schemas/CreateOfferRequest")
+ * )
+ * ...
+ */
+```
+
 ### Klasy
 
 `Nelmio\ApiDocBundle\Routing\FilteredRouteCollectionBuilder` - Filtruje końcówki, które będą wyświetlane w dokumentacji OpenAPI. Końcówka musi pasować do przynajmniej jednego matchera.
