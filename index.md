@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2021-04
+[NelmioApiDocBundle](nelmioapidocbundle.md)
 [Terraform](terraform.md)
 [Sonata/admin-bundle](sonata-admin-bundle.md)
 
