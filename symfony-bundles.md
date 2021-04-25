@@ -269,6 +269,25 @@ nelmio_api_doc:
  */
 ```
 
+### Alternative Names
+
+Alternatywne nazwy mogą się przydać w momencie wykorzystywania klas zewnętrznej biblioteki. `misd/phone-number-bundle` dostarcza typ `PhoneNumberType`, dla którego wygenerowana dokumentacja OpenAPI to obiekt bez żadnej właściwości. Możemy dokumentować pola formularza [Symfony Form types](https://github.com/nelmio/NelmioApiDocBundle/blob/master/Resources/doc/index.rst#symfony-form-types) albo skorzystać właśnie z [Alternative Names](https://github.com/nelmio/NelmioApiDocBundle/blob/master/Resources/doc/alternative_names.rst).
+
+Przykład poniżej definiuje alias `PhoneNumberType`, a następnie dokumentujemy ten typ danych.
+```
+nelmio_api_doc:
+    models:
+        names:
+            - { alias: PhoneNumberType, type: Misd\PhoneNumberBundle\Form\Type\PhoneNumberType }
+    documentation:
+        components:
+            schemas:
+                PhoneNumberType:
+                    description: Phone number
+                    type: string
+                    example: "+48888666111"
+```
+
 ### Klasy
 
 `Nelmio\ApiDocBundle\Routing\FilteredRouteCollectionBuilder` - Filtruje końcówki, które będą wyświetlane w dokumentacji OpenAPI. Końcówka musi pasować do przynajmniej jednego matchera.
