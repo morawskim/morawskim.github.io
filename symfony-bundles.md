@@ -62,11 +62,12 @@ monolog:
 
 ## lexik/jwt-authentication-bundle
 
-Mikrousługi często oferują API REST zabezpieczone tokenem JWT. Taki token może być tworzony przez inną usługę. Domyślnie bundle `lexik/jwt-authentication-bundle` skonfigurowany jest do podpisywania i weryfikowania tokenów przez parę kluczy. Jeśli nie korzystamy z tego rozwiązania musimy odpowiednio skonfigurować bundle pod HMAC. Zamiast ustawiać klucze `public_key`, `secret_key` i `pass_phrase` ustawiamy tylko tajny współdzielony klucz w `secret_key`. Dodatkowo musimy ustawić z jakiego algorytmu podpisywania chcemy skorzystać. W moim przypadku `HS256`. Taką wartość podajemy w kluczu `signature_algorithm` elementu konfiguracji `encoder`.
+Mikrousługi często oferują API REST zabezpieczone tokenem JWT. Taki token może być tworzony przez inną usługę. Domyślnie bundle `lexik/jwt-authentication-bundle` skonfigurowany jest do podpisywania i weryfikowania tokenów przez parę kluczy. Jeśli nie korzystamy z tego rozwiązania musimy odpowiednio skonfigurować bundle pod HMAC. Zamiast ustawiać klucze `public_key`, `secret_key` i `pass_phrase` ustawiamy tylko tajny współdzielony klucz w `secret_key`. Dodatkowo musimy ustawić z jakiego algorytmu podpisywania chcemy skorzystać. W moim przypadku `HS256`. Taką wartość podajemy w kluczu `signature_algorithm` elementu konfiguracji `encoder`. Klucz `token_ttl` pozwala nam ograniczyć ważność tokenu JWT do 30 min (1800 sekund).
 
 ```
 lexik_jwt_authentication:
     secret_key: '%env(resolve:JWT_KEY)%'
+    token_ttl: 1800
     encoder:
         # encryption algorithm used by the encoder service
         signature_algorithm: HS256
@@ -78,6 +79,25 @@ Tokeny JWT mogą przechowywać claim z identyfikatorem użytkownika w innym polu
 lexik_jwt_authentication:
     user_identity_field: id
     user_id_claim: uid
+```
+
+## gesdinet/jwt-refresh-token-bundle
+
+Pakiet ten umożliwia nam odświeżanie tokenu JWT z informacji przesłanych w ciasteczku HTTP. Dzięki temu, żaden złośliwy kod JavaScript nie może pobrać ani tokenu JWT, ani refresh tokenu.  Niestety ta funkcjonalność ciągle czeka na scalenie i wypuszczenie w nowej wersji ([Support for refresh token in cookie](https://github.com/markitosgv/JWTRefreshTokenBundle/pull/199)).
+
+Przykładowa konfiguracja bundle z cookie:
+
+```
+gesdinet_jwt_refresh_token:
+  ttl: 2592000
+  user_identity_field: username
+  user_provider: security.user.provider.concrete.<your_user_provider_name_in_security_yaml><>
+  cookie:
+    sameSite: lax
+    path: /api/
+    domain: null
+    httpOnly: true
+    secure: true
 ```
 
 ## zenstruck/foundry
