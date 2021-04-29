@@ -92,3 +92,40 @@ public function toString($object)
         : 'Person account';
 }
 ```
+
+## Filtry
+
+Wszystkie filtry, które możemy zastosować na stronie listy implementują interfejs `\Sonata\AdminBundle\Filter\FilterInterface`. W [dokumentacji](https://sonata-project.org/bundles/doctrine-orm-admin/master/doc/reference/filter_field_definition.html) znajdziemy także przykładowe użycie.
+W przypadku encji, które korzystają z [Inheritance Mapping](https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/inheritance-mapping.html) niezbędny jest filtr `ClassFilter`. Doctrine uniemożliwia nam za pomocą DQL utworzenia warunku WHERE na kolumnie oznaczonej adnotacją `DiscriminatorColumn`. Musimy w takim przypadku korzystać z operatora `INSTANCE OF` (https://github.com/doctrine/orm/issues/4986).
+
+```
+$datagridMapper
+            ->add('type', ClassFilter::class, ['sub_classes' => $this->getSubClasses()]);
+```
+
+Dodatkowo jeśli korzystamy z filtru `ModelAutocompleteFilter` otrzymamy błąd [Bug: Method "get-autocomplete-items" with subclass](https://github.com/sonata-project/SonataAdminBundle/issues/3428).
+Rozwiązanie polega na przekazaniu parametru `subclass`. Dodatkowo w konfiguracji usługi panelu administratora musimy wywołać metodę `setSubClasses`, aby ustawić [dziedziczenie](https://symfony.com/doc/current/bundles/SonataAdminBundle/reference/advanced_configuration.html#inherited-classes).
+
+```
+$datagridMapper->add('category', ModelAutocompleteFilter::class, [
+    'advanced_filter' => false,
+], null, ['property' => 'name', 'req_params' => ['subclass' => OfferTypeEnum::PRODUCT]]);
+```
+
+```
+admin.offer:
+    class: App\Admin\OfferAdmin
+    arguments:
+        - ~
+        - App\Offer\Entity\Offer
+        - App\Admin\Controller\OfferController
+    calls:
+        - method: setSubClasses
+          arguments:
+              - !php/const App\Offer\Enum\OfferTypeEnum::JOB_OFFER: App\Offer\Entity\Job
+                !php/const App\Offer\Enum\OfferTypeEnum::PRODUCT: App\Offer\Entity\Product
+                !php/const App\Offer\Enum\OfferTypeEnum::SERVICE: App\Offer\Entity\Service
+    tags:
+        - { name: sonata.admin, manager_type: orm, label: Offer, group: offer }
+
+```
