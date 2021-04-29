@@ -5,7 +5,7 @@ Bundle `sonata-project/admin-bundle` pozwala nam szybko utworzyć panel administ
 Aby zmienić tytuł panelu administratora w pliku `config/packages/sonata_admin.yaml` zmieniamy klucz `title`. Dodatkowo wyłączamy funkcję globalnej wyszukiwarki ustawiając klucz `search` na wartość `false`.
 ```
 sonata_admin:
-    title: 'Allspace Admin'
+    title: 'My Admin'
     search: false
     # .....
 ```
