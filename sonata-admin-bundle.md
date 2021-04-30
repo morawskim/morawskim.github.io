@@ -129,3 +129,13 @@ admin.offer:
         - { name: sonata.admin, manager_type: orm, label: Offer, group: offer }
 
 ```
+
+## Szablony
+
+Szablony widoków możemy łatwo podmienić. W pliku konfiguracyjnym `config/packages/sonata_admin.yaml` wystarczy, że w kluczu `templates` ustawimy odpowiednią ścieżkę do naszego pliku szablonu twig jak w przykładzie poniżej. Modyfikując szablon `layout` możemy dodać skrypty JavaScript i arkusze styli CSS z encore.
+
+```
+sonata_admin:
+    templates:
+        layout: 'SonataAdminBundle/standard_layout.html.twig'
+```
