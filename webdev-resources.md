@@ -14,6 +14,8 @@
 
 [olicons](https://github.com/owlling/olicons)
 
+[pixel-perfect icons for web design](https://tabler-icons.io/)
+
 ## Tools
 
 [Generator of CSS @Keyframes animations, box shadows, colors and more](https://keyframes.app/animate/)
