@@ -139,3 +139,46 @@ sonata_admin:
     templates:
         layout: 'SonataAdminBundle/standard_layout.html.twig'
 ```
+
+## Własny typ pola
+
+Wykorzystując value object w encji np. money warto zdefiniować nowy typ pola formularza.
+W pliku `config/packages/sonata_doctrine_orm_admin.yaml` definiujemy pole `money` i podajemy ścieżkę do pliku widoku.
+
+```
+sonata_doctrine_orm_admin:
+  templates:
+    types:
+      show:
+        money: 'SonataAdminBundle/fieldtypes/show_money.html.twig'
+```
+
+Plik widoku powinien rozszerzać widok `@SonataAdmin/CRUD/base_show_field.html.twig`.
+
+```
+{% extends '@SonataAdmin/CRUD/base_show_field.html.twig' %}
+
+{% block field %}
+    {% if value %}
+        {{ value | money_localized_format }}
+    {% endif %}
+{% endblock %}
+```
+
+W metodzie `configureShowFields` możemy skorzystać z pola `money`.
+
+```
+protected function configureShowFields(ShowMapper $showMapper)
+{
+    $showMapper
+        ->add('id')
+        ->add('category', null, [
+            'associated_property' => 'name',
+        ])
+        // ......
+        ->add('price', 'money')
+        // ......
+}
+```
+
+[Create your own field type](https://symfony.com/doc/current/bundles/SonataAdminBundle/reference/field_types.html#create-your-own-field-type)
