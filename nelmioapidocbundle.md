@@ -226,6 +226,21 @@ nelmio_api_doc:
                     example: "+48888666111"
 ```
 
+## Nullable property
+
+W OpenAPI deklaracja właściwość, która może być wartością `null` albo referencją do innego objektu zależy od wersji specyfikacji OpenAPI - [How to manage nullable properties](https://jane.readthedocs.io/en/latest/tips/nullable.html)
+
+Przykład dla OpenAPi 3.0
+
+```
+MoneySerializedOrNull:
+    nullable: true
+    allOf:
+        - $ref: '#/components/schemas/MoneySerialized'
+```
+
+[How to specify a property can be null or a reference with swagger](https://stackoverflow.com/questions/40920441/how-to-specify-a-property-can-be-null-or-a-reference-with-swagger)
+
 ## Klasy
 
 `Nelmio\ApiDocBundle\Routing\FilteredRouteCollectionBuilder` - Filtruje końcówki, które będą wyświetlane w dokumentacji OpenAPI. Końcówka musi pasować do przynajmniej jednego matchera.
