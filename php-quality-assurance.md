@@ -155,3 +155,24 @@ Pakiet `phpcompatibility/php-compatibility` zawiera reguły do sprawdzenia zgodn
 [slevomat/coding-standard](https://github.com/slevomat/coding-standard)
 
 [phpcompatibility/php-compatibility](https://github.com/PHPCompatibility/PHPCompatibility)
+
+### Ignorowanie reguł
+
+Być może dla części pliku będziemy chcieli wyłączyć wybrane reguły PHPCS. [Stosując odpowiednie komentarze w kodzie możemy zignorować dowolny fragment lub linię kodu](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-parts-of-a-file). Obecnie nie możemy wyłączyć reguły dla metody ([phpcs:ignore in function doc](https://github.com/squizlabs/PHP_CodeSniffer/issues/2367)).
+
+Za pomocą komentarza `// phpcs:ignore Rule1, Rule2` ignorujemy bieżącą i następną linię.
+Wykorzystując `// phpcs:disable Rule1, Rule2` i `// phpcs:enable Rule1, Rule2` możemy zignorować określony fragment pliku.
+
+Domyślnie `phpcs` nie wyświetla nazwy reguły, która została naruszona. Musimy dodać parametr `-s` do wywołania.
+
+```
+./vendor/bin/phpcs -s tests/ObjectMother/Offer/OfferNormalizerArrayObjectMother.php
+
+FILE: tests/ObjectMother/Offer/OfferNormalizerArrayObjectMother.php
+--------------------------------------------------------------------------------------------------------
+FOUND 0 ERRORS AND 1 WARNING AFFECTING 1 LINE
+--------------------------------------------------------------------------------------------------------
+ 39 | WARNING | Line exceeds 120 characters; contains 194 characters
+    |         | (Generic.Files.LineLength.TooLong)
+--------------------------------------------------------------------------------------------------------
+```
