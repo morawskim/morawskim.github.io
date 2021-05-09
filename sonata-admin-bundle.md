@@ -156,6 +156,8 @@ sonata_doctrine_orm_admin:
 Plik widoku powinien rozszerzać widok `@SonataAdmin/CRUD/base_show_field.html.twig`.
 
 ```
+{% raw %}
+{# the raw tag is only for fix build, this is not part of twig file #}
 {% extends '@SonataAdmin/CRUD/base_show_field.html.twig' %}
 
 {% block field %}
@@ -163,6 +165,7 @@ Plik widoku powinien rozszerzać widok `@SonataAdmin/CRUD/base_show_field.html.t
         {{ value | money_localized_format }}
     {% endif %}
 {% endblock %}
+{% endraw %}
 ```
 
 W metodzie `configureShowFields` możemy skorzystać z pola `money`.
