@@ -16,6 +16,8 @@
 
 [pixel-perfect icons for web design](https://tabler-icons.io/)
 
+[Free, “do wtf you want with” pixel-perfect icons](https://iconic.app/)
+
 ## Tools
 
 [Generator of CSS @Keyframes animations, box shadows, colors and more](https://keyframes.app/animate/)
@@ -47,6 +49,8 @@
 [yourbrowser - Sprawdź, jakiej przeglądarki używa Twój klient](http://yourbrowser.is/)
 
 [What browser am I using?](https://www.whatismybrowser.com/)
+
+[CSS Filters Generator - Modify images with CSS only ](https://justcode.today/filters/)
 
 ## Libraries
 
