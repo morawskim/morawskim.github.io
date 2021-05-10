@@ -49,3 +49,20 @@ $view = $this->view($order, 200);
 $view->setContext($ctx);
 $ctx->setAttribute(AbstractNormalizer::ATTRIBUTES, ['id', 'shippingAddress' => ['firstName', 'lastName', 'street']]);
 ```
+
+## Normalizer test jednostkowy
+
+Normalizator utworzony przez wywołanie polecenia `./bin/console make:serializer:normalizer` oczekuje przekazania w konstruktorze instancji `ObjectNormalizer`.
+Framework symfony konfiguruje tą usługę w pliku `Resources/config/serializer.xml` pakietu `symfony/framework-bundle`. W przypadku testów jednostkowych musimy samemu utworzyć usługę i przekazać niezbędne zależności.
+Poniższy kod tworzy instancję `ObjectNormalizer` z obsługą adnotacji. Jeśli w naszym teście wykorzystujemy inne obiekty implementujące interfejs `NormalizerInterface` to musimy je dodać przy tworzeniu usługi `Serializer`. W przykładzie poniżej dodajemy `JsonSerializableNormalizer`.
+
+```
+$normalizer = new ObjectNormalizer(
+    new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader())),
+    new MetadataAwareNameConverter(
+        new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader())),
+        new CamelCaseToSnakeCaseNameConverter()
+    )
+);
+$normalizer->setSerializer(new Serializer([new JsonSerializableNormalizer(), $normalizer], []));
+```
