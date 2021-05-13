@@ -123,3 +123,18 @@ public function configureOptions(OptionsResolver $resolver)
     ]);
 }
 ```
+
+## Nowe środowisko dziedziczące konfigurację
+
+W Symfony możemy łatwo utworzyć nowe środowisko. Wykorzystuje je do zmieniania usług w service container.  Wystarczy, że utworzymy nowy katalog w `config` np. `stage`. A następnie utworzymy plik np. `config/packages/stage/import.yaml`, który załaduje konfigurację z innego środowiska np. `prod`. Warto w pliku `.env.local` ustawić zmienną środowiskową `APP_DEBUG` na `false`. Symfony automatycznie ustawia tą wartość na `true` jeśli aplikacja jest uruchomiona w innym środowisku niż `prod`.
+W pliku `config/bootstrap.php` mamy `$_SERVER['APP_DEBUG'] = $_SERVER['APP_DEBUG'] ?? $_ENV['APP_DEBUG'] ?? 'prod' !== $_SERVER['APP_ENV'];`
+
+```
+imports:
+  - { resource: '../prod/' }
+
+  # other resources are possible as well, like importing other
+  # files or using globs:
+  #- { resource: '/etc/myapp/some_special_config.xml' }
+  #- { resource: '/etc/myapp/*.yaml' }
+```
