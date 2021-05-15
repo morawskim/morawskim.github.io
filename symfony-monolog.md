@@ -39,3 +39,31 @@ proxy_set_header X-Request-Id $request_id;
 ```
 
 W aplikacji Symfony możemy doinstalować bundle `chrisguitarguy/request-id-bundle`. Pobiera on identyfikator żądania  z nagłówka HTTP, albo generuje własny identyfikator. Identyfikator ten zwracany jest w nagłówku odpowiedzi HTTP (nazwa nagłówka jest konfigurowana przez parametr `response_header`). Ustawiając parametr `enable_monolog` możemy włączyć integrację z biblioteką `monolog` dzięki czemu w logach będzie rejestrowany także identyfikator `request_id`. Dzięki temu łatwo odszukamy wpisy dotyczące konkretnego żądania HTTP.
+
+## Processor
+
+Dodanie dodatkowej informacji do każdego rekordu loga wymaga utworzenia nowej klasy i zarejestrowanej jej jako Processor. Klasa ta nie musi implementować żadnego interfejsu - wystarczy sama metoda magiczna `__invoke`.
+
+```
+class SimpleProcessor
+{
+    // ...
+
+    public function __invoke(array $record) : array
+    {
+        $record['extra']['foo'] = 'bar';
+
+        return $record;
+    }
+}
+```
+
+Następnie w pliku `config/services.yaml` rejestrujemy usługę i oznaczamy tagiem `monolog.processor`.
+
+```
+App\Monolog\SimpleProcessor:
+    tags:
+        - { name: monolog.processor }
+```
+
+[How to Add extra Data to Log Messages via a Processor](https://symfony.com/doc/current/logging/processors.html)
