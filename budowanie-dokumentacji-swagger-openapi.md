@@ -39,3 +39,12 @@ Prócz sprawdzania poprawności pliku definicji openAPI, warto upewnić się że
 [Node EXXETA/openapi-cop](https://github.com/EXXETA/openapi-cop)
 
 [PHP thephpleague/openapi-psr7-validator](https://github.com/thephpleague/openapi-psr7-validator)
+
+## Diff
+
+`oasdiff` to narzędzie do porównania specyfikacji OpenAPI.
+
+Porównanie specyfikacji między dwoma lokalnymi plikami z specyfikacją OpenAPI:
+`docker run --rm -t -v $(pwd):/data:ro tufin/oasdiff -base /data/_doc-old.yaml -revision /data/_doc-new.yaml`
+
+[oasdiff](https://github.com/Tufin/oasdiff)
