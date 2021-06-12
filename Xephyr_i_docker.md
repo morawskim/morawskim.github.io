@@ -26,11 +26,11 @@ Odpalenie kwrtie w Xephyr
 DISPLAY=:1 kwrite
 ```
 
-Uruchomienie kdeneon w docker
+## Uruchomienie kdeneon w docker
 
 ``` bash
 Xephyr -ac -br -screen 1280x1024 :1
-docker run -e DISPLAY=:1 -v /tmp/.X11-unix:/tmp/.X11-unix kdeneon/plasma:dev-stable
+docker run -e DISPLAY=:1 -v /tmp/.X11-unix:/tmp/.X11-unix --security-opt seccomp=unconfined kdeneon/plasma:user startplasma-x11
 ```
 
 <http://csicar.github.io/docker/window-manger/2016/05/24/docker-wm.html> <http://fabiorehm.com/blog/2014/09/11/running-gui-apps-with-docker/> <https://www.vandenoever.info/blog/2017/07/23/developing-kde-with-docker.html> <https://github.com/KDE/docker-neon>
