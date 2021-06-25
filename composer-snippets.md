@@ -135,3 +135,10 @@ barryvdh/reflection-docblock v2.0.4 v2.0.6
 
 Jeśli nasz projekt wymaga composer w wersji 2 (wykorzystuje jedną z funkcji środowiska wykonawczego) to możemy dodać zależność do wirtualnego pakietu `composer-runtime-api` w wersji `^2.0`.
 Ten pakiet zapewnia, że użytkownicy będą musieli używać Composera 2.x.
+
+
+## Memory limit
+
+`PHP Fatal error: Allowed memory size of XXXXXX bytes exhausted <...>` gdy zobaczymy taki komunikat możemy ustawić zmienną środowiskową `COMPOSER_MEMORY_LIMIT`, aby zwiększyć limit pamięci. Składnia jest taka sama jak w parametrze konfiguracyjnym `memory_limit` w PHP.
+
+[Memory limit errors](https://getcomposer.org/doc/articles/troubleshooting.md#memory-limit-errors)
