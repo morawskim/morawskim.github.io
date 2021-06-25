@@ -91,3 +91,21 @@ indexes:
                 provider:
                     query_builder_method: createSearchQueryBuilder
 ```
+
+## Troubleshoot
+
+### disk usage exceeded flood-stage watermark, index has read-only-allow-delete block
+
+Podczas wykonywania polecenie indeksowania danych (`bin/console e`) otrzymałem błąd:
+
+```
+In AliasProcessor.php line 120:
+
+  Failed to updated index alias: index [offer_2021-06-11-144312] blocked by: [TOO_MANY_REQUESTS/12/disk usage exceeded flood-stage watermark, index has read-only-allow-delete block];. Newly built index offer_2021-06-12-115230 was deleted
+```
+
+Z powodu niewielkiej ilości wolnego miejsca indeks został zablokowany.
+Do odblokowania indeksu musimy wysłać żądanie HTTP:
+```
+curl -XPUT -H "Content-Type: application/json" http://elasticsearch:9200/_all/_settings -d '{"index.blocks.read_only_allow_delete": null}'
+```

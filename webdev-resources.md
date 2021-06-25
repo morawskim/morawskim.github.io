@@ -52,6 +52,12 @@
 
 [CSS Filters Generator - Modify images with CSS only ](https://justcode.today/filters/)
 
+### Paid
+
+[Email on Acid - Email Pre-Deployment Checklist](https://www.emailonacid.com/)
+
+Email on Acid is the leading email pre-deployment checklist and a configurable part of your email marketing workflow, from accessibility checks to email previews.
+
 ## Libraries
 
 [CSS3 loaders and spinner](https://vineethtrv.github.io/loader/)
