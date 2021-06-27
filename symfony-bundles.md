@@ -60,6 +60,27 @@ monolog:
 
 ```
 
+Zdefiniowany handler domyślnie korzysta z formatera `monolog.formatter.line`. Nasz wpis w logu będzie więc nieczytelny, ponieważ znaki nowych linii zostaną zastąpione znakiem spacji (`\Monolog\Formatter\LineFormatter::replaceNewlines`). Warto zdefiniować oddzielny formater monolog. W pliku `config/services.yaml` definiujemy nową usługę `monolog.formatter.multiline`:
+
+```
+monolog.formatter.multiline:
+    class: Monolog\Formatter\LineFormatter
+    arguments:
+        $allowInlineLineBreaks: true
+```
+
+Następnie do naszego handlera `apilog` dodajemy klucz `formatter` z identyfikatorem usługi formatter monolog - `monolog.formatter.multiline`.
+
+```
+apilog:
+  type: rotating_file
+  path: "%kernel.logs_dir%/api.log"
+  level: debug
+  channels: [api]
+  max_files: 70
+  formatter: monolog.formatter.multiline # ustawienie formatera
+```
+
 ## lexik/jwt-authentication-bundle
 
 Mikrousługi często oferują API REST zabezpieczone tokenem JWT. Taki token może być tworzony przez inną usługę. Domyślnie bundle `lexik/jwt-authentication-bundle` skonfigurowany jest do podpisywania i weryfikowania tokenów przez parę kluczy. Jeśli nie korzystamy z tego rozwiązania musimy odpowiednio skonfigurować bundle pod HMAC. Zamiast ustawiać klucze `public_key`, `secret_key` i `pass_phrase` ustawiamy tylko tajny współdzielony klucz w `secret_key`. Dodatkowo musimy ustawić z jakiego algorytmu podpisywania chcemy skorzystać. W moim przypadku `HS256`. Taką wartość podajemy w kluczu `signature_algorithm` elementu konfiguracji `encoder`. Klucz `token_ttl` pozwala nam ograniczyć ważność tokenu JWT do 30 min (1800 sekund).
