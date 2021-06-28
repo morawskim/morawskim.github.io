@@ -96,7 +96,7 @@ indexes:
 
 ### disk usage exceeded flood-stage watermark, index has read-only-allow-delete block
 
-Podczas wykonywania polecenie indeksowania danych (`bin/console e`) otrzymałem błąd:
+Podczas wykonywania polecenie indeksowania danych (`./bin/console  fos:elastica:populate`) otrzymałem błąd:
 
 ```
 In AliasProcessor.php line 120:
