@@ -185,3 +185,20 @@ protected function configureShowFields(ShowMapper $showMapper)
 ```
 
 [Create your own field type](https://symfony.com/doc/current/bundles/SonataAdminBundle/reference/field_types.html#create-your-own-field-type)
+
+## Sonata Extension
+
+Rozszerzenie panelu administratora pozwala nam dodać lub zmienić funkcjonalność dla różnych instancji Admina.
+Tworzymy klasę która dziedziczy po `\Sonata\AdminBundle\Admin\AbstractAdminExtension`. Klasa ta implementuje interfejs `\Sonata\AdminBundle\Admin\AdminExtensionInterface`, dzięki temu nie musimy tworzyć pustych metod.
+Następnie rejestrujemy usługę rozszerzenie panelu administratora w pliku `config/services.yaml`:
+
+```
+admin.sales_channel.extension:
+    class: App\Admin\Extension\SalesChannelExtension
+    tags:
+        - { name: sonata.admin.extension, global: true }
+```
+
+W moim przypadku zaimplementowałem metodę `alterObject`, która na podstawie przekazywanej encji ustawiała kontekst działania aplikacji (amerykański albo polski). Dzięki temu walidatory na encji wymuszały, aby dane były zgodnie z wybranym kontekstem.
+
+[Extensions](https://symfony.com/doc/current/bundles/SonataAdminBundle/reference/extensions.html)
