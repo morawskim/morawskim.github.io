@@ -176,3 +176,38 @@ FOUND 0 ERRORS AND 1 WARNING AFFECTING 1 LINE
     |         | (Generic.Files.LineLength.TooLong)
 --------------------------------------------------------------------------------------------------------
 ```
+
+## PHPStan
+
+Analizator kodu PHPStan najlepiej wywoływać z obrazu dockera `jakzal/phpqa:alpine`, ponieważ do działania potrzebuje PHP 8, a także `symfony/dependency-injection`.
+
+W kontenerze `phpqa` wywołujemy polecenie `composer global bin phpstan require symplify/phpstan-rules` aby doinstalować dodatkowe reguły. Następnie w głównym katalogu tworzymy plik `phpstan.neon` i wklejamy przykladową konfigurację:
+
+```
+parameters:
+    phpVersion: 70400 # PHP 7.4
+    level: 8
+    paths:
+        - src
+        - tests
+includes:
+    - /tools/.composer/vendor-bin/phpstan/vendor/phpstan/phpstan/conf/bleedingEdge.neon
+    - /tools/.composer/vendor-bin/phpstan/vendor/symplify/phpstan-rules/config/services/services.neon
+    - /tools/.composer/vendor-bin/phpstan/vendor/symplify/phpstan-rules/config/static-rules.neon
+    - /tools/.composer/vendor-bin/phpstan/vendor/symplify/phpstan-rules/config/code-complexity-rules.neon
+    - /tools/.composer/vendor-bin/phpstan/vendor/symplify/phpstan-rules/packages/cognitive-complexity/config/cognitive-complexity-services.neon
+
+services:
+
+    -
+        class: Symplify\PHPStanRules\CognitiveComplexity\Rules\ClassLikeCognitiveComplexityRule
+        tags: [phpstan.rules.rule]
+        arguments:
+            maxClassCognitiveComplexity: 10
+
+
+```
+
+Następnie możemy już wywołać polecenie `phpstan`, aby przeanalizować kod.
+
+[Adding PHPStan extensions](https://github.com/jakzal/phpqa#adding-phpstan-extensions)
