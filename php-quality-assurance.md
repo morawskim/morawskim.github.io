@@ -190,6 +190,20 @@ parameters:
     paths:
         - src
         - tests
+    ignoreErrors:
+        - '#Do not use chained method calls#'
+        - '#Interface must be located in "Contract" namespace#'
+        - '#Method [\w\\]+::buildForm\(\) has parameter \$builder with no value type specified in iterable type Symfony\\Component\\Form\\FormBuilderInterface#'
+        - '#Method [\w\\]+::buildForm\(\) has parameter \$options with no value type specified in iterable type array#'
+        -
+            message: '#Method [\w\\]+::normalize\(\) has parameter \$context with no value type specified in iterable type array#'
+            path: *Normalizer.php
+        -
+            message: '#Do not use @method tag in class docblock#'
+            path: *Repository.php
+        -
+            message: '#Property [\w\\]+::\$[\w]+ is never written, only read.#'
+            path: */Entity/*.php
 includes:
     - /tools/.composer/vendor-bin/phpstan/vendor/phpstan/phpstan/conf/bleedingEdge.neon
     - /tools/.composer/vendor-bin/phpstan/vendor/symplify/phpstan-rules/config/services/services.neon
