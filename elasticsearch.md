@@ -1,5 +1,37 @@
 # Elasticsearch
 
+## Elasticsearch REST API
+
+### Mapping
+
+```
+GET /INDEX_NAME/_mapping
+```
+
+### Testowanie analizatora (ang. analyzer)
+
+Podczas indeksowania full text Elasticsearch wykonuje analizę ciągu tekstowego i zwraca tokeny.
+Token to termin, który będzie przechowywany w indeksie.
+Dostępne jest [kilka wbudowanych analizatorów](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-analyzers.html). Domyślnie wykorzystywany jest analizator `standard`.
+
+```
+GET /_analyze
+{
+  "analyzer" : "standard",
+  "text" : "Those are apples"
+}
+
+GET /_analyze
+{
+  "analyzer" : "english",
+  "text" : "Those are apples"
+}
+```
+
+Analizator `english` zindeksuje tokeny `those` i `appl`. Standardowy analizator zaś `those`, `are` i `apples`.
+
+[Analyze API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html)
+
 ## FOSElasticaBundle
 
 Obecnie w celu obsługi wersji 7 Elasticsearch musimy zainstalować wersję 6.0 pakietu, która ciągle jest w fazie rozwoju.
