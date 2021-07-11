@@ -32,6 +32,56 @@ Analizator `english` zindeksuje tokeny `those` i `appl`. Standardowy analizator 
 
 [Analyze API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html)
 
+## Explain API
+
+[Ta końcówka API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-explain.html) wyjaśnia dlaczego jeden konkretny dokument pasuje (lub co może ważniejsze, dlaczego nie pasuje) do zapytania. W odpowiedzi otrzymamy klucz `description` np. z informacją dlaczego dokument nie pasuje do zapytania - `no matching term`.
+
+```
+GET /INDEX_NAME/_explain/DOCUMENT_ID
+{
+  "query" : {
+    "match" : { "title" : "elasticsearch" }
+  }
+}
+
+# response
+#{
+#  "_index" : "offer_2021-07-11-120843",
+#  "_type" : "_doc",
+#  "_id" : "7",
+#  "matched" : false,
+#  "explanation" : {
+#    "value" : 0.0,
+#    "description" : "no matching term",
+#    "details" : [ ]
+#  }
+#}
+```
+
+## Wyszukiwanie
+
+### Wyjaśnienie _score
+
+Chcąc dowiedzieć się dokładnie jak Elaasticsearch obliczył `_score` dla dokumentu możemy dodać klucz `explain` z wartością `true` do końcówki `_saerch`.
+
+```
+GET /INDEX_NAME/_search
+{
+  "explain": true,
+  "query" : {
+    "match" : { "title": "foo" }
+  }
+}
+```
+
+### Opcje
+
+### preference
+
+Kiedy sortuje wyniki według pola czasowego i dwa dokumenty mają taką samą wartość to mogą zostać zwrócone w różnej kolejności. Gdy żądanie jest doręczane przez podstawową partycję, a w innej kolejności, gdy jest doręczone przez jedną z replik. Problem ten występuje pod nazwą `bouncing results`. Rozwiązanie polega na pobieraniu danych zawsze z tej samej partycji. Do tego wykorzystujemy parametr `preference`, który ustawiamy na dowolny ciąg znaków np. identyfikator sesji użytkownika.
+
+[Preference](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-shard-routing.html#shard-and-node-preference)
+
 ## FOSElasticaBundle
 
 Obecnie w celu obsługi wersji 7 Elasticsearch musimy zainstalować wersję 6.0 pakietu, która ciągle jest w fazie rozwoju.
