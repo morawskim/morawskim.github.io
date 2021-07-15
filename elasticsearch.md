@@ -60,6 +60,28 @@ GET /INDEX_NAME/_explain/DOCUMENT_ID
 
 ## Wyszukiwanie
 
+### Combine filters
+
+```
+GET /offer/_search
+{
+    "query" : {
+        "bool" : {
+            "must" : {
+                "match" : {"title": "lorem"}
+            },
+            "filter" : {
+                "term" : {
+                    "price" : 2000
+                }
+            }
+        }
+    }
+}
+```
+
+[Example of query and filter context](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-filter-context.html#query-filter-context-ex)
+
 ### Wyjaśnienie _score
 
 Chcąc dowiedzieć się dokładnie jak Elaasticsearch obliczył `_score` dla dokumentu możemy dodać klucz `explain` z wartością `true` do końcówki `_saerch`.
