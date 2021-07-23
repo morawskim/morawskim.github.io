@@ -5,3 +5,19 @@
 ### Notifuse
 
 [Send notifications to users (in-app widget)](https://notifuse.com/)
+
+## Docker
+
+### imaginary
+
+[Fast, simple, scalable, Docker-ready HTTP microservice for high-level image processing](https://github.com/h2non/imaginary)
+
+[SDK for PHP](https://packagist.org/packages/tigroid3/php-imaginary)
+
+## Data
+
+[A sample MySQL database with an integrated test suite, used to test your applications and database servers](https://github.com/datacharmer/test_db)
+
+## Software
+
+[GLPI is a Free Asset and IT Management Software package, Data center management, ITIL Service Desk, licenses tracking and software auditing.](https://github.com/glpi-project/glpi)
