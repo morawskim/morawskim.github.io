@@ -17,3 +17,18 @@ Przykładowy wpis wygenerowany przez aplikację Zabbix.
 
 ...
 ```
+
+## Docker
+
+Gdy korzystamy z obrazu `mysql` w kontenerze Dockera, możemy się do niego zalogować - `docker-compose exec mysql bash`, a następnie podłączyć się do bazy danych `mysql -uroot -p`. W konsoli mysql wywyołujemy polecenie SQL - `SET GLOBAL general_log = 'ON';`. A następnie wykonujemy polecenie `SHOW GLOBAL VARIABLES LIKE 'general_log_file';` aby wyświetlić plik do którego mysql loguje zapytania. W moim przypadku jest to `/var/lib/mysql/a2a1ddee2187.log`.
+Następnie możemy wyjść z powłoki mysql i zacząć obserwować plik z logiem `tail -f /var/lib/mysql/a2a1ddee2187.log`. Zapytania SQL będą się pojawiać.
+
+W przypadku problemów z logowaniem warto podejrzeć wartości niektórych zmiennych:
+
+```
+SHOW GLOBAL VARIABLES LIKE 'general_log'
+SHOW GLOBAL VARIABLES LIKE 'log_output'
+SHOW GLOBAL VARIABLES LIKE 'general_log_file'
+```
+
+Żeby wyłączyć logowanie zapytań SQL po ponownym podłączeniu do konsoli mysql wywołujemy polecenie `SET GLOBAL general_log = 'OFF';`.
