@@ -19,3 +19,13 @@ Modyfikujemy `HTTP Request Defaults` tak aby wykorzystywał nasze zmienne. Do po
 
 Podczas uruchamiania `jmeter` dodajemy parametry `-JappHostname=ssorder-develop.example.com -JappProtocol=https`.
 Przykładowe pełne wywołanie CLI z raportem HTML i wynikami zapisanymi do pliku CSV - `./jmeter -JappHostname=ssorder-develop.snlb.pl -JappProtocol=https -n -t /path/to/jmeter/test.jmx -l /pat/to/results/performance.csv -e -o /path/to/save/html`
+
+W przypadku posiada dużej liczby parametrów do nadpisania możemy utworzyć plik properties np. `uat.properties`. Następnie do parametrów wywołania JMeter dodajemy parametr `-q` z ścieżką do pliku.
+Ważne aby korzystać z parametru `-q` a nie `-p`. Inaczej możemy otrzymywać błędy podczas generowania raportu "Error generating the report: org.apache.jmeter.report.dashboard.GenerationException: Cannot assign "${jmeter.reportgenerator.apdex_satisfied_threshold}" to property "set_satisfied_threshold" (mapped as "setSatisfiedThreshold"), skip it".
+[Dokumentacja](https://jmeter.apache.org/usermanual/get-started.html#options) opisuje różnice między nimi.
+
+>-p, --propfile <argument>
+>    the jmeter property file to use
+>
+>-q, --addprop <argument>
+>    additional JMeter property file(s)
