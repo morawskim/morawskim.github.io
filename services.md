@@ -6,6 +6,10 @@
 
 [Send notifications to users (in-app widget)](https://notifuse.com/)
 
+### Cloudya
+
+[Cloudya - System telefonii w chmurze](https://www.nfon.com/pl/telefonia/cloudya)
+
 ## Docker
 
 ### imaginary
