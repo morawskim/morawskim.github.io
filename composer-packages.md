@@ -15,3 +15,7 @@
 ### ergebnis/composer-normalize
 
 [Provides a composer plugin for normalizing composer.json.](https://github.com/ergebnis/composer-normalize)
+
+### cakephp/chronos
+
+[A standalone DateTime library originally based off of Carbon](https://github.com/cakephp/chronos)
