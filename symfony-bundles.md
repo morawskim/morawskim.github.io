@@ -159,3 +159,10 @@ Bundle `NelmioCorsBundle` dodaje obsługę nagłówków CORS. Instalując ten pa
     allow_methods: [ 'POST']
     allow_credentials: true
 ```
+
+## friendsofsymfony/rest-bundle
+
+Zadaniem tego bundle jest dostarczenie niezbędnych narzędzi pomocnych do zbudowania REST API w Symfony.
+Ciekawym rozwiązaniem jest dostarczenie nowej implementacji interfejsu `\Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\ParamConverterInterface` - `RequestBodyParamConverter`.
+Za jej pomocą możemy przekształcić ciało żądania HTTP w obiekt DTO - `@ParamConverter("dto", converter="fos_rest.request_body")`.
+Więcej informacji o konfiguracji znajduje się w [dokumentacji](https://github.com/FriendsOfSymfony/FOSRestBundle/blob/3.x/Resources/doc/request_body_converter_listener.rst).
