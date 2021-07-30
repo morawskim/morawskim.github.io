@@ -31,6 +31,14 @@ services:
             $level: !php/const Monolog\Logger::ERROR
 ```
 
+Warto także ustawić klucz `register_error_listener` na wartość `false`, aby nie dublować komunikatów w Sentry - [https://docs.sentry.io/platforms/php/guides/symfony/#monolog-integration](https://docs.sentry.io/platforms/php/guides/symfony/#monolog-integration), [[Sentry Bundle] Clarify config when using monolog #1115](https://github.com/symfony/recipes-contrib/issues/1115).
+
+```
+sentry:
+    register_error_listener: false
+```
+
+
 Nasza integracja między aplikacją Symfony, a Sentry jest gotowa. Wywołując polecenie ` ./bin/console sentry:test` testowa wiadomość zostanie wysłana do serwera Sentry i zapisana.
 
 [Sentry for Symfony](https://docs.sentry.io/platforms/php/guides/symfony/)
@@ -56,3 +64,28 @@ Istnieje nieoficialny handler z obsługą breadcrumb [monolog-sentry-handler](ht
 [Option to add buffered (fingers_crossed) logs to context #286](https://github.com/getsentry/sentry-symfony/issues/286)
 [add: breadcrumbs to monolog handler #844](https://github.com/getsentry/sentry-php/pull/844)
 [Change default hook system to use Monolog #337](https://github.com/getsentry/sentry-symfony/issues/337)
+
+
+### IgnoreErrorsIntegration
+
+W panelu Sentry domyślnie będą także rejestrowane błędy HTTP NotFound 404 czy także 403 AccessDenied.
+Możemy je ignorować włączając i konfigurując integrację `IgnoreErrorsIntegration`.
+
+```
+sentry:
+    options:
+        integrations:
+            - 'Sentry\Integration\IgnoreErrorsIntegration'
+
+services:
+    Sentry\Monolog\Handler:
+        arguments:
+            $hub: '@Sentry\State\HubInterface'
+            $level: !php/const Monolog\Logger::ERROR
+    Sentry\Integration\IgnoreErrorsIntegration:
+        arguments:
+            $options:
+                ignore_exceptions:
+                    - Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+                    - Symfony\Component\Security\Core\Exception\AccessDeniedException
+```
