@@ -163,6 +163,18 @@ indexes:
                     format: basic_date_time_no_millis
 ```
 
+### SSL
+
+Do podłączenia się do usługi ElasticSearch w chmurze Amazona wykorzystywany jest protokół HTTPS. Podczas konfiguracji klienta, musimy ustawić parametr `transport` na wartość `Https`. W przeciwnym przypadku będziemy otrzymywać błędy - 'The plain HTTP request was sent to HTTPS port'. Dodatkowo będą one widoczne tylko gdy zmienna środowiskowa `APP_ENV` jest ustawiona na `dev`. Przykładowa wartość `ELASTICSEARCH_URL` to `https://some-name.eu-central-1.es.amazonaws.com:443/`
+
+```
+fos_elastica:
+    clients:
+        default:
+          url: %env(ELASTICSEARCH_URL)%
+          transport: Https
+```
+
 ### Indeksowanie
 
 `ElasticaBundle` podczas przekształcania encji w dokument Elasticsearch publikuje zdarzenie `\FOS\ElasticaBundle\Event\PreTransformEvent`.
