@@ -256,3 +256,31 @@ cy.fixture(fileName, 'binary')
         });
     });
 ```
+
+## REST API i cy.intercept
+
+Jeden z projektów został podzielony na dwie część: backend i frontend. Backend potrafił dostosować działanie aplikacji do rynku np. polskiego czy też amerykańskiego. Jednak z powodu braku tej funkcji na front musiałem wykorzystać polecenie `intercept` cypressa.
+
+Poniższy fragment kodu nadpisuje wartość nagłówka `x-sales-channel` tym samym ustawia kontekst działania backendu na rynek polski. W GUI cypress, będziemy widzieć liczbę requestów, które zostały przechwycone przez ten interceptor.
+
+![Cypress Routes](images/cypress-intercept.png)
+
+```
+cy.intercept('https://domain.example.com/api/**', (req) => {
+    req.headers['x-sales-channel'] = 'pl';
+});
+```
+
+Token JWT i refreshToken nie był przechowywany w localStorage ze względów na bezpieczeństwo. RefreshToken był przechowywany w ciasteczku, które było przesyłane wraz z żądaniem HTTP do serwera. Wymagało to odpowiedniej konfiguracji CORS.
+Jednak wywołanie `cy.clearCookies` nie kasuje ciasteczek ze wszystkich domen. Są na to otwarte zgłoszenia: [cy.clearCookies should clear *ALL* cookies of all domains #408](https://github.com/cypress-io/cypress/issues/408) czy też [Cypress doesn't always clean up cookies #781](https://github.com/cypress-io/cypress/issues/781).
+W przypadku testów aplikacji frontendowej użytkownik był automatycznie zalogowany podczas wykonywania kolejnych przypadków testowych. Utworzyłem więc kolejny interceptor, który symulował błędną odpowiedzieć z backendu.
+Dzięki temu aplikacja frontendowa, gdy próbowała uzyskać nowy token JWT na podstawie refreshTokenu otrzymywała zawsze błąd, więc użytkownik nie był zalogowany.
+
+```
+cy.intercept('https://domain.example.com/api/sessions/refresh', {
+    statusCode: 401,
+    body: {},
+});
+```
+
+Kolejność wywołań poleceń `intercept` ma znaczenie. Mokowanie odpowiedzi dla końcówki refreshToken definiujemy po modyfikacji nagłówka `X-SalesChannel` żądania HTTP.
