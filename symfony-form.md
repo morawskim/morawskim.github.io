@@ -35,7 +35,16 @@ self::assertEquals($expectedShippingAddress, $event->getData()['shippingAddress'
 ## Form themes
 
 [W Dokumentacji](https://symfony.com/doc/current/form/form_themes.html) opisano jak działa mechanizm szablonów dla formularzy. W projekcie jeden formularz może znacząco się różnić od pozostałych np. logowania czy rejestracji.
-W takim przypadku możemy nadpisać bloki formularza tylko dla jednego formularza. Do szablonu Twig dodajemy tag `{% form_theme registrationForm _self %}`. Dzięki temu Twig będzie szukał nadpisanych bloków formularza w szablonie. Zmienna `registrationForm` to nazwa formularza dostępna w szablonie Twig.
+W takim przypadku możemy nadpisać bloki formularza tylko dla jednego formularza. Do szablonu Twig dodajemy tag:
+
+```
+{% raw %}
+{# the raw tag is only for fix build, this is not part of twig file #}
+{% form_theme registrationForm _self %}
+{% endraw %}
+```
+
+Dzięki temu Twig będzie szukał nadpisanych bloków formularza w szablonie. Zmienna `registrationForm` to nazwa formularza dostępna w szablonie Twig.
 
 Profiler zawiera użyteczną informację jakie prefixy bloków są sprawdzane podczas wyświetlania formularza. Dzięki nim możemy utworzyć blok dla jednego specyficznego pola formularza.
 
