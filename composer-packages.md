@@ -19,3 +19,11 @@
 ### cakephp/chronos
 
 [A standalone DateTime library originally based off of Carbon](https://github.com/cakephp/chronos)
+
+### swarrot/swarrot
+
+[A lib to consume message from any Broker](https://github.com/swarrot/swarrot)
+
+### bernard/bernard
+
+[Bernard is a multi-backend PHP library for creating background jobs for later processing.](https://github.com/bernardphp/bernard)
