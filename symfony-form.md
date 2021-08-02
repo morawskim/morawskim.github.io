@@ -31,3 +31,12 @@ self::assertEquals($expectedShippingAddress, $event->getData()['shippingAddress'
 ```
 
 [How to Dynamically Modify Forms Using Form Events](https://symfony.com/doc/4.4/form/dynamic_form_modification.html)
+
+## Form themes
+
+[W Dokumentacji](https://symfony.com/doc/current/form/form_themes.html) opisano jak działa mechanizm szablonów dla formularzy. W projekcie jeden formularz może znacząco się różnić od pozostałych np. logowania czy rejestracji.
+W takim przypadku możemy nadpisać bloki formularza tylko dla jednego formularza. Do szablonu Twig dodajemy tag `{% form_theme registrationForm _self %}`. Dzięki temu Twig będzie szukał nadpisanych bloków formularza w szablonie. Zmienna `registrationForm` to nazwa formularza dostępna w szablonie Twig.
+
+Profiler zawiera użyteczną informację jakie prefixy bloków są sprawdzane podczas wyświetlania formularza. Dzięki nim możemy utworzyć blok dla jednego specyficznego pola formularza.
+
+Szablony dostarczane wraz z Symfony znajdują się w katalogu `vendor/symfony/twig-bridge/Resources/views/Form`.
