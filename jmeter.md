@@ -29,3 +29,9 @@ Ważne aby korzystać z parametru `-q` a nie `-p`. Inaczej możemy otrzymywać b
 >
 >-q, --addprop <argument>
 >    additional JMeter property file(s)
+
+## Docker
+
+Testy wydajnościowe możemy wywoływać z kontenera dockera wykorzystując obraz [justb4/jmeter](https://hub.docker.com/r/justb4/jmeter).
+Wpierw pobieramy obraz poleceniem `docker pull justb4/jmeter:latest`. Następnie możemy przekazać te same parametry co do skryptu `jmeter`.
+Przykładowe wywołanie: `docker run --rm -i -v ${PWD}:${PWD} -w ${PWD} justb4/jmeter -quat.properties -n -t performance.jmx -l performance.csv -e -o ./jmeter-html-report`
