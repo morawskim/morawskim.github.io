@@ -25,3 +25,5 @@
 ## Software
 
 [GLPI is a Free Asset and IT Management Software package, Data center management, ITIL Service Desk, licenses tracking and software auditing.](https://github.com/glpi-project/glpi)
+
+[Matomo is the leading open alternative to Google Analytics that gives you full control over your data. Matomo lets you easily collect data from websites & apps and visualise this data and extract insights.](https://github.com/matomo-org/matomo)
