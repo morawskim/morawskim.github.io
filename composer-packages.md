@@ -27,3 +27,7 @@
 ### bernard/bernard
 
 [Bernard is a multi-backend PHP library for creating background jobs for later processing.](https://github.com/bernardphp/bernard)
+
+### box/spout
+
+[Read and write spreadsheet files (CSV, XLSX and ODS), in a fast and scalable way](https://github.com/box/spout)
