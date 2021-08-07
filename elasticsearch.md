@@ -104,6 +104,37 @@ Kiedy sortuje wyniki według pola czasowego i dwa dokumenty mają taką samą wa
 
 [Preference](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-shard-routing.html#shard-and-node-preference)
 
+## Agregacje
+
+### Przykład
+
+Agregacja pozwala nam otrzymać podgląd danych. Zamiast patrzeć indywidualne na dokumenty, analizujemy kompletny zestaw danych np. liczbę ogłoszeń w danej kategorii. Dzięki ustawieniu parametru `size` na 0 w wynikach dostaniemy tylko `aggregations` bez dokumentów (`hits`). W przypadku braku zapytania (klucza `query`) Elasticsearch dokona agregacji danych na podstawie wszystkich dokumentów w indeksie.
+
+```
+GET /INDEX_NAME/_search
+{
+  "size": 0,
+  "aggs": {
+    "my-agg-name": {
+      "terms": {
+        "field": "category.id"
+      }
+    }
+  },
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "term": {
+            "sales_channel": "pl"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
 ## FOSElasticaBundle
 
 Obecnie w celu obsługi wersji 7 Elasticsearch musimy zainstalować wersję 6.0 pakietu, która ciągle jest w fazie rozwoju.
