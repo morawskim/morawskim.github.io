@@ -58,3 +58,34 @@ Features:
 `Wiki.js` - A modern, lightweight and powerful wiki app built on Node.js.
 
 [wiki.js](https://wiki.js.org/)
+
+## Realtime log viewer for docker containers
+
+Dozzle is a small lightweight application with a web based interface to monitor Docker logs. It doesn’t store any log files. It is for live monitoring of your container logs only.
+
+Features:
+* Intelligent fuzzy search for container names
+* Search logs using regex
+* Small memory footprint
+* Split screen for viewing multiple logs
+* Download logs easy
+* Live stats with memory and CPU usage
+* Authentication with username and password
+
+[Dozzle](https://github.com/amir20/dozzle)
+
+## A docker job scheduler (aka. crontab for docker)
+
+Ofelia is a modern and low footprint job scheduler for docker environments, built on Go. Ofelia aims to be a replacement for the old fashioned cron.
+
+Przykładowa konfiguracja zadania:
+
+```
+[job-exec "YOUR_NAME"]
+schedule = 0 40 2 * * *
+container = YOUR_CONTAINER_NAME
+command = /path/to/your/command
+user = www-data
+```
+
+[Ofelia](https://github.com/mcuadros/ofelia)
