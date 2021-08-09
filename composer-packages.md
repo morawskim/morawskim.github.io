@@ -31,3 +31,19 @@
 ### box/spout
 
 [Read and write spreadsheet files (CSV, XLSX and ODS), in a fast and scalable way](https://github.com/box/spout)
+
+
+### Phive
+
+Nie jest to pakiet composera, ale oddzielne narzędzie. Umożliwia jednak zainstalowanie wielu narzędzi PHP np. do zapewnienia jakości w systemie bez martwienia się o konflikt zależności między nimi.
+
+Podobnie jak composer, Phive tworzy plik `.phive/phars.xml` w którym zapisuje listę zainstalowanych archiwa Phar z dokładną wersją.
+
+```
+wget -O phive.phar https://phar.io/releases/phive.phar
+chmod +x phive.phar
+phive.phar install phploc
+```
+
+[PHIVE](https://phar.io/)
+[Phive: Secure, Easy, and Contained Phar Manager](https://php.watch/articles/phive)
