@@ -96,6 +96,35 @@ GET /INDEX_NAME/_search
 }
 ```
 
+### Nested
+
+`Nested objects` są wykorzystywane gdy mamy jedną główną encję (np. Ogłoszenie) z ograniczoną liczbą blisko powiązanych encji (np. dodatkowe atrybuty ogłoszenia).
+
+```
+GET /INDEX_NAME/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "nested": {
+            "path": "attributes_choice",
+            "query": {
+              "bool": {
+                "must": [
+                  {"term": {"attributes_choice.name": "size"}},
+                  {"terms": {"attributes_choice.value": ["s"]}}
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
 ### Opcje
 
 ### preference
