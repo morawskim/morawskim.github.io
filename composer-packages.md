@@ -32,6 +32,11 @@
 
 [Read and write spreadsheet files (CSV, XLSX and ODS), in a fast and scalable way](https://github.com/box/spout)
 
+### fakerphp/faker
+
+Biblioteka `` jest forkiem biblioteki `fzaninotto/Faker`, która nie jest już rozwijana - [https://marmelab.com/blog/2020/10/21/sunsetting-faker.html](https://marmelab.com/blog/2020/10/21/sunsetting-faker.html)
+
+[fakerphp/faker](https://github.com/FakerPHP/Faker)
 
 ### Phive
 
