@@ -24,6 +24,8 @@ export function generatePLAttributesJsonSchema(schema) {
 
 Do wyświetlenie formularza w oparciu o JSON Schema możemy skorzystać z biblioteki [react-jsonschema-form](https://github.com/rjsf-team/react-jsonschema-form).
 
+Biblioteka [react-json-schema-form-builder](https://github.com/ginkgobioworks/react-json-schema-form-builder) umożliwia użytkownikowi wizualnie skofnigurować formularz zakodowany w formacie JSON Schemat.
+
 Przykładowy JSON Schemat
 ```
 {
