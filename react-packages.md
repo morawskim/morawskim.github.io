@@ -6,6 +6,8 @@
 
 [Hooks for positioning tooltips & popovers](https://www.react-laag.com/)
 
+[Essential React custom hooks to super charge your components!](https://github.com/imbhargav5/rooks)
+
 ## Components
 
 [Evergreen is a React UI Framework for building ambitious products on the web](https://evergreen.segment.com/components/)
