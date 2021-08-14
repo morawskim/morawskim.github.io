@@ -225,3 +225,9 @@ services:
 Następnie możemy już wywołać polecenie `phpstan`, aby przeanalizować kod.
 
 [Adding PHPStan extensions](https://github.com/jakzal/phpqa#adding-phpstan-extensions)
+
+## phpmetrics
+
+`phpmetrics` znajduje się w obrazie dockera `jakzal/phpqa:alpine`, jednak obecnie ze względu na błąd [phpmetrics command with error #311](https://github.com/jakzal/phpqa/issues/311)  ([PhpParser\Lexer::getNextToken(): Return value must be of type int, null returned #459](https://github.com/phpmetrics/PhpMetrics/issues/459)) narzędzie nie działa w tym obrazie.
+Musimy zainstalować ręcznie pakiet composera `phpmetrics/phpmetrics`.
+Następnie możemy wygenerować raport `vendor/bin/phpmetrics --report-html=./phpmetrics --exclude=tests,vendor,var,bin /path/to/project`
