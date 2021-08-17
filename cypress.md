@@ -284,3 +284,48 @@ cy.intercept('https://domain.example.com/api/sessions/refresh', {
 ```
 
 Kolejność wywołań poleceń `intercept` ma znaczenie. Mokowanie odpowiedzi dla końcówki refreshToken definiujemy po modyfikacji nagłówka `X-SalesChannel` żądania HTTP.
+
+## Stripe
+
+Aby wykonać testy E2E bramki płatności Stripe w pliku konfiguracyjnym `config/frontend.json` dodajemy  `"chromeWebSecurity": false,`. Możemy zainstalować także plugin [cypress-plugin-stripe-elements](https://www.npmjs.com/package/cypress-plugin-stripe-elements), który ułatwia wyciąganie elementów z iframe - `cy.fillElementsInput('cardNumber', '4242424242424242');`.
+
+Konfiguracja tego pluginu jest dostępna na stronie projektu. Niestety plugin ten nie zadziała w projekcie, gdzie nie korzystamy z gotowego widgetu Stripe.js. W takim przypadku mamy dostępne znacznie więcej ramek, w których znajdują się poszczególne elementy formularza.
+Ten problem da się obejść tworząc pomocniczą funkcję (na bazie tej z pluginu):
+
+```
+const getStripeElement = (iframe, selector) => {
+    if (Cypress.config('chromeWebSecurity')) {
+        throw new Error('To get stripe element `chromeWebSecurity` must be disabled');
+    }
+
+    return cy
+        .get('iframe')
+        .its('0.contentDocument.body').should('not.be.empty')
+        .then(cy.wrap)
+        .find(selector);
+};
+
+// usage
+getStripeElement(`input[data-elements-stable-field-name="cardNumber"]`).type('4242424242424242');
+getStripeElement(`input[name="cc-csc"]`).type('123', {force: true});
+getStripeElement(`input[name="cc-exp-month"]`).type('12', {force: true});
+getStripeElement(`input[name="cc-exp-year"]`).type('28', {force: true});
+```
+
+Jednak możemy także przekazać w parametrze referencję do elementu iframe. Najlepiej wykorzystać do tego polecenie cypress, ale najprostsza implementacja to:
+
+```
+const getStripeElement = (iframe, selector) => {
+    if (Cypress.config('chromeWebSecurity')) {
+        throw new Error('To get stripe element `chromeWebSecurity` must be disabled');
+    }
+
+    return cy
+        .wrap(iframe)
+        .its('0.contentDocument.body').should('not.be.empty')
+        .then(cy.wrap)
+        .find(selector);
+};
+```
+
+[Testing Stripe Integration with Cypress](https://medium.com/swinginc/testing-stripe-integration-with-cypress-3f0d665cfef7)
