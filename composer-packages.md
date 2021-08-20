@@ -52,3 +52,7 @@ phive.phar install phploc
 
 [PHIVE](https://phar.io/)
 [Phive: Secure, Easy, and Contained Phar Manager](https://php.watch/articles/phive)
+
+### sabberworm/php-css-parser
+
+[A Parser for CSS Files written in PHP. Allows extraction of CSS files into a data structure, manipulation of said structure and output as (optimized) CSS.](https://github.com/sabberworm/PHP-CSS-Parser)
