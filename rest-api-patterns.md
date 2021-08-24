@@ -63,6 +63,22 @@ paths:
 
 * Tworząc końcówki batch musimy zwracać status i błędy/ostrzeżenia dla wszystkich elementów z żądania. Możemy wykorzystać kod HTTP 207 (MULTI Status) [Zalando HTTP 207](https://opensource.zalando.com/restful-api-guidelines/#152)
 
+* RPC bardziej pasuje w przypadku stateless API, zaś REST do stateful API.
+
+* Prostota nie oznacza ograniczenie ilości końcówek REST, bo najczęściej taki ruch przesuwa złożoność w kierunku skomplikowanego wywołania końcówki.
+
+* Powinniśmy zawsze mieć na uwadze wsteczną kompatybilność. Końcówki projektujemy tak, aby łatwo je rozbudować w przyszłości - nie naruszając wstecznej kompatybilności.
+
+* Identyfikatory/Tokeny możemy kodować wykorzystując [Crockford Base32](https://en.wikipedia.org/wiki/Base32). Najpopularniejsza wariacja nie zawiera liczb 0 i 1, ponieważ mogą się mylić z znakami "O" i "I".
+
+* Dobrą praktyką jest zagnieżdżanie zasobów, gdy kasowanie rodzica ma kasować wszystkie podrzędne relacje, albo ustawienie zasad bezpieczeństwa na elemencie nadrzędnym mają "spływać" także na dzieci.
+
+* Podczas generowania identyfikatora, w celu uniknięcia kolizji, wciąż najlepszym rozwiązaniem jest używanie wystarczająco długiego identyfikatora relatywnie do liczby tworzonych zasobów i korzystanie z niezawodnych i kryptograficznie bezpiecznych generatorów liczb losowych.
+
+* Własne metody używają metody POST  i separatora ":", aby zadeklarować akcję. Konwencja nazewnicza jest podobna do standardowych metod `<Verb><Noun>` np. "/api/messages/1:clone" [Custom methods](https://cloud.google.com/apis/design/custom_methods)
+
+* Jakikolwiek sposób, który znacząco zmienia podstawowe zachowanie metody API jest bardzo złym pomysłem. W ten sposób bardzo utrudniamy sobie monitorowanie i egzekwowanie celów SLA na poziomie usług.
+
 ## Webhook
 
 Webhooki możemy zabezpieczyć wykorzystując jedną z poniższych metod:
