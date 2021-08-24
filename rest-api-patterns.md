@@ -90,6 +90,25 @@ Webhooki możemy zabezpieczyć wykorzystując jedną z poniższych metod:
 
 [OpenApi Webhook example](https://github.com/OAI/OpenAPI-Specification/blob/master/examples/v3.1/webhook-example.yaml)
 
+## Asynchroniczność
+
+Definicja interfejsów Operation i OperationError z JJ Geewax, _API Design Patterns_, Manning
+
+```
+interface Operation<ResultT, MetadataT> {
+  id: string;
+  done: boolean;
+  result?: ResultT | OperationError;
+  metadata?: MetadataT;
+}
+
+interface OperationError {
+  code: string;
+  message: string;
+  details?: any;
+}
+```
+
 ## Bezpieczeństwo
 
 * [deserialization vulnerability](https://cheatsheetseries.owasp.org/cheatsheets/Deserialization_Cheat_Sheet.html)
