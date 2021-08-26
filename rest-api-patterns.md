@@ -79,6 +79,10 @@ paths:
 
 * Jakikolwiek sposób, który znacząco zmienia podstawowe zachowanie metody API jest bardzo złym pomysłem. W ten sposób bardzo utrudniamy sobie monitorowanie i egzekwowanie celów SLA na poziomie usług.
 
+* Ponawianie żądań odbywa się stosunkowo szybko po wystąpieniu awarii, zwykle kilka sekund po pierwotnym żądaniu. Dobrym punktem wyjścia dla zasad wygasania pamięci podręcznej z przetworzonymi identyfikatorami żądania jest około 5 minut, ale także resetowanie tego licznika przy każdym dostępie do buforowanej wartości. Jeśli mamy trafienie w pamięci podręcznej oznacza to, że żądanie zostało ponowione i w przypadku kolejnych niepowodzeń chcemy zachować taką samą politykę wygaśnięcia jak przy pierwszych próbach.
+
+* Żądania mogą zakończyć się niepowodzeniem w dowolnym momencie, dlatego jeśli nie otrzymamy potwierdzonej odpowiedzi z API, nie ma możliwości upewnienia się, czy żądanie zostało przetworzone, czy nie.
+
 ## Webhook
 
 Webhooki możemy zabezpieczyć wykorzystując jedną z poniższych metod:
