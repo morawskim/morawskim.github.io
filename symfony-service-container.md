@@ -59,3 +59,19 @@ W przypadku konfiguracji w pliku `xml`:
 ```
 
 [How to Work with Service Tags](https://symfony.com/doc/4.4/service_container/tags.html)
+
+## Service configurator
+
+Service configurator umożliwia nam wykorzystanie usługi do skonfigurowania innej usługi przed jej zwróceniem.
+Jest to bardzo pomocne, gdy usługa wymaga dynamicznej konfiguracji np. na podstawie danych z bazy danych.
+
+```
+# config/services.yaml
+services:
+    # ...
+
+    App\Some\Service:
+        configurator: ['@App\Some\ServiceConfigurator', 'configure']
+```
+
+[How to Configure a Service with a Configurator](https://symfony.com/doc/current/service_container/configurators.html)
