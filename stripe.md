@@ -16,6 +16,16 @@
 
 [Save a card during payment](https://stripe.com/docs/payments/save-during-payment)
 
+### Radar rules
+
+> A payment can still be successful even if the CVC or postal code check fails. This is because card issuers take many signals into account when making a decision about whether to approve or decline a payment. In some cases, a card issuer may still approve a payment they consider legitimate, even if the CVC or postal code verification check fails.
+
+> Stripe has built-in rules so you can block payments even if they’ve been approved by the card issuer. These rules can be enabled or disabled using the Stripe Dashboard.
+
+[Radar rules](https://stripe.com/docs/radar/rules#traditional-bank-checks)
+
+![Stripe radar rules](images/stripe/stripe_radar_rules.png)
+
 ## Płatność off-session
 
 ```
