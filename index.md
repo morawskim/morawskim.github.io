@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2021-09
+[Xdebug3](xdebug3.md)
 [PHPStorm](phpstorm.md)
 [Stripe](stripe.md)
 
