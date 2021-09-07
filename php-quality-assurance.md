@@ -231,3 +231,30 @@ Następnie możemy już wywołać polecenie `phpstan`, aby przeanalizować kod.
 `phpmetrics` znajduje się w obrazie dockera `jakzal/phpqa:alpine`, jednak obecnie ze względu na błąd [phpmetrics command with error #311](https://github.com/jakzal/phpqa/issues/311)  ([PhpParser\Lexer::getNextToken(): Return value must be of type int, null returned #459](https://github.com/phpmetrics/PhpMetrics/issues/459)) narzędzie nie działa w tym obrazie.
 Musimy zainstalować ręcznie pakiet composera `phpmetrics/phpmetrics`.
 Następnie możemy wygenerować raport `vendor/bin/phpmetrics --report-html=./phpmetrics --exclude=tests,vendor,var,bin /path/to/project`
+
+## composer-normalizer
+
+Za pomocą pakietu `ergebnis/composer-normalize` możemy sformatować i znormalizować plik `composer.json`.
+Wystarczy wywołać polecenie `composer normalize`. W kluczu `extras` pliku `composer.json` możemy utworzyć konfigurację pakietu:
+
+```
+{
+  ...
+  "extra": {
+    "composer-normalize": {
+      "indent-size": 2,
+      "indent-style": "space"
+    }
+  }
+}
+```
+W zadaniu Gitlab-CI weryfikujemy czy plik `composer.json` jest poprawnie sformatowany:
+
+```
+composer-normalizer:
+  stage: qa
+  image: jakzal/phpqa:alpine
+  script:
+    - composer normalize --dry-run
+  dependencies: []
+```
