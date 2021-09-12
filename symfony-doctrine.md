@@ -149,3 +149,17 @@ Przenosząc projekt na ORM Doctrine możemy na podstawie istniejącej struktury 
 ## Schema filter
 
 Wykorzystując filtry możemy wykluczyć tabele, którymi zarządza Doctrine. `DoctrineBundle` zawiera klasę `\Doctrine\Bundle\DoctrineBundle\Dbal\SchemaAssetsFilterManager`, która jest punktem wejścia i deleguje filtrowanie do przekazanych klas. W tym samym bundle klasa `WellKnownSchemaFilterPass` rejestruje filtr (`BlacklistSchemaAssetFilter`), który ignoruje wewnętrzne tabele frameworka Symfony, jeśli są wykorzystywane w aplikacji. Klasa `\Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DbalSchemaFilterPass` wyszukuje wszystkie usługi z tagiem `doctrine.dbal.schema_filter` i przekazuje je do  SchemaAssetsFilterManager. Konfigurując klucz `schema_filter` (`doctrine` / `dbal`) możemy zignorować tabele, które pasują do wyrażenia regularnego.  W takim przypadku klasa `\Doctrine\Bundle\DoctrineBundle\DependencyInjection\DoctrineExtension` zarejestruje filtr `\Doctrine\Bundle\DoctrineBundle\Dbal\RegexSchemaAssetFilter`.
+
+## MySQL SSL
+
+Chcąc podłączyć się do wykupionej usługi bazy danych w chmurze musimy ustawić parametry do certyfikatu urzędu, klucza i klucza publicznego. W pliku `config/packages/doctrine.yaml` ustawiamy dodatkowe opcje połączenia. W pliku `config/services.yaml` ustawiamy parametry z odpowiednią ścieżką do plików.
+
+```
+doctrine:
+    dbal:
+        # ....
+        options:
+            !php/const:PDO::MYSQL_ATTR_SSL_CA: %ca_cert%
+            #!php/const:PDO::MYSQL_ATTR_SSL_KEY: %private_key%
+            #!php/const:PDO::MYSQL_ATTR_SSL_CERT: %public_cert%
+```
