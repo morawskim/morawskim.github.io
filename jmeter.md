@@ -35,3 +35,12 @@ Ważne aby korzystać z parametru `-q` a nie `-p`. Inaczej możemy otrzymywać b
 Testy wydajnościowe możemy wywoływać z kontenera dockera wykorzystując obraz [justb4/jmeter](https://hub.docker.com/r/justb4/jmeter).
 Wpierw pobieramy obraz poleceniem `docker pull justb4/jmeter:latest`. Następnie możemy przekazać te same parametry co do skryptu `jmeter`.
 Przykładowe wywołanie: `docker run --rm -i -v ${PWD}:${PWD} -w ${PWD} justb4/jmeter -quat.properties -n -t performance.jmx -l performance.csv -e -o ./jmeter-html-report`
+
+## Konfiguracja
+
+### Zmiana języka interfejsu graficznego
+
+Apache JMeter domyślnie używa ustawień regionalnych komputera.
+Jednak lepiej jest tworzyć testy wykorzystując język angielski, ponieważ wszystkie nazwy opcji będą takie same jak w dokumentacji. Po drugie nie wszystkie opcje zostały przetłumaczone na język polski.
+W pliku `jmeter.properties` (znajduje się on w katalogu `bin`) musimy odkomentować linię `language=en`.
+Ta linia powinna znajdować się na początku pliku.
