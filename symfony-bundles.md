@@ -153,11 +153,23 @@ protected function initialize(): self
 Bundle `NelmioCorsBundle` dodaje obsługę nagłówków CORS. Instalując ten pakiet przez `symfony/flex` utworzony zostanie plik z przykładową konfiguracją. W przypadku końcówki, której zadaniem jest odświeżanie tokenu JWT musimy dodać klucz `allow_credentials` jak w przykładzie poniżej.
 
 ```
-'^/api/sessions/refresh':
-    allow_origin: [ '%env(CORS_ALLOW_ORIGIN)%' ]
-    allow_headers: [ 'Content-Type', 'Accept', 'Cookie' ]
-    allow_methods: [ 'POST']
-    allow_credentials: true
+nelmio_cors:
+    defaults:
+        origin_regex: false
+        allow_origin: []
+        allow_methods: []
+        allow_headers: []
+        expose_headers: []
+        max_age: 3600
+    paths:
+        '^/api/sessions/refresh':
+            allow_origin: [ '%env(CORS_ALLOW_ORIGIN)%' ]
+            allow_headers: [ 'Content-Type', 'Accept', 'Cookie' ]
+            allow_methods: [ 'POST', 'OPTIONS' ]
+            allow_credentials: true
+        # ....
+        '^/': null
+
 ```
 
 ## friendsofsymfony/rest-bundle
