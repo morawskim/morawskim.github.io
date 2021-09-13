@@ -56,3 +56,14 @@ phive.phar install phploc
 ### sabberworm/php-css-parser
 
 [A Parser for CSS Files written in PHP. Allows extraction of CSS files into a data structure, manipulation of said structure and output as (optimized) CSS.](https://github.com/sabberworm/PHP-CSS-Parser)
+
+
+## Dev
+
+### zenstruck/messenger-test
+
+[Assertions and helpers for testing your symfony/messenger queues.](https://github.com/zenstruck/messenger-test)
+
+### rybakit/phpunit-extras
+
+[Custom annotations and expectations for PHPUnit.](https://github.com/rybakit/phpunit-extras)
