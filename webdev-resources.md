@@ -52,6 +52,8 @@
 
 [CSS Filters Generator - Modify images with CSS only ](https://justcode.today/filters/)
 
+[Generate wavy dividers for your next project with ease!](https://wavier.art/)
+
 ### Paid
 
 [Email on Acid - Email Pre-Deployment Checklist](https://www.emailonacid.com/)
