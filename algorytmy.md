@@ -24,3 +24,44 @@ Martin Kleppmann, "Przetwarzanie danych w dużej skali. Niezawodność, skalowal
 Leslie Lamport, "Password Authentication with Insecure Communication", Communications of the ACM 24.11 (November 1981)
 
 [Lamport OTP system](https://security.stackexchange.com/questions/90909/lamport-otp-system)
+
+### Grafy
+
+PHP zawiera bibliotekę [clue/graph](https://github.com/graphp/graph), która pozwala tworzyć grafy.
+Dodatkowo [graphp/algorithms](https://github.com/graphp/algorithms) zawiera implementację najpopularniejszych algorytmów dla grafów.
+
+#### Najkrótsza ścieżka
+
+Algorytm Breadth-first służy do obliczenia najkrótszej ścieżki dla grafów bez wagi.
+Algorytm Dijkstra oblicza najkrótszą ścieżkę dla grafów z wagami. Jednak ma pewnie ograniczenia. Wagi muszą być dodatnie i graf nie może być cykliczny. Jeśli wagi mogą być ujemne musimy korzystać z innego algorytmu np. Ballman-Ford.
+
+```php
+<?php
+
+use Fhaculty\Graph\Graph;
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+$graph = new Graph();
+$start = $graph->createVertex('start');
+$s1 = $graph->createVertex('s1');
+$s2 = $graph->createVertex('s2');
+$s3 = $graph->createVertex('s3');
+$s4 = $graph->createVertex('s4');
+$end = $graph->createVertex('end');
+
+$start->createEdgeTo($s1)->setWeight(5);
+$start->createEdgeTo($s2)->setWeight(2);
+
+$s1->createEdgeTo($s3)->setWeight(4);
+$s1->createEdgeTo($s4)->setWeight(2);
+$s2->createEdgeTo($s1)->setWeight(8);
+$s2->createEdgeTo($s4)->setWeight(7);
+
+$s3->createEdgeTo($s4)->setWeight(6);
+$s3->createEdgeTo($end)->setWeight(3);
+$s4->createEdgeTo($end)->setWeight(1);
+
+//$alg = new \Graphp\Algorithms\ShortestPath\Dijkstra($start);
+//echo $alg->getDistance($end);
+```
