@@ -187,6 +187,22 @@ Przykład jest w dokumentacji Elasticsearch - [Filter search result - Post filte
 
 * Powinniśmy zwiększyć limit otwartych plików do dużej wartości np. `64 000` a także zwiększyć parametr `vm,max_map_count` na wartość np. `262144` w pliku `/etc/sysctl.conf`.
 
+## Monitorowanie końcówki REST
+
+* Aktualny stan klastra - `GET /_cluster/state`
+
+* Szybki rzut oka na stan klastra - `GET /_cluster/health`
+
+* Podstawowy stan klastra wraz z informacjami na temat każdego indeksu - `GET /_cluster/health?level=indices`
+
+* Podobnie jak wyżej ale z szczegółami każdego shard wewnątrz każdego indeksu - `GET /_cluster/health?level=shards`
+
+* Statystyki o każdym węźle w klastrze - `GET _nodes/stats`
+
+* Statystyki klastra (bardziej zwięzłe niż node-stats) - `GET _cluster/stats`
+
+* Statystyki indeksu INDEX_NAME - `GET INDEX_NAME/_stats`
+
 ## FOSElasticaBundle
 
 Obecnie w celu obsługi wersji 7 Elasticsearch musimy zainstalować wersję 6.0 pakietu, która ciągle jest w fazie rozwoju.
