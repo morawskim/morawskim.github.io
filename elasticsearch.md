@@ -171,6 +171,22 @@ Ten filtr używamy, aby obliczyć agregacje na podstawie szerszego zestawu wynik
 Dzięki temu możemy użytkownikowi wyświetlić np. ile jest produktów w innym kolorze niż wybranym.
 Przykład jest w dokumentacji Elasticsearch - [Filter search result - Post filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/filter-search-results.html#post-filter)
 
+## Dobre praktyki
+
+* Domyślnie zapytanie `match` korzysta z operatora `OR`. Dlatego fraza "capital of Hungary" jest interpretowana jako  "capital OR of OR Hungary". Zmieniając operator najpewniej będziemy też chcieli ustawić parametr `minimum_should_match`. [Match query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html)
+
+* Gdy stosujemy agregację np. `terms` do pola typu string, pole to nie powinno być analizowane (`not_analyzed`). W przeciwnym przypadku w wynikach dostaniemy dziwne tokeny.
+
+* Kiedy ustawiamy wielkość sterty dla Elasticsearch nie powinna ona przekraczać poziomu 50% dostępnej pamięci RAM, ale także nie przekraczać 32GB. JVM może wtedy korzystać z kompresowanych wskaźników do pamięci co znacząco zmniejsza wykorzystanie pamięci. Obie wartości `Xmx` i `Xms` powinny mieć taką samą wartość, aby uniknąć kosztownego procesu zmiany rozmiaru sterty.
+
+* Kiedy korzystamy z relacji rodzic - dziecko, i chcemy zmienić rodzica, to musimy wpierw skasować dokument rodzica. Wynika to z zasad działania. Dokument rodzica i wszystkie jego dzieci muszą znajdować się w jednym shard.
+
+* Nie możemy zwiększyć ilości shard w indeksie, ponieważ ta liczba shardów jest ważnym elementem algorytmu do rozmieszczania indeksowanych dokumentów. Jedyną opcją jest prze indeksowanie wszystkich dokumentów do indeksu z zwiększoną liczbą shardów. Musimy jednak wystrzegać się nadmiernej alokacji. Domyślnie Elasticsearch alokuje 5 podstawowych shardów.
+
+* Kasowanie dokumentów nie jest mocno efektywne w Elasticsearch, ponieważ takie dokumenty są oznaczone jako do skasowania. Dlatego gdy wykorzystujemy Elasticsearch do przechowywania logów zakładamy indeksy na rok, miesiąc albo nawet na dzień. W takim przypadku kasowanie starych danych jest łatwe - kasujemy indeks. Dodatkowo możemy korzystać z aliasów np. `current`, albo `last_3_months`, aby łatwiej wyszukiwać dane.
+
+* Powinniśmy zwiększyć limit otwartych plików do dużej wartości np. `64 000` a także zwiększyć parametr `vm,max_map_count` na wartość np. `262144` w pliku `/etc/sysctl.conf`.
+
 ## FOSElasticaBundle
 
 Obecnie w celu obsługi wersji 7 Elasticsearch musimy zainstalować wersję 6.0 pakietu, która ciągle jest w fazie rozwoju.
