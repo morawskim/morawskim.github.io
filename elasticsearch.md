@@ -164,6 +164,13 @@ GET /INDEX_NAME/_search
 }
 ```
 
+### Post filter
+
+`post_filter` pozwala nam przefiltrować tylko wyniki wyszukiwania, ale nie agregacje.
+Ten filtr używamy, aby obliczyć agregacje na podstawie szerszego zestawu wyników, a następnie zawęzić wyniki.
+Dzięki temu możemy użytkownikowi wyświetlić np. ile jest produktów w innym kolorze niż wybranym.
+Przykład jest w dokumentacji Elasticsearch - [Filter search result - Post filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/filter-search-results.html#post-filter)
+
 ## FOSElasticaBundle
 
 Obecnie w celu obsługi wersji 7 Elasticsearch musimy zainstalować wersję 6.0 pakietu, która ciągle jest w fazie rozwoju.
