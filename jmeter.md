@@ -36,6 +36,25 @@ Testy wydajnościowe możemy wywoływać z kontenera dockera wykorzystując obra
 Wpierw pobieramy obraz poleceniem `docker pull justb4/jmeter:latest`. Następnie możemy przekazać te same parametry co do skryptu `jmeter`.
 Przykładowe wywołanie: `docker run --rm -i -v ${PWD}:${PWD} -w ${PWD} justb4/jmeter -quat.properties -n -t performance.jmx -l performance.csv -e -o ./jmeter-html-report`
 
+## Instalacja pluginów
+
+Aby móc zarządzać pluginami z konsoli musimy pobrać dodatkowe biblioteki JAR. Dlatego warto skorzystać z poniższego pliku Makefile, który pobierze JMeter i zainstaluje plugin `bzm-parallel`.
+Po utworzeniu pliku wywołujemy polecenie `make setup-jmeter`.
+
+```
+JMETER_VERSION := '5.4.1'
+JMETER_CMD_VERSION := '2.2.1'
+JMETER_PLUGIN_MANAGER_VERSION := '1.6'
+
+setup-jmeter:
+	@wget -Ojmeter.tgz https://dlcdn.apache.org/jmeter/binaries/apache-jmeter-$(JMETER_VERSION).tgz
+	@tar -xvf jmeter.tgz
+	@cd apache-jmeter-$(JMETER_VERSION)/lib && wget https://repo1.maven.org/maven2/kg/apc/cmdrunner/$(JMETER_CMD_VERSION)/cmdrunner-$(JMETER_CMD_VERSION).jar
+	@cd apache-jmeter-$(JMETER_VERSION)/lib/ext && wget https://repo1.maven.org/maven2/kg/apc/jmeter-plugins-manager/$(JMETER_PLUGIN_MANAGER_VERSION)/jmeter-plugins-manager-$(JMETER_PLUGIN_MANAGER_VERSION).jar
+	@cd apache-jmeter-$(JMETER_VERSION) && java  -jar lib/cmdrunner-$(JMETER_CMD_VERSION).jar --tool org.jmeterplugins.repository.PluginManagerCMD install bzm-parallel
+	@rm jmeter.tgz
+```
+
 ## Konfiguracja
 
 ### Zmiana języka interfejsu graficznego
