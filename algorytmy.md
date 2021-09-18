@@ -65,3 +65,15 @@ $s4->createEdgeTo($end)->setWeight(1);
 //$alg = new \Graphp\Algorithms\ShortestPath\Dijkstra($start);
 //echo $alg->getDistance($end);
 ```
+
+## Programowanie dynamiczne
+
+Za pomocą algorytmów programowania dynamicznego możemy rozwiązać problem plecakowy.
+
+[Knapsack Problem: Solve using Dynamic Programming Example](https://www.guru99.com/knapsack-problem-dynamic-programming.html)
+
+[How to solve the Knapsack Problem with dynamic programming](https://medium.com/@fabianterh/how-to-solve-the-knapsack-problem-with-dynamic-programming-eb88c706d3cf)
+
+[Knapsack problem/0-1](https://rosettacode.org/wiki/Knapsack_problem/0-1#PHP)
+
+[Knapsack Solver](https://github.com/Plastonick/knapsack-solver)
