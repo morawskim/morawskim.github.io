@@ -68,7 +68,7 @@ $s4->createEdgeTo($end)->setWeight(1);
 
 ## Programowanie dynamiczne
 
-Za pomocą algorytmów programowania dynamicznego możemy rozwiązać problem plecakowy.
+Algorytmy programowania dynamicznego możemy użyć gdy problem można podzielić na pod problemy, które nie są od siebie zależne. Za ich pomocą możemy rozwiązać problem plecakowy.
 
 [Knapsack Problem: Solve using Dynamic Programming Example](https://www.guru99.com/knapsack-problem-dynamic-programming.html)
 
