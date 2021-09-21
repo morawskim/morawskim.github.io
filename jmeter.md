@@ -63,3 +63,4 @@ Apache JMeter domyślnie używa ustawień regionalnych komputera.
 Jednak lepiej jest tworzyć testy wykorzystując język angielski, ponieważ wszystkie nazwy opcji będą takie same jak w dokumentacji. Po drugie nie wszystkie opcje zostały przetłumaczone na język polski.
 W pliku `jmeter.properties` (znajduje się on w katalogu `bin`) musimy odkomentować linię `language=en`.
 Ta linia powinna znajdować się na początku pliku.
+Zgodnie z [dokumentacją](https://jmeter.apache.org/usermanual/properties_reference.html#language) ten parametr może być ustawiony tylko w pliku `jmeter.properties`.
