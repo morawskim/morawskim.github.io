@@ -195,6 +195,35 @@ on('before:browser:launch', (browser = {}, launchOptions) => {
 
 [DEMO](https://github.com/bahmutov/cypress-wikipedia/tree/abc02b74e12ba3f3c38de5635fef6bf4b2875213)
 
+### Problemy z płynnym nagrywaniem filmów
+
+W przypadku nie wystarczającej wydajności maszyny, na której uruchomiane są testy w wynikowy filmie interfejs Cypress nie będzie się zmieniał przez parę sekund. Ten problem [jest znany](https://github.com/cypress-io/cypress/issues/4722#issuecomment-515562987). Obecnie trwają prace nad [wyświetlaniem ostrzeżenia w przypadku zgubienia/zamrożenia wideo](https://github.com/cypress-io/cypress/issues/5061).
+
+Możemy podczas wywoływania testów ustawić zmienną środowiskową `DEBUG` - `DEBUG=cypress:server:util:process_profiler cypress run .........`. Co 10 sekund na wyjściu pojawią się aktualne statystyki:
+
+```
+  cypress:server:util:process_profiler current & mean memory and CPU usage by process group:
+  cypress:server:util:process_profiler ┌─────────┬───────────────────┬──────────────┬───────────────────────────────────────────────────────┬────────────┬────────────────┬──────────┬──────────────┬─────────────┐
+  cypress:server:util:process_profiler │ (index) │       group       │ processCount │                         pids                          │ cpuPercent │ meanCpuPercent │ memRssMb │ meanMemRssMb │ maxMemRssMb │
+  cypress:server:util:process_profiler ├─────────┼───────────────────┼──────────────┼───────────────────────────────────────────────────────┼────────────┼────────────────┼──────────┼──────────────┼─────────────┤
+  cypress:server:util:process_profiler │    0    │     'Chrome'      │      8       │ '1333, 1338, 1339, 1341, 1356, 1342 ... 2 more items' │   39.74    │      3.9       │  548.2   │    424.42    │    548.2    │
+  cypress:server:util:process_profiler │    1    │     'cypress'     │      1       │                         '257'                         │   15.11    │     29.79      │  154.06  │    179.06    │   231.05    │
+  cypress:server:util:process_profiler │    2    │     'plugin'      │      1       │                         '479'                         │    0.53    │      0.16      │  88.36   │    106.5     │   141.87    │
+  cypress:server:util:process_profiler │    3    │ 'electron-shared' │      4       │                 '264, 421, 265, 457'                  │     0      │       0        │  70.26   │    131.12    │   177.25    │
+  cypress:server:util:process_profiler │    4    │     'ffmpeg'      │      1       │                        '1332'                         │   13.26    │     20.37      │  69.43   │    38.84     │    69.43    │
+  cypress:server:util:process_profiler │    5    │      'other'      │      2       │                     '1419, 1420'                      │     0      │       0        │   3.38   │     3.37     │    3.43     │
+  cypress:server:util:process_profiler │    6    │      'TOTAL'      │      17      │                          '-'                          │   68.63    │     52.92      │  933.68  │    853.31    │   1079.62   │
+  cypress:server:util:process_profiler └─────────┴───────────────────┴──────────────┴───────────────────────────────────────────────────────┴────────────┴────────────────┴──────────┴──────────────┴─────────────┘ +10s
+  ```
+
+W pliku konfiguracyjnym, który jest wczytywany możemy także wyłączyć kompresję wideo:
+
+```
+{
+  "videoCompression": false
+}
+```
+
 ## API i upload pliku (FormData)
 
 Cypress nie umożliwia nam wysyłanie obiektu FormData przez `cy.request` ([Posting formData using cypress doesn't work #1647](https://github.com/cypress-io/cypress/issues/1647)). Musimy skorzystać z XMLHttpRequest.
