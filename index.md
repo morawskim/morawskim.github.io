@@ -2,6 +2,8 @@ Hello
 =====
 
 ## 2021-09
+[Rector](rector.md)
+[RabbitMQ](rabbitmq.md)
 [Xdebug3](xdebug3.md)
 [PHPStorm](phpstorm.md)
 [Stripe](stripe.md)
