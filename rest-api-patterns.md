@@ -83,6 +83,8 @@ paths:
 
 * Żądania mogą zakończyć się niepowodzeniem w dowolnym momencie, dlatego jeśli nie otrzymamy potwierdzonej odpowiedzi z API, nie ma możliwości upewnienia się, czy żądanie zostało przetworzone, czy nie.
 
+* Gdy używamy symfony/serializer wykorzystajmy go tylko do serializacji danych dla API. Nie próbujmy wykorzystywać go do integracji z innymi wewnętrznymi aplikacjami np. Elasticsearch.
+
 ## Webhook
 
 Webhooki możemy zabezpieczyć wykorzystując jedną z poniższych metod:
