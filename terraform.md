@@ -26,3 +26,16 @@ resource "libvirt_cloudinit_disk" "commoninit" {
 [libvirt cloudinit](https://github.com/dmacvicar/terraform-provider-libvirt/blob/master/website/docs/r/cloudinit.html.markdown)
 [Ubuntu Cloud Images](https://cloud-images.ubuntu.com/)
 [Cloud config examples](https://cloudinit.readthedocs.io/en/latest/topics/examples.html)
+
+## Publiczny adres IP
+
+Budują środowiska (np. do testów wydajności) chcemy ograniczyć dostęp do serwera do zaufanych adresów IP. W fazie testów możemy dodać nasz aktualny adres publiczny do reguł firewalla. Nasz publiczny adres IP poznamy za pomocą usługi [http://checkip.amazonaws.com](http://checkip.amazonaws.com).
+
+```
+# ...
+data "http" "my_ip" {
+   url = "http://checkip.amazonaws.com/"
+}
+
+# chomp(data.http.my_ip.body)
+```
