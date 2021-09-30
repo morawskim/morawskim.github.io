@@ -17,3 +17,7 @@ https://github.com/CachetHQ/Cachet
 https://cachethq.io/
 
 An open source status page system for everyone.
+
+## milvus
+
+[An open-source vector database for embedding similarity search and AI applications.](https://github.com/milvus-io/milvus)
