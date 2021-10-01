@@ -89,3 +89,11 @@ user = www-data
 ```
 
 [Ofelia](https://github.com/mcuadros/ofelia)
+
+## Postmortems
+
+[This is a PHP based web application to help manage your postmortems. It has a pluggable feature system and can pull in related information from IRC and JIRA as well as storing relevant links and graphs.](https://github.com/etsy/morgue)
+
+## Status page system
+
+[Cachet - An open source status page system for everyone.](https://cachethq.io/)
