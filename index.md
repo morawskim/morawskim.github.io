@@ -92,7 +92,7 @@ Hello
 [PHPUnit](phpunit.md)
 [React i TypeScript](react-i-typescript.md)
 [Progressive web app](progressive-web-app.md)
-[nginx - php-fpm](nginx-php-fpm.md)
+[nginx - php-fpm](nginx.md)
 
 ## 2020-05
 [React - memo](react-memo.md)
