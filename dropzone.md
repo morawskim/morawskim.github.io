@@ -30,6 +30,25 @@ myDropzone.on('success', function (file, response) {
 
 ```
 
+### Upload progress
+
+Podczas przesyłania pliku możemy wyświetlić postęp przesyłania pliku. Musimy jedynie w konfiguracji przekazać funkcję do klucza `uploadprogress`. Jeśli plik jest mały a prędkość przesyłania danych jest wysoka to nasza funkcja zostanie od razu wywołana po przesłaniu całego pliku. Przesłanie pliku (postęp równy 100%) nie oznacza przetworzenie go po stronie serwera, które może także potrwać.
+
+```
+const myDropzone = new Dropzone("div#dropzone", {
+    // ...
+    uploadprogress: function(file, progress, bytesSent) {
+        console.log(file, progress, bytesSent);
+    }
+});
+
+myDropzone.on("totaluploadprogress", function (progress, totalBytes, sentBytes) {
+    // ...
+});
+```
+
+[How to show upload progress percentage in dropzone.js](https://newbedev.com/how-to-show-upload-progress-percentage-in-dropzone-js)
+
 ## Cypress
 
 Aby przetestować upload pliku w cypress musimy zainstalować pakiet `cypress-file-upload`.
