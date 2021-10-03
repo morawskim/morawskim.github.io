@@ -68,3 +68,5 @@ Zgodnie z [dokumentacją](https://jmeter.apache.org/usermanual/properties_refere
 ## Porady
 
 Generując plik CSV z testów i otwierając go w programie Excel możemy sformatować wartość komórki `timestamp`. W nowej komórce wstawiamy formułę `=(((A2/1000/60)/60)/24)+DATA(1970;1;1)`. Przykład zakłada, że komórka `A2` zawiera timestamp. Następnie musimy wybrać format komórki. Wybieramy grupę Data lub Godzina i preferowany format.
+
+Jeśli potrzebujemy dodać opóźnienie po wysłaniu próbki (np. żądania HTTP) to możemy wykorzystać element `Test Action Sampler`. Wartość opóźnienia możemy ustawić na sztywno albo skorzystać z funkcji random np. aby czekać pomiędzy 1 a 2 sekundami - `${__Random(1000, 2000)`.
