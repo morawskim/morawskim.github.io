@@ -16,6 +16,8 @@ Paradygmat Command-Query-Seperation - W kontekście programowania obiektowego, s
 
 Eric Evans, _Domain-Driven Design. Zapanuj nad złożonym systemem informatycznym_, Helion
 
+Harry Percival i Bob Gregory, _Architektura aplikacji w Pythonie. TDD, DDD i rozwój mikrousług reaktywnych_, Helion
+
 >Warstwy mają być luźno związane, a zależności projektowe muszą być tylko jednokierunkowe. Warstwy wyższe mogą w prosty sposób używać elementów warstw niższych poprzez wykorzystanie ich interfejsów publicznych, przechowując odwołania do nich (choćby tymczasowo) — ogólnie rzecz biorąc, używając standardowych sposobów komunikacji. Jednakże w przypadku, gdy obiekt warstwy niższej potrzebuje skomunikować się w górę (nie mówimy o zwykłej odpowiedzi na zapytanie), musimy skorzystać z innego mechanizmu, używając w tym celu wzorca architektonicznego do łączenia warstw w rodzaju odwołań zwrotnych (callbacks) albo OBSERWATORÓW.
 
 
@@ -29,6 +31,11 @@ Eric Evans, _Domain-Driven Design. Zapanuj nad złożonym systemem informatyczny
 >Nazywaj klasy oraz operacje w taki sposób, aby opisywały swój cel lub działanie bez odwoływania się do środków, których do tego używają. Uwolni to osobę programującą kod klienta od konieczności zrozumienia szczegółów wewnętrznych kodu. Wszystkie te nazwy powinny składać się na JĘZYK WSZECHOBECNY, aby wszyscy członkowie zespołu mogli szybko domyślić się ich znaczenia. Przed utworzeniem kodu napisz najpierw dla niego test, aby wymusić na sobie sposób myślenia późniejszego użytkownika. Cały skomplikowany mechanizm powinien być schowany za abstrakcyjnymi interfejsami, operującymi opisem celu, a nie prowadzącego do niego środka.
 >W publicznych interfejsach dziedziny określ relacje oraz reguły, jednak nie wspominaj o tym, jak są one wymuszane. Opisuj zdarzenia oraz akcje, jednak nie wspominaj nic o ich implementacji.
 
+> Prawo postela (ang. Postel's law) zwane również zasadą solidności (ang. robustness principle), głosi "Stosuj liberalne zasady na wejściu i konserwatywne na wyjściu.
+
+> Domena to zgrabne słowo oznaczające problem, który próbujesz rozwiązać.
+
+> Niezmiennik to warunek, który zawsze jest spełniony.
 
 ## Reguły/Dobre praktyki
 
@@ -66,6 +73,8 @@ Query methods nie powinny być mokowane w testach. Nie powinniśmy także testow
 Te metody z definicji są bez skutków ubocznych, więc możemy je bezpiecznie wywołać wiele razy.
 
 Encje reprezentują domenę biznesową. Zawierają istotne dane i dostarczają użyteczne zachowania powiązane z tymi danymi.
+
+Oddzielajmy to, co chcemy zrobić, od tego, jak to zrobić.
 
 ### Książki
 
