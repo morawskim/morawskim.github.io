@@ -32,6 +32,8 @@
 
 [Matomo is the leading open alternative to Google Analytics that gives you full control over your data. Matomo lets you easily collect data from websites & apps and visualise this data and extract insights.](https://github.com/matomo-org/matomo)
 
+[The most popular FOSS online survey tool on the web.](https://github.com/LimeSurvey/LimeSurvey)
+
 ### Bazy danych
 
 [milvus - An open-source vector database for embedding similarity search and AI applications.](https://github.com/milvus-io/milvus)

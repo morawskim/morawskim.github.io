@@ -1,5 +1,7 @@
 # RabbitMQ
 
+[RabbitMQ as a Service](https://www.cloudamqp.com/)
+
 ## Exchange
 
 Odbiera wiadomości wysłane do RabbitMQ i określa, gdzie je wysłać (do których kolejek). Pełni rolę routingu wiadomości na podstawie atrybutów przekazanych wraz z wiadomością. Protokół AMPQ definiuje cztery rodzaje exchange, a każdy rodzaj traktuje "routing key" w inny sposób:
