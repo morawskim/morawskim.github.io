@@ -49,3 +49,9 @@ Dzięki temu Twig będzie szukał nadpisanych bloków formularza w szablonie. Zm
 Profiler zawiera użyteczną informację jakie prefixy bloków są sprawdzane podczas wyświetlania formularza. Dzięki nim możemy utworzyć blok dla jednego specyficznego pola formularza.
 
 Szablony dostarczane wraz z Symfony znajdują się w katalogu `vendor/symfony/twig-bridge/Resources/views/Form`.
+
+## Wyświetlanie błędów bez przesłania formularza
+
+[Display Symfony form errors, without any submit](https://jolicode.com/blog/display-symfony-form-errors-without-any-submit)
+
+[[Form] Show errors even without submit #32336](https://github.com/symfony/symfony/issues/32336)
