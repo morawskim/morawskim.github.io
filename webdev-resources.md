@@ -76,6 +76,8 @@ Email on Acid is the leading email pre-deployment checklist and a configurable p
 
 [Modern CSS reset](https://github.com/filipelinhares/ress)
 
+[A Modern CSS Reset](https://piccalil.li/blog/a-modern-css-reset/)
+
 ### Hover effects
 
 [A collection of CSS hover effects](https://emilkowalski.github.io/css-effects-snippets/)
