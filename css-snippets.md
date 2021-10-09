@@ -48,3 +48,11 @@ https://github.com/twbs/bootstrap/blob/ff29c1224c20b8fcf2d1e7c28426470f1dc3e40d/
   white-space: nowrap;
 }
 ```
+
+## Debuging overflow
+
+```
+* {
+  outline: 1px solid red;
+}
+```
