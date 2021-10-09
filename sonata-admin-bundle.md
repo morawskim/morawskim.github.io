@@ -202,3 +202,32 @@ admin.sales_channel.extension:
 W moim przypadku zaimplementowałem metodę `alterObject`, która na podstawie przekazywanej encji ustawiała kontekst działania aplikacji (amerykański albo polski). Dzięki temu walidatory na encji wymuszały, aby dane były zgodnie z wybranym kontekstem.
 
 [Extensions](https://symfony.com/doc/current/bundles/SonataAdminBundle/reference/extensions.html)
+
+## Link w menu do zewnętrznego serwisu
+
+Menu w sonancie bazuje na bundle `KnpMenuBundle`. W projekcie musiałem dodać link w menu, który przekieruje użytkownika do zewnętrznego serwisu. Możemy to zrobić definiując ruter w pliku `config/routes/routes.yaml`.
+
+```
+# ...
+external.somewhere:
+    schemes: [https]
+    path: /some/path
+    host: "example.com"
+```
+
+Następnie w pliku `config/packages/sonata.yaml` dodajemy pozycję w menu i ustawiamy parametr `route` na wartość utworzonego rutera. Dzięki parametrom `on_top` nasza pozycja w menu nie będzie zagnieżdżona w drzewie - [Show menu item without treeview](https://symfony.com/bundles/SonataAdminBundle/master/cookbook/recipe_knp_menu.html#show-menu-item-without-treeview).
+
+```
+sonata_admin:
+    # ...
+    dashboard:
+        groups:
+            # ...
+            external_link:
+                label: 'External'
+                on_top: true
+                icon: '<i class="fa fa-globe"></i>'
+                items:
+                    - label: ''
+                      route: external.somewhere
+```
