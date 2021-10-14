@@ -54,6 +54,8 @@
 
 [Generate wavy dividers for your next project with ease!](https://wavier.art/)
 
+[ct.css – Let’s take a look inside your <head>](https://csswizardry.com/ct/)
+
 ### Paid
 
 [Email on Acid - Email Pre-Deployment Checklist](https://www.emailonacid.com/)
