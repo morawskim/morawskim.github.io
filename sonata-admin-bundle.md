@@ -87,6 +87,17 @@ protected function configureRoutes(RouteCollection $collection)
 }
 ```
 
+Jeśli nie skasujemy akcji `delete` a także wyświetlamy link do kasowania encji na liście, to nawet z wyłączonym routerem `batch` pojawi się na liście dodatkowa kolumna `batch`. Aby się jej pozbyć musimy nadpisać metodę `configureBatchActions`.
+
+```
+protected function configureBatchActions($actions)
+{
+    unset($actions['delete']);
+
+    return $actions;
+}
+```
+
 Na końcu w celu generowania przyjaznych nazw encji (np. w breadcrumb) nadpisujemy metodę `toString`.
 ```
 public function toString($object)
