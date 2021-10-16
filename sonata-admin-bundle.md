@@ -1,11 +1,15 @@
 # Sonata/admin-bundle
 
-Bundle `sonata-project/admin-bundle` pozwala nam szybko utworzyć panel administratora. Warto na początku wykonać kilka kroków.
+Bundle `sonata-project/admin-bundle` pozwala nam szybko utworzyć panel administratora.
+Prócz dokumentacji istnieje prezentacja [Building great admin panels with Symfony and SonataAdminBundle](https://speakerdeck.com/victoriaq/building-great-admin-panels-with-symfony-and-sonataadminbundle).
+Warto na początku wykonać kilka kroków.
 
-Aby zmienić tytuł panelu administratora w pliku `config/packages/sonata_admin.yaml` zmieniamy klucz `title`. Dodatkowo wyłączamy funkcję globalnej wyszukiwarki ustawiając klucz `search` na wartość `false`.
+Aby zmienić tytuł panelu administratora w pliku `config/packages/sonata_admin.yaml` zmieniamy klucz `title`.
+Dodatkowo wyłączamy funkcję globalnej wyszukiwarki ustawiając klucz `search` na wartość `false`.
 ```
 sonata_admin:
     title: 'My Admin'
+    #title_logo: 'path/to/logo.jpg'
     search: false
     # .....
 ```
