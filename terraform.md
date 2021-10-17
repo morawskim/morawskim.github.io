@@ -39,3 +39,22 @@ data "http" "my_ip" {
 
 # chomp(data.http.my_ip.body)
 ```
+
+## Usuwanie ręcznie skasowanego zasobu z pliku stanu
+
+Podczas tworzenia środowiska do testów wydajnościowych pojawiały się błędy API z DigitalOcean. Część zasobów zostało utworzonych, część nie. Dodatkowo próba skasowania utworzonych zasobów kończyła się także błędem API. Zasoby skasowałem przez panel użytkownika. Następnego dnia chciałem ponownie zbudować infrastrukturę pod testy wydajnościowe, ale dostałem błąd:
+
+```
+ Error: Error retrieving DatabaseFirewall: GET https://api.digitalocean.com/v2/databases/a3109a4af7b7-4de4-8d1f-8880c69521b3/firewall: 404 (request "d28c65b6-c7d0-45c3-8b98-f1747a868c03") cluster not found
+│
+│   with digitalocean_database_firewall.redis-fw,
+│   on provider.tf line 155, in resource "digitalocean_database_firewall" "redis-fw":
+│  155: resource "digitalocean_database_firewall" "redis-fw" {
+│
+```
+
+Był to jeden z zasobów, które skasowałem ręcznie w panelu. Musimy go ręcznie skasować z pliku z stanem Terraform - `terraform state rm digitalocean_database_firewall.redis-fw`.
+
+[Command: state rm](https://www.terraform.io/docs/cli/commands/state/rm.html)
+
+[Resource manually deleted, now cant Destroy, Plan or Apply due to it missing, what do?](https://discuss.hashicorp.com/t/resource-manually-deleted-now-cant-destroy-plan-or-apply-due-to-it-missing-what-do/12215)
