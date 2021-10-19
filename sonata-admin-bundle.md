@@ -155,6 +155,25 @@ sonata_admin:
         layout: 'SonataAdminBundle/standard_layout.html.twig'
 ```
 
+Aby nadpisać szablon pól formularza musimy edytować inną konfigurację.
+
+```
+sonata_doctrine_orm_admin:
+    templates:
+        form: ['path/to/theme/form_admin_fields.html.twig']
+```
+
+Nasz plik widoku powinien także zawierać standardową instrukcję dziedziczenia szablonu `{% extends '@SonataDoctrineORMAdmin/Form/form_admin_fields.html.twig' %}`
+
+Jeśli nie chcemy tworzyć specyficznego szablonu, możemy w klasie admina, nadpisać metodę `getFormTheme`:
+
+```
+public function getFormTheme(): array
+{
+    return ['path/to/theme/form_admin_fields.html.twig'];
+}
+```
+
 ## Własny typ pola
 
 Wykorzystując value object w encji np. money warto zdefiniować nowy typ pola formularza.
