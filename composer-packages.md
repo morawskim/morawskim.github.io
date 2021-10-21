@@ -20,6 +20,10 @@
 
 [A standalone DateTime library originally based off of Carbon](https://github.com/cakephp/chronos)
 
+### brick/date-time
+
+[A powerful set of immutable classes to work with dates and times.](https://github.com/brick/date-time)
+
 ### swarrot/swarrot
 
 [A lib to consume message from any Broker](https://github.com/swarrot/swarrot)
@@ -34,9 +38,15 @@
 
 ### fakerphp/faker
 
-Biblioteka `` jest forkiem biblioteki `fzaninotto/Faker`, która nie jest już rozwijana - [https://marmelab.com/blog/2020/10/21/sunsetting-faker.html](https://marmelab.com/blog/2020/10/21/sunsetting-faker.html)
+Biblioteka jest forkiem biblioteki `fzaninotto/Faker`, która nie jest już rozwijana - [https://marmelab.com/blog/2020/10/21/sunsetting-faker.html](https://marmelab.com/blog/2020/10/21/sunsetting-faker.html)
 
 [fakerphp/faker](https://github.com/FakerPHP/Faker)
+
+### Pheature Flags
+
+[Pheature Flags is a release management framework that allows to activate and deactivate specific features in controlled conditions](https://github.com/pheature-flags/pheature-flags)
+
+Dostępna jest także integracja z frameworkiem Symfony - [pheature/symfony-toggle](https://github.com/pheature-flags/symfony-toggle)
 
 ### Phive
 
