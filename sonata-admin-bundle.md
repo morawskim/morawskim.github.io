@@ -163,7 +163,13 @@ sonata_doctrine_orm_admin:
         form: ['path/to/theme/form_admin_fields.html.twig']
 ```
 
-Nasz plik widoku powinien także zawierać standardową instrukcję dziedziczenia szablonu `{% extends '@SonataDoctrineORMAdmin/Form/form_admin_fields.html.twig' %}`
+Nasz plik widoku powinien także zawierać standardową instrukcję dziedziczenia szablonu:
+```
+{% raw %}
+{# the raw tag is only for fix build, this is not part of twig file #}
+{% extends '@SonataDoctrineORMAdmin/Form/form_admin_fields.html.twig' %}
+{% endraw %}
+```
 
 Jeśli nie chcemy tworzyć specyficznego szablonu, możemy w klasie admina, nadpisać metodę `getFormTheme`:
 
