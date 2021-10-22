@@ -58,3 +58,17 @@ Był to jeden z zasobów, które skasowałem ręcznie w panelu. Musimy go ręczn
 [Command: state rm](https://www.terraform.io/docs/cli/commands/state/rm.html)
 
 [Resource manually deleted, now cant Destroy, Plan or Apply due to it missing, what do?](https://discuss.hashicorp.com/t/resource-manually-deleted-now-cant-destroy-plan-or-apply-due-to-it-missing-what-do/12215)
+
+## Tips
+
+Yevgeniy Brikman, _Terraform. Krótkie wprowadzenie. Tworzenie infrastruktury za pomocą kodu. Wydanie II_, Helion
+
+* Za pomocą polecenia `terraform fmt` możemy sformatować kod zgodnie z wytycznymi Terraform. Na serwerze CI możemy wywołać polecenie `terraform fmt -check`.
+
+* W przypadku wykorzystywania starszej wersji Terraform (< 1.0.0) zaleca się jawne określenie wymaganej wersji, ponieważ zaktualizowany plik stanu nie będzie zgodny z starszą wersją.
+
+* Kod Terraform jest zawsze wdrażany z jednej gałęzi repozytoria. Zmiany są wprowadzane tylko w jednym rzeczywistym środowisku, więc wdrażanie z różnych gałęzi powodują problemy.
+
+* W procesie CI powinniśmy nie zapominać o pliku `errored.tfstate` tworzonym przez Terraform, kiedy nie może zaktualizować zdalnego backendu np. Amazon S3. Mając taki plik możemy wysłać stan naszej infrastruktury później poleceniem `terraform state push errored.tfstate`.
+
+* W przypadku wystąpienia problemu o zablokowanym stanu i mając pewność że nikt nie wykonuje żadnych zmian możemy wymusić zwolnienie blokady wywołując polecenie `terraform force-unlock <LOCK>`, gdzie `LOCK` to identyfikator blokady z komunikatu błędu.
