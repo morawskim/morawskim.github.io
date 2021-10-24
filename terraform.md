@@ -72,3 +72,15 @@ Yevgeniy Brikman, _Terraform. Krótkie wprowadzenie. Tworzenie infrastruktury za
 * W procesie CI powinniśmy nie zapominać o pliku `errored.tfstate` tworzonym przez Terraform, kiedy nie może zaktualizować zdalnego backendu np. Amazon S3. Mając taki plik możemy wysłać stan naszej infrastruktury później poleceniem `terraform state push errored.tfstate`.
 
 * W przypadku wystąpienia problemu o zablokowanym stanu i mając pewność że nikt nie wykonuje żadnych zmian możemy wymusić zwolnienie blokady wywołując polecenie `terraform force-unlock <LOCK>`, gdzie `LOCK` to identyfikator blokady z komunikatu błędu.
+
+# Narzędzia
+
+[Export existing AWS resources to Terraform style (tf, tfstate)](http://terraforming.dtan4.net/)
+
+[Atlantis - Terraform Pull Request Automation](https://www.runatlantis.io/)
+
+>Atlantis is an application for automating Terraform via pull requests. It is deployed as a standalone application into your infrastructure. No third-party has access to your credentials.
+
+>Atlantis listens for GitHub, GitLab or Bitbucket webhooks about Terraform pull requests. It then runs terraform plan and comments with the output back on the pull request.
+
+>When you want to apply, comment atlantis apply on the pull request and Atlantis will run terraform apply and comment back with the output.
