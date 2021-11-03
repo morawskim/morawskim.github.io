@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2021-11
+[ansible - przydatne scenariusze](ansible-przydatne-scenariusze.md)
+
 ## 2021-10
 [Docker i PHP](docker-php.md)
 [NGINX](nginx.md)
