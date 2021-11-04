@@ -56,6 +56,8 @@
 
 [ct.css – Let’s take a look inside your <head>](https://csswizardry.com/ct/)
 
+[Generate CSS font rules from font files](https://www.fontfacer.io/)
+
 ### Paid
 
 [Email on Acid - Email Pre-Deployment Checklist](https://www.emailonacid.com/)
