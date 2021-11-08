@@ -271,3 +271,51 @@ sonata_admin:
                     - label: ''
                       route: external.somewhere
 ```
+
+## Własna akcja kontrolera
+
+Domyślnie panele administratora Sonaty wykorzystują kontroler `\Sonata\AdminBundle\Controller\CRUDController`. Podczas definiowania usługi panelu określamy z jakiego kontrolera chcemy korzystać. Nie stoi jednak nic na przeszkodzie podłączyć całkowicie niezależny kontroler, który nie będzie korzystał z CRUDController. W tym przypadku jest to kontroler z akcją do aktualizacji parametrów konfiguracyjnych aplikacji.
+
+Pierwszy krok to utworzenie klasy kontrolera tak jak to standardowo robimy w Symfony.
+Widok twig powinien rozszerzać szablon `@SonataAdmin/standard_layout.html.twig`. Dodatkowo jeśli chcemy wyświetlić formularz musimy skonfigurować form_theme. Poniższy fragment to przykład prostego widoku.
+
+```
+{% raw %}
+{# the raw tag is only for fix build, this is not part of twig file #}
+{% extends '@SonataAdmin/standard_layout.html.twig' %}
+{% form_theme form '@SonataDoctrineORMAdmin/Form/form_admin_fields.html.twig' %}
+
+{% block sonata_admin_content %}
+    {% block notice %}
+        {% include ['@SonataCore/FlashMessage/render.html.twig', '@SonataTwig/FlashMessage/render.html.twig'] %}
+    {% endblock notice %}
+
+    {{ form_start(form) }}
+        {{ form_rest(form) }}
+        <input type="submit" value="{{ 'btn_update'|trans({}, 'SonataAdminBundle') }}" class="btn btn-primary" />
+    {{ form_end(form) }}
+{% endblock %}
+{% endraw %}
+```
+
+Chcąc podłączyć akcję kontrolera do istniejącego menu stwarza pewne problemy.
+Sonata dostarcza klasę `AddDependencyCallsCompilerPass`, która na podstawie konfiguracji automatycznie dodaje pozycję panelu admina do menu. Jeśli ręcznie dodamy choć jedną pozycję, to znikną nam wszystkie domyślne linki do paneli administracyjnych w danej grupie. Musimy je ręcznie wymienić.
+
+Możemy wyświetlić listę paneli przypisanych do danej grupy menu wyświetlając zawartość zmiennej `$groupDefaults[$resolvedGroupName]['items'];` odpowiedniej grupy w klasie [AddDependencyCallsCompilerPass](https://github.com/sonata-project/SonataAdminBundle/blob/3.x/src/DependencyInjection/Compiler/AddDependencyCallsCompilerPass.php#L180)
+
+```
+sonata_admin:
+    # ...
+    dashboard:
+        groups:
+            CMS:
+                label: CMS
+                icon: '<i class="fa fa-edit"></i>'
+                items:
+                    - label: 'Settings'
+                      route: admin.settings
+                    - admin.static_content
+                    # ...
+```
+
+[Creating a Custom Admin Action](https://symfony.com/bundles/SonataAdminBundle/current/cookbook/recipe_custom_action.html)
