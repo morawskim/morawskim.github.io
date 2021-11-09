@@ -14,3 +14,29 @@ Wyjątki rzucone podczas testowania kontrolera przez symulator HTTP są przechwy
 [Etap 17: Testowanie](https://symfony.com/doc/current/the-fast-track/pl/17-tests.html)
 
 [How to Simulate HTTP Authentication in a Functional Test](https://symfony.com/doc/5.0/testing/http_authentication.html)
+
+## Autoryzacja użytkownika (Symfony < 5.1)
+
+```
+protected function createAuthorizedClient(): KernelBrowser
+{
+    $client = static::createClient();
+    $container = static::$kernel->getContainer();
+
+    $session = $container->get('session');
+    $person = UserFactory::findOrCreate([
+        'username' => 'admin',
+        'roles' => ['ROLE_SUPER_ADMIN'],
+    ])->object();
+
+    $token = new UsernamePasswordToken($person, null, 'main', $person->getRoles());
+    $session->set('_security_main', serialize($token));
+    $session->save();
+
+    $client->getCookieJar()->set(new Cookie($session->getName(), $session->getId()));
+
+    return $client;
+}
+```
+
+[Symfony 5.3 loginUser](https://github.com/symfony/symfony/blob/5.3/src/Symfony/Bundle/FrameworkBundle/KernelBrowser.php#L115)
