@@ -34,3 +34,15 @@ Metoda [\Symfony\Component\Security\Core\Authentication\Token\AbstractToken::has
 Podczas uwierzytelniania użytkownika możemy potrzebować sprawdzić dodatkowe warunki, aby określić czy użytkownik może się zalogować (np. czy konto ciągle jest aktywne). Wyjątek `AccountStatusException` jest bazową klasą dla wyjątków związanych ze stanem konta użytkownika. Nasza usługa musi implementować interfejs `\Symfony\Component\Security\Core\User\UserCheckerInterface`. W konfiguracji firewall ustawiamy wartość parametru `user_checker` na naszą usługę.
 
 [How to Create and Enable Custom User Checkers](https://symfony.com/doc/current/security/user_checkers.html)
+
+## Internal
+
+Klasa `\Symfony\Component\Security\Core\Security` daje nam łatwy dostęp do często potrzebnych zadań zwianych z bezpieczeństwem.
+
+Interfejs `\Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface` umożliwia nam weryfikowanie czy zalogowany użytkownik posiada uprawnienia do wykonania akcji.
+
+Interfejs `\Symfony\Component\Security\Core\Authorization\AccessDecisionManagerInterface` decyduje o tym, czy dostęp jest możliwy, czy nie. Symfony dostarcza kilka strategii (affirmative, consensus i unanimous).
+
+Implementując interfejs `\Symfony\Component\Security\Http\Authorization\AccessDeniedHandlerInterface` możemy zaimplementować dowolną logikę, która powinna zostać wykonana w przypadku odmowy dostępu dla bieżącego użytkownika. Symfony nie dostarcza domyślnej implementacji. Interfejs ten używany jest w `\Symfony\Component\Security\Http\Firewall\ExceptionListener`.
+
+Dziedzicząc po klasie `\Symfony\Component\Security\Guard\AbstractGuardAuthenticator` możemy utworzyć własny Guard (np. autentykacja w oparciu o token w nagłówku HTTP).
