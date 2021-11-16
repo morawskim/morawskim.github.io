@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2021-11
+[janephp/automapper](janephp-automapper.md)
 [ansible - przydatne scenariusze](ansible-przydatne-scenariusze.md)
 
 ## 2021-10
