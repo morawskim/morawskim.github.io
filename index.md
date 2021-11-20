@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2021-11
+[Laptop i Linux](laptop-linux.md)
 [janephp/automapper](janephp-automapper.md)
 [ansible - przydatne scenariusze](ansible-przydatne-scenariusze.md)
 
