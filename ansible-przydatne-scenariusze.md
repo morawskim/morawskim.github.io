@@ -133,3 +133,19 @@
   with_file:
     - public_keys/deployer
 ```
+
+## newrelic
+
+Aby korzystać z roli `newrelic.newrelic-infra` musimy ją zainstalować - `ansible-galaxy install -p roles newrelic.newrelic-infra`. Ważne, aby parametr `gather_facts` miał wartość `true` - w przeciwnym przypadku nie będzie możliwe zidentyfikowanie sytemu i próba instalacji agenta zakończy się błędem.
+
+```
+---
+- hosts: all
+  become: true
+  gather_facts: yes
+  roles:
+    - name: newrelic.newrelic-infra
+      vars:
+        nrinfragent_config:
+          license_key: "{{ lookup('env', 'NEWRELIC_LICENSE_KEY') }}"
+```
