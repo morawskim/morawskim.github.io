@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2021-12
+[SQL](sql.md)
+
 ## 2021-11
 [Laptop i Linux](laptop-linux.md)
 [janephp/automapper](janephp-automapper.md)
