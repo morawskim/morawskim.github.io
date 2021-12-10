@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2021-12
+[Solution patterns](solution-patterns.md)
 [SQL](sql.md)
 
 ## 2021-11
