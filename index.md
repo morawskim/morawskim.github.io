@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2021-12
+[ParaTest](paratest.md)
 [Solution patterns](solution-patterns.md)
 [SQL](sql.md)
 
