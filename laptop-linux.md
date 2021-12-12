@@ -21,3 +21,11 @@ Sprawdzamy czy moduł jądra `pcspkr` jest załadowany, wywołując polecenie `l
 Jeśli otrzymamy wynik `pcspkr                 16384  0` oznacza to, że moduł jest wczytany. Możemy tymczasowo skasować moduł poleceniem `sudo rmmod pcspkr`. Beep powinien przestać działać.
 Następnie tworzymy plik `/etc/modprobe.d/blacklist.conf` i dodajemy do niego linię `blacklist pcspkr`.
 Po ponownym uruchomieniu komputera, moduł `pcspkr` nie powinien się załadować, co możemy potwierdzić ponownie poleceniem `lsmod`.
+
+## Włączenie numlock podczas logowania
+
+Dla środowiska graficznego KDE Plsasma musimy uruchomić `System Settings`. Następnie w sekcji `Hardware` kliknąć w `Input Devices` i przejść do zakładki `Keyboard`. W sekcji `NumLock on Plasma Startup` wybieramy opcję `Turn on`.
+Pewną niedogodnością tego rozwiązania jest fakt, że numlock działa dopiero po zalogowaniu się do systemu.
+
+[Activating numlock on bootup](https://wiki.archlinux.org/title/Activating_numlock_on_bootup)
+[Enable Numlock on Login](https://help.ubuntu.com/community/NumLock)
