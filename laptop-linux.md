@@ -14,3 +14,10 @@ ID TYPE      DEVICE      SOFT      HARD
  0 wlan      phy0   unblocked unblocked
  1 bluetooth hci0   unblocked unblocked
 ```
+
+## Wyłączenie beep
+
+Sprawdzamy czy moduł jądra `pcspkr` jest załadowany, wywołując polecenie `lsmod` - `lsmod | grep pcspkr`.
+Jeśli otrzymamy wynik `pcspkr                 16384  0` oznacza to, że moduł jest wczytany. Możemy tymczasowo skasować moduł poleceniem `sudo rmmod pcspkr`. Beep powinien przestać działać.
+Następnie tworzymy plik `/etc/modprobe.d/blacklist.conf` i dodajemy do niego linię `blacklist pcspkr`.
+Po ponownym uruchomieniu komputera, moduł `pcspkr` nie powinien się załadować, co możemy potwierdzić ponownie poleceniem `lsmod`.
