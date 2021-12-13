@@ -29,3 +29,8 @@ Pewną niedogodnością tego rozwiązania jest fakt, że numlock działa dopiero
 
 [Activating numlock on bootup](https://wiki.archlinux.org/title/Activating_numlock_on_bootup)
 [Enable Numlock on Login](https://help.ubuntu.com/community/NumLock)
+
+## Firewalld
+
+Po instalacji i konfiguracji `firewalld` możemy wyświetlić konfigurację strefy - `firewall-cmd --list-all-zones`.
+Za pomocą NetworkManager możemy przypisać sieć WIFI do odpowiedniej strefy. Możemy także wywołać polecenie `firewall-cmd --zone=internal --change-interface=<INTERFACE> --permanent`.
