@@ -76,6 +76,12 @@ Encje reprezentują domenę biznesową. Zawierają istotne dane i dostarczają u
 
 Oddzielajmy to, co chcemy zrobić, od tego, jak to zrobić.
 
+Tworzenie Data Transfer Object delegujemy do innego obiektu tzw. Assembler. Odpowiada on za tworzenie obiektów transferu danych na podstawie obiektów modelu dziedziny, do aktualizowania zawartości modelu dziedziny na podstawie informacji przekazanych w DTO, a także tworzeniu obiektu dziedziny na podstawie DTO. Sama logika tych metod zależy od wymagań biznesowych. W przypadku braku obiektu dziedziny w relacji należy rzucać wyjątek czy też tworzyć nowy obiekt dziedziny.
+
+W przypadku serializacji Data Transfer Object musimy wybrać między serializacją tekstową a binarną. W przypadku binarnej musimy przemyśleć wersjonowanie. Najprostsze binarne rozwiązania generują problemy w przypadku dodania nowego pola. Ten problem nie występuje przy serializacji tekstowej np. JSON.
+
 ### Książki
 
 Matthias Noback, _Object Design Style Guide_, Manning
+
+Martin Fowler, _Architektura systemów zarządzania przedsiębiorstwem. Wzorce projektowe_, Helion
