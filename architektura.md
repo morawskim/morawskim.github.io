@@ -80,6 +80,10 @@ Tworzenie Data Transfer Object delegujemy do innego obiektu tzw. Assembler. Odpo
 
 W przypadku serializacji Data Transfer Object musimy wybrać między serializacją tekstową a binarną. W przypadku binarnej musimy przemyśleć wersjonowanie. Najprostsze binarne rozwiązania generują problemy w przypadku dodania nowego pola. Ten problem nie występuje przy serializacji tekstowej np. JSON.
 
+Podczas korzystania z wzorca Optimistic Offline Lock powinniśmy korzystać z inkrementacji numeru wersji niż z znacznika czasu. Wynika to z faktu, że bardzo trudno jest polegać na zegarze systemowym na różnych serwerach.
+
+Optimistic Offline Lock może być także używany do wykrywania niespójnych operacji odczytu. Np. obliczanie należnego podatku zależy od adresu użytkownika. Sesja musi więc sprawdzić numer wersji adresu. Ten problem można rozwiązać przez dodanie adresu do zbioru modyfikacji lub przechowywanie odrębnej listy elementów, których numery wersji należy sprawdzić.
+
 ### Książki
 
 Matthias Noback, _Object Design Style Guide_, Manning
