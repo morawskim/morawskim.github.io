@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2021-12
+[GitLab repozytorium composer](#!gitlab.md#GitLab_repozytorium_composer)
 [ParaTest](paratest.md)
 [Solution patterns](solution-patterns.md)
 [SQL](sql.md)
@@ -209,12 +210,12 @@ Hello
 [docker - wiele uwierzytelnień dla tego samego rejestru](docker-wiele-uwierzytelnien-dla-tego-samego-rejestru.md)
 
 ## 2019-07
-[gitlab-ci i kaniko - budowanie obrazów dockera](gitlab-ci-i-kaniko-budowanie-obrazow-dockera.md)
-[Gitlab CI/CD - rejestracja gitlab-runner](gitlab-ci-cd-rejestracja-gitlab-runner.md)
+[gitlab-ci i kaniko - budowanie obrazów dockera](#!gitlab.md#gitlab-ci_i_kaniko_-_budowanie_obraz%C3%B3w_dockera)
+[Gitlab CI/CD - rejestracja gitlab-runner](#!gitlab.md#Gitlab_CI/CD_-_rejestracja_gitlab-runner)
 [bazy danych - backup i restore](bd-backup-i-restore.md)
 [SQL - FROM VALUES](sql-from-values.md)
 [symfony/doctrine - ResultSetMappingBuilder](symfony-doctrine-resultsetmappingbuilder.md)
-[GitLab CI/CD - deploy token](gitlab-ci-cd-deploy-token.md)
+[GitLab CI/CD - deploy token](#!gitlab.md#GitLab_CI/CD_-_deploy_token)
 [Bash - jak określić plik gdzie zdefiniowano funkcję](bash-jak-okreslic-plik-gdzie-zdefiniowano-funkcje.md)
 [Single table inheritance](single-table-inheritance.md)
 [Docker - dołączanie do przestrzeni procesów kontenera](docker-dolaczanie-do-przestrzeni-procesow-kontenera.md)
@@ -254,7 +255,7 @@ Hello
 
 ##2019-03
 [Sprawdzenie czy proces jest uruchomiony w kontenerze docker'a](sprawdzenie-czy-proces-jest-uruchomiony-w-kontenerze-dockera.md)
-[gitlab ci - pobieranie artefaktów zadania](gitlab-ci-pobieranie-artefaktow-zadania.md)
+[gitlab ci - pobieranie artefaktów zadania](#!gitlab.md#gitlab_ci_-_pobieranie_artefakt%C3%B3w_zadania)
 [apache2 - 403 Forbidden jeśli user agent nie jest "na białej liście"](apache2-403-forbidden-jesli-user-agent-nie-jest-na-bialej-liscie.md)
 [nerd fonts](nerd-fonts.md)
 [CSS snippets](css-snippets.md)
