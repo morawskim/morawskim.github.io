@@ -28,6 +28,15 @@ Zmienne `playbook` mogą być definiowane bezpośrednio w kluczu `vars`, lub wcz
 
 Uruchomienie ansible playbook lokalnie - `ansible-playbook --connection=local --inventory 127.0.0.1, playbook.yml`
 
+Innym rozwiązaniem jest w pliku playbook ustawienie hosts i connection. Odpowiednio na wartość `localhost` i `local`. Wtedy wywołanie ansible jest bardzo proste - `ansible-playbook ./playbook.yml`.
+```
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    # ...
+```
+
 ### Dynamiczne dodawanie hostów przez moduł add_host
 
 Za pomocą `ansible` można tworzyć nowe serwery. Plik inventory jest przetwarzany przed wykonywaniem zadań z playbooka, więc nowo utworzony serwer nie będzie znajdował się w inventory. Dzięki pomocy modułu [add_host](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/add_host_module.html) jesteśmy w stanie dynamicznie dodać utworzony serwer do inventory. Nie zostanie on zapisany - będzie znajdował się wyłącznie w pamięci. Moduł ten pozwala nam za pomocą jednego wywołania playbooka utworzyć i skonfigurować serwer.
