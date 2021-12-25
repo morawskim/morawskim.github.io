@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2021-12
+[DigitalOcean/Terraform](digitalocean-terraform.md)
 [MySQL - 1114 The table 'refresh_tokens' is full](mysql-1114-the-table-is-full.md)
 [GitLab repozytorium composer](#!gitlab.md#GitLab_repozytorium_composer)
 [ParaTest](paratest.md)
