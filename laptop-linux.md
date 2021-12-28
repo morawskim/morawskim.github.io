@@ -34,3 +34,11 @@ Pewną niedogodnością tego rozwiązania jest fakt, że numlock działa dopiero
 
 Po instalacji i konfiguracji `firewalld` możemy wyświetlić konfigurację strefy - `firewall-cmd --list-all-zones`.
 Za pomocą NetworkManager możemy przypisać sieć WIFI do odpowiedniej strefy. Możemy także wywołać polecenie `firewall-cmd --zone=internal --change-interface=<INTERFACE> --permanent`.
+
+## KDE
+
+### Dolphin
+
+Wciskamy `[ctrl]+[shift]+[,]` aby otworzyć okno "preferences".
+Z menu po lewej klikamy w pozycję "General" i wybieramy zakładkę "Behaviour".
+W sekcji "View" zaznaczamy opcję "Remember display style for each folder" i zapisujemy zmiany.
