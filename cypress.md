@@ -358,3 +358,25 @@ const getStripeElement = (iframe, selector) => {
 ```
 
 [Testing Stripe Integration with Cypress](https://medium.com/swinginc/testing-stripe-integration-with-cypress-3f0d665cfef7)
+
+## CKEDitor
+
+[How to add/type a text in CKeditor (v4) in Cypress Automation?Or any Method to Set The Value for Ckeditor in Cypress Automation?](https://stackoverflow.com/questions/65068660/how-to-add-type-a-text-in-ckeditor-v4-in-cypress-automationor-any-method-to-s)
+
+### Wersja 4
+```
+const typeToCKEditor = (haystack, content) => {
+    cy.window().then(win => {
+        // editor instance can start from haystack
+        const keys = Object.keys(win.CKEDITOR.instances).filter((key) => key.indexOf(haystack) > 0);
+        win.CKEDITOR.instances[keys[0]].setData(content);
+    });
+};
+```
+
+### Wersja 5
+```
+cy.get('.ck-content')
+    .clear()
+    .type('Hello CKEditor');
+```

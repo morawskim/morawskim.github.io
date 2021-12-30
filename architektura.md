@@ -84,6 +84,8 @@ Podczas korzystania z wzorca Optimistic Offline Lock powinniśmy korzystać z in
 
 Optimistic Offline Lock może być także używany do wykrywania niespójnych operacji odczytu. Np. obliczanie należnego podatku zależy od adresu użytkownika. Sesja musi więc sprawdzić numer wersji adresu. Ten problem można rozwiązać przez dodanie adresu do zbioru modyfikacji lub przechowywanie odrębnej listy elementów, których numery wersji należy sprawdzić.
 
+W widoku mając instrukcję warunkową, ważne jest by wartość warunku była wyznaczana na podstawie jednej logicznej właściwości obiektu pomocniczego.
+
 ### Książki
 
 Matthias Noback, _Object Design Style Guide_, Manning
