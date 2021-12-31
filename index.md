@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2021-12
+[YouTube](youtube.md)
 [Symfony/Lock](#!symfony-components.md#Lock)
 [Narzędzia online](narzedzia-online.md)
 [DigitalOcean/Terraform](digitalocean-terraform.md)
