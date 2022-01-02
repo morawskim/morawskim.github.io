@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2022-01
+[Biblioteki/Usługi](biblioteki-uslugi.md)
 [Wydajność PHP](wydajnosc-php.md)
 
 ## 2021-12
