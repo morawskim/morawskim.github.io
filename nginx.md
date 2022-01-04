@@ -53,3 +53,23 @@ W konfiguracji nginx w bloku `location`, który zawiera konfigurację dla PHP do
 fastcgi_buffer_size 32k;
 fastcgi_buffers 8 16k;
 ```
+
+## SSL i PHP
+
+[Secure Symfony API end-to-end with x509 certificates](https://pierrebelin.medium.com/secure-symfony-api-end-to-end-with-x509-certificates-1ab06c142017)
+
+W konfiguracji nginx w bloku `location`, który zawiera konfigurację dla PHP dodajemy:
+
+```
+fastcgi_param SSL_CLIENT_I_DN $ssl_client_i_dn;
+fastcgi_param SSL_CLIENT_S_DN $ssl_client_s_dn; #We pass information from the client certificate
+fastcgi_param SSL_CLIENT_VERIFY $ssl_client_verify;
+```
+
+Dodatkowo nginx może weryfikować, czy certyfikat jest podpisany przez wybraną organizację:
+
+```
+ssl_client_certificate /PATH/TO/CERT/ca.crt;
+ssl_verify_client optional_no_ca;
+ssl_verify_depth 3;
+```
