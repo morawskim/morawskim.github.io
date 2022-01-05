@@ -27,3 +27,7 @@ Postgres Explain Viewer (PEV) is a tool to simplify reading query plans. It prov
 Mailinator allows Developers and QA Testing teams to automatically test workflows like 2FA verifications, sign-ups, and password resets with trillions of inboxes at your fingertips. Whether you do Manual Testing, use an API, or a framework like Selenium, Cypress, Playwright, or Puppeteer - Mailinator will close the loop on email/SMS testing.
 
 [Email and SMS Workflow Testing ](https://www.mailinator.com/)
+
+## httpdump
+
+[Inspect your incoming HTTP requests using HTTP dump](https://httpdump.app/)
