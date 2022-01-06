@@ -107,6 +107,43 @@ const getStripeElement = (iframe, selector) => {
 
 [Testing Stripe Integration with Cypress](https://medium.com/swinginc/testing-stripe-integration-with-cypress-3f0d665cfef7)
 
+## Braintree
+
+Test E2E bramki płatności Braintree nie różni się od Stripe. Musimy tylko wyciągnąć inne elementy z ramki iframe.
+
+```
+const getBraintreeElement = (iframe, selector) => {
+    if (Cypress.config('chromeWebSecurity')) {
+        throw new Error('To get stripe element `chromeWebSecurity` must be disabled');
+    }
+
+    return cy
+        .wrap(iframe)
+        .its('0.contentDocument.body').should('not.be.empty')
+        .then(cy.wrap)
+        .find(selector);
+};
+
+cy.get('.braintree-hosted-fields-wrapper form').within(el => {
+    cy.contains('Card Number')
+        .closest('div')
+        .find('iframe')
+        .then($iframe => getBraintreeElement($iframe, `input[name="credit-card-number"]`).type('4111111111111111'));
+
+    cy.contains('Month / Year')
+        .closest('div')
+        .find('iframe')
+        .then($iframe => getBraintreeElement($iframe, `input[name="expiration"]`).type('10/24'));
+
+    cy.contains('Secure Code')
+        .closest('div')
+        .find('iframe')
+        .then($iframe => getBraintreeElement($iframe, `input[name="cvv"]`).type('123'));
+});
+
+cy.get('.braintree-hosted-fields-wrapper form  button[type="submit"]').click();
+```
+
 ## CKEDitor
 
 [How to add/type a text in CKeditor (v4) in Cypress Automation?Or any Method to Set The Value for Ckeditor in Cypress Automation?](https://stackoverflow.com/questions/65068660/how-to-add-type-a-text-in-ckeditor-v4-in-cypress-automationor-any-method-to-s)
