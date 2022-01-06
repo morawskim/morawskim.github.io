@@ -165,3 +165,20 @@ cy.get('.ck-content')
     .clear()
     .type('Hello CKEditor');
 ```
+
+## react-dnd
+
+Element "Create some examples" chcemy przenieść na pierwszą pozycję. Selektor `#react-tabs-1 > div > div > div:first` zwraca pierwszy element na liście - nie jest to kontener.
+
+```
+it('sortable', () => {
+    cy.visit('https://react-dnd.github.io/react-dnd/examples/sortable/simple');
+    cy.contains('Create some examples').trigger('dragstart').trigger('dragleave');
+    cy.get('#react-tabs-1 > div > div > div:first')
+        .trigger('dragenter')
+        .trigger('dragover')
+        .trigger('drop')
+        .trigger('dragend');
+    cy.get('#react-tabs-1 > div > div > div:first').should('have.text', 'Create some examples');
+});
+```
