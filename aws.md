@@ -1,0 +1,35 @@
+# AWS
+
+## EC2
+
+[Set the time for your Linux instance - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html)
+
+### Domyślna nazwa użytkownika dla AMI:
+
+| Dystrybucja  | Nazwa użytkownika  |
+|---|---|
+| Amazon Linux 2/Amazon Linux AMI  | ec2-user  |
+| CentOS  | centos lub ec2-user  |
+| Debian  | admin  |
+| Fedora  | fedora lub ec2-user  |
+| RHEL  | root lub ec2-user  |
+| SUSE  | root lub ec2-user  |
+| Ubuntu  | ubuntu  |
+| Oracle  | ec2-user  |
+| Bitnami | bitnami  |
+
+### Porady
+
+* Adres IP serwera zostanie zachowany podczas zatrzymania lub restartu maszyny wirtualnej. Adres IP jest zwalniany tylko przy kasowania maszyny (terminated). Nie dotyczy klasycznego EC2.
+
+* Ruch Inbound i outbound jest nazywany odpowiednio ruchem ingress i egress.
+
+* Podczas tworzenia maszyny można włączyć tryb "Unlimited" dla instancji typu T2/T3. Opcja ta nazywa się w konsoli AWS "Credit specification". Więcej informacji w dokumentacji - [Unlimited mode for burstable performance instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances-unlimited-mode.html)
+
+* Plik z logiem cloud-init znajduje się w `/var/log/cloud-init-output.log`.
+
+* Skrypt przekazany w user-data jest kopiowany i wykonywany z katalogu `/var/lib/cloud/instances/instance-id/`. Tworząc własny obraz AMI powinniśmy skasować ten katalog.
+
+* Reguły Security group mogą tylko zezwalać na ruch. Nie jesteśmy w stanie stworzyć reguły, która blokuje ruch.
+
+* Amazon domyślnie blokuje ruch na porcie 25 - [How do I remove the restriction on port 25 from my Amazon EC2 instance or AWS Lambda function?](https://aws.amazon.com/premiumsupport/knowledge-center/ec2-port-25-throttle/)
