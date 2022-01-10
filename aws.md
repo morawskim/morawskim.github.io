@@ -1,5 +1,7 @@
 # AWS
 
+Andreas Wittig i Michael Wittig, _Amazon Web Services w akcji. Wydanie II_, Helion
+
 ## EC2
 
 [Set the time for your Linux instance - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html)
@@ -17,6 +19,20 @@
 | Ubuntu  | ubuntu  |
 | Oracle  | ec2-user  |
 | Bitnami | bitnami  |
+
+### Rodziny instancji
+
+| Rodzina | Opis |
+|---|---|
+| T | tania, o umiarkowanej, podstawowej wydajności, z możliwością chwilowego przejścia do wyższej wydajności |
+| M | ogólnego przeznaczenia, z równomiernym przydziałem mocy CPU i pamięci |
+| C | zoptymalizowana obliczeniowo, z wysoką wydajnością procesora |
+| R | zoptymalizowana pamięciowo, z większą ilością pamięci i mniejszą mocą procesora niż w rodzinie M |
+| D | zoptymalizowana pod kątem magazynowania, zapewniająca dużą pojemność dysku HDD |
+| I | zoptymalizowana pod kątem magazynowania, zapewniająca dużą pojemność dysku SSD |
+| X | bardzo duża wydajność z naciskiem na pamięć, do 1952 GB pamięci i 128 wirtualnych rdzeni |
+
+[Pozostałe rodzaje instancji](https://aws.amazon.com/ec2/instance-types/)
 
 ### Porady
 
