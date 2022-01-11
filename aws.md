@@ -66,6 +66,12 @@ Managed policy to zasady przeznaczone dla tych, co chcą je ponownie wykorzysta�
 
 * Skrypt przekazany w user-data jest kopiowany i wykonywany z katalogu `/var/lib/cloud/instances/instance-id/`. Tworząc własny obraz AMI powinniśmy skasować ten katalog.
 
-* Reguły Security group mogą tylko zezwalać na ruch. Nie jesteśmy w stanie stworzyć reguły, która blokuje ruch.
+* Reguły Security group mogą tylko zezwalać na ruch. Nie jesteśmy w stanie stworzyć reguły która blokuje ruch.
 
 * Amazon domyślnie blokuje ruch na porcie 25 - [How do I remove the restriction on port 25 from my Amazon EC2 instance or AWS Lambda function?](https://aws.amazon.com/premiumsupport/knowledge-center/ec2-port-25-throttle/)
+
+## EBS
+
+* Tylko wolumeny typu gp2/gp3/io1/io2 mogą być użyte jako wolumen root/boot.
+
+* Multi attach jest dostępne tylko dla wolumenów typu io1/io2.
