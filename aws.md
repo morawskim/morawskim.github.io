@@ -75,3 +75,14 @@ Managed policy to zasady przeznaczone dla tych, co chcą je ponownie wykorzysta�
 * Tylko wolumeny typu gp2/gp3/io1/io2 mogą być użyte jako wolumen root/boot.
 
 * Multi attach jest dostępne tylko dla wolumenów typu io1/io2.
+
+## ELB / ASG
+
+* Domyślnie ELB czeka 300s na zakończenie wszystkich aktywnych połączeń z grupą docelową, która jest wyłączana. Ten parametr możemy zmodyfikować, jeśli nie potrzebujemy czekać tak długo. [Deregistration delay](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#deregistration-delay)
+
+* Polityka skalowania dla ASG może bazować na:
+    * wykorzystaniu CPU/sieci
+    * własnych metrykach CloudWatch
+    * harmonogramie
+
+* Parametr [cooldowns](https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html) - Ilość czasu (w sekundach) po zakończeniu czynności skalowania i przed rozpoczęciem następnej czynności skalowania.
