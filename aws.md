@@ -86,3 +86,26 @@ Managed policy to zasady przeznaczone dla tych, co chcą je ponownie wykorzysta�
     * harmonogramie
 
 * Parametr [cooldowns](https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html) - Ilość czasu (w sekundach) po zakończeniu czynności skalowania i przed rozpoczęciem następnej czynności skalowania.
+
+## ElastiCache
+
+* [Strategie buforowania](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/Strategies.html):
+    * Lazy loading - ładuje dane do pamięci podręcznej tylko wtedy, gdy jest to konieczne.
+    * Write-through - dodaje dane lub aktualizuje dane w pamięci podręcznej za każdym razem, gdy dane są zapisywane w bazie danych
+
+## Route 53
+
+* Z wyjątkiem rekordów Alias, TTL jest obowiązkowe dla każdego rekordu DNS.
+
+* Rekord aliasu — rozszerzenie AWS do funkcjonalności DNS. W przeciwieństwie do CNAME, może być używany do głównego rekordu DNS (Zone Apex). Rekord aliasu jest zawsze typu A/AAAA. Nie można ustawić TTL. Alias nie może być powiązany z nazwą DNS instancji EC2.
+
+* [Polityki routingu](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html):
+    * Simple - brak obsługi Health Checks
+    * Weighted - wagi nie muszą się sumować do 100
+    * Failover
+    * Latency based - opóźnienie jest oparte na ruchu między użytkownikami a regionami AWS.
+    * Geolocation - na podstawie lokalizacji użytkowników
+    * Multi-Value Answer
+    * Geoproximity - na podstawie lokalizacji geograficznej użytkownika i zasobów
+
+* Health Checks nie mogą uzyskać dostępu do prywatnych punktów końcowych. W takim przypadku możemy utworzyć CloudWatch Metric i powiązać z CloudWatch Alarm, a następnie utworzyć Health Check, kóry monitoruje ten alarm.
