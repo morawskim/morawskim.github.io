@@ -66,8 +66,6 @@ Managed policy to zasady przeznaczone dla tych, co chcą je ponownie wykorzysta�
 
 * Skrypt przekazany w user-data jest kopiowany i wykonywany z katalogu `/var/lib/cloud/instances/instance-id/`. Tworząc własny obraz AMI powinniśmy skasować ten katalog.
 
-* Reguły Security group mogą tylko zezwalać na ruch. Nie jesteśmy w stanie stworzyć reguły która blokuje ruch.
-
 * Amazon domyślnie blokuje ruch na porcie 25 - [How do I remove the restriction on port 25 from my Amazon EC2 instance or AWS Lambda function?](https://aws.amazon.com/premiumsupport/knowledge-center/ec2-port-25-throttle/)
 
 ## EBS
@@ -109,3 +107,13 @@ Managed policy to zasady przeznaczone dla tych, co chcą je ponownie wykorzysta�
     * Geoproximity - na podstawie lokalizacji geograficznej użytkownika i zasobów
 
 * Health Checks nie mogą uzyskać dostępu do prywatnych punktów końcowych. W takim przypadku możemy utworzyć CloudWatch Metric i powiązać z CloudWatch Alarm, a następnie utworzyć Health Check, kóry monitoruje ten alarm.
+
+## VPC
+
+* Reguły Security group mogą tylko zezwalać na ruch. Nie jesteśmy w stanie stworzyć reguły która blokuje ruch. W regułach możemy odnosić się do adresów IP albo innych security groups.
+
+* NACL mogą zawierać reguły zarówno zezwalające na ruch jak i blokujące ruch. W regułach możemy się odnosić tylko do adresów IP (brak security groups).
+
+* VPC Peering to połączenie sieciowe między dwoma VPC, które umożliwia kierowanie ruchu między nimi przy użyciu adresów IP. Instancje w obu VPC mogą komunikować się ze sobą tak, jakby znajdowały się w tej samej sieci.
+
+* VPC Endpoints pozwalają na łączenie się z usługami AWS za pomocą sieci prywatnej zamiast sieci publicznej.
