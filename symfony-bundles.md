@@ -178,3 +178,15 @@ Zadaniem tego bundle jest dostarczenie niezbędnych narzędzi pomocnych do zbudo
 Ciekawym rozwiązaniem jest dostarczenie nowej implementacji interfejsu `\Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\ParamConverterInterface` - `RequestBodyParamConverter`.
 Za jej pomocą możemy przekształcić ciało żądania HTTP w obiekt DTO - `@ParamConverter("dto", converter="fos_rest.request_body")`.
 Więcej informacji o konfiguracji znajduje się w [dokumentacji](https://github.com/FriendsOfSymfony/FOSRestBundle/blob/3.x/Resources/doc/request_body_converter_listener.rst).
+
+## CMS
+
+[Contao is a powerful open source CMS that allows you to create professional websites and scalable web applications.](https://contao.org/en/)
+
+[Kunstmaan CMS - An advanced yet user-friendly content management system, based on the full stack Symfony framework combined with a whole host of community bundles.](https://cms.kunstmaan.be/)
+
+[Bolt CMS](https://boltcms.io/)
+
+[Deliver awesome, robust, reliable websites with Sulu CMS](https://sulu.io/)
+
+[Grav](https://getgrav.org/)
