@@ -117,3 +117,42 @@ Managed policy to zasady przeznaczone dla tych, co chcą je ponownie wykorzysta�
 * VPC Peering to połączenie sieciowe między dwoma VPC, które umożliwia kierowanie ruchu między nimi przy użyciu adresów IP. Instancje w obu VPC mogą komunikować się ze sobą tak, jakby znajdowały się w tej samej sieci.
 
 * VPC Endpoints pozwalają na łączenie się z usługami AWS za pomocą sieci prywatnej zamiast sieci publicznej.
+
+## SQS
+
+* Visibility timeut - czas, przez który wiadomość odebrana z kolejki (przez klienta) nie będzie widoczna dla innych odbiorców wiadomości.
+
+* Amazon SQS nie usuwa automatycznie wiadomości po jej pobraniu w przypadku niepowodzenia odbioru (na przykład w przypadku awarii konsumentów lub utraty łączności). Aby usunąć wiadomość, należy wysłać osobne żądanie, które potwierdza, że pomyślnie odebrano i przetworzono wiadomość.
+
+* Standard Queue - obsługuje prawie nieograniczoną liczbę wywołań interfejsu API na sekundę na akcję interfejsu API (SendMessage, ReceiveMessage lub DeleteMessage). Obsługują co najmniej jednokrotne dostarczanie wiadomości (at-least-once). Jednak czasami (ze względu na wysoce rozproszoną architekturę, która pozwala na prawie nieograniczoną przepustowość), więcej niż jedna kopia wiadomości może zostać dostarczona, a także w złej kolejności.
+
+* FIFO queue - logika kolejki ma zastosowanie tylko do identyfikatora grupy komunikatów. Każdy identyfikator grupy komunikatów reprezentuje odrębną uporządkowaną grupę komunikatów w kolejce Amazon SQS. Dla każdego identyfikatora grupy wiadomości wszystkie wiadomości są wysyłane i odbierane w ścisłej kolejności. Jednak wiadomości z różnymi wartościami identyfikatorów grupy wiadomości mogą być wysyłane i odbierane w innej kolejności. Identyfikator grupy wiadomości jest wymaganym polem.
+
+* Long polling - Gdy czas oczekiwania na wywołanie API ReceiveMessage jest większy niż 0, obowiązuje long polling. Maksymalny czas oczekiwania na odpytywanie wynosi 20 sekund.
+
+* Kolejka niedostarczonych wiadomości (dead-letter-queue) kolejki FIFO musi być również kolejką FIFO. Podobnie kolejka niedostarczonych wiadomości w kolejce standardowej musi być również kolejką standardową.
+
+* Najlepszą praktyką jest zawsze ustawianie okresu przechowywania kolejki niedostarczonych wiadomości na dłuższy niż okres przechowywania oryginalnej kolejki.
+
+* Maksymalny limit czasu widoczności wynosi 12 godzin od momentu odebrania wiadomości przez Amazon SQS. Wydłużenie limitu czasu widoczności nie resetuje tych 12 godzin.
+
+* Maszyna EC2 może połączyć się z Amazon SQS przez VPC Endpoint, umożliwiając wysyłanie wiadomości do kolejki, mimo że sieć jest odłączona od publicznego Internetu.
+
+* Aby usunąć wiadomość lub zmienić jej widoczność, musisz podać receipt handle (nie identyfikator wiadomości). Dlatego musimy pobierać wiadomość, zanim ją usuniemy.
+
+* W niektórych przypadkach (długie przetwarzanie wiadomości, długi czas visibility timeout) dodanie request attempt ID do każdej akcji ReceiveMessage jest dobrym pomysłem. Pozwala to na ponawianie prób odbioru w przypadku awarii sieci i zapobiega wstrzymywaniu kolejek z powodu nieudanych prób odbioru.
+
+
+* Maksymalna wielkość wiadomości to 256KB. Jeśli potrzebujemy przechowywać większą wiadomość to możemy wydelegować pewne dane do S3 lub DynamoDB.
+
+* Obecnie tylko standardowa kolejka może subskrybować Do tematu SNS.
+
+Standardowa kolejka vs FIFO
+
+* standardowa nie gwarantuje kolejności dostarczenia wiadomości
+
+* FIFO gwarantuje kolejność
+
+* FIFO ma mniejsza przepustowość
+
+* standard at least once vs excatly-once FIFO
