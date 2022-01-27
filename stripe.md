@@ -26,6 +26,14 @@
 
 ![Stripe radar rules](images/stripe/stripe_radar_rules.png)
 
+### Team member
+
+Funckja team member umożliwia nam dodanie dodatkowych osób do zarządzania kontem Stripe. Za pomocą takiego konta możemy pomóc w konfiguracji webhooków i wygenerowaniu kluczy API.
+
+[Invite team members or developers to access your Stripe account](https://support.stripe.com/questions/invite-team-members-or-developers-to-access-your-stripe-account)
+
+[Settings team](https://dashboard.stripe.com/settings/team)
+
 ## Płatność off-session
 
 ```
