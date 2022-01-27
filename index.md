@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2022-01
+[SendGrid](sendgrid.md)
 [Duplicity](duplicity.md)
 [Cypress E2E testy bibliotek](cypress-e2e-testy-bibliotek.md)
 [Biblioteki/Usługi](biblioteki-uslugi.md)
