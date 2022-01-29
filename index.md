@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2022-01
+[Symfony Bundle](symfony-bundle.md)
 [SendGrid](sendgrid.md)
 [Duplicity](duplicity.md)
 [Cypress E2E testy bibliotek](cypress-e2e-testy-bibliotek.md)
