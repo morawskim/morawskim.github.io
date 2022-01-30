@@ -74,6 +74,10 @@ Managed policy to zasady przeznaczone dla tych, co chcą je ponownie wykorzysta�
 
 * Multi attach jest dostępne tylko dla wolumenów typu io1/io2.
 
+* Wolument EBS jest związany z strefą dostępności i może być dołączony tylko do instancji EC2 z tej samej strefy dostępności.
+
+* Wolumin EBS nie zwiększa się automatycznie i jego rozmiar trzeba korygować ręcznie.
+
 ## ELB / ASG
 
 * Domyślnie ELB czeka 300s na zakończenie wszystkich aktywnych połączeń z grupą docelową, która jest wyłączana. Ten parametr możemy zmodyfikować, jeśli nie potrzebujemy czekać tak długo. [Deregistration delay](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#deregistration-delay)
@@ -84,6 +88,11 @@ Managed policy to zasady przeznaczone dla tych, co chcą je ponownie wykorzysta�
     * harmonogramie
 
 * Parametr [cooldowns](https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html) - Ilość czasu (w sekundach) po zakończeniu czynności skalowania i przed rozpoczęciem następnej czynności skalowania.
+
+* Trzy zasaday skalowania:
+    * Skalowanie krokowe (ang. step scaling) pozwala na bardziej zaawansowane działania, ponieważ w zależności od stopnia przekroczenia wyznaczonej wartości progowej można zastosować jedną z kilku korekt skalowania.
+    * Śledzenie celu (ang. target tracking) zwalnia użytkownika z obowiązku definiowania kroków i progów skalowania. Wystarczy zdefiniować cel (np. wykorzystanie procesora na poziomie 70%), a liczba instancji EC2 będzie odpowiednio korygowana.
+    * Skalowanie proste (ang. simple scaling) to starsza opcja zastąpiona skalowaniem krokowym
 
 ## ElastiCache
 
@@ -117,6 +126,10 @@ Managed policy to zasady przeznaczone dla tych, co chcą je ponownie wykorzysta�
 * VPC Peering to połączenie sieciowe między dwoma VPC, które umożliwia kierowanie ruchu między nimi przy użyciu adresów IP. Instancje w obu VPC mogą komunikować się ze sobą tak, jakby znajdowały się w tej samej sieci.
 
 * VPC Endpoints pozwalają na łączenie się z usługami AWS za pomocą sieci prywatnej zamiast sieci publicznej.
+
+* Ruch między podsieciami usługi VPC domyślnie zawsze podlega routingowi. Tras pomiędzy podsieciami nie można usunąć. Aby zapobiec ruchowi między podsieciami w usłudze VPC, należy dołączyć do podsieci odpowiednie listy ACL.
+
+* Przepustowość bramy NAT jest ograniczona do 10 Gb/s.
 
 ## SQS
 
