@@ -97,3 +97,9 @@ user = www-data
 ## Status page system
 
 [Cachet - An open source status page system for everyone.](https://cachethq.io/)
+
+## Sinker - sync container images
+
+`sinker` syncs container images from one registry to another. This is useful in cases when you rely on images that exist in a public container registry, but need to pull from a private registry.
+
+[Sinker - A tool to sync images from one container registry to another](https://github.com/plexsystems/sinker)
