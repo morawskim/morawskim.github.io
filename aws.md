@@ -8,11 +8,17 @@ IAM Group - zawiera tylko użytkowników (nie można dodawać grup). Użytkownik
 
 IAM User - użytkownik organizacji
 
-IAM Role - pozwala uwierzytelniać zasoby AWS, np. instancję EC2
+IAM Role - pozwala uwierzytelniać zasoby AWS, np. instancję EC2. Rola IAM ma własną politykę uprawnień. Jest jak użytkownik IAM, ale bez hasła czy klucza API.
 
 IAM Policy - dokument JSON, który określa uprawnienia dla użytkownika, grupy lub roli. Istnieją dwa typy zasad: managed policy i inline policy.
 Managed policy to zasady przeznaczone dla tych, co chcą je ponownie wykorzystać (np. AWS managed policy).
 
+Polityka IAM to dokument JSON z kluczami Sid, Effect, Principal, Action i Resource.
+
+Domyślnie każdy użytkownik, grupa, rola IAM am zablokowany dostęp do zasobu. Dostęp do zasobu musi być jawnie zdefiniowany w polityce. Dołączona polityka z jawną regułą zablokowania dostępu
+jawnie blokuje dostęp do zasobu.
+
+Dodatkowe usługi które mogą nam pomóc w określeniu uprawnień Access advisor i credential report.
 
 ### Linki
 
@@ -99,6 +105,30 @@ Managed policy to zasady przeznaczone dla tych, co chcą je ponownie wykorzysta�
 * [Strategie buforowania](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/Strategies.html):
     * Lazy loading - ładuje dane do pamięci podręcznej tylko wtedy, gdy jest to konieczne.
     * Write-through - dodaje dane lub aktualizuje dane w pamięci podręcznej za każdym razem, gdy dane są zapisywane w bazie danych
+
+* Strategia aktualizacji pamięci podręcznej bez buforowania zapisu (ang. write-through), polegająca na buforowaniu danych z góry, jest implementowana odmiennie, co pozwala rozwiązać problem synchronizacji.
+
+* Przy wykluczaniu danych z pamięci podręcznej trzeba wiedzieć, które z nich usunąć. Popularne jest wykluczanie tych najdawniej używanych (ang. least recently used - LRU).
+
+* Pamięć podręczna Redis jest jednowątkowa i nie wykorzysta wszystkich rdzeni. Dobrym początkowym wyborem dla węzłów o małym rozmiarze jest typ r4.large - 2 procesory wirtualne i około 16GB pamięci i sieć o przepustowości do 10 Gbit.
+
+Porównanie możliwości pamięci podręcznej Memcached i Redis.
+
+|   | Memcached  | Redis  |
+|---|---|---|
+| Typy danych  | Proste  | Złożone  |
+| Polecenia do operacji na danych  | 12  | 125  |
+| Skrypty po stronie serwera |  Nie | Tak (Lua)  |
+| Transakcje  | Nie  | Tak  |
+| Wielowątkowość  | Tak  | Nie  |
+
+Porównanie opcji wdrażania w usłudze ElastiCache
+
+|   | Memcached  | Redis pojedynczy węzeł  | Redis wyłączony tryb klastrów  | Redis włączony tryb klastrów  |
+|---|---|---|---|---|
+| Kopie zapasowe i przywracanie  |  Nie |  Tak | Tak  | Tak  |
+| Replikacja  | Nie  |  Nie | Tak  | Tak  |
+| Dzielenie na fragmenty  | Tak  |  Nie | Nie  | Tak  |
 
 ## Route 53
 
