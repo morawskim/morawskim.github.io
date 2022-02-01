@@ -1,6 +1,8 @@
 Ngrok
 =====
 
+## Tunel TCP
+
 Program ngrok umożliwia nam wystawienie jakiegoś portu lokalnego "na świat". Tym samym pominięcie firewalla.
 
 W celu wystawienia np. portu 3306 (MySQL) musimy wywołać poniższe polecenie:
@@ -45,3 +47,9 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 MariaDB [(none)]>
 ```
+
+## API
+
+`ngrok` ma wbudowane [JSON REST API](https://ngrok.com/docs#client-api). Za pomocą tego API jesteśmy w stanie programowo pobrać np. publiczny adres np. `https://eaa7-46-182-99-27.ngrok.io` i zaktualizować adres webhooka w zewnętrznym systemie.
+
+`curl -H'Content-Type: application/json' 127.0.0.1:4040/api/tunnels`
