@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2022-02
+[Elasticsearch analizatory](elasticsearch-analyzer.md)
 [Wydajność](wydajnosc.md)
 
 ## 2022-01
