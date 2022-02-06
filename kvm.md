@@ -50,3 +50,33 @@ checked program was:
 ```
 
 Użytkownik aspiers ma gotowe [rozwiązanie](https://github.com/hashicorp/vagrant/issues/8986#issuecomment-331713397). W nowszej wersji vagrant zawiera bibliotekę `libreadline` w wersji 7. Musiałem więc dostosować polecenie `sudo mv /opt/vagrant/embedded/lib/libreadline.so.7{,.disabled}`. Następnie ponowiłem próbę instalacji pluginu `vagrant-libvirt`, która tym razem zakończyła się sukcesem (potrzebujemy także pakietu `libvirt-devel`).
+
+
+## NAT i przekierowanie portów
+
+Maszyny wirtualne podłączone do sieci NAT mogą nawiązywać dowolne wychodzące połączenia sieciowe. Połączenia przychodzące są dozwolone z hosta i od innych maszyn wirtualnych podłączonych do tej samej sieci NAT. Aby móc wystawić porty (np. 80 i 443) musimy stworzyć skrypt, który jest dostępny publicznie na stronie - [Forwarding Incoming Connections](https://wiki.libvirt.org/page/Networking#Forwarding_Incoming_Connections).
+
+```
+#!/bin/bash
+
+VIRB_NIC=YOUR_LIBVIRT_NIC_EG_virbr0
+
+if [ "${1}" = "vm-ubuntu-docker" ]; then
+
+   # Update the following variables to fit your setup
+   GUEST_IP=
+   GUEST_PORT=
+   HOST_PORT=
+
+   if [ "${2}" = "stopped" ] || [ "${2}" = "reconnect" ]; then
+        /usr/sbin/iptables -D FORWARD -o $VIRB_NIC -p tcp -d $GUEST_IP --dport $GUEST_PORT -j ACCEPT
+        /usr/sbin/iptables -t nat -D PREROUTING -p tcp --dport $HOST_PORT -j DNAT --to $GUEST_IP:$GUEST_PORT
+   fi
+   if [ "${2}" = "start" ] || [ "${2}" = "reconnect" ]; then
+        /usr/sbin/iptables -I FORWARD -o $VIRB_NIC -p tcp -d $GUEST_IP --dport $GUEST_PORT -j ACCEPT
+        /usr/sbin/iptables -t nat -I PREROUTING -p tcp --dport $HOST_PORT -j DNAT --to $GUEST_IP:$GUEST_PORT
+   fi
+fi
+```
+
+[KVM forward ports to guests VM with UFW on Linux](https://www.cyberciti.biz/faq/kvm-forward-ports-to-guests-vm-with-ufw-on-linux/)
