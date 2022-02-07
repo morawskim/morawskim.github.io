@@ -90,6 +90,38 @@ Rozszerzenia SACK i FACK mogą poprawić wydajność przepustowości w sieciach 
 Parametr `tcp_tw_reuse` pozwala na ponowne użycie sesji TIME-WAIT, gdy taka możliwość wydaje się bezpieczna. W ten sposób można zapewnić większą liczbę połączeń między dwoma komputerami, na przykład między serwerem WWW i bazą danych, bez osiągnięcia 16 bitowego ograniczenia portu ephemeral z sesjami w TIME-WAIT.
 Z kolei `tcp_tw_recycle` to inny sposób na ponowne użycie sesji TIME-WAIT, choć nie jest tak bezpieczny jak `tcp_tw_reuse`.
 
+## Inne
+
+### sar Cannot open /var/log/sa/...
+
+Jeśli podczas wywoływania polecenie sar (np. `sar -B`) dostaniemy błąd podobny do poniższego to nie mamy włączonej usługi sysstat:
+
+```
+Cannot open /var/log/sa/sa30: No such file or directory
+Please check if data collecting is enabled
+```
+Wykorzystując systemctl sprawdzamy stan usługi - `systemctl status sysstat`
+
+```
+○ sysstat.service - Resets System Activity Logs
+     Loaded: loaded (/usr/lib/systemd/system/sysstat.service; disabled; vendor preset: disabled)
+     Active: inactive (dead)
+```
+
+I włączamy usługę `sudo systemctl start sysstat`.
+
+### Benchmark
+
+Benchmark CPU - `docker run --rm ljishen/sysbench -- --test=cpu --cpu-max-prime=30000 --num-threads=2 run`
+
+### DTrace
+
+Lista otwartych plików - `dtrace -n 'syscall::open:entry { printf("%s   %s", execname, copyinstr(arg0));}'`
+
+Monitrorowanie uruchamianych procesow - `dtrace -n 'exec-success { printf("%d %s, timestamp, curpsinfo->pr_psargs);}'`
+
+[The DTrace Toolkit: A set of scripts for use with DTrace on various systems.](https://github.com/opendtrace/toolkit/tree/master/)
+
 ## Książki
 
 Brendan Gregg, _Wydajne systemy komputerowe. Przewodnik dla administratorów systemów lokalnych i w chmurze_, Helion
