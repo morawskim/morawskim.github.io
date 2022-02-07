@@ -115,3 +115,38 @@ $defaultMiddleware = [
     ],
 ];
 ```
+
+## Worker
+
+### systemd
+[Symfony Messenger systemd](https://jolicode.com/blog/symfony-messenger-systemd)
+
+### docker-compose
+
+```
+worker:
+    entrypoint: ["/path/to/your/app/bin/console", "messenger:consume", "--limit=100", "--time-limit=3600", "transport"]
+    restart: unless-stopped
+    # ...
+```
+
+### Supervisor
+
+[Supervisor Configuration](https://symfony.com/doc/current/messenger.html#supervisor-configuration)
+
+```
+;/etc/supervisor/conf.d/messenger-worker.conf
+[program:messenger-consume]
+command=php /path/to/your/app/bin/console messenger:consume async --time-limit=3600
+user=ubuntu
+numprocs=1
+startsecs=0
+autostart=true
+autorestart=true
+process_name=%(program_name)s_%(process_num)02d
+
+;stdout_logfile=/dev/stdout
+;stdout_logfile_maxbytes=0
+;stderr_logfile=/dev/stderr
+;stderr_logfile_maxbytes=0
+```
