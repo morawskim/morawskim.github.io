@@ -42,3 +42,13 @@ Za pomocą NetworkManager możemy przypisać sieć WIFI do odpowiedniej strefy. 
 Wciskamy `[ctrl]+[shift]+[,]` aby otworzyć okno "preferences".
 Z menu po lewej klikamy w pozycję "General" i wybieramy zakładkę "Behaviour".
 W sekcji "View" zaznaczamy opcję "Remember display style for each folder" i zapisujemy zmiany.
+
+### KWin
+
+Plasma 5.24 ułatwia nam wykorzystanie mocy wielu wirtualnych pulpitów poprzez nowy efekt "Overview".
+Ciągle jest w fazie beta, więc musimy go włączyć ręcznie - `System Settings` -> `Workspace Behavior` -> `Desktop Effects`. Szukamy efektu `Overview` i go włączamy.
+Aktywujemy ten efekt poprzez wciśnięcie kombinacji klawiszy `Meta (Windows key) + w`.
+
+[Plasma 5.24 - Overview](https://kde.org/pl/announcements/plasma/5/5.24.0/#zarz%C4%85dzanie-oknami)
+
+[KDE Plasma 5.24 - New overview effect](https://www.youtube.com/watch?v=i1GLKYqm_CM)
