@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2022-02
+[Beanstalkd](beanstalkd.md)
 [Elasticsearch analizatory](elasticsearch-analyzer.md)
 [Wydajność](wydajnosc.md)
 
