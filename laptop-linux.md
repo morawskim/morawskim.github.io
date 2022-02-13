@@ -52,3 +52,9 @@ Aktywujemy ten efekt poprzez wciśnięcie kombinacji klawiszy `Meta (Windows key
 [Plasma 5.24 - Overview](https://kde.org/pl/announcements/plasma/5/5.24.0/#zarz%C4%85dzanie-oknami)
 
 [KDE Plasma 5.24 - New overview effect](https://www.youtube.com/watch?v=i1GLKYqm_CM)
+
+## Shortcuts
+
+Yakuake Full screen - `Ctrl+Shift+F11`
+
+KWin Overview effect - `Meta (Windows key) + w`
