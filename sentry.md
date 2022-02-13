@@ -45,7 +45,7 @@ Nasza integracja między aplikacją Symfony, a Sentry jest gotowa. Wywołując p
 
 ### Performance
 
-Aby monitorować wydajność fragmentu kodu, musimy w pliku konfiguracyjnym `config/packages/sentry.yaml` ustawić opcję 
+Aby monitorować wydajność fragmentu kodu, musimy w pliku konfiguracyjnym `config/packages/sentry.yaml` ustawić opcję
 klienta Sentry `traces_sample_rate` na wartość `1.0`. Wtedy każda próbka zostanie przesłana do Sentry.
 
 ```
@@ -55,6 +55,9 @@ sentry:
 ```
 
 W kluczu `options` możemy nadpisać domyślne parametry klienta Sentry. Do klasy `\Sentry\Options` zostaną przekazane wszystkie te ustawienia. Domyślne wartości dostępne są w metodzie `\Sentry\Options::configureOptions`.
+
+Aktualnie istnieje otwarte zgłoszenie [Feature Request: use the symfony route name to group the transactions #547](https://github.com/getsentry/sentry-symfony/issues/547).
+[Listener Sentry Symfony](https://github.com/getsentry/sentry-symfony/blob/c016dc2496833c73747a5e5babf04c41791a5118/src/EventListener/TracingRequestListener.php) grupuje próbki po adresie URL np. `/some-resource/specific-resource-identifier-slug` zamiast `/some-resource/{slug}`. Do wyszukiwania próbek musimy skorzystać z tagu `route`.
 
 ### Breadcrumb
 
