@@ -86,8 +86,100 @@ Optimistic Offline Lock może być także używany do wykrywania niespójnych op
 
 W widoku mając instrukcję warunkową, ważne jest by wartość warunku była wyznaczana na podstawie jednej logicznej właściwości obiektu pomocniczego.
 
+## ADR - Architectural Decision Records
+
+Każdą decyzję architektoniczną powinniśmy dokumentować w ADR - Architectural Decision Records.
+ADR składa się z krótkiego pliku tekstowego opisującego konkretną decyzję architektoniczną. Do zarządzania dokumentami ADR możemy skorzystać z [ADR-tools](https://github.com/npryce/adr-tools).
+
+Struktura ADR składa się z pięciu głównych sekcji: Tytuł, Status, Kontekst, Decyzja i Konsekwencje.
+Niektórzy dodają jeszcze sekcje: Zgodność, Uwagi, czy też Inne rozwiązania.
+
+Szablon:
+
+```
+# NUMBER. TITLE
+
+Date: DATE
+
+## Status
+
+proposed|accepted|deprecated|superseded
+
+## Context
+
+The issue motivating this decision, and any context that influences or constrains the decision.
+
+## Decision
+
+The change that we're proposing or have agreed to implement.
+
+## Consequences
+
+What becomes easier or more difficult to do and any risks introduced by the change that will need to be mitigated.
+
+## Compatibility
+
+## Remarks
+
+```
+
+### Sekcje ADR
+
+Tytuł powinien być wystarczająco opisowy, aby usunąć wszelkie niejasności co do charakteru i kontekstu decyzji, ale jednocześnie krótki i zwięzły.
+
+Status - proposed|accepted|deprecated|superseded
+
+Kontekst - określa czynniki wpływające na decyzję. Innym słowy, "Jaka sytuacja zmusza mnie do podjęcia tej decyzji". Ta część ADR umożliwia architektowi opisanie określonej sytuacji lub problemu i zwięzłe omówienie możliwych alternatyw.
+W przypadku szczegółowej analizy każdego z tych alternatywnych rozwiązań, można dołączyć do ADR dodatkową sekcję "Inne rozwiązania".
+
+Decyzja - zawiera decyzję architektoniczną wraz z pełnym jej uzasadnieniem. [...] Prawdopodobnie jednym z najistotniejszych aspektów sekcji Decyzja w dokumencie ADR jest to, że pozwala ona architektowi położyć większy nacisk na to, dlaczego, a nie jak. Zrozumienie, dlaczego decyzja została podjęta, jest o wiele ważniejsze niż zrozumienie jak coś działa.
+
+Konsekwencje - dokumentuje ona ogólny wpływ decyzji architektonicznej. Każda decyzja architektoniczna podejmowana przez architekta wywiera pewien wpływ, zarówno dobry, jak i zły. Konieczność określenia wpływu decyzji architektonicznej zmusza architekta do zastanowienia się, czy ten wpływ nie przeważą nad wynikającymi z niej korzyściami.
+Innym dobrym sposobem wykorzystania tej sekcji jest udokumentowanie analizy kompromisów związanych z decyzją architektoniczną.
+
+Zgodność - sekcja zgodności nie należy do standardowych sekcji ADR. [...] Sekcja zmusza architekta do zastanowienia się nad sposobem pomiaru decyzji architektonicznej i zarządzania nią z punktu widzenia zgodności. Architekt musi zdecydować, czy kontrola zgodności dla tej decyzji będzie manualna, czy też może być zautomatyzowana przez użycie funkcji dopasowania. Do mierzenia możemy skorzystać z:
+
+* [Deptrac is a static code analysis tool for PHP that helps you communicate, visualize and enforce architectural decisions in your projects](https://github.com/qossmic/deptrac)
+
+* [Unit test your Java architecture](https://www.archunit.org/)
+
+* [PHP Architecture Tester - Easy to use architectural testing tool for PHP](https://github.com/carlosas/phpat)
+
+* [PHPArch is a work in progress architectural testing library for PHP projects. It is inspired by archlint (C#) and archunit (java)](https://github.com/j6s/phparch)
+
+Uwagi - nie jest częścią standardowego ADR. Zawiera ona rożne metadane dotyczące ADR np.:
+
+* pierwotny autor
+
+* data zatwierdzenia
+
+* zatwierdzone przez
+
+* data zastąpienia
+
+* data ostatniej modyfikacji
+
+* zmodyfikowane przez
+
+* ostatnia modyfikacja
+
+
+[Managing Architecture Decision Records with ADR-Tools](https://www.hascode.com/2018/05/managing-architecture-decision-records-with-adr-tools/)
+
+[Documenting Architecture Decisions](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions)
+
+Trzy główne antywzorce architektoniczne:
+
+* Obrona swojego stanowiska - ma on miejsce wówczas, gdy architekt unika podjęcia decyzji architektonicznej lub odracza ją z obawy przed dokonaniem złego wyboru.
+
+* Dzień świstaka - występuje on, gdy ludzie nie wiedzą, dlaczego dana decyzja została podjęta, więc dyskusja o niej toczy się bez końca. [...] Antywzorzec Dzień Świstaka występuje w sytuacji, gdy architekt podejmuje decyzję architektoniczną i nie potrafi jej uzasadnić (lub podać pełnego uzasadnienia). Przy argumentowaniu decyzji architektonicznych ważne jest, aby podać zarówno techniczne, jak i biznesowe uzasadnienie swojej decyzji.
+
+* Architektura Sterowana Wiadomościami E-mail - występuje on wtedy, gdy decyzja architektoniczna została podjęta, ale ludzie przestali śledzić proces decyzyjny, zapomnieli o danej decyzji lub nawet nie wiedzą, że została podjęta, i dlatego nie mogą jej wdrożyć. W tym antywzorcu chodzi o skuteczne komunikowanie Twoich decyzji architektonicznych. E-mail jest doskonałym narzędziem komunikacji, ale kiepskim systemem przechowywania dokumentów.
+
 ### Książki
 
 Matthias Noback, _Object Design Style Guide_, Manning
 
 Martin Fowler, _Architektura systemów zarządzania przedsiębiorstwem. Wzorce projektowe_, Helion
+
+Mark Richards i Neal Ford, _Podstawy architektury oprogramowania dla inżynierów_, Helion

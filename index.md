@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2022-02
+[ADR - Architectural Decision Records](architektura.md#ADR_-_Architectural_Decision_Records)
 [Beanstalkd](beanstalkd.md)
 [Elasticsearch analizatory](elasticsearch-analyzer.md)
 [Wydajność](wydajnosc.md)
