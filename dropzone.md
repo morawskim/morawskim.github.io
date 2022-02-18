@@ -64,6 +64,27 @@ cy.get('.dropzone').attachFile(fileName, { subjectType: 'drag-n-drop' });
 cy.wait('@upload');
 ```
 
+### Cypress 9.3
+
+W wersji 9.3 dodano polecenie `selectFile`, które umożliwia wybranie pliku w przypadku korzystania z elementu HTML5 albo skorzystania z symulacji przeciągnięcia pliku nad element.
+Istnieje przewodnik [migracja z cypress-file-upload](https://docs.cypress.io/guides/references/migration-guide#Migrating-from-cypress-file-upload-to-selectFile).
+
+Migracja:
+```
+// cypress-file-upload
+cy.get('.dropzone')
+    .attachFile('picture.jpg', { subjectType: 'drag-n-drop' });
+
+// new cypress selectFile command
+cy.get('.dropzone')
+    .selectFile('cypress/fixtures/picture.jpg', {
+        action: 'drag-drop',
+    });
+```
+
+[API selectFile](https://docs.cypress.io/api/commands/selectfile)
+[Uploading files made easy with the .selectFile command](https://cypress.io/blog/2022/01/18/uploading-files-with-selectfile/)
+
 ## Symfony
 
 Symfony zawiera pakiet [ux-dropzone](https://github.com/symfony/ux-dropzone) do integracji dropzone. Jednak obecnie zainstalowanie tego pakietu powoduje problemy [[Dropzone] Impossible to install on SF4.4](https://github.com/symfony/ux/issues/66). Istnieje pull request, który może naprawić ten problem [Fix prepend twig extension](https://github.com/symfony/ux/pull/67/files).
