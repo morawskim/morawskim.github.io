@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2022-02
+[Zdolności przywódcze](zdolnosci-przywodcze.md)
 [Style architektoniczne](style-architektoniczne.md)
 [ADR - Architectural Decision Records](architektura.md#ADR_-_Architectural_Decision_Records)
 [Beanstalkd](beanstalkd.md)
