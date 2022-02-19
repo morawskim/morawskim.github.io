@@ -176,7 +176,116 @@ Trzy główne antywzorce architektoniczne:
 
 * Architektura Sterowana Wiadomościami E-mail - występuje on wtedy, gdy decyzja architektoniczna została podjęta, ale ludzie przestali śledzić proces decyzyjny, zapomnieli o danej decyzji lub nawet nie wiedzą, że została podjęta, i dlatego nie mogą jej wdrożyć. W tym antywzorcu chodzi o skuteczne komunikowanie Twoich decyzji architektonicznych. E-mail jest doskonałym narzędziem komunikacji, ale kiepskim systemem przechowywania dokumentów.
 
-### Książki
+
+## Architektura
+
+`yak shaving` - oznacza wszystkie drobne, pozornie niepowiązane ze sobą zadania wykonywane, zanim będzie można zrobić zadanie, którym pierwotnie chcieliśmy się zająć.
+
+`Złożoność przypadkowa` - pojęcie to odwołuje się do problemu powodowanego przez okreśłone narzędzia i wybrany proces
+
+`Złożoność zasadnicza` - odwołuje się do problemów nieodłącznie wziązanych z tym, nad czym pracujemy.
+
+`Funkcja dopasowania` -  (ang. fitness functions) koncepcja w celu ochrony (i regulacji) parametrów architektury w miarę zmian zachodzących wraz z upływem czasu.
+
+`Architektoniczna funkcja dopasowania` - dowolny mechanizm, który zapewnia obiektywną ocenę integralności niektórych parametrów architektury lub połączenia tych parametrów.
+
+`Kwant architektury` - niezależnie wdrażany artefakt o wysokiej spójności funkcjonalnej i splątaniu synchronicznym. Kwant architektury zawiera wszystkie niezbędne składniki, aby funkcjonować niezależnie od innych części architektury (jeśli aplikacja korzysta z bazy danych jest ona częścią kwantu, ponieważ bez niej system nie będzie działał).
+Splątanie synchroniczne zakłada wywołania synchroniczne w kontekście aplikacji lub pomiędzy rozproszonymi usługami, które tworzą kwant tej architektury (usługa, która wywołuje inną usługę synchronicznie nie może wykazywać dużych różnic w dostępności - ogólnie w operacyjnych parametrach architektury).
+
+`Podejście aktor-aktor` - jest popularnym sposobem, który architekci wykorzystują do odwzorowania wymagań na składniki. W tym podejściu, zdefiniowanym pierwotnie w ramach procesu RUP architekci identyfikują aktorów, którzy wykonują czynności przy użyciu aplikacji, oraz działania, które ci aktorzy mogą wykonywać. Dostarcza ono techniki odkrywania typowych użytkowników systemu i tego co mogą oni z nimi zrobić.
+
+`Bryła błota` - to chaotycznie zbudowana, rozległa, niechlujna dżungla o zagmatwanym kodzie, trzymająca się na drucie i taśmie klejącej. Takie systemy wykazują wyraźne oznaki nieuregulowanego wzrostu i powtarzający się doraźnych napraw. Informacje są bezładnie przekazywane pomiędzy odległymi elementami systemu, często do tego stopnia, że prawie wszystkie ważne informacje stają się globalne lub są duplikowane.
+
+### Oczekiwania wobec architekta:
+
+* podejmowanie decyzji architektonicznych
+
+* ciągłe analizowanie architektury
+
+* śledzenie najnowszych trendów
+
+* zapewnienie zgodności z decyzjami
+
+* bogate i zróżnicowane doświadczenie
+
+* wiedza z zakresu biznesu
+
+* umiejętności interpersonalne
+
+* znajomość i umiejętność stosowania polityki firmy
+
+### Prawa architektury oprogramowania
+
+* W architekturze oprogramowania wszystko jest kompromisem. Jeśli architekt uważa, że odkrył coś, co nie jest kompromisem, to najprawdopodobniej jeszcze nie odkrył kompromisu.
+
+* Dlaczego jest ważniejsze niż jak. Architekt może przyjrzeć się istniejącemu systemowi, którego wcześniej nie znał i stwierdzić, jak działa struktura architektury, ale będzie miał trudności z wyjaśnieniem, dlaczego wybrano takie, a nie inne rozwiązanie.
+
+### Wskaźniki architektury
+Spójność (ang. cohesion) odnosi się do tego, w jakim stopniu części modułu powinny znajdować się w tym samym module. Innym słowy, jest to miara tego, w jakim stopniu części te są ze sobą powiązane. Idealny moduł spójny to taki, w którym wszystkie części są spakietowane razem, ponieważ rozbicie ich na mniejsze porcje wymagałoby sprzęgania ich za pomocą wywołań między modułami w celu osiągnięcia pożądanych rezultatów.
+
+Miary spójności (od najlepszej do najgorszej):
+
+* spójność funkcjonalna
+
+* spójność sekwencyjna
+
+* spójność komunikacyjna
+
+* spójność proceduralna
+
+* spójność czasowa
+
+* spójność logiczna
+
+* spójność przypadkowa
+
+Próba podzielenia spójnego moduły spowodowałaby jedynie zwiększenie sprzężenia i zmniejszenie czytelności - Larry Constantine
+
+Zastosowanie wskaźnika LCOM może pomóc architektom znaleźć klasy, które są przypadkowo sprzężone i nigdy nie powinny być pojedynczymi klasami. Wiele wskaźników oprogramowania ma poważne braki, dotyczy to również LCOM. Jedyne, co ten wskaźnik może znaleźć, to strukturalny brak spójności, nie ma możliwości logicznego określenia, czy poszczególne elementy pasują do siebie.
+
+Sprzężenie dośrodkowe (ang. afferent coupling) mierzy liczbę połączeń przychodzących do artefaktu kodu (składnika, klasy, funkcji itd.).
+Sprzężenie odśrodkowe (ang. efferent coupling) mierzy liczbę połączeń wychodzących do innych artefaktów kodu.
+
+Splątanie (ang. connascence) - Dwa elementy są splątane, jeśli zmiana jednego z nich wymagałaby modyfikacji drugiego w celu utrzymania ogólnej poprawności systemu - Meilir Page-Jones
+
+Ogólnie rzecz biorąc, branżowe wartości progowe dla CC sugerują. że wartość poniżej 10 jest dopuszczalna, pomijając inne względy, takie jak złożone dziedziny. Uważamy że próg ten jest bardzo wysoki i wolelibyśmy, aby wartość ta była niższa niż 5, co oznacza spójny, dobrze sfaktoryzowany kod.
+
+### Parametry architektury
+
+Parametry architektury spełniają trzy kryteria:
+
+* określają poza dziedzinowe względy projektowe - parametry architektury określają operacyjne i projektowe kryteria sukcesu (np. wydajność)
+
+* wpływają na niektóre strukturalne aspekty projektu - czy dany parametr architektury wymaga szczególnych względów konstrukcyjnych, aby zapewnić pomyślne działanie aplikacji np. bezpieczeństwo i obsługa płatności
+
+* mają decydujące lub duże znaczenie dla działania aplikacji - obsługa każdego parametru zwiększa złożoność projektu. Dlatego powinniśmy wybierać jak najmniejszą liczbę parametrów architektury.
+
+Architekt odkrywa parametry architektury na co najmniej trzy sposoby:
+
+* na podstawie zagadnień dziedzinowych
+
+* wymagań
+
+* i dorozumianej wiedzy na temat danej dziedziny
+
+### Macierz ryzyka
+
+Macierz ryzyka wykorzystuje dwa wymiary do kwalifikacji ryzyka: ogólny wpływ ryzyka i prawdopodobieństwo jego wystąpienia. Każdy z tych wymiarów ma trzy oceny: niską (1), średnią (2) i wysoką (3). Liczby te są mnożone przez siebie w każdej siatce macierzy, co daje obiektywną wartość liczbową reprezentującą to ryzyko. [...] Liczby 1 i 2 są uważane za niskie ryzyko, liczby 3 i 4 za średnie ryzyko, a liczby od 6 do 9 to wysokie ryzyko.
+
+Stosując macierz oceny ryzyka, należy najpierw rozważyć wymiar wpływu, a w drugiej kolejności wymiar prawdopodobieństwa.
+
+Risk storming dzieli się na trzy podstawowe etapy:
+
+* identyfikacja - każdy uczestnik samodzielnie identyfikuje obszary ryzyka w ramach architektury
+
+* konsensus - opiera się na współpracy, a jego celem jest osiągnięcie przez wszystkich uczestników konsensusu co do ryzyka w ramach architektury
+
+* ograniczanie - zazwyczaj wiąże się ze zmianami lub udoskonaleniami architektury w celu wyeliminowania lub ograniczenia ryzyka
+
+W przypadku niesprawdzonych lub nieznanych technologii należy zawsze przypisać najwyższą ocenę ryzyka (9), ponieważ dla tego wymiaru nie można zastosować macierzy ryzyka.
+
+
+## Książki
 
 Matthias Noback, _Object Design Style Guide_, Manning
 
