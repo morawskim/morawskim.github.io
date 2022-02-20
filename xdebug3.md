@@ -29,3 +29,19 @@ Przechodzimy do zakładki `Komentarze` i dodajemy katalog do `Katalogi źródło
 
 [Xdebug 3 Profiling: 1. Setting Up](https://www.youtube.com/watch?v=ttQgLBSpVvc)
 [Xdebug 3 Profiling: 3. Analysing Data](https://www.youtube.com/watch?v=iH-hDOuQfcY)
+
+## Debug
+
+```
+# docker-compose.yaml
+services:
+  # ...
+  php-fpm:
+    # ...
+    environment:
+      # jesli chcemy odpalić funkcje xdebug przy kazdym żądaniu HTTP
+      XDEBUG_TRIGGER: "whatever"
+      XDEBUG_MODE: develop,debug
+      XDEBUG_CONFIG: "client_host=${MY_IP:-172.17.0.1} discover_client_host=0 client_port=9000"
+      PHP_IDE_CONFIG: "serverName=${DEV_SERVER_NAME:-domain.lvh.me}"
+```
