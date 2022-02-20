@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2022-02
+[Docker Swarm Szablony](docker-swarm-szablony.md)
 [Zdolności przywódcze](zdolnosci-przywodcze.md)
 [Style architektoniczne](style-architektoniczne.md)
 [ADR - Architectural Decision Records](architektura.md#ADR_-_Architectural_Decision_Records)
