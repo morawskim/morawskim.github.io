@@ -181,7 +181,7 @@ FOUND 0 ERRORS AND 1 WARNING AFFECTING 1 LINE
 
 Analizator kodu PHPStan najlepiej wywoływać z obrazu dockera `jakzal/phpqa:alpine`, ponieważ do działania potrzebuje PHP 8, a także `symfony/dependency-injection`.
 
-W kontenerze `phpqa` wywołujemy polecenie `composer global bin phpstan require symplify/phpstan-rules` aby doinstalować dodatkowe reguły. Następnie w głównym katalogu tworzymy plik `phpstan.neon` i wklejamy przykladową konfigurację:
+W kontenerze `phpqa` wywołujemy polecenie `composer global bin phpstan require symplify/phpstan-rules`, aby doinstalować dodatkowe reguły. Następnie w głównym katalogu tworzymy plik `phpstan.neon` i wklejamy przykladową konfigurację:
 
 ```
 parameters:
@@ -225,6 +225,42 @@ services:
 Następnie możemy już wywołać polecenie `phpstan`, aby przeanalizować kod.
 
 [Adding PHPStan extensions](https://github.com/jakzal/phpqa#adding-phpstan-extensions)
+
+### PhpStorm
+
+Do projekt w PhpStorm musimy dodać nowy zdalny interpreter PHP (np. wykorzystując docker-compose).
+W pliku `docker-compose.yml` dodajemy definicję usługi `qa`:
+
+```
+version: '3.4'
+services:
+  # ...
+  qa:
+      image: jakzal/phpqa:alpine
+      tty: true
+      command:
+        - sh
+      volumes:
+        - ./:/project
+```
+
+Następnie [konfigurujemy integrację PHPStan z PHPStorm](https://www.jetbrains.com/help/phpstorm/using-phpstan.html).
+W pliku konfiguracyjnym `phpstan.neon` będziemy musieli dodać parametr `bootstrapFiles`, aby PHPStan widział wszystkie klasy ([Discovering Symbols](https://phpstan.org/user-guide/discovering-symbols)) -  Inaczej otrzymamy sporo blędów: `Reflection error: Symfony\Component\Serializer\Normalizer\NormalizerInterface not found.`
+
+```
+parameters:
+    # ...
+    bootstrapFiles:
+        - phpstanAutoloader.php
+```
+
+Plik `phpstanAutoloader.php` jest bardzo prosty:
+
+```
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+
+```
 
 ## phpmetrics
 
