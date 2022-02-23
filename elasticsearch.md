@@ -307,6 +307,14 @@ indexes:
                     query_builder_method: createSearchQueryBuilder
 ```
 
+### Ważne klasy
+
+`\FOS\ElasticaBundle\Index\MappingBuilder` - klasa, która konwertuje konfigurację indexu z pliku YAML, do struktury wykorzystywanej przez Elasticsearch. Jest wywoływana podczas indeksowania danych.
+
+`\FOS\ElasticaBundle\Persister\InPlacePagerPersister` - klasa (coś na wzór fasady), która indeksuje dokumenty. Deleguje pobieranie danych z bazy danych. Następnie deleguje przekształcenie encji do dokumentu Elaticsearch. By na końcu delegować dodawanie dokumentu do indeksu Elasticsearch.
+
+`\FOS\ElasticaBundle\Index\Resetter` - [Można go wykorzystać w testach do resetowania indeksów](paratest.md#friendsofsymfony/elastica-bundle)
+
 ## Troubleshoot
 
 ### disk usage exceeded flood-stage watermark, index has read-only-allow-delete block
