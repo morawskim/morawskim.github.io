@@ -46,3 +46,41 @@ Usługa `cloud-init` dokona konfiguracji. Ustawi `hostname` na `ubuntu-bionic`. 
 Jesteśmy gotowi do uruchomienia nowej maszyny wirtualnej - `virt-install --connect qemu:///system --virt-type kvm --name ubuntu-bionic --memory 800 --vcpus 1 --os-type linux --os-variant ubuntu18.04 --disk path=<plikWynikowy.qcow2>,format=qcow2 --disk  path=<sciezka/Gdzie/Zapisany/Zostanie/Plik/cidata.iso>,device=cdrom --import --network network=default --noautoconsole`
 
 Po utworzeniu maszyny wywołujemy polecenie `virsh -c qemu:///system domifaddr ubuntu-bionic`. Na wyjściu zobaczymy przypisany adres IP do interfejsu sieciowego. Wywołujemy polecenie `ssh marcin@192.168.122.243`, aby połączyć się z maszyną.
+
+## Cloud config
+
+[Moduły cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#)
+
+### Ustawienie hasła konta linux
+
+```
+#cloud-config
+#...
+chpasswd:
+  list: |
+    ubuntu:password
+  expire: false
+```
+
+### Uruchomienie dowolnego polecenia podczas pierwszego uruchomienia maszyny wirtualnej
+
+[Dokumentacja](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#runcmd)
+Moduł `runcmd` jedynie tworzy skrypt, który zostanie uruchomiony w ostatniej fazie rozruchu.
+Plik zostanie zapisany do pliku `/var/lib/cloud/instance/scripts/runcmd`.
+
+```
+#cloud-config
+#...
+runcmd:
+  - [ sh, -c, echo Hello | tee -a /tmp/hello]
+```
+
+### Zmiana rozmiaru partycji
+
+```
+#cloud-config
+#...
+growpart:
+  mode: auto
+  devices: ['/']
+```
