@@ -1,4 +1,4 @@
-# openapi-cop
+# Weryfikacji wywołań API z schematem OpenAPI (openapi-cop)
 
 Pakiet npm openapi-cop pozwala nam sprawdzić poprawność żądania HTTP w oparciu o schemat OpenAPI. W przypadku gdy request nie jest zgodny z specyfikacją OpenAPI otrzymamy błąd.
 
