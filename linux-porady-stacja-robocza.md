@@ -21,3 +21,9 @@ Za pomocą programu `turbostat` możemy obserwować aktualne zużycie energii - 
 Ventoy to narzędzie przeznaczone do tworzenia rozruchowych nośników USB wykorzystując obrazy ISO z dowolnym systemem operacyjnym. Program można ściągnąć ze strony projektu w serwisie [Github](https://github.com/ventoy/Ventoy/releases). Po ściągnięciu i rozpakowaniu archiwum wywołujemy polecenie `sudo ./Ventoy2Disk.sh -i <IDENTYFIKATOR_URZADZENIA>`, gdzie `<IDENTYFIKATOR_URZADZENIA>` to ścieżka do naszego pendrive np. `/dev/sdb`.
 
 Następnie montujemy partycję z etykietą "Ventoy" i kopiujemy nasze pliki ISO. W niektórych dystrybucjach Linuxa, musimy doinstalować pakiet `fuse-exfat`, aby móc zamontować partycję (exfat) i przekopiować pliki ISO.
+
+## iwd
+
+iwd - nowy demon sieci bezprzewodowych w Linuksie.
+
+[Artykuł w Linux Magazine Marzec 2021 - Nr 205](https://linux-magazine.pl/lm205/abrakadabra-przedstawiamy-inet-nowy-demon-sieci-bezprzewodowych-w-linuksie-1265.html)
