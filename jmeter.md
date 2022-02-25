@@ -65,6 +65,12 @@ W pliku `jmeter.properties` (znajduje się on w katalogu `bin`) musimy odkomento
 Ta linia powinna znajdować się na początku pliku.
 Zgodnie z [dokumentacją](https://jmeter.apache.org/usermanual/properties_reference.html#language) ten parametr może być ustawiony tylko w pliku `jmeter.properties`.
 
+### Zwiększenie limitu pamięci
+
+W niektórych przypadkach limit 1GB pamięci dla JVM może nie wystarczać. W takim przypadku tworzymy plik `bin/setenv.sh` i w nim eksportujemy zmienną środowiskową `HEAP` - `export HEAP="-Xms2g -Xmx2g -XMaxMetaspaceSize=256m"`.
+
+[Running JMeter](https://jmeter.apache.org/usermanual/get-started.html)
+
 ## Porady
 
 Generując plik CSV z testów i otwierając go w programie Excel możemy sformatować wartość komórki `timestamp`. W nowej komórce wstawiamy formułę `=(((A2/1000/60)/60)/24)+DATA(1970;1;1)`. Przykład zakłada, że komórka `A2` zawiera timestamp. Następnie musimy wybrać format komórki. Wybieramy grupę Data lub Godzina i preferowany format.
