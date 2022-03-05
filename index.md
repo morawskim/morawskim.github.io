@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2022-03
+[YubiKey](yubikey.md)
 [Kubernetes](kubernetes.md)
 
 ## 2022-02
