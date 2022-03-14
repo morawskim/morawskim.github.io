@@ -86,6 +86,12 @@ Optimistic Offline Lock może być także używany do wykrywania niespójnych op
 
 W widoku mając instrukcję warunkową, ważne jest by wartość warunku była wyznaczana na podstawie jednej logicznej właściwości obiektu pomocniczego.
 
+Zmienianie samych deklaracji importowanych pakietów jest znacznie mniej inwazyjne i ryzykowne niż zmienianie kodu.
+
+Im dalej jest przekazywana pewna decyzja, tym mniejsze będą elastyczność i możliwości późniejszego wprowadzenia zmian. Aby zachować elastyczność, należy starać się udostępniać jak najmniej informacji, i to w możliwie jak najmniejszym zakresie.
+
+Zgłoszenie wyjątku w momencie wykrycia problemy oraz przechwycenie go w miejscu, gdzie problem ten można obsłużyć, jest znacznie lepszym rozwiązaniem niż umieszczenie w kodzie jawnych testów sprawdzających zaistnienie wszystkich możliwych warunków wyjątkowych, z których i tak w danym miejscu  żadnego nie można obsłużyć.
+
 ## ADR - Architectural Decision Records
 
 Każdą decyzję architektoniczną powinniśmy dokumentować w ADR - Architectural Decision Records.
@@ -292,3 +298,5 @@ Matthias Noback, _Object Design Style Guide_, Manning
 Martin Fowler, _Architektura systemów zarządzania przedsiębiorstwem. Wzorce projektowe_, Helion
 
 Mark Richards i Neal Ford, _Podstawy architektury oprogramowania dla inżynierów_, Helion
+
+Kent Beck, _Wzorce implementacyjne_, Helion
