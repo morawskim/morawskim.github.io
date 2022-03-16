@@ -17,3 +17,16 @@
 [PHP STORM – SKRÓTY KTÓRE WARTO ZNAĆ](https://totylkokod.pl/baza-wiedzy/php-storm-skroty-ktore-warto-znac/)
 [Editor Tips and Tricks in IntelliJ IDEA](https://blog.jetbrains.com/idea/2020/08/editor-tips-and-tricks-in-intellij-idea/)
 [10 places you don’t need to use the mouse in IntelliJ IDEA](https://blog.jetbrains.com/idea/2021/08/10-places-you-don-t-need-to-use-the-mouse-in-intellij-idea/)
+
+## Pluginy
+
+* .ignore
+* CSV
+* Kubernetes
+* One Dark theme
+* PHP Annotations
+* Php Inspections (EA Extended)
+* PHP Toolbox
+* PHPUnit Enhancement
+* Symfony Support
+* Terraform and HCL
