@@ -136,7 +136,9 @@
 
 ## newrelic
 
-Aby korzystać z roli `newrelic.newrelic-infra` musimy ją zainstalować - `ansible-galaxy install -p roles newrelic.newrelic-infra`. Ważne, aby parametr `gather_facts` miał wartość `true` - w przeciwnym przypadku nie będzie możliwe zidentyfikowanie sytemu i próba instalacji agenta zakończy się błędem.
+Aby korzystać z roli `newrelic.newrelic-infra` musimy ją zainstalować - `ansible-galaxy role install -p path/To/Install  newrelic.newrelic-infra`.
+Ważne, aby parametr `gather_facts` miał wartość `true` - w przeciwnym przypadku nie będzie możliwe zidentyfikowanie sytemu i próba instalacji agenta zakończy się błędem.
+Ponieważ zainstalowaliśmy rolę w niestandardowym katalogu `path/To/Install` musimy podczas wywoływania ansible-playbook ustawić zmienną środowiskową `ANSIBLE_ROLES_PATH` - `ANSIBLE_ROLES_PATH=$(PWD)/path/To/Install`
 
 ```
 ---
