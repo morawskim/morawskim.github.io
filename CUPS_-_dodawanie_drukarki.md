@@ -26,7 +26,7 @@ direct hp
 network https
 network ipp
 network beh
-direct usb://Samsung/ML-2010?serial=621BKDPA24185W.
+direct usb://Samsung/ML-2010?serial=4621BKDPA24185W.
 network smb
 direct hpfax
 ```
