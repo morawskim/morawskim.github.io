@@ -6,6 +6,8 @@ Terminy orkiestracja (ang. orchestration) i planowanie (ang. scheduling) są cz�
 
 "Podnoszenie banalnych ciężarów" - to termin ukuty w Amazon, który oznacza całą ciężką pracę i wysiłek związany z instalowaniem oprogramowania i zarządzaniem nim, utrzymaniem infrastruktury itd. W tej pracy nie ma nic specjalnego, w każdej firmie wygląda tak samo. Kosztuje pieniądze, zamiast przynosić dochód.
 
+`headless service` - opcja do definiowania lokalnych nazw domenowych z klastra do systemów zewnętrznych. Tworzona jest usługa `ClusterIP`, ale bez selektora etykiet, więc nigdy nie będą dopasowywane kapsuły. Zamiast tego usługa jest wdrażana z zasobem punktu końcowego (ang. endpoint), która bezpośrednio wymienia adresy IP, które usługa powinna rozwiązywać.
+
 ## Porady
 
 * Cindy Sridharan inżynier i twórca systemów rozproszonych oszacował, że koszt utrzymania inżyniera, który konfiguruje (od zera do wersji produkcyjnej) Kubernetes, wynosi około miliona dolarów. - https://twitter.com/copyconstruct/status/1020880388464377856
@@ -43,6 +45,10 @@ Aby tego uniknąć, możesz ustawić wartość dla pola `minReadySeconds` w kont
 
 * Aktualizacja typu Rolling Update (RollingUpdate) oznaczają zero przestojów (aktualizacja poda po podzie), podczas gdy Recreate to szybka opcja aktualizacji wszystkich podów naraz. Istnieje również kilka innych opcji, które możesz dostosować, aby uzyskać dokładnie takie zachowanie, jakiego potrzebujesz w swojej aplikacji.
 
+* Na początku dobrymi etykietami mogą być: nazwa aplikacji, nazwa komponentu i wersja, ale ważne jest odróżnienie etykiet dołączonych dla własnej wygody od etykiet, których Kubernetes używa do mapowania relacji między obiektami.
+
+* Jedna z wad mechanizmu RBAC polega na tym, że zasoby muszą istnieć przed zastosowaniem reguł, więc w tym przypadku przed utworzeniem roli i wiązania ról muszą istnieć przestrzeń nazw i konto usługi.
+
 ## Przypdatne polecenia
 
 `kubectl create configmap demo-config --from-file=config.yaml` - utworzenie ConfigMap bezpośrednio z pliku YAML
@@ -59,6 +65,8 @@ wywołując polecenie `kubectl logs -n kube-system -l component kube-apiserver |
 Komenda `kubectl get componentstatues` (lub w skórcie `kubectl get cs`) podaje informacje o stanie zdrowia komponentów sterowania kubernetes
 
 `kubectl top nodes/pod` pokaże CPU oraz ilość pamięci każdego węzła/poda oraz ilość aktualnie używanego
+
+`kubectl debug -it <pod-name> --image=busybox --target=<pod-name>` - debugowanie kontenera, który jest distroless (nie zawiera powłoki) poprzez dołączenie nowego kontenera do działającego poda. Nie wszystkie środowiska uruchomieniowe kontenera obsługują tą funkcję
 
 ## minikube
 
