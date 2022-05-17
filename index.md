@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2022-05
+[Okteto](okteto.md)
 [Symfony/Flex - własne repozytorium z przepisami](symfony-flex.md)
 
 ## 2022-04
