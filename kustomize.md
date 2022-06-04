@@ -4,6 +4,8 @@ Obecnie Kubernetes posiada wbudowane wsparcie dla Kustomize.
 
 [Dokumentacja](https://kubectl.docs.kubernetes.io/references/kustomize/kustomization/)
 
+[Przykłady](https://github.com/kubernetes-sigs/kustomize/tree/master/examples)
+
 ## Szablon
 
 ```
