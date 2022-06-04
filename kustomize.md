@@ -15,3 +15,15 @@ resources:
 patchesStrategicMerge:
   - my-patch.yaml
 ```
+
+## Kasowanie zasobu dołączonego przez base
+
+W pliku patch musimy ustawić dyrektywę `$patch` na wartość `delete` i wybrać zasób do skasowania.
+
+```
+$patch: delete
+apiVersion: v1
+kind: <RODAJ ZASOBU>
+metadata:
+  name: <NAZWA>
+```

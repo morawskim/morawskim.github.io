@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2022-06
+[Kustomize](kustomize.md)
 [Symfony/Validator](symfony-validator.md)
 
 ## 2022-05
