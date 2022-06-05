@@ -54,6 +54,22 @@
 
 Bitlocker nie jest dostępny w systemach Windows Home. W wyszukiwarce Windows wpisujemy `bitlocker`, aby przejść do ustawień Bitlocker.
 
+### Lista wszystkich zainstalowanych programów
+
+Uruchamiamy wiersz poleceń jako administrator. Następnie wpisujemy polecenie `wmic`. W powłoce wmic uruchamiamy polecenie `/output C:\sciezka\do\pliku.txt product get name,version`
+Plik tekstowy `C:\sciezka\do\pliku.txt` będzie zawierał listę wszystkich zainstalowanych programów w systemie.
+
+### Bootloader
+
+W konsoli wywołujemy poniższe polecenia (potrzebujemy nośniku awaryjnego i wybieramy opcję "Napraw Komputer" -> "Rozwiąż problemy" zamiast "Zainstaluj teraz"):
+
+```
+bootrec /FixMbr
+bootrec /FixBoot
+bootrec /ScanOs
+bootrec /RebuildBcd
+```
+
 ## Skróty klawiaturowe
 
 `Win + Tab` – podgląd pulpitów i aktualnie otwartych okien.
