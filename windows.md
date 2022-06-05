@@ -8,6 +8,8 @@
 
 `SyncDroid` - migracja danych miedzy telefonami Android
 
+`Minitool Partition Wizard` - Obecnie funkcja migracji systemu Windows na nowy dysk ("Migrate OS to SSD/HD Wizard") wymaga płatnej wersji.
+
 ## PortableApps
 
 `KiTTY Portable` - telnet and SSH with added features
@@ -47,6 +49,10 @@
 ## Porady
 
 `diskmgmt.msc` - Konsola do zarządzania dyskami
+
+`tpm.msc` - Konsola w której sprawdzimy czy nasz komputer wspiera TPM i jeśli tak to w jakiej wersji. [Włączanie tpm 2.0 na komputerze](https://support.microsoft.com/pl-pl/windows/w%C5%82%C4%85czanie-tpm-2-0-na-komputerze-1fd5a332-360d-4f46-a1e7-ae6b0c90645c)
+
+Bitlocker nie jest dostępny w systemach Windows Home. W wyszukiwarce Windows wpisujemy `bitlocker`, aby przejść do ustawień Bitlocker.
 
 ## Skróty klawiaturowe
 
