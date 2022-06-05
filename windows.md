@@ -50,7 +50,7 @@
 
 `diskmgmt.msc` - Konsola do zarządzania dyskami
 
-`tpm.msc` - Konsola w której sprawdzimy czy nasz komputer wspiera TPM i jeśli tak to w jakiej wersji. [Włączanie tpm 2.0 na komputerze](https://support.microsoft.com/pl-pl/windows/w%C5%82%C4%85czanie-tpm-2-0-na-komputerze-1fd5a332-360d-4f46-a1e7-ae6b0c90645c)
+`tpm.msc` - Konsola w której sprawdzimy czy nasz komputer wspiera moduł TPM i jeśli tak to w jakiej wersji. [Włączanie tpm 2.0 na komputerze](https://support.microsoft.com/pl-pl/windows/w%C5%82%C4%85czanie-tpm-2-0-na-komputerze-1fd5a332-360d-4f46-a1e7-ae6b0c90645c)
 
 Bitlocker nie jest dostępny w systemach Windows Home. W wyszukiwarce Windows wpisujemy `bitlocker`, aby przejść do ustawień Bitlocker.
 
@@ -59,6 +59,16 @@ Bitlocker nie jest dostępny w systemach Windows Home. W wyszukiwarce Windows wp
 `Win + Tab` – podgląd pulpitów i aktualnie otwartych okien.
 
 `Win + PrintScreen` – tworzenie zrzutu ekranu i zapisanie go w katalogu Obrazy/Zrzuty ekranu.
+
+## Narzędzia diagnostyczne
+
+### Niezawodność
+
+W wyszukiwarce systemowej wpisujemy "Wyświetl historię niezawodności" albo uruchamiamy "Panel sterowania" -> "System i zabezpieczenia" -> "Zabezpieczenia i konserwacja". Po lewej w menu będzie opcja "Wyświetl zarchiwizowane komunikaty". Klikając na czerwoną kropkę możemy zobaczyć zarejestrowane błędy.
+
+### Wydajność
+
+W wyszukiwarce systemowej wpisujemy "Podgląd zdarzeń". Po prawej stronie klikamy w "Utwórz widok niestandardowy...", a potem zaznaczamy "Według zdarzeń" i obok, na liście "Źródła zdarzeń", wyszukujemy i zaznaczamy "Diagnostic-Performance". Po potwierdzeniu zobaczymy listę z błędami i ostrzeżeniami wywołanymi przez programy, które spowalniają uruchamianie systemu albo nadmiernie go obciążają.
 
 ## Naprawianie systemu plików NTFS
 
