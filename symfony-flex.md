@@ -39,3 +39,45 @@ Mając już repozytorium z przepisami wystarczy tylko dodać konfigurację końc
 Podłączając moje repozytorium z przepisami możemy wywołać polecenie `composer require --dev mmo/coding-standards`. Polecenie to zainstaluje także pakiet `friendsofphp/php-cs-fixer` i utworzy domyślny plik konfiguracji, który dziedziczy zasady kodowania z pakietu `mmo/coding-standards`.
 
 Jeśli z jakiegoś powodu chcielibyśmy debugować plugin flex to musimy pamiętać, że `composer` ma wbudowaną funkcję do wyłączania rozszerzenia xdebug. Musimy ustawić zmienną środowiskową `COMPOSER_ALLOW_XDEBUG=1` inaczej nie będziemy w stanie debugować kodu pluginu flex np. `COMPOSER_ALLOW_XDEBUG=1 composer recipes`.
+
+## Pobieranie przepisów z innego brancza niż domyślny
+
+Domyślnie flex pobiera przepisy z domyślnego brancha repozytorium.
+Tworząc oddzielny branch możemy przetestować nowe przepisy nie powodując problemów w innych projektach.
+W repozytorium z przepisami edytujemy plik `index.json`. Musimy zmodyfikować klucze `branch`, `origin_template` i `recipe_template`.
+Dla dwóch pierwszych kluczy zmieniamy po prostu wartość na nową nazwę brancza. W przypadku repozytorium hostowanym w GitHub dodajemy parametr GET `ref=nazwa-brancza` do klucza `recipe_template`.
+
+```
+{
+    "recipes": {
+        ....
+    },
+    "branch": "test",
+    "is_contrib": true,
+    "_links": {
+        "repository": "github.com/morawskim/symfony-recipes",
+        "origin_template": "{package}:{version}@github.com/morawskim/symfony-recipes:test",
+        "recipe_template": "https://api.github.com/repos/morawskim/symfony-recipes/contents/{package_dotted}.{version}.json?ref=test"
+    }
+}
+```
+
+Następnie w projekcie, w którym chcemy przetestować nasz nowy przepis modyfikujemy plik `composer.json`.
+Do endpointu flex dodając parametr `ref=nazwa-brancza` (w przypadku repozytorium hostowanym w GitHub).
+
+```
+{
+    ....
+     "extra": {
+        "symfony": {
+            "endpoint": [
+                "https://api.github.com/repos/morawskim/symfony-recipes/contents/index.json?ref=test",
+                "flex://defaults"
+            ]
+        }
+    },
+    ....
+    }
+}
+
+```
