@@ -68,6 +68,8 @@ Komenda `kubectl get componentstatues` (lub w skórcie `kubectl get cs`) podaje 
 
 `kubectl debug -it <pod-name> --image=busybox --target=<pod-name>` - debugowanie kontenera, który jest distroless (nie zawiera powłoki) poprzez dołączenie nowego kontenera do działającego poda. Nie wszystkie środowiska uruchomieniowe kontenera obsługują tą funkcję
 
+`kubectl get events -A --sort-by=.metadata.creationTimestamp` - wyświetlenie zdarzeń klastra (wszystkie przestrzenie nazw) posortowanych po dacie utworzenia
+
 ## minikube
 
 Po instalacji `minikube` dodatek `metrics-server` nie jest domyślnie włączony. Możemy się o tym przekonać wywołując polecenie `minikube addons list | grep metrics`.
