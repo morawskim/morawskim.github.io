@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2022-06
+[Redis](redis.md)
 [Kustomize](kustomize.md)
 [Symfony/Validator](symfony-validator.md)
 
