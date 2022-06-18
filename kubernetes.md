@@ -70,6 +70,8 @@ Komenda `kubectl get componentstatues` (lub w skórcie `kubectl get cs`) podaje 
 
 `kubectl get events -A --sort-by=.metadata.creationTimestamp` - wyświetlenie zdarzeń klastra (wszystkie przestrzenie nazw) posortowanych po dacie utworzenia
 
+`kubectl cluster-info dump` - wyświetla obecny stan klastra
+
 ## minikube
 
 Po instalacji `minikube` dodatek `metrics-server` nie jest domyślnie włączony. Możemy się o tym przekonać wywołując polecenie `minikube addons list | grep metrics`.
