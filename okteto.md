@@ -18,7 +18,7 @@ sync:
 persistentVolume:
   enabled: false
 forward:
-  - localPort:remoteService:remotePort.
+  - localPort:remoteService:remotePort
 reverse:
   - remotePort:localPort
 secrets:
@@ -54,3 +54,11 @@ volumes:
 ```
 
 `persistVolume.enabled` musi mieć wartość true, jeśli używamy wolumenów.
+
+## Notatki
+
+* Za pomocą polecenia `okteto context` możemy wybrać z którego kontekstu kubectl ma korzystać okteto. Wywołując polecenie `okteto up` widzimy z którego kontekstu korzysta okteto `Using mmorawski @ arn:aws:eks:eu-central-1:139536746838:cluster/k8s-dev9 as context`. Aby wyświetlić wszystkie dostępne konteksty dla kubectl wywołujemy polecenie `kubectl config get-contexts`.
+
+* W manifeście okteto możemy korzystać z parametru `autocreate` (domyślnie `false`) kiedy deployment nie istnieje w klastrze kubernetes. Może to być przydatne jako obejście dla aplikacji, które nie zostały jeszcze w pełni przeniesione do Kubernetesa.
+
+* Obecnie okteto 2.4 (i wcześniejsze wersje) mają problem z przekierowaniem portów w przypadku gdy usługa nasłuchuje tylko na interfejsie z adresem IPv6.
