@@ -10,6 +10,8 @@
 
 `Minitool Partition Wizard` - Obecnie funkcja migracji systemu Windows na nowy dysk ("Migrate OS to SSD/HD Wizard") wymaga płatnej wersji.
 
+`Chocolatey` - [Menedżer pakietów dla Windows](https://chocolatey.org/)
+
 ## PortableApps
 
 `KiTTY Portable` - telnet and SSH with added features
