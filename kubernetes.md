@@ -72,6 +72,9 @@ Komenda `kubectl get componentstatues` (lub w skórcie `kubectl get cs`) podaje 
 
 `kubectl cluster-info dump` - wyświetla obecny stan klastra
 
+`kubectl set image deployment/DEPLOYMENT_NAME -n=MY_NAMESPACE CONTAINER_NAME=xxxx.dkr.ecr.eu-central-1.amazonaws.com/image:new-tag` - Za pomocą tej komendy aktualizujemy obraz kontenera `CONTAINER_NAME` do `xxxx.dkr.ecr.eu-central-1.amazonaws.com/image:new-tag` działającego w zasobie deployment `DEPLOYMENT_NAME` w przestrzeni nazw `MY_NAMESPACE`.
+Korzystając z polecenia `kubectl -n MY_NAMESPACE get deployments` możemy pobrać wszystkie zasoby deployment z przestrzeni nazw `MY_NAMESPACE`.
+
 ## minikube
 
 Po instalacji `minikube` dodatek `metrics-server` nie jest domyślnie włączony. Możemy się o tym przekonać wywołując polecenie `minikube addons list | grep metrics`.
