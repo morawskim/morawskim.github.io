@@ -29,3 +29,21 @@ kind: <RODAJ ZASOBU>
 metadata:
   name: <NAZWA>
 ```
+
+## Zmiana tagu obrazu kontenera
+
+Za pomocą kustomize jesteśmy w stanie podmienić obraz z base na inny.
+Przykład poniżej zamienia wersję obrazu `xxxxx.dkr.ecr.eu-central-1.amazonaws.com/repository-name` na `develop-123`.
+Tag zostanie podmieniony dla każdego kontenera korzystającego z tego obrazu.
+Możemy także podmienić obraz - wtedy korzystamy z klucza `newName`.
+
+[Change image names and tags](https://github.com/kubernetes-sigs/kustomize/blob/master/examples/image.md)
+
+```
+# ...
+
+images:
+  - name: xxxxx.dkr.ecr.eu-central-1.amazonaws.com/repository-name
+    newTag: develop-123
+
+```
