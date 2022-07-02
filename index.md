@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2022-07
+[Kubernetes SealedSecret](kubernetes-SealedSecret.md)
 [netshoot](netshoot.md)
 
 ## 2022-06
