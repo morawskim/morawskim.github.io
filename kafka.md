@@ -27,6 +27,8 @@ Większość obrazów zawiera starą wersję Kafki (np. [0.11 od spotify](https:
 
 Pewnym wyjątkiem są obrazy [confluentinc/cp-kafka](https://hub.docker.com/r/confluentinc/cp-kafka). Obrazy te zawierają Kafkę dostarczaną przez Confluent Community. Przykładowy plik compose - jest dostępny w [repozytorium](https://github.com/confluentinc/kafka-images/blob/master/examples/kafka-single-node/docker-compose.yml)
 
+[KRaft mode Kafka](https://hub.docker.com/r/doughgle/kafka-kraft)
+
 ## CLI DEMO
 
 Ze [strony](https://kafka.apache.org/downloads) pobieramy Kafke np. `kafka_2.13-2.6.0` , rozpakowujemy archiwum i przechodzimy do nowego utworzonego katalogu.
