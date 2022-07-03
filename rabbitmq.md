@@ -66,3 +66,7 @@ Parametry `net.core.rmem_default` i `net.core.rmem_max` możemy zwiększyć z do
 [RabbitMQ / MQTT TCP Tuning](https://gist.github.com/lukebakken/e9392fc96d4e493fcea045e095f96f30)
 
 [Tuning for a Large Number of Connections](https://www.rabbitmq.com/networking.html#tuning-for-large-number-of-connections)
+
+## Docker
+
+`docker exec <container-name> rabbitmq-plugins enable rabbitmq_stream` - polecenie do włączenia obsługi strumieni
