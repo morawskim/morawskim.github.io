@@ -1,6 +1,6 @@
 # Symfony/Validator
 
-## Callback walidator i dynamiczne constraints
+## Callback walidator i kontekst
 
 Często musimy dokonać walidacji na podstawie innych parametrów.
 Idealnie do tego nadaje się do constraint - `Callback`.
