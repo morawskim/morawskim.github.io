@@ -142,3 +142,33 @@ Ten pakiet zapewnia, że użytkownicy będą musieli używać Composera 2.x.
 `PHP Fatal error: Allowed memory size of XXXXXX bytes exhausted <...>` gdy zobaczymy taki komunikat możemy ustawić zmienną środowiskową `COMPOSER_MEMORY_LIMIT`, aby zwiększyć limit pamięci. Składnia jest taka sama jak w parametrze konfiguracyjnym `memory_limit` w PHP.
 
 [Memory limit errors](https://getcomposer.org/doc/articles/troubleshooting.md#memory-limit-errors)
+
+## Uwierzytelnianie
+
+W środowiskach gdzie wielu programistów wywołuje polecenia `composer install/require/update` może dojść do przekroczenia limitu żądań.
+W takim przypadku composer poprosi nas o podanie tokenu do API GitHub czy Bitbucket. Wywołując poniższe polecenia dane autoryzacyjne zostaną zapisane do pliku `~/.composer/auth.json`,
+który następnie możemy podmontować do kontenera dockera.
+
+`composer config --global github-oauth.github.com my-token`
+
+`composer config --global bitbucket-oauth.bitbucket.org consumer-key consumer-secret`
+
+Przykładowa zawartość pliku `~/.composer/auth.json`:
+
+```
+{
+    "bitbucket-oauth": {
+        "bitbucket.org": {
+            "consumer-key": "consumer-key",
+            "consumer-secret": "consumer-secret"
+        }},
+    "github-oauth": {
+        "github.com": "my-token"},
+    "gitlab-oauth": {},
+    "gitlab-token": {},
+    "http-basic": {},
+    "bearer": {}
+}
+```
+
+[Authentication for privately hosted packages and repositories](https://getcomposer.org/doc/articles/authentication-for-private-packages.md)
