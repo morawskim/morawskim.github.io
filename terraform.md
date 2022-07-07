@@ -73,6 +73,22 @@ Yevgeniy Brikman, _Terraform. Krótkie wprowadzenie. Tworzenie infrastruktury za
 
 * W przypadku wystąpienia problemu o zablokowanym stanu i mając pewność że nikt nie wykonuje żadnych zmian możemy wymusić zwolnienie blokady wywołując polecenie `terraform force-unlock <LOCK>`, gdzie `LOCK` to identyfikator blokady z komunikatu błędu.
 
+* Ręcznie utworzone zasoby możemy zaimportować do pliku stanu poprzez wywołanie polecenia `import`.
+W przypadku zasobu AWS polecenie będzie wyglądać następująco `terraform import zasóbAWS.<IDENTYFIKATOR_W_PLIKU_TF> <IDENYTIKATOR_AWS>`.
+
+```
+# fragment pliku tf
+...
+resource "aws_cloudwatch_log_group" "codebuild-SymfonyAwsDemo" {
+  name              = "/aws/codebuild/SymfonyAwsDemo"
+  retention_in_days = 3
+}
+...
+
+# Polecenie do importu zasobu do pliku stanu terraform
+terraform import aws_cloudwatch_log_group.codebuild-SymfonyAwsDemo /aws/codebuild/SymfonyAwsDemo
+```
+
 # Narzędzia
 
 [Export existing AWS resources to Terraform style (tf, tfstate)](http://terraforming.dtan4.net/)
