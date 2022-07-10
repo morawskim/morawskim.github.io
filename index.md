@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2022-07
+[Wysokie zużycie CPU - Ubuntu 20.04 LTS, docker swarm i cloud-init](server-troubleshoot.md)
 [Kubernetes SealedSecret](kubernetes-SealedSecret.md)
 [netshoot](netshoot.md)
 
