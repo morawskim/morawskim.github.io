@@ -62,3 +62,5 @@ volumes:
 * W manifeście okteto możemy korzystać z parametru `autocreate` (domyślnie `false`) kiedy deployment nie istnieje w klastrze kubernetes. Może to być przydatne jako obejście dla aplikacji, które nie zostały jeszcze w pełni przeniesione do Kubernetesa.
 
 * Obecnie okteto 2.4 (i wcześniejsze wersje) mają problem z przekierowaniem portów w przypadku gdy usługa nasłuchuje tylko na interfejsie z adresem IPv6.
+
+* W pliku manifestu możemy skorzystać z parametru `imagePullPolicy`. Domyślna wartość to `Always`. Ustawiając wartość `IfNotPresent` możemy ograniczyć liczbę requestów do API Docker hub w przypadku deploymentów z ściśle określonym tagiem obrazu, który jest immutable.
