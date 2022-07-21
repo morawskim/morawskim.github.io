@@ -17,3 +17,8 @@ Podobnie jak poprzednio podałem `<username>` i `<password>` do rejestru. Gitlab
 Nic nie stoi na przeszkodzenie, aby obrazy dockera przesłać do oficjalnego repozytorium dockera. W takim przypadku jako destination podajemy adres huba dockera np. `docker.io/morawskim`.
 
 [Po paru minutach obrazy zostały przesłane](https://gitlab.com/morawskim/ssorder/container_registry/)
+
+
+## list-tags
+
+`skopeo list-tags docker://docker.ioOrAWSEcrUrl/imageName | jq -r '.Tags[]' | sort -V`
