@@ -92,6 +92,10 @@ Im dalej jest przekazywana pewna decyzja, tym mniejsze będą elastyczność i m
 
 Zgłoszenie wyjątku w momencie wykrycia problemy oraz przechwycenie go w miejscu, gdzie problem ten można obsłużyć, jest znacznie lepszym rozwiązaniem niż umieszczenie w kodzie jawnych testów sprawdzających zaistnienie wszystkich możliwych warunków wyjątkowych, z których i tak w danym miejscu  żadnego nie można obsłużyć.
 
+Konta użytkowników do panelu administratora, klientów czy pracowników powinny znajdować się w różnych pulach. Daje nam to elastyczność w wyborze metod autoryzacji. Raczej nie chcemy korzystać z logowania przez sieci społecznościowe do panelu administracyjnego.
+
+Identyfikator UUID v4 jest generowany losowo, UUID v1 jest generowany na podstawie czasu przez co jest posortowany.
+
 ## ADR - Architectural Decision Records
 
 Każdą decyzję architektoniczną powinniśmy dokumentować w ADR - Architectural Decision Records.
