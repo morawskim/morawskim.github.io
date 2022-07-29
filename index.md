@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2022-07
+[MySQL - general_log i slow_query_log](mysql-query-o-slow-query-log.md)
 [AWS SDK](aws-sdk.md)
 [Wysokie zużycie CPU - Ubuntu 20.04 LTS, docker swarm i cloud-init](server-troubleshoot.md)
 [Kubernetes SealedSecret](kubernetes-SealedSecret.md)
@@ -570,7 +571,7 @@ Hello
 ## 2016-03
 [Git - usunięcie pliku z kontroli gita](Git_-_usunięcie_pliku_z_kontroli_gita.md)
 [Vim - tips & tricks](Vim_-_tips_&_tricks.md)
-[MySQL - query log](MySQL_-_query_log.md)
+[MySQL - query log (UPDATED)](mysql-query-o-slow-query-log.md)
 
 ## 2016-02
 [Vim - kolorowanie składni](Vim_-_kolorowanie_składni.md)
