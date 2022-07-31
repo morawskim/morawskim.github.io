@@ -171,4 +171,8 @@ Przykładowa zawartość pliku `~/.composer/auth.json`:
 }
 ```
 
+Innym rozwiązaniem jest utworzenie zmiennej środowiskowej `COMPOSER_AUTH`.
+Zmienna ta przyjmuje taki sam obiekt JSON jak w pliku `auth.json` np. `{"github-oauth": {"github.com": "token"}}`.
+W przypadku serwisu Bitbucket: `{"bitbucket-oauth":{"bitbucket.org":{"consumer-key":"2u...","consumer-secret":"7t..."}}}`
+
 [Authentication for privately hosted packages and repositories](https://getcomposer.org/doc/articles/authentication-for-private-packages.md)
