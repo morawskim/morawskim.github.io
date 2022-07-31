@@ -150,3 +150,20 @@ process_name=%(program_name)s_%(process_num)02d
 ;stderr_logfile=/dev/stderr
 ;stderr_logfile_maxbytes=0
 ```
+
+## DDD/CQRS
+
+```
+framework:
+    messenger:
+        default_bus: event.bus
+        buses:
+            command.bus:
+                middleware:
+                    - doctrine_transaction
+            query.bus:
+            event.bus:
+                default_middleware: allow_no_handlers
+```
+
+Symfony umożliwia nam przekazanie do konstruktora odpowiedniego MessageBus na podstawie nazwy zmiennej i typu - np. `MessageBusInterface $commandBus`.
