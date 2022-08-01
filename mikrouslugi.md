@@ -77,6 +77,24 @@ Pojedyncze współdzielone środowisko testowe jest powszechnie stosowaną strat
 
 Niebiesko-zielone wdrożenia dobrze sprawdzają się w przypadku mikrousług, które konsumują ze strumieni zdarzeń. Mogą również przydawać się w w sytuacjach, kiedy zdarzenia są produkowane tylko ze względu na aktywność żądanie-odpowiedź.
 
+Systemy, które z natury muszą być rozproszone, buduje się według różnych zbiorów reguł. Jednym z nich jest BASE:
+
+* Basically available - przede wszystkim dostępny
+
+* Soft state - w elastycznym stanie (stan systemu nie może być domyślnie trwały, musi istnieć możliwość aktywnego zarządzania nim)
+
+* Eventually consisten - ostatecznie spójny
+
+Wydajność aplikacji reaktywnej jest wynikiem kompromisu w wyborze dwóch spośród trzech cech aplikacji:
+
+* wysokiej przepustowości
+
+* krótkiego czasu odpowiedzi, bez odchyleń
+
+* małego zapotrzebowania na zasoby
+
+W systemie reaktywnym należy minimalizować rywalizację o zasoby, jak również koordynować dostęp do nich. Dlatego klasyczna pula zasobów połączeń jest zazwyczaj tylko wewnętrznym szczegółem implementacyjnym komponentu obsługującego relacyjną bazę danych. Jednak często mamy do czynienia z ograniczonymi zasobami, dlatego ideę puli połączeń można wykorzystać również w systemach reaktywnych.
+
 ## Książki
 
 Richard Rodger, _Tao mikrousług. Projektowanie i wdrażanie_, Helion
