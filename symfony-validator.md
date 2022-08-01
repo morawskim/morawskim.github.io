@@ -59,3 +59,25 @@ public function validatedBy()
     return static::class.'Validator';
 }
 ```
+
+## Dostęp do aktualnie walidowanego obiektu
+
+
+W bibliotece `zip-code-validator` znajduje się przykład jak dynamicznie można pobrać dane z obiektu, który jest aktualnie walidowany - `$this->context->getObject()`.
+
+[ZipCodeValidator](https://github.com/barbieswimcrew/zip-code-validator/blob/758b829f08ad3775c6193879a865181c9ca65b9e/src/ZipCodeValidator/Constraints/ZipCodeValidator.php#L233)
+
+```
+if (!($iso = strtoupper($constraint->iso))) {
+    // if iso code is not specified, try to fetch it via getter from the object, which is currently validated
+    $object = $this->context->getObject();
+    $getter = $constraint->getter;
+
+    if (!is_callable(array($object, $getter))) {
+        $message = 'Method "%s" used as iso code getter does not exist in class %s';
+        throw new ConstraintDefinitionException(sprintf($message, $getter, get_class($object)));
+    }
+
+    $iso = $object->$getter();
+}
+```
