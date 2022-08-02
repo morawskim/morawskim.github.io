@@ -37,3 +37,25 @@ Dla każdego z nich należy monitorować:
 * Utilization -  Średni czas, w którym zasób był zajęty obsługą żądań, lub ilość aktualnie wykorzystywanej pojemności zasobu. Przykładowo dysk, który jest zapełniony w 90%, miałby wykorzystanie w 90%
 * Saturation -  Ilość pracy, której zasób nie był w stanie przetworzyć. Zwykle jest ona umieszczana w kolejce. Przykładowo jeśli na uruchomienie czeka 10 procesów, wartość nasycenia wynosi 10.
 * Errors -  Liczba błędów, które wystąpiły. Przykładowo dysk, który zawiera błędne sektory.
+
+## Metryki
+
+### Metryki środowiska wykonawczego
+
+Na poziomie środowiska wykonawczego większość bibliotek metryk będzie również raportować przydatne dane o tym, co robi program, takie jak:
+
+* ilość procesorów/wątków/goroutines
+* wykorzystanie stosu i sterty
+* wykorzystanie pozostałej pamięci
+* pule buforów sieciowych
+* uruchamianie moduły odśmiecania pamięci i okresy pauzy (w przypadku języków z takim modułem)
+* używane deskryptory plików/gniazd sieciowych
+
+### Metryki aplikacji:
+* liczba otrzymanych komunikatów
+* liczba pomyślnie przetworzonych komunikatów
+* liczba nieprawidłowych lub błędnych komunikatów
+* czas przetwarzania każdego komunikatu i reakcji na każdego z nich
+* liczba wygenerowanych udanych akcji
+* liczba nieudanych działań
+
