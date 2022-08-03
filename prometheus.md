@@ -1,10 +1,11 @@
 # Prometheus
 
+[Demo onlie](https://demo.do.prometheus.io/) - [repo](https://github.com/prometheus/demo-site)
+
 ## Dobre praktyki
 
 * Funkcja `rate` do działania wymaga dwóch próbek. Dobrą praktyką jest więc określenie wartości ze wzoru 4 x scrape_interval.
 Takie ustawienie zabezpiecza nas także przed sytuacją, gdy jedno pobranie danych się nie powiodło.
-
 [What range should I use with rate()?](https://www.robustperception.io/what-range-should-i-use-with-rate/)
 [Using $__rate_interval](https://grafana.com/docs/grafana/latest/datasources/prometheus/#using-__rate_interval)
 
@@ -15,6 +16,9 @@ Takie ustawienie zabezpiecza nas także przed sytuacją, gdy jedno pobranie dany
 * Aby przeładować konfiguracje Prometeusza musimy wysłać sygnał SIGHUP, albo żądanie POST do końcówki `/-/reload`. Domyślnie API Lifecycle nie jest włączone, więc musimy uruchomić proces prometeusza z flagą `--web.enable-lifecycle`. Do weryfikowania poprawności pliku konfiguracyjnego możemy wykorzystać narzędzie promtool - `promtool check config /sciezka/do/prometheus.yml`
 
 * Lista portów wykorzystywanych przez prometeusza i zewnętrzne programy do eksportu metryk - [Default port allocations](https://github.com/prometheus/prometheus/wiki/Default-port-allocations)
+
+* Wysoką dostępność osiąga się zwykle poprzez uruchomienie dwóch instancji Prometeusza o tej samej konfiguracji, z których każda ma własną bazę danych.
+Nie rozwiązuje to jednak problemu z skalowalnością i długoterminowym przechowywaniem metryk.
 
 ## Backfill
 
