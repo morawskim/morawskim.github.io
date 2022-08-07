@@ -96,6 +96,18 @@ Konta użytkowników do panelu administratora, klientów czy pracowników powinn
 
 Identyfikator UUID v4 jest generowany losowo, UUID v1 jest generowany na podstawie czasu przez co jest posortowany.
 
+Unikaj automatycznie generowanych identyfikatorów:
+
+* operacje na bazie danych będą się wzajemnie blokować
+
+* uniemożliwia bulk insert
+
+* nie można wykonać wielu transakcji równolegle
+
+* obiekt jest w niepoprawnym stanie aż do momentu zapisu
+
+* obiekt wymaga działania bazy danych
+
 ## ADR - Architectural Decision Records
 
 Każdą decyzję architektoniczną powinniśmy dokumentować w ADR - Architectural Decision Records.
