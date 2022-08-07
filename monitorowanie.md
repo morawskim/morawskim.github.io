@@ -59,3 +59,19 @@ Na poziomie środowiska wykonawczego większość bibliotek metryk będzie równ
 * liczba wygenerowanych udanych akcji
 * liczba nieudanych działań
 
+## Słownik
+
+Monitorowanie typu czarna skrzynka (ang. black-box monitoring) - ten typ monitoringu obserwuje tylko zewnętrzne zachowanie systemu, bez żadnej próby zaobserwowania, co się z nim dzieje w środku.
+
+Obserwowalność to połączenie tradycyjnego monitorowania, rejestrowania, pomiarów i śledzenia oraz wszystkich innych sposobów rozumienia systemu.
+
+## Porady
+
+Orkiestratory (takie jak Docker czy Kubernetes) automatycznie resetują kontenery, które uległy awarii lub przekroczyły swoje limity zasobów. Musimy wiedzieć, jak często to się dzieje. Nadmierna liczba restartów może wskazywać na problem z konkretnym kontenerem. Jeśli kontener regularnie przekracza swoje limity zasobów, może to oznaczać błąd programu, albo musimy  nieznacznie zwiększyć limity.
+
+Monitorując kondycję i wydajność klastra musimy przynajmniej monitorować:
+
+* liczba węzłów
+* kondycja węzła
+* liczba kontenerów na węzeł i ogółem
+* wykorzystanie/alokacja zasobów na węzeł i ogólnie
