@@ -66,3 +66,23 @@ $normalizer = new ObjectNormalizer(
 );
 $normalizer->setSerializer(new Serializer([new JsonSerializableNormalizer(), $normalizer], []));
 ```
+
+## ArrayDenormalizer
+
+Jeśli podczas deserializacji otrzymamy bład podobny do poniższego `The type of the "products" attribute for class "My\Example\ClassName" must be one of "My\Example\Foo[]" ("array" given).` to musimy dodać normalizer `ArrayDenormalizer`.
+
+```
+$serializer = new Serializer(
+    [
+        new ArrayDenormalizer(),
+        new ObjectNormalizer(
+            new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader())),
+            propertyTypeExtractor: new PropertyInfoExtractor(
+                typeExtractors: [new PhpDocExtractor(), new ReflectionExtractor()],
+            )
+        )
+    ],
+    [new JsonDecode()]
+);
+
+```
