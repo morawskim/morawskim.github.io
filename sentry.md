@@ -6,6 +6,10 @@ Instalujemy pakiet ` sentry/sentry-symfony` - `composer require sentry/sentry-sy
 Jeśli korzystamy z `symfony/flex` to zostanie włączony bundle `SentryBundle`, plik konfiguracyjny `config/packages/sentry.yaml` i zmienna środowiskowa `SENTRY_DSN`.
 W przeciwnym przypadku będziemy musieli wykonać te kroki ręcznie.
 
+Wartość `SENTRY_DSN` pobieramy logując się do Sentry. W menu klikamy na "Settings".
+Następnie "Projects" i wybieramy nasz projekt.
+Z bocznego menu projektu klikamy na `Client Keys (DNS)` i kopiujemy wartość z pola "DSN".
+
 Sprawdzamy z której wersji `symfony/monolog-bundle` korzystamy.
 
 ```
