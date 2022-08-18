@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2022-08
+[Kubernetes RBAC](kubernetes-szablony.md#Kubernetes_RBAC)
 [AWS-CLI](aws-cli.md)
 [Monitorowanie](monitorowanie.md)
 [Meilisearch - not supported highlightPreTag](meilisearch.md#Validation_error_-_not_supported_highlightPreTag)
