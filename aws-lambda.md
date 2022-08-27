@@ -11,3 +11,59 @@
 * Moc obliczeniowa procesora i wydajności sieci są przydzielane funkcji Lambda na podstawie aprowizacji pamięci. Więcej pamięci == lepszy procesor i sieć.
 
 * Maksymalny rozmiar skompresowanego pakietu wdrożeniowego (pliku zip) wynosi domyślnie 50MB.
+
+* Lista obsługiwanych [środowisk wykonawczych](https://github.com/boto/botocore/blob/develop/botocore/data/lambda/2015-03-31/service-2.json#L4791). Uwaga pozycja na liście mogą się zmieniać z biegiem czasu.
+
+## Przykład Node.js
+
+Tworzymy plik `index.js` z funkcją do obsługi żądania HTTP:
+
+```
+const AWS = require('aws-sdk');
+// Uzywamy uslugi S3, wiec nasza funkcja musi miec przypisana odpowiednia role
+const s3 = new AWS.S3()
+
+exports.handler = async function(event) {
+  return {
+      statusCode: 200,
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        "requestEvent": event,
+        "buckets": await s3.listBuckets().promise()
+      }),
+  };
+}
+
+```
+
+Nie musimy instalować SDK AWS, ponieważ jest ono dostępne. Tworzymy plik zip z kodem i wszystkimi zależnościami `zip -r function.zip .`.
+Wykorzystując aws-cli tworzymy funkcję:
+
+```
+aws lambda create-function \
+--zip-file fileb://function.zip \
+--function-name lambda-nodejs-example \
+--runtime nodejs14.x \
+--handler index.handler \
+--role arn:aws:iam::account:role/nasz-rola-z-dostepem-do-s3-i-AWSLambdaBasicExecutionRole
+```
+
+Za pomocą polecenia `aws lambda get-function --function-name lambda-nodejs-example` możemy pobrać informacje o naszej funkcji "lambda-nodejs-example".
+
+Funkcję wywołujemy za pomocą polecenia `aws lambda invoke --function-name lambda-nodejs-example --cli-binary-format raw-in-base64-out --payload '{"key": "value", "another_key": "foo" }' response.json`. W pliku "response.json` zostanie zapisany wynik działania naszej funkcji.
+
+Chcąc opublikować nasza funkcje i mieć do niej publiczny dostęp przez protokół HTTP/HTTPS wywołujemy polecenie:
+
+```
+aws lambda create-function-url-config \
+    --function-name lambda-nodejs-example \
+    --auth-type NONE
+```
+
+Możemy także skorzystać z parametru `--qualifier prod`, aby opublikować nasza funkcje wskazywaną przez alias `prod`.
+Otrzymamy URL do naszej funkcji. Jeśli z jakiegoś powodu nie zapisaliśmy adresu możemy go uzyskać ponownie wywołując polecenie `aws lambda get-function-url-config --function-name lambda-nodejs-example`.
+
+Jeśli wywołując naszą opublikowana funkcje otrzymamy błąd `{"Message":"Forbidden"}` najprawdopodobniej nie nadaliśmy uprawnienia "lambda:invokeFunctionUrl" w "Resource-based policy"
+> Your function URL auth type is NONE, but is missing permissions required for public access. To allow unauthenticated requests, choose the Permissions tab and and create a resource-based policy that grants lambda:invokeFunctionUrl permissions to all principals (*). Alternatively, you can update your function URL auth type to AWS_IAM to use IAM authentication.
+
+Możemy także wysłać request POST: `curl -XPOST -d'{"foo":"bar"}' -H 'Content-Type: application/json' <url-naszej-funkcji-lambda>`
