@@ -14,6 +14,27 @@
 
 * Lista obsługiwanych [środowisk wykonawczych](https://github.com/boto/botocore/blob/develop/botocore/data/lambda/2015-03-31/service-2.json#L4791). Uwaga pozycja na liście mogą się zmieniać z biegiem czasu.
 
+## Limity
+
+Podczas fazy analizy i rozpatrywania lambdy jako rozwiązania warto wziąć pod uwagę jej [limity](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html).
+Wielkość żądania i odpowiedzi wywołania synchronicznego nie może przekraczać 6MB. W przeciwnym przypadku otrzymamy błędy:
+
+> {"Message":"6991583 byte payload is too large for the RequestResponse invocation type (limit 6291456 bytes)"}
+
+> {
+>   "errorMessage": "Response payload size exceeded maximum allowed payload size (6291556 bytes).",
+>   "errorType": "Function.ResponseSizeTooLarge"
+> }
+
+Kolejnymi ograniczeniami jest liczba warstw (maks 5) czy też maksymalny czas wykonania skryptu (maks 15 min).
+Dodatkowo niektóre ograniczenia mogą być znacznie niższe jeśli korzystamy z API Gateway czy ALB.
+
+Funkcje lambda są uruchamiane domyślnie w oddzielnej sieci VPC. Uruchomienie funkcji lambda w naszym VPC to [dodatkowe ograniczenia](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html#vpc-internet).
+
+[Can the 1MB request payload limit for an ALB Lambda target be increased?](https://www.repost.aws/questions/QUPHFFlMKbT-urD9l3gHMdLQ/can-the-1-mb-request-payload-limit-for-an-alb-lambda-target-be-increased)
+
+[3 years of lift-and-shift into AWS Lambda](https://blog.deleu.dev/lift-and-shift-aws-lambda/)
+
 ## Przykład Node.js
 
 Tworzymy plik `index.js` z funkcją do obsługi żądania HTTP:
