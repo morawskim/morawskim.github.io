@@ -2,7 +2,7 @@
 
 * AWS zaleca umieszczenie funkcji Lambda w sieci VPC tylko wtedy, gdy jest to absolutne niezbędne do uzyskania dostępu do zasobu nieosiągalnego w inny sposób. Umieszczenie funkcji Lambda w sieci VPC powoduje wzrost złożoności, zwłaszcza przy potrzebie jednoczesnego uruchomienia dużej liczby kopii funkcji.
 
-* Wdrożenie funkcji lambda w publicznej podsieci VPC nie daje jej dostępu do Internetu, ani publicznego adresu IP. W prywatnej podsieci dostęp do Internetu jest dostępny, jeśli podsieć zawiera bramę/instancję NAT.
+* Wdrożenie funkcji lambda w publicznej podsieci VPC nie daje jej dostępu do Internetu, ani publicznego adresu IP. W prywatnej podsieci dostęp do Internetu jest dostępny, jeśli podsieć zawiera bramę/instancję NAT. [How do I give internet access to a Lambda function that's connected to an Amazon VPC?](https://aws.amazon.com/premiumsupport/knowledge-center/internet-access-lambda-function/)
 
 * Limit współbieżności (1000 jednocześnie działających funkcji lambda) jest na konto AWS, a nie na pojedynczą funkcję. Jedna funkcja może więc wykorzystać cały dostępny limit. Możemy ustawiać limity per funkcja, dodatkowo jeśli potrzebujemy większej współbieżności to możemy utworzyć zgłoszenie z prośbą o zwiększenie tego limitu.
 

@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2022-09
+[AWS lambda](aws-lambda.md)
 [WebExtensions API](webextension.md)
 
 ## 2022-08
