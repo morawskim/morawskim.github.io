@@ -57,7 +57,9 @@ exports.handler = async function(event) {
 
 ```
 
-Nie musimy instalować SDK AWS, ponieważ jest ono dostępne. Tworzymy plik zip z kodem i wszystkimi zależnościami `zip -r function.zip .`.
+Nie musimy instalować SDK AWS, ponieważ jest ono dostępne.
+[Nadajemy uprawnienia do odczytu wszystkim użytkownikom](https://docs.aws.amazon.com/lambda/latest/dg/troubleshooting-deployment.html#troubleshooting-deployment-denied) - `chmod -R o+rX .`
+Tworzymy plik zip z kodem i wszystkimi zależnościami `zip -r function.zip .`.
 Wykorzystując aws-cli tworzymy funkcję:
 
 ```
@@ -88,3 +90,7 @@ Jeśli wywołując naszą opublikowana funkcje otrzymamy błąd `{"Message":"For
 > Your function URL auth type is NONE, but is missing permissions required for public access. To allow unauthenticated requests, choose the Permissions tab and and create a resource-based policy that grants lambda:invokeFunctionUrl permissions to all principals (*). Alternatively, you can update your function URL auth type to AWS_IAM to use IAM authentication.
 
 Możemy także wysłać request POST: `curl -XPOST -d'{"foo":"bar"}' -H 'Content-Type: application/json' <url-naszej-funkcji-lambda>`
+
+[Tutorial: Using an Amazon S3 trigger to create thumbnail images](https://docs.aws.amazon.com/lambda/latest/dg/with-s3-tutorial.html#s3-tutorial-events-adminuser-create-test-function-upload-zip-test-manual-invoke)
+
+[How do I troubleshoot "permission denied" or "unable to import module" errors when uploading a Lambda deployment package?](https://aws.amazon.com/premiumsupport/knowledge-center/lambda-deployment-package-errors/)
