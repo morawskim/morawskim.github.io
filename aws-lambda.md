@@ -94,3 +94,85 @@ Możemy także wysłać request POST: `curl -XPOST -d'{"foo":"bar"}' -H 'Content
 [Tutorial: Using an Amazon S3 trigger to create thumbnail images](https://docs.aws.amazon.com/lambda/latest/dg/with-s3-tutorial.html#s3-tutorial-events-adminuser-create-test-function-upload-zip-test-manual-invoke)
 
 [How do I troubleshoot "permission denied" or "unable to import module" errors when uploading a Lambda deployment package?](https://aws.amazon.com/premiumsupport/knowledge-center/lambda-deployment-package-errors/)
+
+## PHP i Bref
+
+Choć lambda nie dostarcza natywnego środowiska wykonawczego dla PHP, to możemy za pomocą Lambda Runtime API i Bref wykorzystać PHP do budowy funkcji.
+
+Tworzymy plik `lambdaPHPRole.json` o zawartości:
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "lambda.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+```
+
+Następnie tworzymy rolę za pomocą narzędzia aws-cli - `aws iam create-role --role-name lambda-php-demo --assume-role-policy-document file://lambdaPHPRole.json` i dołączamy zarządzaną politykę AWS, która zawiera minimalne uprawnienia do działania funkcji lambda `aws iam attach-role-policy --role-name lambda-php-demo --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole`.
+
+Za pomocą polecenia `aws iam get-role --role-name lambda-php-demo --query Role.Arn --output text` możemy wyświetlić ARN utworzonej roli.
+
+Zakładamy nowy projekt PHP - `composer init`.
+Instalujemy pakiet `bref/bref` w wersji `^1.7`.
+Tworzymy plik `index.php`:
+
+```
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+return static function ($event) {
+    echo json_encode(['info' => 'This message will be logged to CloudWatch']);
+
+    return [
+        'statusCode' => 200,
+        'headers' => ['Content-Type' => 'application/json'],
+        'body' => json_encode([
+            'requestEvent' => $event,
+        ]),
+    ];
+};
+```
+
+Następnie tworzymy archiwum ZIP z kodem naszej prostej funkcji `zip -r9q ../function.zip .`.
+Za pomocą polecenia `zipinfo function.zip` możemy wyświetlić listę plików wraz z uprawnieniami.
+
+Wywołujemy polecenie do utworzenia funkcji w AWS:
+
+```
+aws lambda create-function \
+--function-name lambda-php-bref-example \
+--role $(aws iam get-role --role-name lambda-php-demo --query Role.Arn --output text) \
+--handler index.php \
+--runtime provided.al2 \
+--layers "arn:aws:lambda:eu-central-1:209497400698:layer:php-81:28" \
+--zip-file fileb://function.zip
+```
+
+Każda zmiana kodu wymaga ponownego zbudowania pliku ZIP i wywołania polecenia:
+```
+aws lambda update-function-code \
+--function-name lambda-php-bref-example \
+--zip-file fileb://function.zip
+```
+
+Na koniec możemy wywołać funkcję:
+
+```
+aws lambda invoke \
+--function-name lambda-php-bref-example \
+--invocation-type RequestResponse \
+--cli-binary-format raw-in-base64-out \
+--payload '{"name": "Marcin"}' \
+output.json
+```
+
+Wynik działania zostanie zapisany w pliku "output.json", który możemy wyświetlić za pomocą polecenia `cat output.json`.
