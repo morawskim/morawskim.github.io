@@ -176,3 +176,5 @@ output.json
 ```
 
 Wynik działania zostanie zapisany w pliku "output.json", który możemy wyświetlić za pomocą polecenia `cat output.json`.
+
+[Using Lambda with the AWS CLI](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-awscli.html)
