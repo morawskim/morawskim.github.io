@@ -95,3 +95,9 @@ Plik z bazą danych nazwany jest `local-kv.db` i jest przechowywany w katalogu `
 
 Do poprawnego działania docker'a wymagane są włączone parametry jądra `namespaces` i `cgroups`.
 Za pomocą poleceń `zgrep -i namespace /proc/config.gz` i  `zgrep -i cgroups /proc/config.gz` uzyskamy odpowiedź, czy jądro jest skompilowane z odpowiednimi parametrami. W wyniku tych poleceń powinniśmy widzieć `CONFIG_NAMESPACES=y` i `CONFIG_CGROUPS=y`. Dodatkowo docker może korzystać z device-mapper. Aby sprawdzić czy jądro obsługuje ten typ urządzenia wywołujemy polecenie `grep device-mapper /proc/devices`. W przypadku powodzenia uzyskamy wynik podobny do  `254 device-mapper`. Dodatkowo możemy wywołać polecenie `docker info`, które wyświetli obsługiwane tryby sieci, sterownik magazynu (ang. storage driver) itp. Dodatkowo w przypadku problemu z konfiguracją jądra otrzymamy ostrzeżenia.
+
+## ERROR: Get https://registry-1.docker.io/v2/: dial tcp: lookup registry-1.docker.io on [::1]:53: read udp [::1]:35711->[::1]:53: read: connection refused
+
+W dystrybucji openSUSE Tumbleweed podczas wywoływania polecenia `docker pull` możemy otrzymać błąd "ERROR: Get https://registry-1.docker.io/v2/: dial tcp: lookup registry-1.docker.io on [::1]:53: read udp [::1]:35711->[::1]:53: read: connection refused". Najczęściej jego przyczyną jest odpalenia usługi docker przed aktywacją połączenia z internetem. Plik konfiguracyjny `docker.service` zawiera linię `After=network.target lvm2-monitor.service SuSEfirewall2.service` dodajemy do niej dodatkowo usługę `NetworkManager-wait-online.service`. Do edycji pliku możemy użyć `systemctl edit docker.service`, aby nasze zmiany nie zostały nadpisane przez aktualizacje systemowe.
+
+[ERROR: Get https://registry-1.docker.io/v2/: dial tcp: lookup registry-1.docker.io on](https://github.com/docker/cli/issues/2618)
