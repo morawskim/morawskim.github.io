@@ -18,3 +18,9 @@ Klient linux
 sudo route add default gw <IP_SERWERA> eth1
 ```
 
+## mitmweb - Client connection killed by block_global option
+
+Po migracji klastra kubernetes z IPv4 na IPv6 pojawił się błąd w logach mitmweb: "Client connection from xxxx:xxxx:xxx:xxxx:xxxx::x killed by block_global option.".
+Adresy IPv6 są publiczne, więc musimy dodać do polecenia mitmweb parametr `--set block_global=false`.
+
+[Mitmproxy Client connection killed by block_global](https://stackoverflow.com/questions/52068746/mitmproxy-client-connection-killed-by-block-global)
