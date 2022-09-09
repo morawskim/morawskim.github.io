@@ -60,3 +60,76 @@ images:
     newTag: develop-123
 
 ```
+
+## JSON patch i SealedSecret
+
+Korzystając z JSON patch możemy w łatwy sposób zmodyfikować zasoby Kubernetesa.
+W tym przypadku dodajemy kolejny zaszyfrowany sekret do zasobu SealedSecret.
+
+```
+patches:
+  - path: secret.json
+    target:
+      kind: SealedSecret
+      name: my-secrets
+```
+
+W pliku `secret.json` korzystamy z operatora "add" do dodania nowego elementu:
+
+```
+[
+  { "op": "add", "path": "/spec/encryptedData/MY_PASSWORD", "value": "encrypted-value" }
+]
+```
+
+Możemy także w pliku `kustomization.yaml` skorzystać z inline patch definition:
+
+```
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/encryptedData/MY_PASSWORD
+        value: encrypted-value
+    target:
+      kind: SealedSecret
+      name: my-secrets
+```
+
+Plik zasobu przed wprowadzeniem zmian:
+
+```
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  annotations:
+    sealedsecrets.bitnami.com/cluster-wide: "true"
+  name: my-secrets
+spec:
+  encryptedData:
+    MY_SECRET: encrypted-value
+  template:
+    data: null
+    metadata:
+      annotations:
+        sealedsecrets.bitnami.com/cluster-wide: "true"
+      name: my-secrets
+    type: Opaque
+```
+
+Diff po wprowadzonych zmianach:
+```
+@@ -7,6 +7,7 @@
+ spec:
+   encryptedData:
+     MY_SECRET: encrypted-value
++    MY_PASSWORD: encrypted-value
+   template:
+     data: null
+     metadata:
+```
+
+[Kustomize JSON Patching](https://github.com/kubernetes-sigs/kustomize/blob/master/examples/jsonpatch.md)
+
+[RFC JavaScript Object Notation (JSON) Patch](https://www.rfc-editor.org/rfc/rfc6902)
+
+[Kubernetes: kustomize transformations with patchesJson6902](https://fabianlee.org/2022/04/15/kubernetes-kustomize-transformations-with-patchesjson6902/)
