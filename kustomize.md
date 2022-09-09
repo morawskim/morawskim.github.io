@@ -30,6 +30,19 @@ metadata:
   name: <NAZWA>
 ```
 
+Zamiast tworzyć nowy plik możemy skasować zasób bezpośrednio dodając wpis w `patchesStrategicMerge`
+
+```
+patchesStrategicMerge:
+  - |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: my-app-deployment
+    $patch: delete
+
+```
+
 ## Zmiana tagu obrazu kontenera
 
 Za pomocą kustomize jesteśmy w stanie podmienić obraz z base na inny.
