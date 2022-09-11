@@ -53,6 +53,16 @@ Aktywujemy ten efekt poprzez wciśnięcie kombinacji klawiszy `Meta (Windows key
 
 [KDE Plasma 5.24 - New overview effect](https://www.youtube.com/watch?v=i1GLKYqm_CM)
 
+### Zmiana domyślnego programu do otwierania pliku
+
+1. Wywołujemy polecenie `xdg-mime query filetype sciezka/do/pliku`, aby sprawdzić mimetype pliku.
+
+1. Za pomocą polecenia `xdg-mime query default text/markdown` wyświetlamy domyślną aplikację która otwiera pliki `text/markdown`.
+
+1. Zmieniamy domyślną aplikację na kate - `xdg-mime default org.kde.kate.desktop text/markdown`
+
+1. Ponownie wywołujemy polecenie `xdg-mime query default text/markdown`, aby upewnić się, że domyślna aplikacja została zmieniona.
+
 ## Shortcuts
 
 Yakuake Full screen - `Ctrl+Shift+F11`
