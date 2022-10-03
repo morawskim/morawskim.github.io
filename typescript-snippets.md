@@ -86,6 +86,27 @@ Ustawiając opcję kompilatora `allowSyntheticDefaultImports` na wartość true,
 
 https://www.typescriptlang.org/docs/handbook/compiler-options.html#compiler-options
 
+## esModuleInterop
+
+Kiedy próbujemy zaimportować moduł CommonJS do modułu ES6 możemy otrzymać błąd podobny do
+
+> TS1259: Module '".../node_modules/@types/express/index"' can only be default-imported using the 'esModuleInterop' flag
+
+Rozwiązanie polega na dodaniu do pliku `tsconfig.json`
+
+```
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    // ... reszta ustawień
+  }
+}
+
+```
+
+[Module can only be default-imported using esModuleInterop flag](https://bobbyhadz.com/blog/typescript-module-can-only-be-default-imported-esmoduleinterop)
+
 ## Exhaustiveness checking
 
 `Exhaustiveness checking` - kompilator TS poinformuje nas, kiedy nie uwzględniliśmy wszystkich możliwych wartości.
