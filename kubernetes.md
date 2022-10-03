@@ -70,10 +70,16 @@ Komenda `kubectl get componentstatues` (lub w skórcie `kubectl get cs`) podaje 
 
 `kubectl get events -A --sort-by=.metadata.creationTimestamp` - wyświetlenie zdarzeń klastra (wszystkie przestrzenie nazw) posortowanych po dacie utworzenia
 
+`kubectl get events --sort-by=".lastTimestamp"` - wyświetlenie zdarzeń klastra posortowanych po dacie ostatniego wystąpienia
+
 `kubectl cluster-info dump` - wyświetla obecny stan klastra
 
 `kubectl set image deployment/DEPLOYMENT_NAME -n=MY_NAMESPACE CONTAINER_NAME=xxxx.dkr.ecr.eu-central-1.amazonaws.com/image:new-tag` - Za pomocą tej komendy aktualizujemy obraz kontenera `CONTAINER_NAME` do `xxxx.dkr.ecr.eu-central-1.amazonaws.com/image:new-tag` działającego w zasobie deployment `DEPLOYMENT_NAME` w przestrzeni nazw `MY_NAMESPACE`.
 Korzystając z polecenia `kubectl -n MY_NAMESPACE get deployments` możemy pobrać wszystkie zasoby deployment z przestrzeni nazw `MY_NAMESPACE`.
+
+`kubectl create job --from=cronjob/<name of cronjob> <name of this run>` - Utworzenie nowego zasobu job z zasobu cronjob.
+
+`kubectl -n <namespace> auth can-i --list --as system:serviceaccount:<namespace>:<service account name>` - wyświetla uprawnienia dla danego konta usługi
 
 ## minikube
 
