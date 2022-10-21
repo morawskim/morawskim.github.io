@@ -94,6 +94,8 @@ pods metrics.k8s.io/v1beta1 true PodMetrics
 
 Możemy już korzystać z polecenia `kubectl top`.
 
+`minikube image load <obraz-do-prezslania>` - Załaduj obraz do minikube
+
 ## Narzędzia
 
 [Descheduler for Kubernetes](https://github.com/kubernetes-sigs/descheduler)
