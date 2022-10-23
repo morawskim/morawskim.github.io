@@ -41,3 +41,10 @@ aws_sdk:
                 verify: /path/to/proxy/ca/mitmproxy-ca.pem
                 proxy: http://ip-of-mitmproxy-or-another-proxy-server:8080
 ```
+
+## PHP
+
+Przeglądając dokumentację API usług AWS dowiemy się o jak powinien wyglądać request HTTP dla danej akcji API.
+Korzystając z SDK PHP (aws/aws-sdk-php) musimy zbudować odpowiednią strukturę danych, którą przekażemy do komendy.
+Schemat struktury możemy odnaleźć w plikach SDK - `/vendor/aws/aws-sdk-php/src/data/<NAZWA_USLUGI_AWS>/<WERSJA_API>/api-v2.json.php` np. `/vendor/aws/aws-sdk-php/src/data/s3/2006-03-01/api-2.json.php`.
+Wystarczy wyszukiwać w tym pliku akcji API, a następnie schematu dla żądania. Dla usługi AWS S3 chcąc przy wywołaniu akcji PutObject ustawić klasę przechowywania obiektu (`x-amz-storage-class`) ustawiamy klucz `StorageClass`.
