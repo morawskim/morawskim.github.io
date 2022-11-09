@@ -32,3 +32,11 @@ Wywołujemy polecenie `duplicity restore --encrypt-key 66AE3CFE file://duplicity
 [duplicity backup - getting started](https://blog.xmatthias.com/duplicity_getting_started/)
 
 [Encrypted backup with Duplicity](https://www.admin-magazine.com/Archive/2016/32/Encrypted-backup-with-Duplicity)
+
+## AWS S3
+
+W systemie Ubuntu instalujemy dodatkowo pakiet `python3-boto3`.
+
+W moim przypadku na serwerze on-premise korzystałem z roli i tymczasowych tokenów AWS. Wyeksportowałem więc zmienne środowiskowe: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` i `AWS_SESSION_TOKEN`.
+
+Do polecenie tworzenia kopi bezpieczeństwa dodajemy flagę `--s3-use-new-style` a jako destination podajemy `boto3+s3://<BUCKET_NAME>`.
