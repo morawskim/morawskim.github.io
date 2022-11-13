@@ -13,6 +13,8 @@
 | `Ctrl + [up/left/right/down]` | Przewijanie kodu w panelu edytora bez przesuwania pozycji kursora |
 | `Ctrl + Numpad +/-` | Zwijanie/Rozwijanie bloku kodu |
 | `Ctrl + Shift + M` | Przejdź do nawiasu |
+| `Ctrl + F12` | Przejdź do określonej metody, pola, właściwości w bieżącym dokumencie |
+| ``Ctrl + ` `` | Przełącz między różnymi schematami kolorów, układami klawiatury i wyglądem |
 
 [PHP STORM – SKRÓTY KTÓRE WARTO ZNAĆ](https://totylkokod.pl/baza-wiedzy/php-storm-skroty-ktore-warto-znac/)
 [Editor Tips and Tricks in IntelliJ IDEA](https://blog.jetbrains.com/idea/2020/08/editor-tips-and-tricks-in-intellij-idea/)
