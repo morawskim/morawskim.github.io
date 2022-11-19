@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2022-11
+[AWS CloudWatch](aws-cloudwatch.md)
 [Golang](golang.md)
 [AWS IAM](aws-iam.md)
 

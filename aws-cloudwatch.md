@@ -1,5 +1,20 @@
 # AWS CloudWatch
 
+## Polityka do przesyłania metryk
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "cloudwatch:PutMetricData",
+            "Resource": "*"
+        }
+    ]
+}
+```
+
 ## Polityka do przesyłania logów
 
 Przykładowy dokument JSON z definicją polityki do przesyłania strumienia logów.
