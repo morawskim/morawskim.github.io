@@ -1,5 +1,21 @@
 # AWS CloudWatch
 
+## Filtrowanie logów
+
+Przesyłając do CloudWatch logi access_log serwera nginx możemy je filtrować po słowie kluczowym, albo po kolumnie.
+
+Standardowy wpis wygląda tak: `127.0.0.1 - - [19/Nov/2022:12:55:04 +0000] "GET /?foo=bar HTTP/1.1" 200 612 "-" "curl/7.68.0"`
+
+W CloudWatch w polu "Filter events" wpisujemy `[remoteAddres, placeholder, remoteUser, date, request, statusCode="404", bodySent, httpReferer, useragent]` aby wyszukać wszystkie wpisy, których kod odpowiedzi HTTP wynosi 404.
+
+Wyszukiwanie po wartości "404" może wyświetlić niepotrzebne dane:
+
+> 127.0.0.1 - - [19/Nov/2022:12:55:10 +0000] "GET /rrr HTTP/1.1" 404 162 "-" "curl/7.68.0"
+>
+> 127.0.0.1 - - [19/Nov/2022:13:29:13 +0000] "GET /?a404=404 HTTP/1.1" 200 612 "-" "curl/7.68.0"
+
+Stosując symbol `*` wyszukujemy wpisy z kodem 5xx - `[remoteAddres, placeholder, remoteUser, date, request, statusCode="5*", bodySent, httpReferer, useragent]`
+
 ## Polityka do przesyłania metryk
 
 ```
