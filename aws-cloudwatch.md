@@ -1,5 +1,46 @@
 # AWS CloudWatch
 
+## Polityka do przesyłania logów
+
+Przykładowy dokument JSON z definicją polityki do przesyłania strumienia logów.
+W przykładzie musimy zastąpić symbol `<ARN_LOG_GROUP>` identyfikatorem ARN naszej log-group.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "logs:GetLogEvents",
+                "logs:PutLogEvents"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "<ARN_LOG_GROUP>:log-stream:*",
+                "<ARN_LOG_GROUP>/*:log-stream:*"
+            ],
+            "Sid": "EnableCreationAndManagementOfCloudwatchLogEvents"
+        },
+        {
+            "Action": [
+                "logs:CreateLogStream",
+                "logs:DescribeLogStreams",
+                "logs:PutRetentionPolicy",
+                "logs:CreateLogGroup"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "<ARN_LOG_GROUP>",
+                "<ARN_LOG_GROUP>:log-stream:*",
+                "<ARN_LOG_GROUP>/*",
+                "<ARN_LOG_GROUP>/*:log-stream:*"
+            ],
+            "Sid": "EnableCreationAndManagementOfCloudwatchLogGroupsAndStreams"
+        }
+    ]
+}
+```
+
 ## CloudWatch Agent
 
 Korzystamy z [dokumentacji](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/download-cloudwatch-agent-commandline.html), aby znaleźć adres do pobrania pliku agenta.
