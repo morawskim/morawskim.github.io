@@ -27,3 +27,10 @@ Następnie montujemy partycję z etykietą "Ventoy" i kopiujemy nasze pliki ISO.
 iwd - nowy demon sieci bezprzewodowych w Linuksie.
 
 [Artykuł w Linux Magazine Marzec 2021 - Nr 205](https://linux-magazine.pl/lm205/abrakadabra-przedstawiamy-inet-nowy-demon-sieci-bezprzewodowych-w-linuksie-1265.html)
+
+## Specjalistyczne dystrybucje
+
+| Dystrybucja | Opis |
+| - | - |
+| openmediavault | System operacyjny przygotowany do uruchomienia własnego NAS |
+| TrueNAS (wcześniej FreeNAS) | System operacyjny przygotowany do uruchomienia własnego NAS |
