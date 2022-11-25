@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2022-11
+[MongoDB countDocuments](optymalizacja-zapytan.md)
 [Symfony HttpKernel](symfony-httpkernel.md)
 [Symfony HttpClient](symfony-httpclient.md)
 [AWS CloudWatch](aws-cloudwatch.md)
