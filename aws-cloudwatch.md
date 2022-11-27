@@ -1,5 +1,9 @@
 # AWS CloudWatch
 
+* Wywołując akcję API [PutLogEvents](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutLogEvents.html) należy pamiętać, że wartość `timestamp` wpisu jest w milisekundach, a nie w sekundach. Wysyłając timestamp w sekundach otrzymamy błąd "tooOldLogEventEndIndex".
+
+* Ze względu na limity API, a także na konieczność śledzenia/przesyłania `sequenceToken` lepiej nie przesyłać logów co żądanie HTTP.
+
 ## Filtrowanie logów
 
 Przesyłając do CloudWatch logi access_log serwera nginx możemy je filtrować po słowie kluczowym, albo po kolumnie.
@@ -15,6 +19,12 @@ Wyszukiwanie po wartości "404" może wyświetlić niepotrzebne dane:
 > 127.0.0.1 - - [19/Nov/2022:13:29:13 +0000] "GET /?a404=404 HTTP/1.1" 200 612 "-" "curl/7.68.0"
 
 Stosując symbol `*` wyszukujemy wpisy z kodem 5xx - `[remoteAddres, placeholder, remoteUser, date, request, statusCode="5*", bodySent, httpReferer, useragent]`
+
+[Filter and pattern syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html)
+
+### Ustrukturowane logi
+
+Jeśli w polu `message` wpisu z logiem podamy zakodowaną wiadomość JSON, to w konsoli AWS CloudWatch Logs będziemy w stanie filtrować wpisy po poszczególnych polach np. `{$.app = "Foo"}`.
 
 ## Polityka do przesyłania metryk
 
