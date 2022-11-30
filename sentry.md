@@ -65,13 +65,33 @@ Aktualnie istnieje otwarte zgłoszenie [Feature Request: use the symfony route n
 
 ### Breadcrumb
 
-Obecnie domyślny handler dla monolog z pakietu `sentry/sentry-symfony` nie obsługuje breadcrumbs.
-Istnieje nieoficialny handler z obsługą breadcrumb [monolog-sentry-handler](https://github.com/B-Galati/monolog-sentry-handler), ale nie jest on kompatybilny z nowym SDK Sentry.
+Od wersji 3.8 SDK dla PHP, Sentry obsługuje [mechanizm breadcrumbs](https://github.com/getsentry/sentry-php/pull/1199).
 
-[Option to add buffered (fingers_crossed) logs to context #286](https://github.com/getsentry/sentry-symfony/issues/286)
-[add: breadcrumbs to monolog handler #844](https://github.com/getsentry/sentry-php/pull/844)
-[Change default hook system to use Monolog #337](https://github.com/getsentry/sentry-symfony/issues/337)
+![sentry breadcrumbs](images/sentry-breadcrumbs.png)
 
+[Przykładowa konfiguracja](https://github.com/getsentry/sentry-php/pull/1199#issuecomment-1308936577)
+Przy takiej konfiguracji w przypadku wystąpienia błędu prócz samego błędu przesłane zostaną dodatkowe wpisy z logu z poziomem min INFO.
+
+```
+services:
+    Sentry\Monolog\BreadcrumbHandler:
+        arguments:
+            - '@Sentry\State\HubInterface'
+            - !php/const Monolog\Logger::DEBUG
+
+monolog:
+    handlers:
+        # this one acts like fingers_crossed
+        sentry_breadcrumbs:
+            type: service
+            name: sentry_breadcrumbs
+            id: Sentry\Monolog\BreadcrumbHandler
+        # this one is the main one, once it captures, the breadcrumbs collected by the first one are submitted too
+        sentry:
+            type: sentry
+            level: !php/const Monolog\Logger::ERROR
+            hub_id: Sentry\State\HubInterface
+```
 
 ### IgnoreErrorsIntegration
 
