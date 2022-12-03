@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2022-12
+[Dependabot](dependabot.md)
+
 ## 2022-11
 [MongoDB countDocuments](optymalizacja-zapytan.md)
 [Symfony HttpKernel](symfony-httpkernel.md)
