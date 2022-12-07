@@ -56,6 +56,8 @@
 
 Bitlocker nie jest dostępny w systemach Windows Home. W wyszukiwarce Windows wpisujemy `bitlocker`, aby przejść do ustawień Bitlocker.
 
+Za pomocą polecenia `wmic path softwareLicensingService get OA3xOriginalProductKey` możemy wyświetlić klucz systemu Windows. UWAGA! Te polecenie może nie zwrócić klucza, jeśli posiadamy licencję cyfrową przypisaną do konta Microsoft.
+
 ### Lista wszystkich zainstalowanych programów
 
 Uruchamiamy wiersz poleceń jako administrator. Następnie wpisujemy polecenie `wmic`. W powłoce wmic uruchamiamy polecenie `/output C:\sciezka\do\pliku.txt product get name,version`
