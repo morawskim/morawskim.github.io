@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2022-12
+[Symfony Profiler scraper](symfony-profiler.md)
 [phpspy](phpspy.md)
 [Dependabot](dependabot.md)
 
