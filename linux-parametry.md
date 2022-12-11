@@ -18,3 +18,8 @@ TCP posiada również mechanizm restartowania powolnego startu (`SSR` - ang. slo
 
 `sysctl net.ipv4.tcp_slow_start_after_idle` powinno zwracać wartość 0.
 
+## sysctl
+
+| Parametr | Opis|
+| - | - |
+| vm.overcommit_memory | W przypadku bazy danych Redis zalecaną wartość to 1 ("always overcommit, never check" - `man 5 proc` opis `/proc/sys/vm/overcommit_memory`). Gdy Redis musi zapisać stan pamięci na dysk (forma kopii bezpieczeństwa) tworzy proces potomny poprzez wywołanie systemowe fork . Takie wywołanie może wydawać się drogie, ale Linux obsługuje COW (copy on write), więc nie potrzebujemy dużo wolnej pamięci. Jednak Linux domyślnie zablokuje takie wywołanie ze względu na niewystarczająco ilość wolnej pamięci RAM. Zmieniając wartość tego parametru możemy wyłączyć ten mechanizm sprawdzający. |
