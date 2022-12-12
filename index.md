@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2022-12
+[PHP-FPM i SSLKEYLOGFILE](sslkeylogfile-badanie-ruchu-ssl.md#PHP-FPM_i_SSLKEYLOGFILE)
 [Symfony Profiler scraper](symfony-profiler.md)
 [phpspy](phpspy.md)
 [Dependabot](dependabot.md)
