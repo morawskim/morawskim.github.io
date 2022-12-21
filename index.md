@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2022-12
+[Podpisywanie pakietów RPM](gpg.md#Podpisywanie_pakiet%C3%B3w_RPM)
 [PHP-FPM i SSLKEYLOGFILE](sslkeylogfile-badanie-ruchu-ssl.md#PHP-FPM_i_SSLKEYLOGFILE)
 [Symfony Profiler scraper](symfony-profiler.md)
 [phpspy](phpspy.md)
@@ -284,7 +285,7 @@ Hello
 
 ## 2019-08
 [YAML - snippets](yaml-snippets.md)
-[GPG - generowanie podpisanego archiwum z wydaniem](gpg-generowanie-podpisanego-archiwum-z-wydaniem.md)
+[GPG - generowanie podpisanego archiwum z wydaniem](gpg.md#GPG_-_generowanie_podpisanego_archiwum_z_wydaniem)
 [Puppet - graf zależności](puppet-graf-zaleznosci.md)
 [travis - budowanie i publikowanie obrazów docker](travis-budowanie-i-publikowanie-obrazow-docker.md)
 [bazy danych z dużymi zestawami danych](bazy-danych-z-duzymi-zestawami-danych.md)

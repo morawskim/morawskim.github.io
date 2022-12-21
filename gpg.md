@@ -1,4 +1,6 @@
-# GPG - generowanie podpisanego archiwum z wydaniem
+# GPG
+
+## GPG - generowanie podpisanego archiwum z wydaniem
 
 Tworzymy i przechodzimy do katalogu tymczasowego gdzie będziemy przechowywać bazę kluczy GPG.
 Wszystkie tymczasowe pliki możemy bezpiecznie skasować na końcu za pomocą polecenia `shred`.
@@ -66,3 +68,36 @@ Odcisk klucza głównego: 9A15 C8BE 071D 9757 BA42  1115 B346 D3D5 3916 CAE1
 ```
 
 Musimy ręcznie zweryfikować czy klucz, który został wykorzystany do podpisania jest poprawny (zaufany).
+
+## Podpisywanie pakietów RPM
+
+Generujemy klucz GPG - `gpg --full-gen-key`
+
+W moim przypadku wybieramy "only sign key RSA", ponieważ nowsze algorytmy nie są wspierane przez obraz kontenera `alanfranz/fpm-within-docker:centos-7`.
+
+Na liście kluczy powinniśmy mieć nasz nowy klucz GPG SC - `gpg --list-keys` lub `gpg -k`.
+
+Eksportujemy klucz publiczny, który możemy upublicznić - `gpg --export -a '<ID_KLUCZ_EMAIL_LUB_NAZWA>' > RPM-GPG-KEY
+
+Eksportujemy klucz prywatny `gpg -o ci.key --armor --export-secret-keys '<ID_KLUCZ_EMAIL_LUB_NAZWA>'`
+
+Tworzymy/Edytujemy plik `~/.rpmmacros` i dodajemy linie:
+```
+%_signature gpg
+%_gpg_name <nazwa klucza>
+```
+Możemy teraz podpisać pakiet RPM - `rpm --addsign /sciezka/do/pakietu.rpm`
+A także zweryfikować czy istnieje sygnatura - `rpm -q --qf '%{SIGPGP:pgpsig} %{SIGGPG:pgpsig}\n' -p rpm-package`.
+
+Na innych serwerach musimy zaimportować klucz GPG - `rpm --import https://rpm.example.com/RPM-GPG-KEY`.
+Następnie możemy sprawdzić czy klucz GPG został zaimportowany do bazy RPM `rpm -q gpg-pubkey --qf '%{name}-%{version}-%{release} --> %{summary}\n'`.
+
+W przypadku podpisywania pakietów RPM w procesie CI musimy zaimportować klucz prywatny GPG. 
+W Gitlab CI/CD możemy utworzyć zmienną środowiskową (np. GPG_PRIVATE_KEY_TO_SIGN) typu plik. Dzięki temu pod nazwą zmiennej środowiskowej będzie ścieżka do pliku z kluczem - `gpg --import $GPG_PRIVATE_KEY_TO_SIGN`.
+Następnie musimy oznaczyć zaimportowany klucz jako zaufany - `echo -e "5\ny\n" | echo -e "5\ny\n" | gpg --no-tty --command-fd 0 --edit-key "<ID_KLUCZ_EMAIL_LUB_NAZWA>" trust`
+
+W przypadku gdy nasz klucz GPG dodatkowy chroniony jest hasłem przydany może być [artykuł.]((https://dev.to/stack-labs/manage-your-secrets-in-git-with-sops-gitlab-ci-2jnd)
+
+Dalsze kroki są takie same.
+
+Jeśli pakiety RPM przechowujemy w repozytorium to musimy także podpisać plik `./repodata/repomd.xml` za pomocą polecenia `gpg --local-user '<ID_KLUCZ_EMAIL_LUB_NAZWA>' --detach-sign --armor ./repodata/repomd.xml`
