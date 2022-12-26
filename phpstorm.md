@@ -37,3 +37,10 @@
 * String Manipulation
 * GitToolBox
 * yamllint
+
+## Porady
+
+W MongoDB do uwierzytelnienia prócz użytkownika i hasła musimy także podać nazwę bazy danych.
+Możemy to zrobić w connection URL: `mongodb://localhost:27017/local?authSource=admin`.
+Parametr `authSource` to nazwa bazy danych do uwierzytelnienia.
+[Connect to MongoDB](https://www.jetbrains.com/help/phpstorm/mongodb.html)
