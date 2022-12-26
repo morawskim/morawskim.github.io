@@ -12,16 +12,15 @@ Następnie możemy odpytać o szczytowe zużycie pamięci - `curl --silent local
 
 Skrypt wymaga [htmlq](https://github.com/mgdm/htmlq).
 
-Przykładowe użycie `php ./scraper.php  | sort -h -k 2 | column -t -s'    '`
-Musimy dostosować wartość zmiennej `$baseUrl = 'http://localhost:4200';`
+Przykładowe użycie `php ./scraper.php http://localhost:4200 | sort -n -k 5`
 
 Przykładowy wynik:
 
->IndexController::home	18.00          MiB	localhost	GET   http://localhost:4200/
+> IndexController::sync	POST	200	App\Controller\IndexController	20.00	localhost	/synchronous	227c9d
 >
->IndexController::home	20.00          MiB	localhost	GET   http://localhost:4200/
+> IndexController::newestJobs	GET	200	App\Controller\IndexController	20.00	localhost	/newest-jobs	18fe20
 >
->IndexController::home	40.50          MiB	localhost	GET   http://localhost:4200/
+> IndexController::home	GET	200	App\Controller\IndexController	20.00	localhost	/	de440f
 
 
 ``` php
@@ -33,7 +32,7 @@ set_error_handler(function (int $errno, string $errstr, ?string $errfile, ?int $
     throw new ErrorException($errstr, $errno, 1, $errfile, $errline);
 });
 
-$baseUrl = 'http://localhost:4200';
+$baseUrl = $argv[1];
 
 function fetchWebpageHTML(string $url): string {
     $curl = curl_init();
@@ -78,32 +77,71 @@ function executeHtmlq($html, ...$arguments): array {
 }
 
 /**
- * @return array{memory: string, url: string, domain: string, controller: string}
+ * @return array{memory: string, url: string, domain: string, controller: string, controller_path: string, method: string, token: string, http_status: string}
  */
 function extractDataFromProbe(string $url): array {
     $html = fetchWebpageHTML(
         http_build_url($url, ['query' => http_build_query(['panel' => 'request'])])
     );
     $controller = preg_replace('/\s/', '', implode('', executeHtmlq($html, '--text', '#collector-content >h2')));
+    $controllerPath = preg_replace('/\s/', '', implode('', executeHtmlq($html, '--attribute', 'title', '#collector-content >h2 a')));
+    $method = preg_replace('/\s/', '', implode('', executeHtmlq($html, '--text', '#summary .status .status-request-method')));
+    $httpStatus = preg_replace('/\s/', '', implode('', executeHtmlq($html, '--text', '#summary .metadata .status-response-status-code')));
+
+    $tokenMatches = [];
+    $result = preg_match('#_profiler/(.*)$#', $url, $tokenMatches);
 
     $html = fetchWebpageHTML(
         http_build_url($url, ['query' => http_build_query(['panel' => 'time'])])
     );
-    $memory = implode('', executeHtmlq($html, '--text', 'div.metrics > div.metric > .value'));
-    $sfUrl = implode(' ', executeHtmlq($html, '--text', '#summary > .status > h2'));
+    $memory = implode('', executeHtmlq($html, '--text', 'div.metrics > div.metric:nth-child(3) > .value'));
+    $memory = preg_replace('/[^0-9,\.]+/', '', $memory);
+    $sfUrl = trim(preg_replace('/^[A-Z]+( .*?)$/', '$1', implode(' ', executeHtmlq($html, '--text', '#summary > .status h2'))));
     $domain = parse_url($url, PHP_URL_HOST);
 
-    return ['memory' => $memory, 'url' => $sfUrl, 'domain' => $domain, 'controller' => $controller];
+    $components = [
+        'path' => parse_url($sfUrl, PHP_URL_PATH),
+        'query' => parse_url($sfUrl, PHP_URL_QUERY),
+        'fragment' => parse_url($sfUrl, PHP_URL_FRAGMENT),
+    ];
+    $parsedUrl = '/';
+
+    if ($components['path']) {
+        $parsedUrl = $components['path'];
+    }
+
+    if ($components['query']) {
+        $parsedUrl .= '?' . $components['query'];
+    }
+
+    if ($components['fragment']) {
+        $parsedUrl .= '#' . $components['fragment'];
+    }
+
+    return [
+        'memory' => $memory,
+        'url' => $parsedUrl,
+        'http_status' => $httpStatus,
+        'domain' => $domain,
+        'controller' => $controller,
+        'controller_path' => $controllerPath,
+        'method' => $method,
+        'token' => $tokenMatches[1] ?? '-',
+    ];
 }
 
 function displayData(array $data): void {
     fprintf(
         STDOUT,
-        "%s\t%s\t%s\t%s\n",
+        "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n",
         $data['controller'],
+        $data['method'],
+        $data['http_status'],
+        $data['controller_path'],
         $data['memory'],
         $data['domain'],
-        $data['url']
+        $data['url'],
+        $data['token'],
     );
 }
 function main($baseUrl): void {
