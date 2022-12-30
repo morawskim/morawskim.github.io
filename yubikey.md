@@ -36,3 +36,22 @@ ssh-add -L
 ```
 
 [Yubikey as an SSH key](https://gist.github.com/jamesog/ad6613195f180c909724c7edbfda762e)
+
+## OpenPGP card not available
+
+W dystrybucji openSUSE Tumbleweed wywołując polecenie `gpg --card-status` otrzymywałem błąd:
+```
+gpg: selecting openpgp failed: No such device
+gpg: OpenPGP card not available: No such device
+```
+
+Szukając rozwiązania w internecie natrafiłem na wpis [GnuPG and PC/SC conflicts](https://ludovicrousseau.blogspot.com/2019/06/gnupg-and-pcsc-conflicts.html), który rozwiązał mój problem. Skorzystałem z drugiego rozwiązania, ponieważ w mojej dystrybucji usługa pcscd działała i nie chciałem się jej pozbywać.
+
+Plik `~/.gnupg/scdaemon.conf` powinien zawierać linie:
+```
+disable-ccid
+```
+
+[Step by step guide on how to set up Yubikey with GPG subkeys](https://www.barrage.net/blog/technology/yubikey-and-gpg)
+
+[Developers Guide to GPG and YubiKey](https://developer.okta.com/blog/2021/07/07/developers-guide-to-gpg)
