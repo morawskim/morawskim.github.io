@@ -58,6 +58,14 @@ Bitlocker nie jest dostępny w systemach Windows Home. W wyszukiwarce Windows wp
 
 Za pomocą polecenia `wmic path softwareLicensingService get OA3xOriginalProductKey` możemy wyświetlić klucz systemu Windows. UWAGA! Te polecenie może nie zwrócić klucza, jeśli posiadamy licencję cyfrową przypisaną do konta Microsoft.
 
+W systemie Windows 10 możemy włączyć dźwięk przestrzenny.
+Klikamy na "Start" -> "Ustawienia" -> "System" -> "Dźwięk" -> w sekcji "Powiązane ustawienia" klikamy na "Panel sterowania dźwiękiem".
+Następnie wybieramy urządzenie odtwarzania i klikamy na "Właściwości".
+W nowo wyświetlonym oknie przechodzimy do zakładki "Dźwięk przestrzenny" i przy polu 
+"Format dźwięku przestrzennego" wybieramy pozycję "Windows Sonic" i zatwierdzamy zmiany klikając w przycisk "Zastosuj". [Jak włączyć dźwięk przestrzenny w systemie Windows 10](https://support.microsoft.com/pl-pl/windows/jak-w%C5%82%C4%85czy%C4%87-d%C5%BAwi%C4%99k-przestrzenny-w-systemie-windows-10-ca2700a0-6519-448d-5434-56f499d59c96)
+
+![ustawienia dźwięk](images/windows10-sonic.png)
+
 ### Lista wszystkich zainstalowanych programów
 
 Uruchamiamy wiersz poleceń jako administrator. Następnie wpisujemy polecenie `wmic`. W powłoce wmic uruchamiamy polecenie `/output C:\sciezka\do\pliku.txt product get name,version`
