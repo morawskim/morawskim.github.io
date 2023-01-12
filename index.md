@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2023-01
+[Go linters](golang-linters.md)
+
 ## 2022-12
 [Podpisywanie pakietów RPM](gpg.md#Podpisywanie_pakiet%C3%B3w_RPM)
 [PHP-FPM i SSLKEYLOGFILE](sslkeylogfile-badanie-ruchu-ssl.md#PHP-FPM_i_SSLKEYLOGFILE)
