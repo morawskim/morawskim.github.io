@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2023-01
+[Ansible jako alternatywa dla Puppet Bolt](ansible-jako-alternatywa-dla-puppet-bolt.md)
 [Go linters](golang-linters.md)
 
 ## 2022-12
