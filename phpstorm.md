@@ -6,7 +6,7 @@
 |---|---|
 | `ALT + F12` | otwarcie terminala |
 | `Shift+Alt+Ins`  | Włączenie trybu zaznaczania kolumnowego  |
-|  `Ctrl+Shift+F12` | Ukrywa (albo przywraca) wszystkie pozostałe okna, więc edytor zajmuje całą dostępną przestrzeń  |
+| `Ctrl+Shift+F12` | Ukrywa (albo przywraca) wszystkie pozostałe okna, więc edytor zajmuje całą dostępną przestrzeń  |
 | `Ctrl+Shift+[up/down/left/right]` | Zmiana rozmiaru okna |
 | `Shift + Esc` | Ukrywa aktywne okno narzędziowe |
 | `Ctrl + Shift + I` | Szybki podgląd źródeł klas, interfejsów, metod itp. |
@@ -15,6 +15,7 @@
 | `Ctrl + Shift + M` | Przejdź do nawiasu |
 | `Ctrl + F12` | Przejdź do określonej metody, pola, właściwości w bieżącym dokumencie |
 | ``Ctrl + ` `` | Przełącz między różnymi schematami kolorów, układami klawiatury i wyglądem |
+| `CTRL + ALT + SHIFT + [DOWN | UP]` | Przejdź do następnej/poprzedniej zmiany w edytorze |
 
 [PHP STORM – SKRÓTY KTÓRE WARTO ZNAĆ](https://totylkokod.pl/baza-wiedzy/php-storm-skroty-ktore-warto-znac/)
 [Editor Tips and Tricks in IntelliJ IDEA](https://blog.jetbrains.com/idea/2020/08/editor-tips-and-tricks-in-intellij-idea/)
