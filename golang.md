@@ -6,6 +6,14 @@
 Instaluejmy narzędzie poprzez wydanie polecenia `go install golang.org/x/vuln/cmd/govulncheck@latest`.
 Następnie możemy przeskanować projekt wydając polecenie `~/go/bin/govulncheck .`
 
+## Pakiety
+
+| Pakiet | Opis |
+| - | - |
+| [golangci-lint](https://github.com/golangci/golangci-lint) | Fast linters Runner for Go |
+| [Testify](https://github.com/stretchr/testify) | A toolkit with common assertions and mocks that plays nicely with the standard library |
+| [apitest](https://github.com/steinfletcher/apitest) | A simple and extensible behavioural testing library for Go. You can use api test to simplify REST API, HTTP handler and e2e tests. |
+
 ## Obrazy Docker
 
 | Obraz | Opis |
