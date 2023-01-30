@@ -28,6 +28,12 @@ iwd - nowy demon sieci bezprzewodowych w Linuksie.
 
 [Artykuł w Linux Magazine Marzec 2021 - Nr 205](https://linux-magazine.pl/lm205/abrakadabra-przedstawiamy-inet-nowy-demon-sieci-bezprzewodowych-w-linuksie-1265.html)
 
+## multipass
+
+Za pomocą `multipass` możemy w łatwy sposób odpalić maszynę wirtualną Ubuntu wykorzystując wirtualizację KVM i skonfigurować ją za pomocą cloud-init.
+
+[Goodbye cloud VMs, hello laptop VMs](https://www.admin-magazine.com/Archive/2022/69/Goodbye-cloud-VMs-hello-laptop-VMs)
+
 ## Specjalistyczne dystrybucje
 
 | Dystrybucja | Opis |
