@@ -108,6 +108,8 @@ Unikaj automatycznie generowanych identyfikatorów:
 
 * obiekt wymaga działania bazy danych
 
+Encje powinny być użyte tylko do zapisu. W przypadku odczytów powniśmy zwracać DTO.
+
 ## ADR - Architectural Decision Records
 
 Każdą decyzję architektoniczną powinniśmy dokumentować w ADR - Architectural Decision Records.
