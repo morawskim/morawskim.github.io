@@ -80,3 +80,11 @@ while (!feof(STDIN)) {
 }
 
 ```
+
+## Slotted counter patter
+
+W bazach danych często musimy zwiększyć wartość kolumny INT w przypadku wystąpienia zdarzenia takiego jak wyświetlenie strony.
+W celu pozbycia się wąskich gardeł, które pojawiają się podczas blokowania rekordu stosuje się ten wzorzec. 
+Ma on na celu rozłożenie inkrementacji licznika na wiele rekordów i tym samy pozbycie się "hot key".
+
+[The Slotted Counter Pattern](https://planetscale.com/blog/the-slotted-counter-pattern)
