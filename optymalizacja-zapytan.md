@@ -62,8 +62,20 @@ while (!feof(STDIN)) {
     [$dbName, $collectionName] = explode('.',  $collectionWithDbName, 2);
     $query = implode(' ', array_slice($columns, 9, -1));
     $duration = substr($columns[count($columns) -1], 0, -3);
+    $comment = '-';
 
-    printf('%s %s %s %s %s', $dbName, $collectionName, $operation, $duration, $query);
+    if (str_contains($query, '$comment')) {
+        $matches = [];
+        $result = preg_match('/\$comment[\s:]*[\'"]([A-Z_\-0-9]+)[\'"]/', $query, $matches);
+        if (false === $result) {
+            fprintf(STDERR, 'Preg match return error "%s"', preg_last_error_msg());
+            $comment = $matches[1] ?? 'REGEX_FAIL';
+            continue;
+        }
+        $comment = $matches[1] ?? 'COMMENT_EXISTS_BUT_NOT_MATCH';
+    }
+
+    printf('%s %s %s %s %s %s', $dbName, $collectionName, $operation, $duration, $comment, $query);
     echo PHP_EOL;
 }
 
