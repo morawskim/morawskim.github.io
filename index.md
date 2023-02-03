@@ -1,6 +1,9 @@
 Hello
 =====
 
+##2023-02
+[jq](jq.md)
+
 ## 2023-01
 [Ansible jako alternatywa dla Puppet Bolt](ansible-jako-alternatywa-dla-puppet-bolt.md)
 [Go linters](golang-linters.md)
