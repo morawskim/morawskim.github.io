@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2023-02
+[PHP programowanie funkcyjne](php-programowanie-funkcyjne.md)
 [jq](jq.md)
 
 ## 2023-01
