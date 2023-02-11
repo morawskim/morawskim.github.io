@@ -70,6 +70,24 @@ class FlattenTest extends TestCase
         $this->assertEquals($expectedFlatArray, $flatten($nestedArray));
     }
 
+    /**
+     * @dataProvider provideArrayToFlatten
+     */
+    public function testFlattenIterator(array $nestedArray, array $expectedFlatArray): void
+    {
+        $iterator = new \RecursiveIteratorIterator(
+            new class ($nestedArray) extends \RecursiveArrayIterator {
+                public function hasChildren(): bool
+                {
+                    return is_array($this->current());
+                }
+            }
+        );
+        $data = iterator_to_array($iterator, false);
+
+        $this->assertEquals($expectedFlatArray, $data);
+    }
+
     public function provideArrayToFlatten(): iterable
     {
         yield 'nested_array' => [
