@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2023-02
+[doctrine/collections filtrowanie kolekcji wykorzystując własny operator](doctrine-collections.md)
 [PHP programowanie funkcyjne](php-programowanie-funkcyjne.md)
 [jq](jq.md)
 
