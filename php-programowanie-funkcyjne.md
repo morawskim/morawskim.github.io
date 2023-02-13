@@ -2,6 +2,24 @@
 
 Biblioteka [lstrojny/functional-php](https://github.com/lstrojny/functional-php)
 
+## Option
+
+W językach funkcyjnych mamy typ Option w Skali, czy Maybe Monad w Haskell.
+Typ `Option<T>` możemy zapisać jako `Some<T> | None`.
+Typ ten wykorzystuje się, kiedy funkcja może zwrócić wartość (Some), ale nie zawsze (None).
+Mechanizm ten wymusza obsługę wartości null - nazywaną w funkcyjnych językach None.
+W PHP implementacją typu `Option` jest biblioteka [schmittjoh/php-option](https://github.com/schmittjoh/php-option).
+
+``` php
+$svc = new SomeService();
+$result = $svc->calculateMethod1(['id' => 1])
+    ->orElse(new \PhpOption\LazyOption([$svc, 'calculateMethod2'], [['id' => 2]]))
+    ->orElse(new \PhpOption\LazyOption([$svc, 'calculateMethod3'], [['id' => 3]]))
+    ->orElse(\PhpOption\Option::fromValue(new Result("defaultValue")))
+;
+
+```
+
 ## Cartesian
 
 Kod funkcji pobrany od użytkownika jwage [https://gist.github.com/jwage/11193216](https://gist.github.com/jwage/11193216)
