@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2023-02
+[bcc vs strace](bcc-vs-strace.md)
 [doctrine/collections filtrowanie kolekcji wykorzystując własny operator](doctrine-collections.md)
 [PHP programowanie funkcyjne](php-programowanie-funkcyjne.md)
 [jq](jq.md)
