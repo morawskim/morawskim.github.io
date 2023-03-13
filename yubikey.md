@@ -2,6 +2,8 @@
 
 [Yubikey Madness](https://felixhammerl.com/2022/08/29/yubikey-madness.html)
 
+[How to use a YubiKey with Fedora Linux](https://fedoramagazine.org/how-to-use-a-yubikey-with-fedora-linux/)
+
 ## OATH
 
 `ykman oath accounts add <ACCOUNT_NAME> <SECRET>` - Dodaje konto z nazwą <ACCOUNT_NAME> i tajnym kluczem <SECRET>
