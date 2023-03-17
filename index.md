@@ -1,6 +1,9 @@
 Hello
 =====
 
+##2023-03
+[Redis - Klucze bez daty wygaśnięcia](redis.md#Klucze_bez_daty_wygaśnięcia)
+
 ##2023-02
 [bcc vs strace](bcc-vs-strace.md)
 [doctrine/collections filtrowanie kolekcji wykorzystując własny operator](doctrine-collections.md)
