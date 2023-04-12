@@ -1,6 +1,9 @@
 # AWS SAM, Go i GLIBC
 
 Podczas wykonywania lokalnie funkcji lambda w środowisku go1.x otrzymywałem błąd z wersją biblioteki GLIBC.
+> version `GLIBC_2.XX' not found (required by XXX)
+
+Niektóre programy utworzone w Go wymagają odpowiedniej wersji biblioteki GLIBC - [Go programs and Linux glibc versioning](https://utcc.utoronto.ca/~cks/space/blog/programming/GoAndGlibcVersioning)
 
 Istnieje [zgłoszenie](https://github.com/aws/aws-lambda-go/issues/340) i opis rozwiązania tego problemu - 
 [GLIBC not found with AWS SAM and Golang](https://www.gaunt.dev/blog/2022/glibc-error-with-aws-sam-and-go/)
