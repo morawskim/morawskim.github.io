@@ -55,4 +55,19 @@ updates:
     commit-message:
       prefix: "[dependabot]"
 
+  - package-ecosystem: gomod
+    directory: "/go-app"
+    schedule:
+      interval: weekly
+      day: "thursday"
+    commit-message:
+      prefix: "[dependabot]"
+
+  - package-ecosystem: GitHub-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: "thursday"
+    commit-message:
+      prefix: "[dependabot]"
 ```
