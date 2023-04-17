@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2023-04
+[GitHub Actions szablony](github-actions-szablony.md)
 [AWS SAM, Go i GLIBC](aws-sam-go-i-glibc.md)
 [Docker - debugowanie kontenerów distroless](docker-debugowanie-kontenerow-distroless.md)
 
