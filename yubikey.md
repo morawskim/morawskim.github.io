@@ -4,6 +4,8 @@
 
 [How to use a YubiKey with Fedora Linux](https://fedoramagazine.org/how-to-use-a-yubikey-with-fedora-linux/)
 
+[YubiKey Manager (ykman) CLI and GUI Guide](https://docs.yubico.com/software/yubikey/tools/ykman/webdocs.pdf)
+
 ## OATH
 
 `ykman oath accounts add <ACCOUNT_NAME> <SECRET>` - Dodaje konto z nazwą <ACCOUNT_NAME> i tajnym kluczem <SECRET>
