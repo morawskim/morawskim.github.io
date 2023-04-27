@@ -14,6 +14,10 @@
 
 * Lista obsługiwanych [środowisk wykonawczych](https://github.com/boto/botocore/blob/develop/botocore/data/lambda/2015-03-31/service-2.json#L4791). Uwaga pozycja na liście mogą się zmieniać z biegiem czasu.
 
+* Jeśli nasza funkcja przez przypadek wywołuje się rekurencyjnie (np. podłączamy Lambde pod zdarzenie S3 i dokonujemy zmian w ramach tego samego bucketu) to, aby zapobiec niepotrzebnym wywołaniom i zwiększonym kosztem, powinniśmy w ustawieniach funkcji ustawić parametr `reserved concurrency` na wartość 0.
+Spowoduje to natychmiastowe zablokowanie wszystkich wywołań funkcji do momentu naprawy kodu/konfiguracji i przywrócenia wartości tego parametru.
+Dlatego przed wdrożeniem nowej funkcji być może warto od razu ustawić ten parametr na wartość 1.
+
 ## Limity
 
 Podczas fazy analizy i rozpatrywania lambdy jako rozwiązania warto wziąć pod uwagę jej [limity](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html).
