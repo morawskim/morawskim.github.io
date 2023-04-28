@@ -18,6 +18,8 @@
 Spowoduje to natychmiastowe zablokowanie wszystkich wywołań funkcji do momentu naprawy kodu/konfiguracji i przywrócenia wartości tego parametru.
 Dlatego przed wdrożeniem nowej funkcji być może warto od razu ustawić ten parametr na wartość 1.
 
+* Jeśli zmieniamy uprawnienia naszej funkcji (execution role) to po zmianie uprawnień powinniśmy zaktualizować funkcję lub zmienić jej konfigurację, aby działające instancje funkcji zaczęły korzystać z nowych uprawnień.
+
 ## Limity
 
 Podczas fazy analizy i rozpatrywania lambdy jako rozwiązania warto wziąć pod uwagę jej [limity](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html).
