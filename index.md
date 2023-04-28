@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2023-04
+[aws-lambda-power-tuning](aws-lambda-power-tuning.md)
 [AWS SAM & Lambda & Go](sam-lambda-go.md)
 [GitHub Actions szablony](github-actions-szablony.md)
 [AWS SAM, Go i GLIBC](aws-sam-go-i-glibc.md)
