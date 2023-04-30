@@ -34,3 +34,46 @@ aws lambda update-function-code \
 Jeśli chcemy opublikować nową wersję to do polecenia dodajemy flagę `--publish`.
 
 [Deploy Go Lambda functions with .zip file archives](https://docs.aws.amazon.com/lambda/latest/dg/golang-package.html)
+
+
+## CPU profiling
+
+Importujemy pakiet `runtime/pprof`.
+
+Następnie w naszej funkcji włączamy profiler CPU
+
+```
+f, err := os.Create("/tmp/profiling")
+if err != nil {
+  panic(fmt.Sprintf("could not create CPU profile: %v", err))
+}
+
+defer f.Close() // error handling omitted for example
+if err := pprof.StartCPUProfile(f); err != nil {
+  panic(fmt.Sprintf("could not start CPU profile: %v", err))
+}
+
+// rest of our code
+// ..
+
+pprof.StopCPUProfile()
+```
+
+Aby dane profilera zostały zapisane na końcu naszej funkcji zatrzymujemy profilowanie CPU.
+
+Budujemy aplikację wywołując polecenie `sam build` i uruchamiamy `sam local start-lambda`. 
+Następnie wywołujemy naszą funkcję "ThumbnailsFunction" z payload wczytanym z pliku "events/s3PutExample.json"  - `aws lambda invoke --cli-binary-format raw-in-base64-out --function-name "ThumbnailsFunction" --endpoint-url "http://127.0.0.1:3001" --no-verify-ssl  --payload file://events/s3PutExample.json out.txt`
+
+W tym momencie możemy sprawdzić identyfikator działającego kontenera - `docker ps`. W moim przypadku to `1471d2f8681f`.
+
+```
+CONTAINER ID   IMAGE                                     COMMAND                  CREATED         STATUS         PORTS                      NAMES
+1471d2f8681f   public.ecr.aws/lambda/go:1-rapid-x86_64   "/var/rapid/aws-lamb…"   4 minutes ago   Up 4 minutes   127.0.0.1:8147->8080/tcp   optimistic_keldysh
+```
+
+Mając identyfikator kontenera kopiujemy dane profilera CPU - `docker cp 1471d2f8681f:/tmp/profiling ./profile` i wywołujemy narzędzie go pprof - `go tool pprof -http=:8080 ./profile`.
+
+Uruchomi się strona z danymi profilera. Wybieramy widok "Flame Graph". 
+W moim przypadku po wybraniu gorutine odpowiadającej za przetworzenia jednego zdarzenia S3 otrzymałem dane jak poniżej:
+
+![aws lambda go cpu profiling](images/aws-lambda-go-cpu-profiling.png)
