@@ -110,6 +110,8 @@ Unikaj automatycznie generowanych identyfikatorów:
 
 Encje powinny być użyte tylko do zapisu. W przypadku odczytów powniśmy zwracać DTO.
 
+W przypadku gdy klient przesyła nam drugi raz ten sam numer zadania, wysyłamy mu ten sam response co za pierwszym razem. [AWS re:Invent 2022 - Building next-gen applications with event-driven architectures (API311-R)](https://youtu.be/SbL3a9YOW7s?t=2635)
+
 ## ADR - Architectural Decision Records
 
 Każdą decyzję architektoniczną powinniśmy dokumentować w ADR - Architectural Decision Records.
