@@ -68,3 +68,5 @@ Aktywujemy ten efekt poprzez wciśnięcie kombinacji klawiszy `Meta (Windows key
 Yakuake Full screen - `Ctrl+Shift+F11`
 
 KWin Overview effect - `Meta (Windows key) + w`
+
+Windows Tiling - `Meta (Windows key) + t`
