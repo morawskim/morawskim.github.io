@@ -17,7 +17,7 @@ Moja funckja wyzwalana jest przez usługę AWS S3, gdy pojawią się nowe zdjęc
 ```
 {
   "lambdaARN": "arn:aws:lambda:eu-central-1:111222333444:function:thumbnails-ThumbnailsFunction-XXXXXXXX",
-  "powerValues": [256, 512, 1024, 1536, 2048, 3008],
+  "powerValues": [256, 512, 1024, 1536, 1769, 2048, 3008],
   "num": 20,
   "payload": {
     "Records": [
@@ -71,3 +71,4 @@ W danych wyjściowych otrzymamy adres URL do [wykresu](https://lambda-power-tuni
 ![graph](images/aws-lambda-power-tuning/graph.png)
 
 Funkcja generuje miniaturkę i konwertuje zdjęcie to są to zadania obciążające głównie CPU, stąd czas wykonania zadania maleje aż do osiągnięcia wydajności pełnego rdzenia i po osiągnięciu tego poziomu wzrost wydajności jest minimalny.
+Obecnie zgodnie z [dokumentacją](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html), aby osiągnąć wydajność 1vCPU musimy przydzielić 1769 MB pamięci do funkcji.
