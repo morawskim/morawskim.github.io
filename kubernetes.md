@@ -66,7 +66,7 @@ Komenda `kubectl get componentstatues` (lub w skórcie `kubectl get cs`) podaje 
 
 `kubectl top nodes/pod` pokaże CPU oraz ilość pamięci każdego węzła/poda oraz ilość aktualnie używanego
 
-`kubectl debug -it <pod-name> --image=busybox --target=<pod-name>` - debugowanie kontenera, który jest distroless (nie zawiera powłoki) poprzez dołączenie nowego kontenera do działającego poda. Nie wszystkie środowiska uruchomieniowe kontenera obsługują tą funkcję
+`kubectl debug -it <pod-name> --image=busybox --target=<pod-name>` - debugowanie kontenera, który jest distroless (nie zawiera powłoki) poprzez dołączenie nowego kontenera do działającego poda. Nie wszystkie środowiska uruchomieniowe kontenera obsługują tą funkcję. Przykłady użycia polecenia debug dostępne są także w [dokumentacji](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#debug).
 
 `kubectl get events -A --sort-by=.metadata.creationTimestamp` - wyświetlenie zdarzeń klastra (wszystkie przestrzenie nazw) posortowanych po dacie utworzenia
 
