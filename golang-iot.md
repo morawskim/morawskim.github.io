@@ -1,5 +1,15 @@
 # Golang Internet rzeczy
 
+## Mniejszy pliki wynikowy
+
+Pliki wykonywalne Go są "ciężkie" i prosty program może zajmować parę megabajtów.
+Generuje to problemy, gdy taki program chcemy wrzucić na urządzenia wbudowane.
+Możemy zbudować lżejszy program ustawiając flagę dla ld - `go build -ldflags="-s"`.
+
+Wywołując polecenie `man ld` możemy się dowiedzieć że flaga `-s` pomija wszystkie informacje o symbolach z pliku wyjściowego.
+
+W jednym z projektów wielkość pliku wynikowego spadła z 12Mb do 7,7Mb.
+
 ## Gobot Bluetooth LE
 
 Pakiet [Gobot Bluetooth LE](https://gobot.io/documentation/platforms/ble/) pozwala nam podłączyć się do 
