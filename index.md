@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2023-05
+[Android debloating](android-debloating.md)
 [Android Termux](android-termux.md)
 [Golang HTTP](golang-http.md)
 [Go unit tests/benchmark](golang-unit-tests.md)
