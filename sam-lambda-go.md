@@ -35,6 +35,28 @@ Jeśli chcemy opublikować nową wersję to do polecenia dodajemy flagę `--publ
 
 [Deploy Go Lambda functions with .zip file archives](https://docs.aws.amazon.com/lambda/latest/dg/golang-package.html)
 
+## Obraz kontenera
+
+AWS nie dostarcza oddzielnego interfejsu wykonawczego dla Go. Pakiet `aws-lambda-go/lambd` zawiera wbudowaną obsługę tego interfejsu.
+Podczas budowania obrazu kontenera, wystarczy że instrukcja CMD będzie wskazywać na plik wykonalny Go.
+
+```
+FROM public.ecr.aws/bitnami/golang:1.19 as build-image
+
+WORKDIR /go/src
+COPY go.mod go.sum main.go ./
+
+RUN go build -o ../bin/main
+
+FROM public.ecr.aws/lambda/go:1
+
+COPY --from=build-image /go/bin/ /var/task/
+
+# Command can be overwritten by providing a different command in the template directly.
+CMD ["main"]
+```
+
+[Deploy Go Lambda functions with container images](https://docs.aws.amazon.com/lambda/latest/dg/go-image.html)
 
 ## CPU profiling
 
