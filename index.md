@@ -1,6 +1,9 @@
 Hello
 =====
 
+##2023-06
+[KVM, qemu i x86-64-v2](kvm-qemu-i-x86-64-v2.md)
+
 ##2023-05
 [Android debloating](android-debloating.md)
 [Android Termux](android-termux.md)
