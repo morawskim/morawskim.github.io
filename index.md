@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2023-06
+[Go i cgo](golang-cgo.md)
 [KVM, qemu i x86-64-v2](kvm-qemu-i-x86-64-v2.md)
 
 ##2023-05
