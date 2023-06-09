@@ -1,5 +1,7 @@
 # Go i cgo
 
+[Go & cgo: integrating existing C code with Go](https://akrennmair.github.io/golang-cgo-slides)
+
 ## Pakiet C
 
 W celu integracji kodu Go z C korzystamy z pseudo pakietu "C".
