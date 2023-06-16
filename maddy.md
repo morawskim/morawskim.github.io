@@ -70,3 +70,5 @@ Wysyłamy email z innego konta, w logach maddy powinniśmy mieć wpisy:
 ## Testowanie serwera pocztowego
 
 Wykorzystując [usługę online](https://en.internet.nl/test-mail/) możemy przetestować nasz utworzony serwer pocztowy pod kątem wykorzystania dobrych praktyk i zalecanych ustawień bezpieczeństwa.
+
+Usługa [mail-tester](https://www.mail-tester.com/) ocenia przesłaną wiadomość email pod kontem spamu.
