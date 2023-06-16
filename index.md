@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2023-06
+[Google Chrome](chrome.md)
 [Maddy - serwer pocztowy all-in-one](maddy.md)
 [ansible i goss](ansible-goss.md)
 [Go i cgo](golang-cgo.md)
@@ -429,7 +430,7 @@ Hello
 [Budowanie książki TypeScript Handbook za pomocą gitbook](budowanie-ksiazki-typescript-handbook-za-pomoca-gitbook.md)
 [Regex - snippets](regex-snippets.md)
 [linux - zmiana języka systemu](linux-zmiana-jezyka-systemu.md)
-[Chrome/Chromium - flagi](chrome-chromium-flagi.md)
+[Chrome/Chromium - flagi](chrome.md)
 [Docker - dostęp do portu hosta z kontenera](docker-dostep-do-portu-hosta-z-kontenera.md)
 [Ustawienie limitu na wielkość ciała żadania HTTP](ustawienie-limitu-na-wielkosc-ciala-zadania-http.md)
 [yii2 - nadpisanie konfiguracji AssetBundle](yii2-nadpisanie-konfiguracji-assetbundle.md)
@@ -619,7 +620,7 @@ Hello
 [Vim - odczyt z stdin](Vim_-_odczyt_z_stdin.md)
 
 ## 2016-10
-[Chrome/Chromium proxy](Chrome_SLASH_Chromium_proxy.md)
+[Chrome/Chromium proxy](chrome.md)
 [Git force push & pull](Git_force_push_&_pull.md)
 
 ## 2016-09
