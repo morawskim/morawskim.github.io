@@ -6,6 +6,12 @@
 
 [YubiKey Manager (ykman) CLI and GUI Guide](https://docs.yubico.com/software/yubikey/tools/ykman/webdocs.pdf)
 
+[Using YubiKeys with Fedora](https://docs.fedoraproject.org/en-US/quick-docs/using-yubikeys/)
+
+[Yubico Yubikey Neo Cover](https://www.thingiverse.com/thing:532575)
+
+[YubiKey for SSH, Login, 2FA, GPG and Git Signing](https://ocramius.github.io/blog/yubikey-for-ssh-gpg-git-and-local-login/)
+
 ## OATH
 
 `ykman oath accounts add <ACCOUNT_NAME> <SECRET>` - Dodaje konto z nazwą <ACCOUNT_NAME> i tajnym kluczem <SECRET>
