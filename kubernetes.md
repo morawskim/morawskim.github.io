@@ -96,6 +96,45 @@ Możemy już korzystać z polecenia `kubectl top`.
 
 `minikube image load <obraz-do-prezslania>` - Załaduj obraz do minikube
 
+### Network policy
+
+Domyślna implementacja CNI (Container Network Interface) [nie obsługuje NetwokPolicy](https://minikube.sigs.k8s.io/docs/handbook/network_policy/).
+Możemy włączyć implementacje calico uruchamiając klaster z parametrem cni - `minikube start --cni calico`
+Domyślnie nie istnieje żadna polityka blokująca dostęp do podów - musimy więc ją utworzyć.
+
+
+```
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  creationTimestamp: null
+  labels:
+    app: foo
+  name: networkpolicy
+spec:
+  podSelector:
+    matchLabels:
+      app: foo
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: bar
+      ports:
+        - port: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-ingress
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+```
+
 ## Narzędzia
 
 [Descheduler for Kubernetes](https://github.com/kubernetes-sigs/descheduler)
