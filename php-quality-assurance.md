@@ -222,9 +222,33 @@ services:
 
 ```
 
-Następnie możemy już wywołać polecenie `phpstan`, aby przeanalizować kod.
+### Type coverage analyse
 
-[Adding PHPStan extensions](https://github.com/jakzal/phpqa#adding-phpstan-extensions)
+Wykorzystując pakiet [tomasvotruba/type-coverage](https://github.com/TomasVotruba/type-coverage) możemy weryfikować pokrycie typami.
+Argumenty funkcji/metod powinny być opisane jawnie typami, a nie "mixed". Podobnie tyczy się to właściwości klas, czy zwracanej wartości funkcji/metody.
+
+Jeśli korzystamy z obrazu `jakzal/phpqa:alpine` to wystarczy, że wywołamy poniższe polecenie do zainstalowania tego rozszerzenia PHPStan  `composer global bin phpstan require --with-all-dependencies tomasvotruba/type-coverage`. Tworzymy plik o nazwie `phpstan-type-coverage.neon` i wklejamy poniższą konfigurację:
+
+```
+parameters:
+    customRulesetUsed: true
+
+    paths:
+        - src
+
+    type_coverage:
+            return_type: 80
+            param_type: 80
+            property_type: 80
+includes:
+	- /tools/.composer/vendor-bin/phpstan/vendor/tomasvotruba/type-coverage/config/extension.neon
+
+```
+
+Jeśli analizowanego kodu nie przechowujemy w katalogu `src` to musimy dostosować wartość do naszego projektu.
+Wywołujemy polecenie `phpstan analyse --configuration=phpstan-type-coverage.neon`, aby sprawdzić czy mamy wymagane pokrycie kodu typami.
+
+[How to Measure Your Type Coverage](https://tomasvotruba.com/blog/how-to-measure-your-type-coverage/)
 
 ### PhpStorm
 
