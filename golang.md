@@ -19,7 +19,8 @@ Następnie możemy przeskanować projekt wydając polecenie `~/go/bin/govulnchec
 | Obraz | Opis |
 |-|-|
 | `cgr.dev/chainguard/static:latest` | Obraz do uruchomienia statycznych plików binarnych |
-| `cgr.dev/chainguard/go:1.19` | Obraz do budowania aplikacji Go |
+| `cgr.dev/chainguard/go` | Obraz do budowania aplikacji Go. **UWAGA** [Od 16 Sierpnia 2023 użytkownicy bez subskrypcji będą w stanie pobierać obrazy tylko z tagiem](https://www.chainguard.dev/unchained/scaling-chainguard-images-with-a-growing-catalog-and-proactive-security-updates) `latest` lub `latest-dev`. |
+| `golang:1.20` | [Oficjalny obraz Go](https://hub.docker.com/_/golang) |
 
 Przykładowy Dockerfile
 
@@ -27,9 +28,7 @@ Kontener do budowania aplikacji Go musiałem odpalić z uprawnieniami root, inac
 Ten problem został już zgłoszony [File permission errors trying to build with go image #16](https://github.com/chainguard-images/go/issues/16)
 
 ```
-FROM cgr.dev/chainguard/go:1.19 as build
-USER root
-
+FROM golang:1.20 as build
 WORKDIR /work
 
 COPY . .
