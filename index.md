@@ -2,6 +2,7 @@ Hello
 =====
 
 ##2023-07
+[RabbitMQ delay](rabbitmq.md#Delay)
 [Moduły Go](go-mod.md)
 
 ##2023-06

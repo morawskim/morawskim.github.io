@@ -70,3 +70,39 @@ Parametry `net.core.rmem_default` i `net.core.rmem_max` możemy zwiększyć z do
 ## Docker
 
 `docker exec <container-name> rabbitmq-plugins enable rabbitmq_stream` - polecenie do włączenia obsługi strumieni
+
+## Delay
+
+RabbitMQ domyślnie nie obsługuje funkcji opóźnienia dostarczenia wiadomości do konsumera (ang. delay).
+Chciałem wyłączyć kamerę do nagrywania wideo po spakowaniu zamówienia i upłynięciu paru sekund.
+Istnieje [plugin](https://github.com/rabbitmq/rabbitmq-delayed-message-exchange), ale zamiast instalacji pluginu możemy wykorzystać TTL wiadomości i dead letter exchange.
+
+[Transport AMPQ dla symfony/messenger](https://github.com/symfony/amqp-messenger/blob/54a04a295f52e8c5567e11748b4d5c06724cadb5/Transport/Connection.php)
+wykorzystuje TTL i x-dead-letter-exchange do obsługi "stempla" Delay.
+
+Cały mechanizm działania możemy opisać w poniższy sposób:
+Deklarujemy kolejkę z właściwością `x-dead-letter-exchange`, `x-dead-letter-routing-key` i `x-message-ttl` ([createDelayQueue](https://github.com/symfony/amqp-messenger/blob/54a04a295f52e8c5567e11748b4d5c06724cadb5/Transport/Connection.php#L384)).
+Przesłane komunikaty, gdy wygasną zostaną wysłane do exchange ustawionego przez właściwość `x-dead-letter-exchange` wykorzystując przekazany routing key.
+
+```
+$channel->queue_declare(
+    $queueName,
+    false,
+    true,
+    false,
+    false,
+    false,
+    [
+        'x-message-ttl'             => ['I', $delay],
+        'x-dead-letter-exchange'    => ['S', $this->destinationExchange],
+        'x-dead-letter-routing-key' => ['S', $routingKey],
+        'x-expires'                 => ['I', $expiration],
+    ]
+);
+```
+
+[RabbitMQ delayed messages without delayed message plugin](https://medium.com/@ektaros/rabbitmq-delayed-messages-without-delayed-plugin-94f0e65ea4b0)
+
+[RabbitMQ Delayed Messages 101: How to Delay & Schedule Messages Made Easy](https://hevodata.com/learn/rabbitmq-delayed-message/)
+
+[Delayed messages with RabbitMQ](https://www.cloudamqp.com/docs/delayed-messages.html)
