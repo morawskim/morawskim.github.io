@@ -2,10 +2,13 @@ Hello
 =====
 
 ##2023-07
+
+[OAuth client credentials flow](oauth.md#client-credentials-flow-keycloak-i-jetbrains-http-client)
 [RabbitMQ delay](rabbitmq.md#Delay)
 [Moduły Go](go-mod.md)
 
 ##2023-06
+
 [Google Chrome](chrome.md)
 [Maddy - serwer pocztowy all-in-one](maddy.md)
 [ansible i goss](ansible-goss.md)
@@ -13,6 +16,7 @@ Hello
 [KVM, qemu i x86-64-v2](kvm-qemu-i-x86-64-v2.md)
 
 ##2023-05
+
 [Android debloating](android-debloating.md)
 [Android Termux](android-termux.md)
 [Golang HTTP](golang-http.md)
@@ -20,6 +24,7 @@ Hello
 [MongoDB zagnieżdzone dokumenty w kolekcji](mongodb-zagniezdzone-dokumenty-w-kolekcji.md)
 
 ##2023-04
+
 [aws-lambda-power-tuning](aws-lambda-power-tuning.md)
 [AWS SAM & Lambda & Go](sam-lambda-go.md)
 [GitHub Actions szablony](github-actions-szablony.md)
@@ -27,6 +32,7 @@ Hello
 [Docker - debugowanie kontenerów distroless](docker-debugowanie-kontenerow-distroless.md)
 
 ##2023-03
+
 [mjml](mjml.md)
 [Redis - Klucze bez daty wygaśnięcia](redis.md#Klucze_bez_daty_wygaśnięcia)
 
