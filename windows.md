@@ -14,7 +14,7 @@
 
 `Diagnostic Data Viewer` - [Przeglądarka danych diagnostycznych, które Microsoft zbiera z systemu Windows i pakietu Office](https://apps.microsoft.com/store/detail/diagnostic-data-viewer/9N8WTRRSQ8F7?hl=pl-pl&gl=pl&rtc=1)
 
-`Driver Booster 10` -  narzędzie umożliwiające aktualizowanie sterowników do urządzeń jednym kliknięciem
+`Driver Booster 10` -  [narzędzie umożliwiające aktualizowanie sterowników do urządzeń jednym kliknięciem](https://www.iobit.com/pl/driver-booster.php)
 
 ## PortableApps
 
