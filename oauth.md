@@ -20,8 +20,10 @@ Content-Type: application/x-www-form-urlencoded
 
 grant_type=client_credentials
 
+{% raw %}
+{# the raw tag is only for fix build, this is not part of http client file #}
 > {% client.global.set('access_token', response.body.access_token) %}
-
+{% endraw %}
 ```
 
 ```
@@ -30,6 +32,8 @@ Content-Type: application/x-www-form-urlencoded
 
 grant_type=client_credentials&client_id=CLIENT_ID&client_secret=CLIENT_SECRET
 
+{% raw %}
+{# the raw tag is only for fix build, this is not part of http client file #}
 > {% client.global.set('access_token', response.body.access_token) %}
-
+{% endraw %}
 ```
