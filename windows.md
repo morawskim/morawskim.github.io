@@ -92,6 +92,10 @@ bootrec /RebuildBcd
 
 `Win + PrintScreen` – tworzenie zrzutu ekranu i zapisanie go w katalogu Obrazy/Zrzuty ekranu.
 
+`Win + Shift + S` - szybki dostęp do wbudowanego w system narzędzia Wycinanie
+
+`Windows + K` - umożliwia przesyłanie obrazu do innego urządzenia
+
 ## Narzędzia diagnostyczne
 
 ### Niezawodność
