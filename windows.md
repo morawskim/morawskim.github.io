@@ -125,3 +125,41 @@ Wywołując ponownie polecenie `sudo ntfsfix /dev/partycjaDyskuZSystememPlikowNT
 >NTFS partition /dev/sda2 was processed successfully
 
 Możemy także uruchomić system Windows w trybie awaryjnym i wywołać z konsoli z uprawnieniami administratora polecenie `chkdsk DiskLetter: /f`
+
+## Wyświetlacz bezprzewodowy Miracast
+
+System Windows ma wyłączoną funkcję wyświetlacza bezprzewodowego, a po jej włączeniu możemy przesyłać obraz z innego komputera Windows albo telefonu (urządzenia muszą być podłączone do tej samej sieci WiFi).
+
+Wchodzimy do Ustawień, a następnie do działu "System" i z menu po lewej wybieramy "Wyświetlanie na tym komputerze" (ang. Projecting to this PC).
+
+![Windows - Ustawienia - Wyświetlanie na tym komputerze](images/windows/ustawienia.png)
+
+Musimy zainstalować dodatkową funkcję Windows "Wyświetlacz bezprzewodowy".
+Klikamy link i w polu tekstowym wpisujemy "bezprzewodowy" zaznaczamy szukaną opcję i ją instalujemy.
+
+![Windows - Ustawienia - Wyświetlanie na tym komputerze](images/windows/funckje-windows.png)
+
+Zmieniamy ustawienia pierwszej opcji na włączone. Pozostałe opcje ustawiamy według uznania.
+Następnie uruchamiamy aplikację "Połącz", aby oczekiwać na klientów.
+
+[Screen mirroring and projecting to your PC](https://support.microsoft.com/en-us/windows/screen-mirroring-and-projecting-to-your-pc-5af9f371-c704-1c7f-8f0d-fa607551d09c)
+
+### Klient
+
+Na telefonie Android w ustawieniach szukamy opcji "Przesyłanie ekranu" albo "Miracast".
+Wybieramy nasz wyświetlacz i podłączamy się do niego.
+
+![Android - Przesyłanie ekranu](images/windows/android.jpg)
+
+Na innym systemie Windows, naciskamy jednocześnie klawisze `Windows + k`.
+Po prawej stronie pojawi się panel z opcja do podłączenia do zdalnego wyświetlacza.
+
+![Windows - połącz z zdalnym ekranem](images/windows/windows.png)
+
+### Troubleshooting
+
+Miracast korzysta z funkcji Wi-Fi Direct, dlatego karta sieciowa Wi-fi musi być z nią kompatybilna. W systemie Windows uruchamiamy konsole i wywołujemy polecenie `ipconfig /all`. Jeśli na liście widzimy "Microsoft Wi-Fi Direct Virtual Adapter" to znaczy, że nasz karta obsługuje Wi-Fi Direct. Inną opcją jest sprawdzenie, czy Windows nie wyświetla jakiegoś komunikatu przy wyświetlaniu panelu Połącz (`Windows + k`).
+
+W moim przypadku na Windowsie, na którym skonfigurowałem bezprzewodowy ekran (przed połączeniem pierwszego klienta), otrzymywałem komunikat w stylu "Twój komputer lub urządzenie mobilne nie obsługuje Miracast". Rozwiązaniem było rozłączenie się z siecią WiFi. Wtedy mój ekran był widoczny na pozostałych urządzeniach, a następnie ponownie połączenie się z siecią WiFi.
+
+Niektórzy także polecają zmodyfikowanie ustawień karty WiFi. Uruchamiamy "Menedżera urządzeń" (`devmgmt.msc`). Szukamy naszej karty WiFi i klikamy na nią prawym przyciskiem myszy i wybieramy opcje "Właściwości". Na ekranie Właściwości karty sieciowej przechodzimy do karty "Zaawansowane" i dla pola "Wybór trybu bezprzewodowego" wybieramy "Auto" .

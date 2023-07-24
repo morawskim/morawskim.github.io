@@ -3,6 +3,7 @@ Hello
 
 ##2023-07
 
+[Windows - Wyświetlacz bezprzewodowy Miracast](windows.md#Wyświetlacz_bezprzewodowy_Miracast)
 [OAuth client credentials flow](oauth.md#client-credentials-flow-keycloak-i-jetbrains-http-client)
 [RabbitMQ delay](rabbitmq.md#Delay)
 [Moduły Go](go-mod.md)
