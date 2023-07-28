@@ -16,6 +16,7 @@
 | `Ctrl + F12` | Przejdź do określonej metody, pola, właściwości w bieżącym dokumencie |
 | ``Ctrl + ` `` | Przełącz między różnymi schematami kolorów, układami klawiatury i wyglądem |
 | `CTRL + ALT + SHIFT + [DOWN | UP]` | Przejdź do następnej/poprzedniej zmiany w edytorze |
+| `CTRL + SHIFT + [F7]` | Zaznacz użycia np. zmiennej w pliku. Wciskając klawisz `[F3]` przejdziemy do następnego użycia. |
 
 [PHP STORM – SKRÓTY KTÓRE WARTO ZNAĆ](https://totylkokod.pl/baza-wiedzy/php-storm-skroty-ktore-warto-znac/)
 [Editor Tips and Tricks in IntelliJ IDEA](https://blog.jetbrains.com/idea/2020/08/editor-tips-and-tricks-in-intellij-idea/)
