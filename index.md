@@ -1,6 +1,10 @@
 Hello
 =====
 
+##2023-08
+
+[Docker budowanie obrazu multiplatform](docker-budowanie-obrazu-multiplatform.md)
+
 ##2023-07
 
 [Windows - Wyświetlacz bezprzewodowy Miracast](windows.md#Wyświetlacz_bezprzewodowy_Miracast)
