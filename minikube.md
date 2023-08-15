@@ -51,3 +51,13 @@ spec:
   policyTypes:
   - Ingress
 ```
+
+## Apiserver
+
+Api serwera Kubernetesa działa na podzie `kube-apiserver-minikube` w przestrzeni nazw `kube-system`. Możemy pobrać definicję tego poda korzystając z standardowego polecenia `kubectl get pod -n kube-system kube-apiserver-minikube -o yaml`.
+
+Dostępne argumenty modyfikujące działanie API, możemy wyświetlić wywołując polecenie `kubectl exec -n kube-system kube-apiserver-minikube -it -- kube-apiserver -h`
+
+Podczas startu minikube możemy [zmodyfikować lub dodać argumenty serwera API](https://minikube.sigs.k8s.io/docs/handbook/config/#modifying-kubernetes-defaults) - `minikube start --extra-config=apiserver.KEY=VALUE`, gdzie `KEY` to argument a `VALUE` to wartość.
+
+Możemy także wyświetlić tylko polecenie i argumenty serwera API `kubectl get pod -n kube-system kube-apiserver-minikube -o custom-columns=cmd:.spec.containers[].command`.
