@@ -103,6 +103,8 @@ Korzystając z polecenia `kubectl -n MY_NAMESPACE get deployments` możemy pobra
 
 [rainbow deploys](https://github.com/bdimcheff/rainbow-deploys) - are like Blue/Green deploys, but instead of just two environments, there are an infinite number of colors. Kubernetes makes this pretty easy to do.
 
+[https://editor.networkpolicy.io/](Network Policy Editor for Kubernetes)
+
 ## Książki
 
 John Arundel i Justin Domingus, _Kubernetes - rozwiązania chmurowe w świecie DevOps. Tworzenie, wdrażanie i skalowanie nowoczesnych aplikacji chmurowych_, Helion
