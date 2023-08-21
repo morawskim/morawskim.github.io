@@ -11,8 +11,6 @@ pods metrics.k8s.io/v1beta1 true PodMetrics
 
 Możemy już korzystać z polecenia `kubectl top`.
 
-`minikube image load <obraz-do-prezslania>` - Załaduj obraz do minikube
-
 ### Network policy
 
 Domyślna implementacja CNI (Container Network Interface) [nie obsługuje NetwokPolicy](https://minikube.sigs.k8s.io/docs/handbook/network_policy/).
@@ -61,3 +59,10 @@ Dostępne argumenty modyfikujące działanie API, możemy wyświetlić wywołuj�
 Podczas startu minikube możemy [zmodyfikować lub dodać argumenty serwera API](https://minikube.sigs.k8s.io/docs/handbook/config/#modifying-kubernetes-defaults) - `minikube start --extra-config=apiserver.KEY=VALUE`, gdzie `KEY` to argument a `VALUE` to wartość.
 
 Możemy także wyświetlić tylko polecenie i argumenty serwera API `kubectl get pod -n kube-system kube-apiserver-minikube -o custom-columns=cmd:.spec.containers[].command`.
+
+## Obrazy kontenerów
+
+Do minikube za pomocą polecenia `minikube image load <obraz-do-prezslania>` możemy przesłać zbudowany lokalnie obraz "<obraz-do-prezslania>" i wykorzystać go w klastrze K8s.
+Należy tylko pamiętać, aby w definicji kontenera ustawić `imagePullPolicy` na `Never`. W przeciwnym przypadku K8s będzie próbował pobrać nowszą wersję obrazu z zdalnych repozytoriów.
+
+[Pushing images](https://minikube.sigs.k8s.io/docs/handbook/pushing/)
