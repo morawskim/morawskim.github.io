@@ -2,17 +2,18 @@
 
 ## Przykładowy szablon manifestu
 
+### PHP
+
 ```
 namespace: okteto
 # the name of the Kubernetes deployment
 name: podinfo
 container: container-name
 command: /usr/local/sbin/php-fpm --nodaemonize
-# The local port to use for SSH communication with your development environment
-remote: 2222
 metadata:
   annotations:
     fluxcd.io/ignore: "true"
+    kustomize.toolkit.fluxcd.io/reconcile: disabled
 sync:
   - .:/app
 persistentVolume:
@@ -28,6 +29,36 @@ environment:
   XDEBUG_MODE: develop,debug
   PHP_IDE_CONFIG:serverName=some-name
 
+```
+
+### Go
+
+```
+namespace: default
+# the name of the Kubernetes deployment
+name: some-name
+image: okteto/golang:1
+command: bash
+
+metadata:
+  annotations:
+    fluxcd.io/ignore: "true"
+    kustomize.toolkit.fluxcd.io/reconcile: disabled
+
+persistentVolume:
+  enabled: true
+volumes:
+  - /go
+sync:
+  - .:/usr/src/app
+
+securityContext:
+  capabilities:
+    add:
+      - SYS_PTRACE
+
+forward:
+  - 2345:2345
 ```
 
 ## Problemy z synchronizacją plików
