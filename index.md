@@ -3,6 +3,7 @@ Hello
 
 ##2023-08
 
+[Debug docker build](docker-build-debug.md)
 [minikube](minikube.md)
 [Docker budowanie obrazu multiplatform](docker-budowanie-obrazu-multiplatform.md)
 
