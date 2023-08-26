@@ -18,6 +18,7 @@ Następnie możemy przeskanować projekt wydając polecenie `~/go/bin/govulnchec
 
 | Obraz | Opis |
 |-|-|
+| `gcr.io/distroless/static-debian11` | Obraz do uruchomienia statycznych plików binarnych |
 | `cgr.dev/chainguard/static:latest` | Obraz do uruchomienia statycznych plików binarnych |
 | `cgr.dev/chainguard/go` | Obraz do budowania aplikacji Go. **UWAGA** [Od 16 Sierpnia 2023 użytkownicy bez subskrypcji będą w stanie pobierać obrazy tylko z tagiem](https://www.chainguard.dev/unchained/scaling-chainguard-images-with-a-growing-catalog-and-proactive-security-updates) `latest` lub `latest-dev`. |
 | `golang:1.20` | [Oficjalny obraz Go](https://hub.docker.com/_/golang) |
