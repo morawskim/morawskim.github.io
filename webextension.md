@@ -135,3 +135,30 @@ Finalnie możemy w pliku `package.json`  i sekcji "scripts" dodać akcję `sign`
 }
 
 ```
+
+## Konfiguracja rozszerzenia
+
+Do manifestu dodajemy uprawnienie "storage" (aby odczytywać i zapisywać konfigurację rozszerzenia), a także tworzymy nowe sekcje aby wyświetlić formularz konfiguracyjny.
+
+```
+{
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "<UUID_ROZSZERZENIA_ALBO_EMAIL>"
+    }
+  }
+}
+```
+
+Tworzymy plik HTML `options.html` z formularzem konfiguracyjnym. Możemy wzorować się na artykule [Implement a settings page](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Implement_a_settings_page).
+
+W pliku JS rozszerzenia możemy pobrać ustawienia za pomocą metody get: `await browser.storage.sync.get({url: "domyslna-wartosc"});`.
+Budujemy rozszerzenie, uruchamiamy przeglądarkę Firefox i wchodzimy na stronę `about:addons`.
+Wybieramy nasze rozszerzenie i przechodzimy do zakładki "Preferences".
+Pojawi się nasz formularz konfiguracyjny rozszerzenia.
+
+[storage API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage)
