@@ -12,6 +12,9 @@
 
 [YubiKey for SSH, Login, 2FA, GPG and Git Signing](https://ocramius.github.io/blog/yubikey-for-ssh-gpg-git-and-local-login/)
 
+`lsusb -v 2>/dev/null | grep -A2 Yubico | grep "bcdDevice" | awk '{print $2}'` - Wyświetla wersję firmware
+
+
 ## OATH
 
 `ykman oath accounts add <ACCOUNT_NAME> <SECRET>` - Dodaje konto z nazwą <ACCOUNT_NAME> i tajnym kluczem <SECRET>
@@ -77,6 +80,8 @@ Jeśli tego nie zrobimy otrzymamy błąd:
 
 W moim przypadku moduł FIDO2 już miał skonfigurowany PIN. W przypadku braku pinu, być może niezbędne będzie ustawienie go. Za pomocą polecenia `ykman fido info` możemy wyświetlić informacje, czy mamy skonfigurowany PIN.
 Wyświetli się "PIN is not set" lub "PIN is set, with 8 attempt(s) remaining.".
+
+Aby dodać kolejny klucz do konta użytkownika wywołujemy polecenie `pamu2fcfg --nouser --pin-verification >> ~/.config/Yubico/u2f_keys`.
 
 W zależności od dystrybucji modyfikacja konfiguracji PAM możemy się trochę różnić.
 **Przed wykonaniem kolejnych kroków warto mieć uruchomioną oddzielną sesje z uprawnieniami administracyjnymi, aby móc wycofać zmiany, jeśli coś nie zadziała**
