@@ -222,6 +222,25 @@ services:
 
 ```
 
+### Porady
+
+### Stub file
+
+PHPStan wykorzystuje komentarze PHPDoc w trakcie analizy kodu. Zewnętrzne biblioteki mogą nie zawierać komentarzy PHPDoc. choć dzięki obsłudze natywnych typów w PHP, problemy najczęściej dotyczą braku wsparcia dla typów generycznych.
+
+Aby temu zaradzić, możemy  utworzyć tak zwanych [stub file](https://phpstan.org/user-guide/stub-files). Najelpiej wzorować się na [przykładach z PHPStan](https://github.com/phpstan/phpstan-src/tree/4caad035e394adb2f25d18543fc30526e78db97e/stubs) albo [rozszerzenia dla Doctrine](https://github.com/phpstan/phpstan-doctrine/tree/cba50e9ad665687547e476ebd877cb4a3c8d798c/stubs).
+
+### Funkcja dumpType
+
+PHPStan dostarcza funkcję `\PHPStan\dumpType`, która wyświetla jaki typ widzi PHPStan. Wynik wyświetlany jest w raporcie analizowanego kodu.
+
+> Line   PHPFile.php
+> ------ --------------------
+> 23     Dumped type: App\Foo\Bar
+
+### Alias
+Możemy definiować alias typu wykorzystując adnotację `@phpstan-type NaszaNazwaAliasu typ`. Taki alias możemy wykorzystać także poza klasą importując go za pomocą adnotacji `@phpstan-import-type NAZWA_ALIASU from FullyQualifiedClassName`.
+
 ### Type coverage analyse
 
 Wykorzystując pakiet [tomasvotruba/type-coverage](https://github.com/TomasVotruba/type-coverage) możemy weryfikować pokrycie typami.
