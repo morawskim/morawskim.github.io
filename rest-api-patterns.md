@@ -1,5 +1,11 @@
 # REST API patterns
 
+## OpenAPI
+
+* Schemat OpenAPI możemy zweryfikować pod kątem dobrych praktyk/potencjalnych problemów korzystając z lintera [vacuum](https://github.com/daveshanley/vacuum)
+
+* Korzystając z [Prism](https://github.com/stoplightio/prism) możemy przetestować kontrakt API wykorzystując do tego celu serwer proxy - [Prism proxy](/#!prism.md)
+
 ## Filtrowanie
 
 Często spotykaną metodą filtrowania po atrybutach są nawiasy kwadratowe np. `price[gte]=80&price[lte]=100`. Zapomocą funkcji PHP `parse_str` możemy przekształcić ciąg znaków w tablicę - [http://sandbox.onlinephpfunctions.com/code/e560be2f22942766451358db85bb3c4fc09b11f9](http://sandbox.onlinephpfunctions.com/code/e560be2f22942766451358db85bb3c4fc09b11f9). Możemy więc zaimplementować dla atrybutu różne operatory jak np. `gt` ale też `contains` czy `after` dla dat. Framework API Platform korzysta z tego rozwiązania.
