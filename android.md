@@ -11,3 +11,4 @@
 | [Mr. Number](https://play.google.com/store/apps/details?id=com.mrnumber.blocker&hl=pl&gl=US) | Aplikacja służąca do identyfikacji numerów dzwoniących do nas osób + blokowanie |
 | [Adobe Scan](https://play.google.com/store/apps/details?id=com.adobe.scan.android&hl=pl&gl=US) | Mobilny skaner dokumentów |
 | [USB OTG Checker](https://play.google.com/store/apps/details?id=com.faitaujapon.otg&hl=pl&gl=US) |  Sprawdza, czy telefon jest zgodny z urządzeniami USB OTG. |
+| [Kiwi Browser](https://play.google.com/store/apps/details?id=com.kiwibrowser.browser&hl=pl&gl=US) |  Przeglądarka bazująca na Chromium z wbudowaną obsługą DevTool. |
