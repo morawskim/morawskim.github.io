@@ -2,6 +2,11 @@
 
 [Stimulus](https://stimulus.hotwired.dev/) to framework JavaScript dla aplikacji, które budują HTML po stronie serwera.
 
+Aby nasłuchiwać na zdarzenia elementu window lub document, musimy dodać `@window` albo `@document` do typu zdarzenia np. `resize@window`. 
+Podobnie jeśli jeden kontroler publikuje zdarzenie, a drugi kontroler, który nie jest przodkiem i chce nasłuchiwać na te zdarzenie musi zawierać sufix `@window` np. `app:new-task@window`.
+
+Za pomocą właściwości statycznej classes ([CSS Classes](https://stimulus.hotwired.dev/reference/css-classes)) możemy nazwy klas CSS trzymać w pliku HTML, a nie JavaScript.
+
 ## Demo Todo app
 
 [Demo](https://codepen.io/morawskim/pen/qBLLOgv)
