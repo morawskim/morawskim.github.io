@@ -94,3 +94,138 @@ Następnie dodajemy kod HTML formularza i listy zadań.
     <ul data-controller="task-list" data-action="app:new-task@window->task-list#appendTask"></ul>
 </div>
 ```
+
+## Lazy load
+
+Symfony utrzymuje pakiet [symfony/stimulus-bundle](https://github.com/symfony/stimulus-bundle), który zawiera kasę JavaScript do [wczytywania kontrolerów Stimulus na żądanie](https://github.com/symfony/stimulus-bundle/blob/2.x/assets/src/loader.ts).
+
+Nawet jeśli nie korzystamy z Symfony, ani Webpack to możemy zmigrować te rozwiązanie na czysty JavaScript, moduły ECMAScript i importmap.
+W pliku HTML musimy mieć definicję importmap np.
+
+```
+<script type="importmap">
+{
+    "imports": {
+        "@hotwired/stimulus": "https://cdn.jsdelivr.net/npm/stimulus@3.2.2/+esm",
+         "@app/controllers/": "./controllers/"
+    }
+}
+</script>
+```
+
+Następnie w katalogu `controllers` tworzymy nasze kontrolery np. `controllers/foo.js`.
+Tworzymy plik `controller/lazyControllerLoader.js` i wrzucamy z drobnymi zmianami kodu z bundle Symfony.
+Jedyna zmiana na zastosowanie słowa kluczowego `import` do dynamicznego ładowania modułów ECMAScript i pozbycie się typowania TypeScript.
+
+```
+// code from https://github.com/symfony/stimulus-bundle/blob/d7681325aceb02c3203d74f248bb621b9040c75c/assets/src/loader.ts
+
+const controllerAttribute = 'data-controller';
+
+class StimulusLazyControllerHandler {
+    application;
+    lazyControllers;
+
+    constructor(application, lazyControllers) {
+        this.application = application;
+        this.lazyControllers = lazyControllers;
+    }
+
+    start() {
+        this.lazyLoadExistingControllers(document.documentElement);
+        this.lazyLoadNewControllers(document.documentElement);
+    }
+
+    lazyLoadExistingControllers(element) {
+        this.queryControllerNamesWithin(element).forEach((controllerName) => this.loadLazyController(controllerName));
+    }
+
+    async loadLazyController(name) {
+        if (canRegisterController(name, this.application)) {
+            if (this.lazyControllers[name] === undefined) {
+                return;
+            }
+
+            // change for import module
+            const controllerModule = await import(`@app/controllers/${name}.js`);
+
+            registerController(name, controllerModule.default, this.application);
+        }
+    }
+
+    lazyLoadNewControllers(element) {
+        new MutationObserver((mutationsList) => {
+            for (const { attributeName, target, type } of mutationsList) {
+                switch (type) {
+                    case 'attributes': {
+                        if (
+                            attributeName === controllerAttribute &&
+                            (target).getAttribute(controllerAttribute)
+                    ) {
+                            extractControllerNamesFrom(target).forEach((controllerName) =>
+                                this.loadLazyController(controllerName)
+                            );
+                        }
+
+                        break;
+                    }
+
+                    case 'childList': {
+                        this.lazyLoadExistingControllers(target);
+                    }
+                }
+            }
+        }).observe(element, {
+            attributeFilter: [controllerAttribute],
+            subtree: true,
+            childList: true,
+        });
+    }
+
+    queryControllerNamesWithin(element) {
+        return Array.from(element.querySelectorAll(`[${controllerAttribute}]`))
+            .map(extractControllerNamesFrom)
+            .flat();
+    }
+}
+
+function registerController(name, controller, application) {
+    if (canRegisterController(name, application)) {
+        console.log("register", name);
+        application.register(name, controller);
+    }
+}
+
+function extractControllerNamesFrom(element) {
+    const controllerNameValue = element.getAttribute(controllerAttribute);
+
+    if (!controllerNameValue) {
+        return [];
+    }
+
+    return controllerNameValue.split(/\s+/).filter((content) => content.length);
+}
+
+function canRegisterController(name, application) {
+    // @ts-ignore
+    return !application.router.modulesByIdentifier.has(name);
+}
+
+export default StimulusLazyControllerHandler;
+```
+
+Następnie startujemy aplikację Stimulus i rejestrujemy klasę do wczytywania kontrolerów na żądanie.
+
+```
+<script type="module">
+    import {Application} from '@hotwired/stimulus';
+    import StimulusLazyControllerHandler from '@app/controllers/lazyControllerLoader.js';
+
+    const application = Application.start();
+    const lazyControllerHandler = new StimulusLazyControllerHandler(
+        application,
+        {"foo": 1, "load-content": 1}
+    );
+    lazyControllerHandler.start();
+</script>
+```
