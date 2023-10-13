@@ -97,6 +97,8 @@ Następnie dodajemy kod HTML formularza i listy zadań.
 
 ## Lazy load
 
+[Demo](https://playcode.io/1626964)
+
 Symfony utrzymuje pakiet [symfony/stimulus-bundle](https://github.com/symfony/stimulus-bundle), który zawiera kasę JavaScript do [wczytywania kontrolerów Stimulus na żądanie](https://github.com/symfony/stimulus-bundle/blob/2.x/assets/src/loader.ts).
 
 Nawet jeśli nie korzystamy z Symfony, ani Webpack to możemy zmigrować te rozwiązanie na czysty JavaScript, moduły ECMAScript i importmap.
