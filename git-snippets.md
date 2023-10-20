@@ -134,3 +134,10 @@ git archive master --prefix='PROJEKT/' | gzip > `git describe master`.tar.gz
 ## Lista plików, których nazwa zaczyna się od 'Dockerfile'
 
 `git ls-files --exclude='Dockerfile*' --ignored | xargs --max-lines=1  echo`
+
+## Wczytywanie warunkowo pliku konfiguracyjnego git'a na podstawie ścieżki repozytorium
+
+```
+[includeIf "gitdir:~/projects/client1/"]
+    path = ~/.gitconfig-client1
+```
