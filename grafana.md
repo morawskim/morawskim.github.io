@@ -1,5 +1,31 @@
 # Grafana
 
+## Przykładowa konfiguracja Prometheus'a
+
+Do przeładowania konfiguracji (jeśli nie mamy włączonej opcji przeładowania konfiguracji przez API) - `docker kill -s SIGHUP NAZWA_LUB_ID_KONTENERA_PROMETHEUSA`
+
+```
+global:
+  # How frequently to scrape targets by default.
+  scrape_interval: 1m
+  # How long until a scrape request times out.
+  scrape_timeout: 10s
+
+# A list of scrape configurations.
+scrape_configs:
+  # The job name assigned to scraped metrics by default.
+  - job_name: nodeexporter
+    # How frequently to scrape targets from this job.
+    scrape_interval: 1m
+    # Per-scrape timeout when scraping this job.
+    scrape_timeout: 10s
+    # The HTTP resource path on which to fetch metrics from targets.
+    metrics_path: /metrics
+    # List of labeled statically configured targets for this job.
+    static_configs:
+      - targets: ["nodeexporter:9100"]
+```
+
 ## Szablon dla docker-compose
 
 ```
@@ -58,3 +84,28 @@ volumes:
   grafana:
 
 ```
+
+## Grafana i Prometheus źródło danych
+
+Tworzymy plik `prometheus.yaml` i wklejamy:
+
+```
+apiVersion: 1
+datasources:
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    orgId: 1
+    url: http://prometheus:9090
+    basicAuth: false
+    isDefault: true
+    editable: true
+```
+
+Utworzony plik musimy zamontować do kontenera Grafany `/etc/grafana/provisioning/datasources/prometheus.yaml`.
+
+## Konfiguracja Grafany
+
+Wszystkie opcje dostępne w pliku konfiguracyjnym możemy nadpisać poprzez zmienne środowiskowe korzystając z składki `GF_<SectionName>_<KeyName>` ([Konfiguracja Grafany](https://grafana.com/docs/grafana/latest/installation/configuration/#configure-with-environment-variables)).
+
+Aktualną konfigurację możemy podejrzeć wchodząc na stronę `/admin/settings`.
