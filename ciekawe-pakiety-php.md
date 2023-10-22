@@ -1,5 +1,13 @@
 # Ciekawe pakiety PHP
 
+## php-mock
+
+Mock built-in PHP functions (e.g. time(), exec() or rand()).
+
+`composer require --dev php-mock/php-mock`
+
+[php-mock/php-mock](https://github.com/php-mock/php-mock)
+
 ## phpunit-speedtrap
 
 SpeedTrap reports on slow-running PHPUnit tests right in the console.
