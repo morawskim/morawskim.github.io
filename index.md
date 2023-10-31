@@ -3,6 +3,7 @@ Hello
 
 ##2023-10
 
+[acpid](acpid.md)
 [DNSSEC](dnssec.md)
 [udev](udev.md)
 [ffmpeg](ffmpeg.md)
