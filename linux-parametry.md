@@ -18,6 +18,8 @@ TCP posiada również mechanizm restartowania powolnego startu (`SSR` - ang. slo
 
 `sysctl net.ipv4.tcp_slow_start_after_idle` powinno zwracać wartość 0.
 
+`net.ipv4.tcp_max_syn_backlog` - ile połaczeń zostanie zaakceptowanych przez jądro przed zaakceptowaniem ich przez aplikację.
+
 ## sysctl
 
 | Parametr | Opis|
