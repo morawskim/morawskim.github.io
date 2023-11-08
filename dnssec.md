@@ -49,3 +49,20 @@ debug1: verify_host_key_dns: matched SSHFP type 4 fptype 1
 debug1: verify_host_key_dns: matched SSHFP type 4 fptype 2
 debug1: matching host key fingerprint found in DNS
 (...)
+
+### Troubleshooting
+
+Jeśli w logach przy połączeniu z zdalnym serwerem widzimy "debug1: found 6 insecure fingerprints in DNS" to w pliku `/etc/resolv.conf` dodajemy `options trust-ad`.
+Ta opcja zgodnie z [podręcznikiem](https://man7.org/linux/man-pages/man5/resolv.conf.5.html) jest niezbędna, aby aplikacje zaufały fladze ad w odpowiedzi serwera DNS.
+
+> Without this option, the AD bit is not
+set in queries, and it is always removed from
+responses before they are returned to the
+application.  This means that applications can
+trust the AD bit in responses if the trust-ad
+option has been set correctly.
+
+### Generowanie rekordów SSHFP
+
+Wywołujemy polecenie `ssh-keygen -r <ZDALNY_HOST>`.
+W przypadku, gdy otrzymamy komunikat "no keys found" możemy wywołać polecenie dla każdego rodzaju klucza (rsa, ecdsa i ed25519) `ssh-keyscan -t <TYP_KLUCZ_RSA_ECDSDA> <ZDALNY_HOST> |  sed -r 's/^[^ ]+ //' | ssh-keygen -r <ZDALNY_HOST> -f /dev/stdin`
