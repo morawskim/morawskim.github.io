@@ -3,6 +3,7 @@ Hello
 
 ##2023-11
 
+[Kiosk](kiosk.md)
 [libpcap](libpcap.md)
 [Btrfs](btrfs.md)
 
