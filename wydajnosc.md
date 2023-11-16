@@ -69,6 +69,10 @@
 
 * Poniższy parametr umożliwia zwiększenie długości kolejki backlog urządzenia sieciowego dla poszczególnych procesorów: `net.core.netdev_max_backlog = 10000`. Ta wartość również może wymagać zwiększenia, na przykład do 10 000 dla kart sieciowych w standardzie 10 GbE.
 
+> This parameter sets the maximum size of the network interface's receive queue. The queue is used to store received frames after removing them from the network adapter's ring buffer. High speed adapters should use a high value to prevent the queue from becoming full and dropping packets causing retransmits. The default value of netdev_max_backlog is typically 1000 frames.
+
+[Network stack settings](https://www.ibm.com/docs/en/linux-on-systems?topic=tuning-network-stack-settings)
+
 * System Linux obsługuje dołączane algorytmy kontroli przeciążenia. Poniższe polecenie powoduje wyświetlenie listy aktualne dostępnych algorytmów: `sysctl net.ipv4.tcp_available_congestion_control`.
 
 * `nstat -asz` network statistics tool
