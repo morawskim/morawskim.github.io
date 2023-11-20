@@ -3,6 +3,7 @@ Hello
 
 ##2023-11
 
+[Firefox fingerprinting](firefox.md#fingerprinting--poprawa-prywatności)
 [LibreOffice - Konwertowanie dokumentów](libreoffice.md#konwertowanie-dokumentów-usługa)
 [Kiosk](kiosk.md)
 [libpcap](libpcap.md)
