@@ -3,6 +3,7 @@ Hello
 
 ##2023-11
 
+[Bitlocker bez modułu TPM](windows.md#bitlocker-bez-modułu-tpm)
 [Firefox fingerprinting](firefox.md#fingerprinting--poprawa-prywatności)
 [LibreOffice - Konwertowanie dokumentów](libreoffice.md#konwertowanie-dokumentów-usługa)
 [Kiosk](kiosk.md)

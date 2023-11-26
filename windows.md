@@ -163,3 +163,21 @@ Miracast korzysta z funkcji Wi-Fi Direct, dlatego karta sieciowa Wi-fi musi być
 W moim przypadku na Windowsie, na którym skonfigurowałem bezprzewodowy ekran (przed połączeniem pierwszego klienta), otrzymywałem komunikat w stylu "Twój komputer lub urządzenie mobilne nie obsługuje Miracast". Rozwiązaniem było rozłączenie się z siecią WiFi. Wtedy mój ekran był widoczny na pozostałych urządzeniach, a następnie ponownie połączenie się z siecią WiFi.
 
 Niektórzy także polecają zmodyfikowanie ustawień karty WiFi. Uruchamiamy "Menedżera urządzeń" (`devmgmt.msc`). Szukamy naszej karty WiFi i klikamy na nią prawym przyciskiem myszy i wybieramy opcje "Właściwości". Na ekranie Właściwości karty sieciowej przechodzimy do karty "Zaawansowane" i dla pola "Wybór trybu bezprzewodowego" wybieramy "Auto" .
+
+## BitLocker (bez modułu TPM)
+
+Jeśli przy próbie włączenia BitLocker okaże się, że nie mamy modułu TPM to otrzymamy komunikat:
+![Brak modułu TPM](images/bitlocker/bitlocker-no-tpm.png)
+
+Nadal możemy korzystać z BitLockera, ale musimy zmodyfikować politykę systemu.
+Uruchamiamy konsolę `gpedit.msc` i z panelu po lewej przechodzimy do opcji 
+"Zasady Komputer Lokalny > Konfiguracja komputera > Szablony administracyjne > Składniki systemu Windows > Szyfrowanie dysków funkcją BitLocker > Dyski z systemem operacyjnym" (ang. "Local Computer Policy > Computer Configuration > Administrative Templates > Windows Components > BitLocker Drive Encryption > Operating System Drives").
+W panelu po prawej klikamy dwukrotnie na opcję "Wymagaj dodatkowego uwierzytelniania przy uruchamianiu".
+
+![Polityka BitLocker](images/bitlocker/gpedit.png)
+
+W nowo wyświetlonym oknie włączamy daną opcję i upewniamy się, że checkbox "Zezwalaj na używanie funkcji BitLocker bez zgodnego modułu TPM" jest zaznaczony.
+
+![BitLocker zezwalaj na hasło](images/bitlocker/bitlocker-password.png)
+
+Po wprowadzonych zmianach, będziemy w stanie zaszyfrować partycję systemową za pomocą hasła.
