@@ -110,6 +110,8 @@ TCP posiada również mechanizm restartowania powolnego startu (`SSR` - ang. slo
 
 `net.ipv4.tcp_max_syn_backlog` - ile połaczeń zostanie zaakceptowanych przez jądro przed zaakceptowaniem ich przez aplikację.
 
+`net.ipv4.tcp_tw_reuse ` -  Pozwala na ponowne wykorzystanie gniazd sieciowych w stanie TIME-WAIT dla nowych połączeń, gdy jest to bezpieczne z punktu widzenia protokołu. ([How to verify net.ipv4.tcp_tw_reuse parameter is working?](https://access.redhat.com/solutions/6569811), [IP Sysctl](https://www.kernel.org/doc/html/v5.10/networking/ip-sysctl.html))
+
 ## sysctl
 
 | Parametr | Opis|
