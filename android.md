@@ -12,3 +12,4 @@
 | [Adobe Scan](https://play.google.com/store/apps/details?id=com.adobe.scan.android&hl=pl&gl=US) | Mobilny skaner dokumentów |
 | [USB OTG Checker](https://play.google.com/store/apps/details?id=com.faitaujapon.otg&hl=pl&gl=US) |  Sprawdza, czy telefon jest zgodny z urządzeniami USB OTG. |
 | [Kiwi Browser](https://play.google.com/store/apps/details?id=com.kiwibrowser.browser&hl=pl&gl=US) |  Przeglądarka bazująca na Chromium z wbudowaną obsługą DevTool. |
+| [AppLock](https://play.google.com/store/apps/details?id=com.domobile.applockwatcher&hl=en_US&pli=1), [Norton App Lock](https://play.google.com/store/apps/details?id=com.symantec.applock&hl=pl&gl=US), [Smart AppLock](https://play.google.com/store/apps/details?id=com.sp.protector.free&hl=pl) | Aplikacje, które pozwalają chronić zainstalowane aplikacje przy użyciu hasła lub wzoru. |
