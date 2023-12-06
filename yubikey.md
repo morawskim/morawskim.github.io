@@ -14,6 +14,13 @@
 
 `lsusb -v 2>/dev/null | grep -A2 Yubico | grep "bcdDevice" | awk '{print $2}'` - Wyświetla wersję firmware
 
+## [PIV] Odblokowanie PIN-u
+
+Do odblokowania pinu używamy polecenia `yubico-piv-tool -a unblock-pin`.
+Możemy sprawdzić liczbę pozostałych prób PIN-u poleceniem `yubico-piv-tool -a status`
+
+> .....
+> PIN tries left: 3
 
 ## OATH
 
