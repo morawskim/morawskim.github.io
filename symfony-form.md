@@ -55,3 +55,18 @@ Szablony dostarczane wraz z Symfony znajdują się w katalogu `vendor/symfony/tw
 [Display Symfony form errors, without any submit](https://jolicode.com/blog/display-symfony-form-errors-without-any-submit)
 
 [[Form] Show errors even without submit #32336](https://github.com/symfony/symfony/issues/32336)
+
+## Domyślna wartość dla pola, które nie zostało przesłane
+
+```
+$builder->add('foo', EnumType::class, [
+    'enum_class' => PackingModeEnum::class,
+])->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
+    $data = $event->getData();
+    if (empty($data['foo'])) {
+        $data['foo'] = (new FooEnum(FooEnum::DEFAULT_VALUE))->getValue();
+    }
+
+    $event->setData($data);
+});
+```
