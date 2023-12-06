@@ -1,6 +1,10 @@
 Hello
 =====
 
+## 2023-12
+
+[PHP set_error_handler](php-set-error-handler.md)
+
 ##2023-11
 
 [Bitlocker bez modułu TPM](windows.md#bitlocker-bez-modułu-tpm)
