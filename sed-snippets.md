@@ -6,6 +6,10 @@
 find -iname Vagrantfile -exec sed -i  -e '/"vagrant" => "1",/a\      "operatingsystemrelease" => "15.0",' {} \;
 ```
 
+### Dodaj wiele linii
+
+Wystarczy w poleceniu umieścić znak nowej linii - "\n": `sed -i'' '/^foo.*/i firstLine\nSecondLine\n' plikDoModyfikacji`
+
 ## Wyświetl zawartość elementu HTML
 
 Podczas pracy nad jednym z projektów przestał działać formularz - nie można było go wysłać.
