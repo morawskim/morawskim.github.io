@@ -47,3 +47,30 @@ W MongoDB do uwierzytelnienia prócz użytkownika i hasła musimy także podać 
 Możemy to zrobić w connection URL: `mongodb://localhost:27017/local?authSource=admin`.
 Parametr `authSource` to nazwa bazy danych do uwierzytelnienia.
 [Connect to MongoDB](https://www.jetbrains.com/help/phpstorm/mongodb.html)
+
+## OAuth2 i klient HTTP
+
+[Od wersji 2023.3 wbudowany klient HTTP obsługuje autoryzację poprzez protokół OAuth2.](https://youtrack.jetbrains.com/issue/IDEA-239311/Support-OAuth-authorization)
+W pliku z ustawieniami dla danego środowiska dodajemy konfigurację.
+
+```
+{
+  "dev": {
+    "Security": {
+      "Auth": {
+        "MOJA_NAZWA": {
+          "Type": "OAuth2",
+          "Auth URL": "https://auth.example.com/auth/realms/dev/protocol/openid-connect/auth",
+          "Token URL": "https://auth.example.com/auth/realms/dev/protocol/openid-connect/token",
+          "Grant Type": "Authorization Code",
+          "Client ID": "app",
+          "Scope": "openid",
+          "Redirect URL": "http://localhost:8888"
+        }
+      }
+    }
+  }
+}
+```
+
+W plikach `.http` możemy wykorzystać token korzystając z składni `{{$auth.token("MOJA_NAZWA")}}` np `Authorization: Bearer {{$auth.token("MOJA_NAZWA")}}`
