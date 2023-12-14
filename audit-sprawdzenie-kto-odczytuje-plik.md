@@ -60,3 +60,15 @@ Więcej informacji:
 * https://www.digitalocean.com/community/tutorials/how-to-write-custom-system-audit-rules-on-centos-7
 * Man audit.rules(7)
 * Man auditctl (8)
+
+## autrace
+
+Jeśli chcemy audytować jakiś program to możemy do tego celu wykorzystać polecenie `autrace` np. `sudo autrace /bin/ls /tmp/`
+Jeśli otrzymamy komunikat:
+
+>autrace cannot be run with rules loaded.
+>Please delete all rules using 'auditctl -D' if you really wanted to run this command.
+
+To kasujemy istniejące reguły poleceniem `auditctl -D` i ponownie wywołujemy polecenie.
+Po zakończeniu programu wyświetli się wpis z poleceniem do wyświetlenia zarejestrowanych danych:
+> Trace complete. You can locate the records with 'ausearch -i -p 15776'
