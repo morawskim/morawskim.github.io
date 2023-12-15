@@ -3,6 +3,7 @@ Hello
 
 ## 2023-12
 
+[OSINT](osint.md)
 [PHP set_error_handler](php-set-error-handler.md)
 
 ##2023-11
