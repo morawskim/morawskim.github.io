@@ -72,3 +72,5 @@ Niemniej jednak od czasu do czasu możemy otrzymać w konsoli air błąd "bind: 
 Dodatkowo jeśli Goland wyświetli komunikat, że nie może znaleźć pliku to być może, zbudowaliśmy aplikację bez tych wymaganych flag kompilatora.
 
 W przypadku prostych aplikacji zamiast korzystać z air możemy skorzystać z [gow](https://github.com/mitranim/gow).
+
+Do monitorowania co wykonują funkcje goroutine możemy skorzystać z [grmon](https://github.com/bcicen/grmon)
