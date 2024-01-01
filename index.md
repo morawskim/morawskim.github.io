@@ -1,6 +1,10 @@
 Hello
 =====
 
+## 2024-01
+
+[Kubernetes JWT token](kubernetes-jwt-token.md)
+
 ## 2023-12
 
 [Problemy podczas aktualizacji Symfony](problemy-podczas-aktualizacji-symfony.md)
