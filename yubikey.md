@@ -104,3 +104,26 @@ W nowym oknie terminala próbujemy się zalogować na swoje konto `su - $(whoami
 [Authentication with PAM](https://doc.opensuse.org/documentation/leap/archive/42.2/security/html/book.security/cha.pam.html)
 
 [PAM Configuration Files](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/managing_smart_cards/pam_configuration_files)
+
+## Podpisywanie zatwierdzeń GIT kluczem SSH
+
+Konfigurujemy Git'a do generowania podpisów za pomocą klucza SSH `git config --global gpg.format ssh`
+
+Określamy, który klucz SSH użyć do podpisu (najlepiej korzystać z klucza powiązanego z YubiKey - [Generate an SSH key pair for a FIDO2 hardware security key](https://developers.yubico.com/SSH/Securing_SSH_with_FIDO2.html)) - `git config --global user.signingkey ~/.ssh/klucz.pub`
+
+Po tych zmianach możemy podpisywać zmiany w repozytorium.
+
+Przy weryfikacji podpisów `git log --show-signature` możemy otrzymać komunikat:
+
+> error: gpg.ssh.allowedSignersFile musi być ustawiony i istnieć, aby sprawdzać podpisy ssh
+
+Tworzymy plik `touch ~/.config/git/allowed_signers` i konfigurujemy git `git config gpg.ssh.allowedSignersFile "~/.config/git/allowed_signers"` W projekcie gdzie jest wielu programistów lepszym pomysłem, będzie wersjonowanie tego pliku i ustawienie ścieżki do pliku per projekt.
+
+Następnie dodajemy nasz klucz do pliku z zaufanymi kluczami `echo "$(git config --get user.email) namespaces=\"git\" $(cat ~/.ssh/<MY_KEY>.pub)" >> ~/.config/git/allowed_signers`
+
+Przy następnym wywołaniu polecenia git log powinniśmy otrzymać:
+> Good "git" signature for marcin@morawskim.pl with ED25519-SK key SHA256:aM91hUXyi8WnAwAeXdpdKci03XVCdJjnIUjW1OWzwQM
+
+[Sign commits with SSH keys](https://docs.gitlab.com/ee/user/project/repository/signed_commits/ssh.html)
+
+[Securing SSH with FIDO2](https://developers.yubico.com/SSH/Securing_SSH_with_FIDO2.html)
