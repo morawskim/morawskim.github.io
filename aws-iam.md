@@ -139,3 +139,45 @@ Po wyeksportowaniu zmiennych środowiskowych wywołując ponownie polecenie `aws
 [How can I require MFA authentication for IAM users that use the AWS CLI?](https://repost.aws/knowledge-center/mfa-iam-user-aws-cli)
 
 [Force Enable AWS MFA And Using Temp Credential ](https://dev.to/vumdao/force-enable-aws-mfa-and-using-temp-credential-1g1f)
+
+### Skrypt do pobieranie tymczasowych poświadczeń
+
+Skryt oparty o rozwiązanie [woowa-hsw0](https://gist.github.com/woowa-hsw0/caa3340e2a7b390dbde81894f73e379d)
+
+```
+#!/bin/bash
+# Authenticate to AWS with YK-generated TOTP codes.
+#
+# assuming default AWS profile, if you have multiple profiles, change it
+AWS_PROFILE=default
+YK_OATH_NAME=aws
+
+set -eu
+
+caller_identity=($(aws --profile "$AWS_PROFILE" sts get-caller-identity --output text))
+
+if [ $? -ne 0 ] ; then
+	echo Error authenticating to AWS with access/secret key, verify AWS CLI configuration.
+	exit 1
+fi
+
+AWS_ACCOUNT_NUMBER="${caller_identity[0]}"
+AWS_IAM_USER_ARN="${caller_identity[1]}"
+AWS_IAM_USERNAME="$(basename "$AWS_IAM_USER_ARN")"
+MFA_SERIAL="arn:aws:iam::$AWS_ACCOUNT_NUMBER:mfa/$AWS_IAM_USERNAME"
+
+TOTP_CODE=$(ykman oath accounts code ${YK_OATH_NAME} | head -1 | awk '{ print $NF }')
+
+echo "Obtaining session token with MFA: $MFA_SERIAL"
+#echo "TOTP Code: $TOTP_CODE"
+
+session_token=($(aws --profile "$AWS_PROFILE" sts get-session-token --serial-number $MFA_SERIAL --token-code $TOTP_CODE --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' --output text))
+export AWS_ACCESS_KEY_ID="${session_token[0]}" AWS_SECRET_ACCESS_KEY="${session_token[1]}" AWS_SESSION_TOKEN="${session_token[2]}"
+
+# https://github.com/boto/boto/issues/2988 Workaround
+export AWS_SECURITY_TOKEN="$AWS_SESSION_TOKEN"
+
+aws sts get-caller-identity
+
+exec $SHELL
+```
