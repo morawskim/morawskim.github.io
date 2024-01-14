@@ -150,6 +150,14 @@ Monitrorowanie uruchamianych procesow - `dtrace -n 'exec-success { printf("%d %s
 
 [The DTrace Toolkit: A set of scripts for use with DTrace on various systems.](https://github.com/opendtrace/toolkit/tree/master/)
 
+## Polecenia
+
+Czyszczenie pamięci podręcznej (cache) - `echo 3 | sudo tee /proc/sys/vm/drop_caches`
+
+Zbieranie danych przez 24H (co 60s) o procesach, które wykonały najwięcej operacji IO `iotop --only --batch --delay=60 --iter=1440 --time --quiet --processes`
+
+Zbieranie danych przez 24H (co 60s) o procesach, które najbardziej wykorzystują CPU - `LINES=15 top -b -n 1440 -d 60 -c -w`
+
 ## Książki
 
 Brendan Gregg, _Wydajne systemy komputerowe. Przewodnik dla administratorów systemów lokalnych i w chmurze_, Helion
