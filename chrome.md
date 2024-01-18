@@ -1,5 +1,11 @@
 # Google chrome
 
+## Porady
+
+Możemy bezpośrednio w pasku adresu przeszukiwać otwarte katy, zakładki i historię przeglądarki. Wystarczy, że w pasku adresu wpiszemy odpowiednio @karty, @zakładki albo @historia i potwierdzimy przyciskiem [Tab]. Na pasku adresu powinien pojawić się napis "Szukaj na stronie Karty/Zakładki/Historia", a my będziemy w stanie podać szukaną frazę.
+
+Za pomocą skrótu [Ctrl] + [Shift] + [A] możemy otworzyć menu z otwartymi kartami i wyszukać otwartą kartę, albo ostatnio zamknięto.
+
 ## Flagi
 | Opcja  |Opis   |
 |---|---|
@@ -80,3 +86,14 @@ Za pomocą chrome możemy udostępnić pulpit innemu użytkownikowi - [Pomoc zda
 ### Window Resizer
 [Resize the browser window to emulate various screen resolutions.](https://chrome.google.com/webstore/detail/window-resizer/kkelicaakdanhinjdeammmilcgefonfh?hl=pl)
 
+### Proxy SwitchyOmega
+[Manage and switch between multiple proxies quickly & easily.](https://chromewebstore.google.com/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif?hl=vi&pli=1)
+
+### OWASP Penetration Testing Kit
+[The Penetration Testing Kit (PTK) browser extension is your all-in-one solution for streamlining your daily tasks in the realm of application security. ](https://chromewebstore.google.com/detail/ojkchikaholjmcnefhjlbohackpeeknd)
+
+### Instant Data Scraper
+[Instant Data Scraper extracts data from web pages and exports it as Excel or CSV files](https://chromewebstore.google.com/detail/instant-data-scraper/ofaokhiedipichpaobibbnahnkdoiiah?hl=en)
+
+### Tamper Dev
+[Intercept and edit HTTP/HTTPS requests and responses as they happen without the need of a proxy.](https://chromewebstore.google.com/detail/tamper-dev/mdemppnhjflbejfbnlddahjbpdbeejnn)
