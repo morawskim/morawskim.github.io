@@ -27,6 +27,10 @@ gpg: decryption failed: No secret key
 
 Wywołujemy polecenie `duplicity restore --encrypt-key 66AE3CFE file://duplicity-backup/ ./PATH_TO_RESTORE`. W katalogu `PATH_TO_RESTORE` znajdziemy pliki z kopii bezpieczeństwa.
 
+Jeśli podczas przywracania kopi bezpieczeństwa otrzymamy błąd "Błąd 'No space left on device' podczas aktualizacji pliku" to być może próbujemy przywrócić zbyt duży plik.
+W takim przypadku musimy ustawić zmienną środowiskową `TMPDIR` na przykład na wartość `$PWD/tmp` (oczywiście musimy mieć niezbędną ilość wolnego miejsca). 
+Polecenie możemy poprzedzić zmienną środowiskowa - `TMPDIR=$PWD/tmp  duplicity restore ......`. 
+
 [How To Use Duplicity with GPG to Back Up Data to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/how-to-use-duplicity-with-gpg-to-back-up-data-to-digitalocean-spaces)
 
 [duplicity backup - getting started](https://blog.xmatthias.com/duplicity_getting_started/)
