@@ -30,6 +30,12 @@ Pewną niedogodnością tego rozwiązania jest fakt, że numlock działa dopiero
 [Activating numlock on bootup](https://wiki.archlinux.org/title/Activating_numlock_on_bootup)
 [Enable Numlock on Login](https://help.ubuntu.com/community/NumLock)
 
+## TPM
+
+Aby sprawdzić czy nasz komputer posiada moduł TPM wydajemy polecenie `sudo journalctl -k --grep tpm`. 
+Linia "kernel: tpm_tis STM0125:00: 2.0 TPM (device-id 0x0, rev-id 78)" oznacza posiadanie modułu TPM, zaś "kernel: ima: No TPM chip found, activating TPM-bypass!"  brak modułu.
+Możemy także sprawdzić wersję modułu TPM - `cat /sys/class/tpm/tpm0/tpm_version_major`. W moim przypadku było to "2". Na drugim komputerze plik ten nie był dostępny.
+
 ## Firewalld
 
 Po instalacji i konfiguracji `firewalld` możemy wyświetlić konfigurację strefy - `firewall-cmd --list-all-zones`.
