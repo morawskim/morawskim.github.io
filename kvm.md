@@ -80,3 +80,14 @@ fi
 ```
 
 [KVM forward ports to guests VM with UFW on Linux](https://www.cyberciti.biz/faq/kvm-forward-ports-to-guests-vm-with-ufw-on-linux/)
+
+## Zmiana hasła użytkownika w maszynie wirtualnej
+
+W dystrybucji Ubuntu obraz cloud image nie ustawia hasła do konta ubuntu i zamiast tego lepiej wykorzystać logowanie po SSH.
+W przypadku jednak problemów z siecią możemy mieć problem z zdalnym zalogowaniem się do systemu. W takim przypadku możemy tymczasowo ustawić hasło do konta ubuntu, a po rozwiązaniu problemu, ponownie zablokować hasło do konta.
+
+Aby wyświetlić wszystkie istniejące maszyny wirtualne korzystamy z polecenia `virsh list`.
+Wyciągamy ścieżkę do obrazu dysku maszyny wirtualnej `virsh dumpxml <moja-maszyna-wirtualna> | grep 'source file'`.
+Ustawiamy hasło do konta `virt-customize -a <sciezka-do-pliku-obrazu> --password <nazwa-konta-w-maszynie-wirtualnej>:password:<nowe-haslo>.
+Możemy zalogować się do maszyny wirtualnej korzystając z nowego hasła. 
+Rozwiązujemy problem i blokujemy konto `sudo passwd -l <nazwa-konta-w-maszynie-wirtualnej>`
