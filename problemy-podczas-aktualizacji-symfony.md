@@ -38,3 +38,7 @@ W wersji 5.3 metoda `KernelEvent::isMasterRequest()` i stała `HttpKernelInterfa
 Aby dostosować kod do nowszych wersji Symfony musimy sprawdzić czy metoda `isMainRequest` istnieje - `method_exists(KernelEvent::class, 'isMainRequest')`.
 
 [[HttpFoundation][HttpKernel] Rename master request to main request #40536](https://github.com/symfony/symfony/pull/40536)
+
+W wersji 5.3 pojawił się nowy komponent [PasswordHasher](https://symfony.com/blog/new-in-symfony-5-3-passwordhasher-component).
+Nowy komponent został wyciągnięty z komponentu Security - [[Security] Extract password hashing from security-core - with proper wording #39802](https://github.com/symfony/symfony/pull/39802).
+Zmieniły się nazwy klas np. `PasswordEncoderInterface` na `PasswordHasherInterface`.
