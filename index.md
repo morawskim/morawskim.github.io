@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2024-02
+[PHP i błąd OpenSSL (unexpected eof while reading)](php-i-blad-openssl.md)
 [PHP i FFI](php-ffi.md)
 
 ## 2024-01
