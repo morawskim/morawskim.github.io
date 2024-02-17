@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2024-02
+[secret-tool - pobieranie haseł z KWallet w skryptach](secret-tool-pobieranie-hasel-z-kwallet-w-skryptach.md)
 [PHP i błąd OpenSSL (unexpected eof while reading)](php-i-blad-openssl.md)
 [PHP i FFI](php-ffi.md)
 
