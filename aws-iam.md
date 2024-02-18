@@ -66,6 +66,15 @@ $(aws sts assume-role \
 --output text))
 ```
 
+Jeśli do polecenia tworzącego tymczasowy token (sts assume-role) nadpiszemy domyślną wartość czasu życia tokenu flagą `--duration-seconds 7200` to atrybut MaxSessionDuration naszej roli musi być odpowiednio długi (domyślnie jest 1H).
+W przeciwnym przypadku otrzymamy błąd:
+
+> An error occurred (ValidationError) when calling the AssumeRole operation: The requested DurationSeconds exceeds the MaxSessionDuration
+
+Atrybut ten możemy zmienić w konsoli AWS. Przechodzimy do usługi IAM, następnie z menu po lewej klikamy w "Roles", wybieramy naszą rolę i następnie klikamy przycisk Edit w sekcji Summary.
+
+![AWS IAM Role max session duration](./images/aws-role-max-session-duration.png)
+
 [How do I assume an IAM role using the AWS CLI?](https://aws.amazon.com/premiumsupport/knowledge-center/iam-assume-role-cli/)
 
 [What to Do If You Inadvertently Expose an AWS Access Key](https://aws.amazon.com/blogs/security/what-to-do-if-you-inadvertently-expose-an-aws-access-key/)
