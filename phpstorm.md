@@ -51,6 +51,7 @@ Parametr `authSource` to nazwa bazy danych do uwierzytelnienia.
 ## OAuth2 i klient HTTP
 
 [Od wersji 2023.3 wbudowany klient HTTP obsługuje autoryzację poprzez protokół OAuth2.](https://youtrack.jetbrains.com/issue/IDEA-239311/Support-OAuth-authorization)
+[Zaś w IntelliJ IDEA 2024.1 EAP 5](https://blog.jetbrains.com/idea/2024/02/intellij-idea-2024-1-eap-5/#http-client-improvements) dodano wsparcie dla PKCE.
 W pliku z ustawieniami dla danego środowiska dodajemy konfigurację.
 
 ```
@@ -60,12 +61,13 @@ W pliku z ustawieniami dla danego środowiska dodajemy konfigurację.
       "Auth": {
         "MOJA_NAZWA": {
           "Type": "OAuth2",
-          "Auth URL": "https://auth.example.com/auth/realms/dev/protocol/openid-connect/auth",
-          "Token URL": "https://auth.example.com/auth/realms/dev/protocol/openid-connect/token",
+          "Auth URL": "https://auth.example.com/auth/realms/<moj-realm>/protocol/openid-connect/auth",
+          "Token URL": "https://auth.example.com/auth/realms/<moj-realm>/protocol/openid-connect/token",
           "Grant Type": "Authorization Code",
-          "Client ID": "app",
+          "Client ID": "moja-aplikacja",
           "Scope": "openid",
-          "Redirect URL": "http://localhost:8888"
+          "Redirect URL": "http://localhost:8888",
+          "PKCE":true
         }
       }
     }
