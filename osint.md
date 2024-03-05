@@ -12,6 +12,8 @@
 
 [Kamerki internetowe - Insecam](http://www.insecam.org/en/)
 
+[Kamery Korkonetu](http://videoad.home.pl/klienci/korkonet-mzd/)
+
 ### Social media
 
 [Snap map](https://map.snapchat.com)
