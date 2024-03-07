@@ -23,3 +23,21 @@ $redisMock->expects($this->once())
     ->method('publish')
     ->with($this->equalTo('sse'), $this->isType('string'));
 ```
+
+## willReturnOnConsecutiveCalls i dynamicznie obliczanie wartości dla kolejnych wywołań metody
+
+```
+$mock->method('someMethod')->willReturnOnConsecutiveCalls(
+    $this->returnCallback(function () {
+        return 1;
+    }),
+    $this->returnCallback(function () {
+        return 2;
+    })
+);
+
+$mock->someMethod(); // Returns 1
+$mock->someMethod(); // Returns 2
+```
+
+Warto jednak pamiętać, że metoda `willReturnOnConsecutiveCalls` jest oznaczona jako deprecated i zostanie skasowana w PHPUnit 12 - [Deprecate InvocationMocker::willReturnOnConsecutiveCalls() #5425](https://github.com/sebastianbergmann/phpunit/issues/5425)
