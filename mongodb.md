@@ -8,6 +8,11 @@
 
 * Zasada osadzania dokumentu vs oddzielna kolekcja -  użyj osadzania dokumentu jeśli obiekt potomny nigdy nie pojawia się poza kontekstem jego obiektu nadrzędnego. W przeciwnym razie obiekty potomne przechowuj w oddzielnej kolekcji. W przypadku osadzenia dokumentów mamy nieco większą wydajność działania, natomiast odwołania zapewniają większą elastyczność.
 
+* Warto utworzyć kopie wszystkich dokumentów w kolekcji, gdy pracujemy nad skryptem który ma np. dostosować dane do nowego formatu.
+Do tego celu możemy wykorzystać [etap $out agregacji](https://www.mongodb.com/docs/manual/reference/operator/aggregation/out/).
+Wywołując zapytanie `db.NazwaKolekcji.aggregate([{$out: "NazwaKolekcjiKopia"}])` pobierzemy wszystkie dokumenty z kolekcji NazwaKolekcji i zapiszemy je do kolekcji NazwaKolekcjiKopia.
+Dzięki temu możemy wielokrotnie uruchamiać nasz skrypt, który może ciągle działać na oryginalnych danych (musimy tylko skasować oryginalną kolekcje i przekopiować dane z kopii).
+
 ## PHP
 
 Do działania potrzebujemy rozszerzenia PHP mongodb, a także pakiet `mongodb/mongodb`.
