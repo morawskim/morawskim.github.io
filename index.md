@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2024-03
+[openssl snippets](openssl-snippets.md)
 [Golang i Kubernetes](golang-i-kubernetes.md)
 
 ## 2024-02
