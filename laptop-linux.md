@@ -76,3 +76,7 @@ Yakuake Full screen - `Ctrl+Shift+F11`
 KWin Overview effect - `Meta (Windows key) + w`
 
 Windows Tiling - `Meta (Windows key) + t`
+
+Spectacle: Przechwytywanie prostokątnego obszaru - `Meta (Windows key) + [SHIFT] + [print]`
+
+Wybór emotikonów- `Meta (Windows key) + .`
