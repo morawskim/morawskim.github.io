@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2024-03
+[K8S, PHP, service account i token](kubernetes-troubleshooting.md#php-service-account-i-token)
 [openssl snippets](openssl-snippets.md)
 [Golang i Kubernetes](golang-i-kubernetes.md)
 
