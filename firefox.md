@@ -16,3 +16,11 @@ Następnie szukamy ustawienia `privacy.resistFingerprinting` i przełączamy je 
 Inny rozwiązanie to wykorzystanie rozszerzenia [CanvasBlocker](https://addons.mozilla.org/pl/firefox/addon/canvasblocker/).
 
 Nasze zmiany poprawiające prywatność możemy przetestować na stronie [Am I Unique?](https://amiunique.org/fingerprint).
+
+## Wyłączenie menedżera haseł
+
+Klikamy na "Hamburger menu" i wybieramy opcję "Settings".
+Następnie z menu po lewej wybieramy "Privacy and Security".
+Przewijamy stronę do sekcji "Passwords" i odznaczamy checkbox "Ask to save passwords".
+
+![Wyłącz menedżera haseł](./images/firefox-save-password.png)
