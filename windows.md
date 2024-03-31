@@ -181,3 +181,16 @@ W nowo wyświetlonym oknie włączamy daną opcję i upewniamy się, że checkbo
 ![BitLocker zezwalaj na hasło](images/bitlocker/bitlocker-password.png)
 
 Po wprowadzonych zmianach, będziemy w stanie zaszyfrować partycję systemową za pomocą hasła.
+
+## Windows 11
+
+### Instalacja bez dostępu do internetu
+
+Obecnie najnowsza wersja Windows 11 nie pozwala nam na instalację systemu, bez połączenia z internetem.
+Obecnie istnieje obejście.
+
+Dochodzimy do ekranu połączenia z siecią. W moim przypadku Windows nie wykrył karty WiFi.
+Wciskamy klawisz `Shift + F10`. Pojawi się okno wiersza poleceń.
+W otwartym oknie wpisujemy polecenie `OOBE\BYPASSNRO` i zatwierdzamy je klawiszem Enter.
+Komputer ponownie się uruchomi, a my dochodząc ponownie do ekranu połączenia się z siecią, będziemy mieć dostępną opcję "Nie mam internetu".
+Klikamy w nią i kontynuujemy proces instalacji.
