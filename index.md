@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2024-04
+[Traefik i OpenID Connect](traefik-openid.md)
 [Phishing](phishing.md)
 
 ## 2024-03
