@@ -48,7 +48,9 @@ Możemy to zrobić w connection URL: `mongodb://localhost:27017/local?authSource
 Parametr `authSource` to nazwa bazy danych do uwierzytelnienia.
 [Connect to MongoDB](https://www.jetbrains.com/help/phpstorm/mongodb.html)
 
-## OAuth2 i klient HTTP
+## Http Client
+
+### OAuth2 i klient HTTP
 
 [Od wersji 2023.3 wbudowany klient HTTP obsługuje autoryzację poprzez protokół OAuth2.](https://youtrack.jetbrains.com/issue/IDEA-239311/Support-OAuth-authorization)
 [Zaś w IntelliJ IDEA 2024.1 EAP 5](https://blog.jetbrains.com/idea/2024/02/intellij-idea-2024-1-eap-5/#http-client-improvements) dodano wsparcie dla PKCE.
@@ -76,3 +78,34 @@ W pliku z ustawieniami dla danego środowiska dodajemy konfigurację.
 ```
 
 W plikach `.http` możemy wykorzystać token korzystając z składni `{{$auth.token("MOJA_NAZWA")}}` np `Authorization: Bearer {{$auth.token("MOJA_NAZWA")}}`
+
+### Multipart/form-data
+```
+### multipart request
+POST https://httpbin.org/post
+Accept: application/json, text/plain, */*
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7s2KUwjCtiHdKS0w
+
+------WebKitFormBoundary7s2KUwjCtiHdKS0w
+Content-Disposition: form-data; name="subject"
+
+subject
+------WebKitFormBoundary7s2KUwjCtiHdKS0w
+Content-Disposition: form-data; name="attachments[0][name]"
+
+foo-image
+------WebKitFormBoundary7s2KUwjCtiHdKS0w
+Content-Disposition: form-data; name="attachments[0][file]"; filename="image.jpeg"
+Content-Type: image/jpeg
+
+< ./image.jpeg
+------WebKitFormBoundary7s2KUwjCtiHdKS0w
+Content-Disposition: form-data; name="attachments[0][mimetype]"
+
+image/jpeg
+------WebKitFormBoundary7s2KUwjCtiHdKS0w
+Content-Disposition: form-data; name="name"
+
+foo
+------WebKitFormBoundary7s2KUwjCtiHdKS0w--
+```
