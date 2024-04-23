@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2024-04
+[GitLab, AWS i OpenID Connect](gitlab-aws-i-openid-connect.md)
 [Traefik i OpenID Connect](traefik-openid.md)
 [Phishing](phishing.md)
 
