@@ -61,3 +61,24 @@ Finalnie możemy wyeksportować mapę wybierając z górnego menu "Project" i kl
 Czekamy na wyeksportowanie mapy, który trochę trwa.
 
 ![wydruk](./images/qgis/qgis-export.png)
+
+## Google maps
+
+W programie qgis możemy korzystać z map Google.
+Klikamy prawym przyciskiem myszy na "XYZ Tiles" i wybieramy opcję "New Connection".
+
+![dodanie mapy google](./images/qgis/qgis-google-maps.png)
+
+W nowym oknie podajemy dowolną nazwę mapy i jej adres.
+
+Adresy URL map Google są dostępne [tutaj](https://github.com/openlayers/openlayers/issues/9900#issuecomment-527427774)
+
+* Terrain http://mt0.google.com/vt/lyrs=p&hl=en&x={x}&y={y}&z={z}
+
+* Satellite only http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}
+
+* Hybrid http://mt0.google.com/vt/lyrs=y&hl=en&x={x}&y={y}&z={z}
+
+* Terrain only http://mt0.google.com/vt/lyrs=t&hl=en&x={x}&y={y}&z={z}
+
+* Roadmap http://mt0.google.com/vt/lyrs=m&hl=en&x={x}&y={y}&z={z} (mi nic nie wyświetlało)
