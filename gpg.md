@@ -101,3 +101,24 @@ W przypadku gdy nasz klucz GPG dodatkowy chroniony jest hasłem przydany może b
 Dalsze kroki są takie same.
 
 Jeśli pakiety RPM przechowujemy w repozytorium to musimy także podpisać plik `./repodata/repomd.xml` za pomocą polecenia `gpg --local-user '<ID_KLUCZ_EMAIL_LUB_NAZWA>' --detach-sign --armor ./repodata/repomd.xml`
+
+## pass i wygasły klucz GPG
+
+`pass` to menedżer haseł, który wykorzystuje klucze GPG do szyfrowania naszych danych.
+Gdy klucz GPG wygaśnie, możemy ciągle odszyfrowywać dane, ale nie jesteśmy w stanie edytować lub dodawać nowych haseł.
+W takim przypadku możemy przedłużyć datę ważności klucza, nawet po jej wygaśnięciu.
+Narzędzie pass powinno wyświetlić nam identyfikator klucza GPG:
+
+> gpg: Note: secret key CBE36A6CD7980A6D expired at XXXXXXXXX
+> gpg: 66AE3CFE: skipped: Bezużyteczny klucz publiczny
+
+Wywołujemy polecenie edycji klucza `gpg --edit-key 66AE3CFE`
+Wpisujemy polecenie `expire` i przedłużamy ważność klucza zgodnie z poleceniami.
+
+Jeśli otrzymamy komunikat:
+> gpg: WARNING: Your encryption subkey expires soon.
+> gpg: You may want to change its expiration date too.
+> gpg: WARNING: No valid encryption subkey left over.
+
+To wybieramy kolejny klucz. Wpisujemy polecenie `key IDENTYFIKATOR_SUB_KLUCZA` i ponownie przedłużamy ważność klucza.
+Na końcu wydajemy polecenie `quit` i zapisujemy zmiany.
