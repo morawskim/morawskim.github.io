@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2024-05
+[Nextcloud - curl przesyłanie pliku](nextcloud.md#curl-przesyłanie-pliku)
 [Web Cryptography API](web-cryptography-api.md)
 
 ## 2024-04
