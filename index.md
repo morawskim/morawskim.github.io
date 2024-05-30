@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2024-05
+[Golang i Prometheus](golang-prometheus.md)
 [Szyfrowanie Crypto 101](szyfrowanie.md#crypto-101)
 [Nextcloud - curl przesyłanie pliku](nextcloud.md#curl-przesyłanie-pliku)
 [Web Cryptography API](web-cryptography-api.md)
