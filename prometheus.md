@@ -20,6 +20,15 @@ Takie ustawienie zabezpiecza nas także przed sytuacją, gdy jedno pobranie dany
 * Wysoką dostępność osiąga się zwykle poprzez uruchomienie dwóch instancji Prometeusza o tej samej konfiguracji, z których każda ma własną bazę danych.
 Nie rozwiązuje to jednak problemu z skalowalnością i długoterminowym przechowywaniem metryk.
 
+* Nie używaj jednej metryki z etykietą "nieudane" lub "udane"
+
+> When you have a successful request count and a failed request count, the best way to expose this is as one metric for
+total requests and another metric for failed requests. This makes it easy to calculate the failure ratio. Do not use one
+metric with a failed or success label. Similarly, with hit or miss for caches, it’s better to have one metric for total
+and another for hits.
+>
+> [Prometheus docs, Writing exporters]((https://prometheus.io/docs/instrumenting/writing_exporters/#naming))
+
 ## Backfill
 
 Tworząc kokpit w Grafanie potrzebujemy danych historycznych.
