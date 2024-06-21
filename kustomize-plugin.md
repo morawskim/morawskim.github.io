@@ -7,7 +7,7 @@ Najlepiej jest pobrać kod źródłowy Kustomize i w nim stworzyć plugin.
 
 Pobieramy repozytorium Kustomize `git clone https://github.com/kubernetes-sigs/kustomize.git`
 
-Przełączamy sie do wersji np. 5.3.0 - `git checkout kustomize/v5.3.0`
+Przełączamy się do wersji np. 5.3.0 - `git checkout kustomize/v5.3.0`
 
 Wywołujemy polecenie `make kustomize`, a następnie przechodzimy do katalogu kustomize `cd kustomize` i wywołujemy polecenie `make build`.
 
@@ -59,7 +59,7 @@ func (p *plugin) Transform(m resmap.ResMap) error {
 Budujemy plugin poleceniem `go build -buildmode plugin -o MyPlugin.so plugin.go`
 Nazwa pliku wynikowego jest istotna.  Kustomize będzie szukał pliku o nazwie `${kind}.so` próbując załadować go jako wtyczkę Go.
 
-W pliku kustomization.yml dodajemy
+W pliku `kustomization.yml` dodajemy
 
 ```
 transformers:
@@ -73,5 +73,17 @@ transformers:
 Tworzymy katalogi `mkdir -p plugins/mycompany.com/v1beta/myplugin` i kopiujemy do niego nasz zbudowany plugin.
 Każda wtyczka otrzymuje własny dedykowany katalog o nazwie `${apiVersion}/LOWERCASE(${kind})`
 
-Wywołując polecenie `KUSTOMIZE_PLUGIN_HOME=$PWD/plugins ~/go/bin/kustomize build  --enable-alpha-plugins --enable-exec path/to/dir/with/overlay` powiniśmy na wyjściu zobaczyć zmodyfikowane zasoby CronJobs.
+Wywołując polecenie `KUSTOMIZE_PLUGIN_HOME=$PWD/plugins ~/go/bin/kustomize build  --enable-alpha-plugins --enable-exec path/to/dir/with/overlay` powinniśmy na wyjściu zobaczyć zmodyfikowane zasoby CronJobs.
 
+## Inne rozwiązanie
+
+Z repozytorium [kustomize v5.3.0](https://github.com/kubernetes-sigs/kustomize/tree/kustomize/v5.3.0/plugin/builtin/secretgenerator) pobieramy pliki `go.mod` i `go.sum`.
+
+Po pobraniu plików, otwieramy plik "go.mod" i zmieniamy nazwę modułu.
+Możemy także dostosować wersję kompilatora go.
+
+Tworzymy plik z kodem pluginu (możemy wykorzystać ten sam przykład co wyżej).
+Instalujemy kustomize `GOPATH=$PWD/go go install sigs.k8s.io/kustomize/kustomize/v5@v5.3.0`
+Budujemy nasz plugin `GOPATH=$PWD/go go build -buildmode plugin -o MyPlugin.so main.go`
+Kopiujemy plugin do dedykowanego katalogu `mkdir -p mycompany.com/v1beta/myplugin && cp MyPlugin.so mycompany.com/v1beta/myplugin/MyPlugin.so`.
+Dodajemy wpis do `kustomization.yml` jak w przykładzie wyżej i odpalamy polecenie build kustomize.
