@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2024-06
+[Kustomize plugin](kustomize-plugin.md)
+
 ## 2024-05
 [Golang i Prometheus](golang-prometheus.md)
 [Szyfrowanie Crypto 101](szyfrowanie.md#crypto-101)
