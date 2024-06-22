@@ -87,3 +87,36 @@ Instalujemy kustomize `GOPATH=$PWD/go go install sigs.k8s.io/kustomize/kustomize
 Budujemy nasz plugin `GOPATH=$PWD/go go build -buildmode plugin -o MyPlugin.so main.go`
 Kopiujemy plugin do dedykowanego katalogu `mkdir -p mycompany.com/v1beta/myplugin && cp MyPlugin.so mycompany.com/v1beta/myplugin/MyPlugin.so`.
 Dodajemy wpis do `kustomization.yml` jak w przykładzie wyżej i odpalamy polecenie build kustomize.
+
+[Extending Kustomize: Go Plugins (deprecated)](https://kubectl.docs.kubernetes.io/guides/extending_kustomize/go_plugins/)
+
+## Exec KRM plugin
+
+Plugin Exec KRM tworzy sie trochę inaczej.
+Preferowanym sposobem przekształcania zasobów Kubernetesa jest użycie `kio.Pipeline` do odczytu, modyfikacji i zapisu zasobów. [Dokumentacja pakietu kio](https://pkg.go.dev/sigs.k8s.io/kustomize/kyaml/kio#section-documentation)
+
+
+Przykładowe demo, które modyfikuje pole `suspend` zasobu CronJob (na podstawie konfiguracji) dostępne jest w [GitHub](https://github.com/morawskim/go-projects/tree/main/kustomize).
+
+Do pliku `kustomization.yml` dodajemy
+```
+transformers:
+- |-
+  apiVersion: demo.morawskim.pl/v1beta
+  kind: MyKRMKustomizationPlugin
+  metadata:
+    name: krmFunction
+    annotations:
+      # path is relative to kustomization.yaml
+      config.kubernetes.io/function: |
+        exec:
+          path: ./../../plugins/mykrmplugin
+  spec:
+    cronJobsToDisable:
+      - my-cronjob-to-suspend
+    cronJobsToEnable:
+      - my-cronjob-to-enable
+
+```
+
+[Extending Kustomize: Exec KRM functions](https://kubectl.docs.kubernetes.io/guides/extending_kustomize/exec_krm_functions/)
