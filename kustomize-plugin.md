@@ -120,3 +120,7 @@ transformers:
 ```
 
 [Extending Kustomize: Exec KRM functions](https://kubectl.docs.kubernetes.io/guides/extending_kustomize/exec_krm_functions/)
+
+## kyaml
+
+Jeśli zamiast wartości string potrzebujemy boolean to korzystamy z funkcji `yaml.MustParse("true")`
