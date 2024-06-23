@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2024-06
+[Delve](delve.md)
 [Kustomize plugin](kustomize-plugin.md)
 
 ## 2024-05
