@@ -39,3 +39,16 @@ func decode[T any](r *http.Request) (T, error) {
 	return v, nil
 }
 ```
+
+## Weryfikacja zgodności interfejsu
+
+Jeśli nasz typ "implementuje" interfejs `fmt.Stringer`, ale w ramach refactoringu
+skasujemy tą metodę to kompilator Go może nie zwrócić żadnego błędu.
+
+Rozwiązaniem tego problemu jest utworzenie zmiennej o typie implementowanego interfejsu i przypisanie do niej pustej wartości typu, który powinien implementować ten interfejs.
+
+`var _ fmt.Stringer = User{} // User musi implementowac interfejs fmt.Stringer`
+
+[Demo](https://go.dev/play/p/cEBSKBrjHqm)
+
+[Compile time checks to ensure your type satisfies an interface](https://medium.com/@matryer/golang-tip-compile-time-checks-to-ensure-your-type-satisfies-an-interface-c167afed3aae)
