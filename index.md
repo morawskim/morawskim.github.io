@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2024-06
+[Golang WebAssembly](golang-webassembly.md)
 [Delve](delve.md)
 [Kustomize plugin](kustomize-plugin.md)
 
