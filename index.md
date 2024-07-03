@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2024-07
+[Buggregator](buggregator.md)
+
 ## 2024-06
 [Golang WebAssembly](golang-webassembly.md)
 [Delve](delve.md)
