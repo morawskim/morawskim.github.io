@@ -39,3 +39,17 @@ $profiler->start();
 
 Na końcu profilowanej metody wywołujemy `$profiler->end();`, aby zakończyć profilowanie i przesłać dane do Buggregator.
 W przypadku korzystania z framework Symfony możemy skorzystać z [gotowego bundle](https://github.com/iluckhack/xhprof-buggregator-bundle).
+
+## Ray
+
+W Golang instalujemy pakiet go-ray - `go get github.com/octoper/go-ray`.
+W przypadku korzystania z Buggregator w dockerze zgodnie z przykładem powyżej to konfigurujemy połączenie w następujący sposób:
+
+```
+app := ray.Ray()
+app.Enable()
+app.SetHost("ray@127.0.0.1")
+app.SetPort(8000)
+```
+
+Aby przesłać zawartość zmiennej `variableWhichContainsSomeData` do Ray korzystamy z kodu - `ray.Ray(variableWhichContainsSomeData)`.
