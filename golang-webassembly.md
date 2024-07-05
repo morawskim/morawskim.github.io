@@ -59,3 +59,17 @@ js.Global().Set("goFetch", js.FuncOf(func(this js.Value, args []js.Value) any {
     return promiseConstructor.New(handler)
 }))
 ```
+
+## TinyGo
+
+[Mój przykładowy projekt WebAssembly](https://github.com/morawskim/go-projects/tree/main/webassembly) po zbudowaniu przez kompilator go zajmuje niemal 9MB - `-rwxr-xr-x 1 marcin users 8,8M cze 30 11:51 functions.wasm`.
+Jeśli chcemy znacząco zmniejszyć wynikowy plik to możemy skorzystać z kompilatora tinygo. 
+W przypadku korzystania z dockera wywołujemy dwa polecenie:
+
+```
+docker run --rm -v $PWD:/app -w /app tinygo/tinygo:0.32.0 tinygo build -o ./assets/functions.wasm -target wasm --no-debug ./cmd/wasm
+docker run --rm -v $(PWD):/app -w /app tinygo/tinygo:0.32.0 /bin/bash -c "cp /usr/local/tinygo/targets/wasm_exec.js ./assets/"
+```
+
+Wynikowy plik będzie miał rozmiar niecałych 800KB - `-rwxr-xr-x 1 marcin users 725K lip  4 16:34 functions.wasm`.
+Niestety tinygo nie obsługuje wszystkiego - [syscall/js.finalizeRef not implemented](https://github.com/tinygo-org/tinygo/issues/1140)
