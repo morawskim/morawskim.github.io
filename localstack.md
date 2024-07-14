@@ -8,7 +8,6 @@ Do pliku `docker-compose.yml` dodajemy usługę localstack:
 services:
   # ....
   localstack:
-    container_name: "${LOCALSTACK_DOCKER_NAME:-localstack-main}"
     image: localstack/localstack:3.5
     ports:
       - "127.0.0.1:4566:4566"            # LocalStack Gateway
@@ -39,3 +38,29 @@ aws_secret_access_key=test
 ```
 
 Możemy teraz wywoływać polecenia AWS z wykorzystaniem profilu localstack - `aws s3 ls --profile localstack`
+
+## Terraform
+
+Localstack bardzo łatwo integruje się z Terraform/Opentofu jeśli skonfigurowaliśmy dedykowany profil dla aws-cli.
+W pliku `main.tf` dodajemy provider AWS i konfigurujemy go, aby korzystał z profilu "localstack".
+
+Dodatkowo ustawiamy opcję `s3_use_path_style` na wartość "true".
+Dla zasobów związanych z S3 otrzymalibyśmy błąd z połączeniem do API S3, ponieważ hostname będzie zawierał nazwę bucketa.
+
+```
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "5.58.0"
+    }
+  }
+}
+
+provider "aws" {
+  region  = "us-east-1"
+  profile = "localstack"
+
+  s3_use_path_style = true
+}
+```
