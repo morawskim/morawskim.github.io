@@ -29,6 +29,7 @@ region=us-east-1
 output=json
 ```
 
+Zamiast korzystać z "localhost" możemy podać także wartość "localhost.localstack.cloud".
 Następnie w pliku "~/.aws/credentials" konfiguruje access key i secret access key.
 
 ```
@@ -45,7 +46,7 @@ Localstack bardzo łatwo integruje się z Terraform/Opentofu jeśli skonfigurowa
 W pliku `main.tf` dodajemy provider AWS i konfigurujemy go, aby korzystał z profilu "localstack".
 
 Dodatkowo ustawiamy opcję `s3_use_path_style` na wartość "true".
-Dla zasobów związanych z S3 otrzymalibyśmy błąd z połączeniem do API S3, ponieważ hostname będzie zawierał nazwę bucketa.
+Dla zasobów związanych z S3 otrzymalibyśmy błąd z połączeniem do API S3, ponieważ hostname będzie zawierał nazwę bucketa - [Path-Style and Virtual Hosted-Style Requests](https://docs.localstack.cloud/user-guide/aws/s3/#path-style-and-virtual-hosted-style-requests)
 
 ```
 terraform {
@@ -64,3 +65,15 @@ provider "aws" {
   s3_use_path_style = true
 }
 ```
+
+## LocalStack Desktop
+
+Za pomocą aplikacji "LocalStack Desktop" możemy przeglądać utworzone zasoby chmury AWS np. S3 buckets, funkcje lambda itp.
+Pobieramy aplikację ze [strony (musimy mieć konto)](https://app.localstack.cloud/download) i ją instalujemy.
+
+Uruchamiamy aplikację i przechodzimy do "Resource Browser" (ostatnia ikona).
+Upewniamy się, czy mamy wybrany poprawny region (na dole).
+
+![](images/localstack-desktop.png)
+
+[Dokumentacja LocalStack Desktop](https://docs.localstack.cloud/user-guide/tools/localstack-desktop/)
