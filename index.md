@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2024-07
+[localstack](localstack.md)
 [Buggregator](buggregator.md)
 
 ## 2024-06
