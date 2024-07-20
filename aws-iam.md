@@ -24,6 +24,8 @@ Dodatkowe usługi które mogą nam pomóc w określeniu uprawnień Access adviso
 
 [Actions, resources, and condition keys for AWS services](https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html)
 
+[IAM Policy Simulator](https://policysim.aws.amazon.com/home/index.jsp)
+
 ## STS assume-role
 
 Tworzymy role i użytkownika w AWS. Następnie generujemy token API do nowo utworzonego konta i konfigurujemy narzędzie AWS CLI pod utworzone konto.
