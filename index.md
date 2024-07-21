@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2024-07
+[OBS Studio](obs.md)
 [Przeglądarka i security context](przegladarka-i-security-context.md)
 [localstack](localstack.md)
 [Buggregator](buggregator.md)
