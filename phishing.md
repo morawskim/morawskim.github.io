@@ -17,10 +17,16 @@
 
 [hostingchecker](https://hostingchecker.com/) Hosting Checker - Find out who is hosting any website
 
+## Wyszukiwarki danych osobistych
+
+[intelx](https://intelx.io) - wyszukiwarka, która umożliwia wyszukiwanie wrażliwych danych z wycieków informacji
+
+[dehashed](https://www.dehashed.com/) -  wyszukiwarka danych osobistych uzyskanych z wycieków informacji stworzona dla analityków bezpieczeństwa
+
 ## Porady
 
 * Jeśli ktoś podszywa się pod naszą firmę, to zgłaszając takie strony warto powoływać się na zarejestrowany znak handlowy TM
 
 * [Wykaz numerów przeznaczonych wyłącznie do odbierania połączeń głosowych](https://numeracja.uke.gov.pl/pl/orvc_tables)
 
-* Jeśłi otrzymaliśmy podejrzany email/SMS możemy wysłać maila do Inspektora Ochrony Danych z żądaniem udzielenie informacji, na jakiej podstawie firma przetwarza Nasze dane i kiedy wyraziliśmy na to zgodę. Spółka zgodnie z RODO ma obowiązek udzielenia takiej informacji, a jeśli tego nie zrobi, można zgłosić skargę do UODO.
+* Jeśli otrzymaliśmy podejrzany email/SMS możemy wysłać maila do Inspektora Ochrony Danych z żądaniem udzielenie informacji, na jakiej podstawie firma przetwarza Nasze dane i kiedy wyraziliśmy na to zgodę. Spółka zgodnie z RODO ma obowiązek udzielenia takiej informacji, a jeśli tego nie zrobi, można zgłosić skargę do UODO.
