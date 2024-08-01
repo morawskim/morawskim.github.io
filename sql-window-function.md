@@ -15,3 +15,11 @@ SELECT a.city, a.cnt, a.seen, SUM(a.cnt) OVER (PARTITION BY a.city) totalByCity
 ) a
 ORDER BY totalByCity DESC, a.seen
 ```
+
+## IN i dopasowanie wszystkich wartości listy
+
+Korzystając z operator IN natrafimy na problem jak dopasować wszystkie wartości listy.
+Istnieje kilka rozwiązań, a jednym z nich jest zastosowanie funkcji okna `COUNT(DISTINCT product_id) OVER (PARTITION BY company_id) unique_products`.
+Następnie mając tak wyliczoną kolumnę, możemy po niej filtrować, ale nie możemy tego robić bezpośrednio.
+
+[Inne rozwiązania](https://stackoverflow.com/questions/15977126/select-group-of-rows-that-match-all-items-in-a-list)
