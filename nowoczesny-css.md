@@ -28,3 +28,7 @@ Nowa właściwość CSS `backdrop-filter` pozwala nam uzyskać [kilka efektów](
 Za pomocą selektor `::selection` ustawiamy style do części dokumentu, który został zaznaczony przez użytkownika. W regule możemy korzystać tylko z określonych właściwości CSS. Są to `color`, `background` i `text-shadow`. Reguła `user-select` umożliwia nam kontrolowanie, czy zawartość danego element możemy zaznaczyć. Elementy `button` domyślnie mają ustawioną tą właściwość na wartość `none` przez co nie możemy zaznaczyć tekstu na tych elementach. Ustawiając tą właściwość na wartość `all` umożliwiamy zaznaczenie całej zawartości tekstowej.
 
 [Demo](https://codepen.io/morawskim/full/WNQXNXx)
+
+## Umieszczenie elementu nad innym za pomocą CSS Grid
+
+W tym [przykładzie](https://codepen.io/morawskim/pen/abgjyYB) za pomocą CSS Grid wyświetlam poświatę (efekt rozmytego tła) na którym umieszczony jest obraz SVG.
