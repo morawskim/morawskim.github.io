@@ -74,3 +74,9 @@ W pliku `src/actions/shoppingListActions.js:4:10` zrzucamy błąd `"Ohh"` i to j
 ## Logowanie błędów do Google Analytics
 
 Błąd po stronie klienta można przechwycić jak powyżej i przesłać do narzędzia GA za pomocą choćby takiego kodu: `ga('send', 'event', 'window.error', message, JSON.stringify(errorObj), undefined, { 'NonInteraction': 1 });`
+
+## Vite
+
+Do sekcji "build" dodajemy opcję "sourcemap" z wartością "hidden" - [vite build.sourcemap](https://vitejs.dev/config/build-options.html#build-sourcemap). W katalogu wyjściowym otrzymamy dodatkowe pliki source map.
+Reszta procesu jest taka sama jak w przypadku webpack.
+Instalujemy pakiet "source-map-cli" i wywołujemy polecenie - `./node_modules/.bin/source-map resolve  --context 20 ./sciezka/do/pliku/source-map.map  liniaBledu kolumna`
