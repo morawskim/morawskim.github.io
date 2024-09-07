@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2024-09
+[SQL Deadlock](sql-deadlock.md)
+
 ## 2024-08
 [Traefik middleware](traefik-middleawre.md)
 
