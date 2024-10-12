@@ -50,3 +50,22 @@ $xmlFile = file_get_contents('php://stdin');
 $xml = simplexml_load_string($xmlFile, options: LIBXML_NOENT);
 print_r($xml->foo);
 ```
+
+## JWT
+
+* Zgodnie z specyfikacją token JWT nie musi posiadać podpisu. Taki niepodpisany token ma w nagłówku poniższy dokument JSON:
+
+```
+{
+  "alg": "none",
+  "typ": "JWT"
+}
+```
+
+Choć wydaje się to mało prawdopodobne, to jednak zdażyło się, że biblioteki obsługujące JWT były podatne na ten atak - [Critical vulnerabilities in JSON Web Token libraries](https://auth0.com/blog/critical-vulnerabilities-in-json-web-token-libraries/)
+
+* Powiniśmy ograniczyć liczbę obsługiwanych algorytmów podpisów.
+
+* Standard JWT umożliwia umieszczenie struktury JWK zawierającej klucz publiczny w nagłówku JWT. Klucz ten następnie jest wykorzystywany do weryfikacji podpisu. Atakujący może usunąć oryginalny podpis, dodać swój klucz publiczny w nagłówku,a następnie podpisać token swoim kluczem prywatnym.
+
+* Korzystając z bibliotek JWT powiniśmy uważać na metody "decode" i "verify". Odkodowanie tokenu JWT, to nie to samo co jego weryfikacja.
