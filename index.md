@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2024-10
+[MySQL - Table definition has changed, please retry transaction](mysql-table-definition-has-changed-please-retry-transaction.md)
+
 ## 2024-09
 [SQL Deadlock](sql-deadlock.md)
 
