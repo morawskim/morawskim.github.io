@@ -24,6 +24,8 @@ Ten sposób ekspoitacji polega na dodaniu do nazwy plików takich ciągów znak�
 Interpretery języków skryptowych mogą w takich przypadkach zakończyć przetwarzanie ciągu znaków po napotkaniu ciągu reprezentującego null byte.
 Dzięki temu na serwerze utworzony zostanie plik z zamierzonym przez atakującym rozszerzeniem.
 
+* Generując tokeny warto nie tylko ograniczyć jego ważność, ale również ustawić limity - ograniczyć liczbę zapytań, jakie można wykonać z wykorzystaniem jednego tokena.
+
 ## XML XXE
 
 W PHP domyślnie wyłączona jest opcja zastępowania encji, co zwiększa bezpieczeństwo przed atakami XML XXE.
@@ -69,3 +71,11 @@ Choć wydaje się to mało prawdopodobne, to jednak zdażyło się, że bibliote
 * Standard JWT umożliwia umieszczenie struktury JWK zawierającej klucz publiczny w nagłówku JWT. Klucz ten następnie jest wykorzystywany do weryfikacji podpisu. Atakujący może usunąć oryginalny podpis, dodać swój klucz publiczny w nagłówku,a następnie podpisać token swoim kluczem prywatnym.
 
 * Korzystając z bibliotek JWT powiniśmy uważać na metody "decode" i "verify". Odkodowanie tokenu JWT, to nie to samo co jego weryfikacja.
+
+## WebSocket
+
+* Protokół WebSocket w żaden sposób nie implementuje bezpośrednio mechanizmu uwierzytelnienia, to na aplikacji leży ciężar weryfikacji tożsamości klienta.
+
+* WebSocket jest jedynie protokołem wymiany danych. Informacje przesyłane tym protokołem nie powinny być traktowane jako zaufane.
+
+* Dobrą praktyką jest ograniczenie liczby nawiązanych połączeń po stronie serwera dla jednego klienta. Ochroni to nas przed nadmiernym wyczerpaniem zasobów.
