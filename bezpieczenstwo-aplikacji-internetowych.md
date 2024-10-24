@@ -79,3 +79,16 @@ Choć wydaje się to mało prawdopodobne, to jednak zdażyło się, że bibliote
 * WebSocket jest jedynie protokołem wymiany danych. Informacje przesyłane tym protokołem nie powinny być traktowane jako zaufane.
 
 * Dobrą praktyką jest ograniczenie liczby nawiązanych połączeń po stronie serwera dla jednego klienta. Ochroni to nas przed nadmiernym wyczerpaniem zasobów.
+
+## Cookie SameSite
+
+Flaga SameSite może przyjmować jedną z trzech wartości: Lax, Strict lub None.
+Wartość None powinniśmy zastosować wtedy, gdy chcemy by przeglądarka obsługiwała ciasteczko "w standardowy sposób" (tak jak przed narzuceniem polityki SameSite Lax).
+
+W przypadku polityki Strict kwestią decydującą o tym, czy ciasteczko zostanie wysłane czy nie, jest pochodzenie zapytania.
+Może być ono typu cross-site - wtedy ciasteczko nie zostanie wysłane, lub same-site - w takim przypadku ciasteczko zostanie dołączone.
+
+Dla Lax alorytm podejmowania decyzji został rozszerzony.
+Jeśli wygenerowane zapytanie będzie skutkowało top-level navigation (brak zmiany domeny w pasku adresu)
+oraz zostanie przesłane z użyciem tzw. bezpiecznej metody HTTP, ciasteczko zostanie wysłane.
+Jeżeli użyta została metoda spoza listy bezpiecznych metod lub zapytanie nie będzie skutkowało top-level navigation, przeglądarka go nie dołaczy.
