@@ -37,3 +37,9 @@ Lepszym rozwiązaniem jest uruchomienie mitmproxy/mitmweb w trybie "reverse prox
 Do polecenia uruchamiającego serwer proxy dodajemy `--mode reverse:http://localhost:4200/ -p 8080  --set keep_host_header=true`.
 
 Przechodząc w przeglądarce na adres "localhost:8080" będzie wczytywana strona "localhost:4200", a w mitmproxy/mitmweb będziemy widzieć ruch.
+
+## Przeglądarki i proxy dla localhost
+
+W przeglądarce Firefox i Chrome konfigurując ustawienia proxy, ruch na "localhost" nie jest przekazywany przez skonfigurowany serwer proxy.
+W Chrome możemy wykorzystać flagę `--proxy-bypass-list="<-loopback>"` przy uruchamianiu przeglądarki - [Overriding the implicit bypass rules](https://chromium.googlesource.com/chromium/src/+/master/net/docs/proxy.md#overriding-the-implicit-bypass-rules).
+W Firefox wpisujemy w pasu adresu `about:config`, następnie szukamy ustawienia `network.proxy.allow_hijacking_localhost` i zmieniamy wartość na "true" - [How to configure Burp Suite for localhost application](https://security.stackexchange.com/questions/142552/how-to-configure-burp-suite-for-localhost-application).
