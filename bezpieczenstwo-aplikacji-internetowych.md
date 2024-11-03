@@ -92,3 +92,39 @@ Dla Lax alorytm podejmowania decyzji został rozszerzony.
 Jeśli wygenerowane zapytanie będzie skutkowało top-level navigation (brak zmiany domeny w pasku adresu)
 oraz zostanie przesłane z użyciem tzw. bezpiecznej metody HTTP, ciasteczko zostanie wysłane.
 Jeżeli użyta została metoda spoza listy bezpiecznych metod lub zapytanie nie będzie skutkowało top-level navigation, przeglądarka go nie dołaczy.
+
+## Uwierzytelnianie i autoryzacja
+
+Podstawą procesu uwierzytelniania jest przekazane przez użytkonkika danych uwierzytelniających,
+które następnie są weryfikowane po stronie serwera.
+Aplikacja z którą się komunikujemy musi wykorzystywać bezpieczny kanał komunikacji (najczęściej HTTPS).
+
+Po zalogowaniu się do systemu powiniśmy wygenerować nowy identyfiaktor sesji (atak Session Fixation).
+
+Dostępne rodzaje uwierzytelniania:
+
+* formularz logowania i ciasteczko HTTP
+
+* HTTP Basic Authentication
+
+* OpenID Connect
+
+* Klucze API
+
+* Certyfikaty X509
+
+* Kerberos/NTLM
+
+
+Dobrą praktyką z perspektywy bezpieczeństwa jest wymuszanie na użytkownikach ponownego uwierzytelnienia w przypadku wykonywania krytycznych operacji jak na przykład:
+
+* zmiana hsała lub adresu email użytkownika
+
+* zmiana ustawień wpływających na bezpieczeństwo aplikacji w panelu administracyjnym
+
+
+System powinen być audytowalny, czyli dawać możliwość ustalenia, kto, kiedy oraz co wykonał w systemie.
+Funkcje odpowiedzialne za uwierzytelnianie użytkownika powinny więc gromadzić informacje (log) o tym, jaki użytkownik uzyskał dostęp do systemu i w jakim czasie.
+Dodatkowo system może powinien gromadzić dodatkowe informacje na temat środowiska, w jakim pracuje użytkownik, ktory uzyskał dostęp do systemu.
+Takimi danymi mogą być adres IP użytkownika oraz informacje o jego przeglądarce.
+
