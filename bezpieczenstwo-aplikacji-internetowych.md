@@ -128,3 +128,56 @@ Funkcje odpowiedzialne za uwierzytelnianie użytkownika powinny więc gromadzić
 Dodatkowo system może powinien gromadzić dodatkowe informacje na temat środowiska, w jakim pracuje użytkownik, ktory uzyskał dostęp do systemu.
 Takimi danymi mogą być adres IP użytkownika oraz informacje o jego przeglądarce.
 
+### Hydra
+
+Hydra to narzędzie do łamania haseł, które automatycznie przeprowadza ataki słownikowe na różne protokoły i usługi sieciowe, aby odgadnąć hasła do kont użytkowników.
+
+Prosty skrypt logowania do przetestowania narzędzia:
+```
+<?php
+
+if (!empty($_POST) && (($_POST['login'] ?? '') === 'admin') && (($_POST['password'] ?? '') === '123456')) {
+    echo "Hello admin!";
+} else {
+    echo "Wrong password";
+}
+```
+
+Plik zapisujemy pod nazwą `login.php` i odpalamy wbudowany serwer HTTP w PHP - `php -S 127.0.0.1:5000 -t .`
+Tworzymy także plik `plikZhaslami.txt` w którym umieszczamy najpopularniejsze hasła:
+```
+foo
+bar
+baz
+12345
+123456
+```
+
+Rozpoczynamy atak poleceniem `hydra -l admin -P plikZhaslami.txt -s 5000 '127.0.0.1' http-post-form '/login.php:login=^USER^&password=^PASS^:Wrong password'`
+
+Przełącznik `-l` służy do zdefiniowania nazwy użytkownika jaka ma być wykorzystywana do prób logowania.
+
+Przełącznik `-P` służy do wskazania ścieżki do pliku ze słownikiem haseł, jakie mają zostać wykorzystane do ataku.
+
+Przełącznikiem `-s` możemy określić port, jeśli usługa działa na niestandardowym porcie.
+
+Następnie podajemy adres IP lub domene.
+
+`http-post-form` to wybrana metoda ataku.
+
+Ostatni parametr jest rozdzielony znakiem dwukropka.
+`/login.php` to adres zasobu, pod ktorym aplikacja przyjmuje żądania uwierzytelnienia.
+Następnie przekazujemy informację o parametrach, jakie są przesyłane w poprawnym zapytaniu,
+czyli login i password, wskazujemy też miejsca, w których Hydra ma wstawić wykorzystywany do ataku login oraz hasło - odpowiednio `^USER^` oraz `^PASS^`.
+Ostatnia część parametru definuje ciąg znaków, który dla Hydry oznaczać będzie, że dana para login-hasło nie pozwoliła na poprawne uwierzytelenie się.
+
+```
+Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2024-11-03 19:00:55
+[DATA] max 5 tasks per 1 server, overall 5 tasks, 5 login tries (l:1/p:5), ~1 try per task
+[DATA] attacking http-post-form://127.0.0.1:5000/login.php:login=^USER^&password=^PASS^:Wrong password
+[5000][http-post-form] host: 127.0.0.1   login: admin   password: 123456
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2024-11-03 19:00:55
+```
