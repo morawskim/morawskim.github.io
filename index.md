@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2024-11
+[mDNS](mdns.md)
+
 ## 2024-10
 [MySQL - Table definition has changed, please retry transaction](mysql-table-definition-has-changed-please-retry-transaction.md)
 
