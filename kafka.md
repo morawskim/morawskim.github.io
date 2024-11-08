@@ -7,6 +7,11 @@ Cechami `unified log` są:
 * uporządkowane dane
 * rozproszony
 
+Gdy mamy temat w Kafce z 10 partycjami i 10 instancjami konsumerów, które odczytują dane z tego samego tematu, w momencie gdy szybkość napływających wiadomości wzrośnie i konsumenci nie będą nadązać możemy chcieć skalować aplikację konsumerów, dodając więcej instancji.
+Jednak gdy mamy już po jednym konsumencie na każdą partycję w jednej grupie, dodanie kolejnych konsumerów do tej grupy nie pomoże.
+Kafka nie przypisze więcej niż jednego konsumera z tej samej grupy do jednej partycji.
+Jedynym sposobem na zwiększenie liczby konsumerów w grupie jest zwiększenie liczby partycji w temacie.
+
 ## PHP
 
 Jeśli korzystamy z obrazu dockera `php:7.4` to musimy doinstalować pakiet `librdkafka-dev`, a następnie wywołać standardowe polecenia do instalacji (`pecl install rdkafka`) i włączenia rozszerzenia PHP (`docker-php-ext-enable rdkafka`). Przydata jest także biblioteka [kwn/php-rdkafka-stubs](https://github.com/kwn/php-rdkafka-stubs), która dostarcza stubs dla rozszerzenia RdKafka. Dzięki temu w IDE będzie działać m.in. inspekcja i podpowiadanie kodu.
