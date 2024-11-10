@@ -181,3 +181,19 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2024-11-03 19:00:
 1 of 1 target successfully completed, 1 valid password found
 Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2024-11-03 19:00:55
 ```
+
+## Path Traversal
+
+* Można się spotkać z innymi określeniami tej podatności "Directory Traversal" lub "dot dot slash attack".
+
+* Udana próba wykorzystania tej podatności skutkuje możliwością odczytania zawartości katalogów oraz plików, do których atakujący nie powinien mieć dostępu (np. pliki konfiguracyjne).
+
+* Ochrona przed tym atakiem sprowadza się do odpowiedniej walidacji danych wejściowych do aplikacji.
+
+## SQL Injection
+
+* SQL Injection to podatności aplikacji webowych, dzięki której napastki może wstrzyknąć własny fragment zapytania SQL.
+
+* Stacked queries powinny być wyłączone - sterownik powinien umożliwić wykonanie tylko jednego zapytania SQL. Nie powinno być dozwolone wykonanie wielu zapytań SQL oddzielonych średnikiem.
+
+* Należy wyłączyć potencjalnie niebezpieczne procedury (jak np. zapis plików na dysku, czy wykonywanie poleceń systemu operacyjnego) w bazie danych.
