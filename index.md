@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2024-11
+[Android AVD, SSL i proxy](android-avd-ssl-i-proxy.md)
 [mDNS](mdns.md)
 
 ## 2024-10
