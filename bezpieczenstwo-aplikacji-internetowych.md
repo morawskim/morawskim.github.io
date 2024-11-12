@@ -197,3 +197,18 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2024-11-03 19:00:
 * Stacked queries powinny być wyłączone - sterownik powinien umożliwić wykonanie tylko jednego zapytania SQL. Nie powinno być dozwolone wykonanie wielu zapytań SQL oddzielonych średnikiem.
 
 * Należy wyłączyć potencjalnie niebezpieczne procedury (jak np. zapis plików na dysku, czy wykonywanie poleceń systemu operacyjnego) w bazie danych.
+
+## Cross-Site Scripting - XSS
+
+Atak polegający na możliwości osadzenia w treści strony własnego kodu JavaScript, co w konsekwencji może doprowadzić do wykonania niepożądanych akcji przez użytkowników odwiedzających tą stronę.
+
+Upload plików może skutkować podatnością XSS, jeśli przesłany zostanie plik typu `.html` lub `.svg`.
+Zalecaną formą ochrony przed tego typu atakiem XSS to wydzielenie osobnej domeny (tzw. domeny sandboksowej), z której serwerowane będą pliki wgrywane przez użytkownika.
+
+Jeśli aplikacja działa w domenie `https://example.com` i serwuje pliki z `https://example.com/uploads`, narażamy się na atak, ponieważ kod JS wykonujący się pod tym zasobem ma pełen dostęp do danych z całej domeny `https://example.com/`.
+
+Powiniśmy utworzyć osobną subdomenę (np. `https://uploads.example.com`) lub całkowicie osobną domenę (np. `https://exampleusercontent.com`). Skrypt z tak zdefiniowanych domen nie ma już dostępu do danych z `https://example.com`.
+
+Każda subdomena może jednak ustawić ciasteczka dla domeny nadrzędnej, co skutkuje ryzykiem przeprowadzenia ataku przez ten mechanizm.
+Dlatego najbezpieczniejsze jest stworzenie całkowicie osobnej domeny.
+Takie rozwiązanie stosuje GitHub - `github.com` i `raw.githubusercontent.com`, czy też Google.
