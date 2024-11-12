@@ -212,3 +212,21 @@ Powiniśmy utworzyć osobną subdomenę (np. `https://uploads.example.com`) lub 
 Każda subdomena może jednak ustawić ciasteczka dla domeny nadrzędnej, co skutkuje ryzykiem przeprowadzenia ataku przez ten mechanizm.
 Dlatego najbezpieczniejsze jest stworzenie całkowicie osobnej domeny.
 Takie rozwiązanie stosuje GitHub - `github.com` i `raw.githubusercontent.com`, czy też Google.
+
+## Server-Side Request Forgery - SSRF
+
+Atak SSRF polega na zmuszeniu serwera do zainicjowania pewnej komunikacji sieciowej.
+
+Podatność SSRF może występować w:
+* plikach XML - poprzez mechanizmy XXE, DTD, XInclude, SVG/XLink czy też XSLT
+* pliki pakietów biurowych jak np. LibreOffice
+* ImageMagick
+* mechanizm uploadu - zamiast zawartości wgrywanego pliku podajemy adres HTTP. Niektóre biblioteki implementujące koncepcję adapterów IO, mogą pobrać taki plik.
+
+Metodą ochronny przed SSRFF to uniemożliwienie serwerowi komunikowanie się z tą samą maszyną czy jakimkolwiek serwerem w sieci lokalnej.
+
+Jeśli gdzieś w aplikacji nawiązujemy polączenie HTTP(S) dobrą praktyką jest wyłączenie podążania za przekierowaniami.
+
+Wymuszamy możliwość połączenia tylko z danym portem np. 80/443.
+
+Korzystamy z białej listy adresów, unikając skomplikowanych reguł wyrażeń regularnych
