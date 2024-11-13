@@ -230,3 +230,61 @@ Jeśli gdzieś w aplikacji nawiązujemy polączenie HTTP(S) dobrą praktyką jes
 Wymuszamy możliwość połączenia tylko z danym portem np. 80/443.
 
 Korzystamy z białej listy adresów, unikając skomplikowanych reguł wyrażeń regularnych
+
+## Server-Sde Template Injection - SSTI
+
+Atak występuje, gdy musimy przetwarać po stronie serwera szablony pochodzące od niezaufanych użytkowników.
+
+Ochrona przed XSS jest niewystarczająca. Aplikacja, która jest odporna na ataki XSS, może być podatna na SSTI.
+
+Ograniczmy korzystanie z szablonów, poprzez uniemożliwienie (niezaufanemu) użytkownikowi dostarczenia jakiejkolwiek ich częsci.
+
+Korzystajmy z silników szablonów udostępniających tryb sandbox.
+
+## Cross-Site Request Forgery - CSRF
+
+Atak polega na zmuszeniu przeglądarki ofiary do wykonania żądania HTTP, a atakujący na cel bierze zalogowanego użytkownika.
+
+Inna nazwa to "One-click attack".
+
+Apliakcja jest podatna na CSRF, kiedy nie sprawdza, czy wysłane do niej prawidłowe żadanie HTTP zostało świadomie wykonane przez użytkownika.
+
+Jest to atak na przeglądarkę internetową ofiary, a nie na aplikację webową.
+
+Większość frameworków dostarcza możliwość automatycznej ochrony przed CSRF.
+
+Nową formą ochrony przed CSRF jest atrybut SameSite dodawany do ciasteczek.
+
+Formularze HTML nie pozwalają na używanie innych metod niż POST oraz GET.
+
+## Same-origin Policy SOP
+
+Origin to protokół, host (sprawdzany rygorystycznie, tzn. subdomena nie jest tożsama z domeną) i port.
+
+Same Origin Policy:
+
+* wykonanie zapytania Cross-Origin z reguły jest możliwy (przykład: wykonanie zapytania GET przy pobieraniu obrazka lub wysyłania formularza)
+
+* osadzenie (użycie zwróconej odpowiedzi bez znajomości jej treści Cross-origin z reguły jest możliwe (przykład: osadzenie elementu - obrazka, ramki, skryptu - na stronie)
+
+* odczyty (poznanie treści zwróconej odpowiedzi) Cross-Origin z reguły nie jest możliwy (przykład: wczytywanie treści skryptu lub odpowiedzi XHR)
+
+CORS umożliwia nam bezpieczne wykonywanie zapytań HTTP Cross-Origin.
+Dajemy możliwość stronie serwującej dane (odpowiadającej) na zdecydowanie, że ufa stronie klienckiej/pytającej i czy w związku z tym dane, które wyślemy, mają być dla niej dotępne.
+
+Cors Simple Request:
+* metodami HTTP są HEAD, GET lub POST
+
+* nagłówki HTTP pochodzą ze zbioru: Accept, Accept-Language, Content-Language, Content-Type o ile jego wartości to application/x-www-form-urlencoded, multipart/form-data lub text/plain.
+
+* Domyślnie obiekt XHR ma dostęp do nagłówków odpowiedzi HTTP, ale ogranizonego zbioru.
+W momencie gdy chcemy umożliwić dostęp do innych (niestandardowych) nagłówków, musimy umieścić ich nazwy w tym nagłówku. Jego wartością jest lista nazw, seperowana przecinkiem.
+
+
+Not So Simple Cors Request:
+
+* nie wykonany ich za pomocą standardowych technik używanych w ataku CSRF - m.in. dlatego, że używamy niestandardowego nagłówka HTTP lub wartości Content-Type, które nie może być użyta w standardowym formularzu HTTP.
+
+CORS:
+
+* CORS daje nam kontrolę nad przeyłaniem danych uwierzytelniających zarówno ciastek, np. sesyjnych, jak i nagłówków związanych z uwierzytelnieniem np. Authorization.
