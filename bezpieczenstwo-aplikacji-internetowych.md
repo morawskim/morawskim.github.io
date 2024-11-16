@@ -310,3 +310,27 @@ Pomaga sprawdzić, czy konfiguracja CSP chroni przed atakami typu XSS (cross-sit
 [https://csp-evaluator.withgoogle.com/](CSP Evaluator)
 
 [https://report-uri.com/home/generate](Generator polityki CSP)
+
+## Nagłówki HTTP w kontekście bezpieczeństwa
+
+### Referrer-Policy
+
+nagłówek określa, jakie informacje lub ich część powinny być wysyłane w nagłówku Referer z żądaniem na temat adresu, z którego nasąpiło przekierowanie (czyli lokazlicaji, z jakiej przeszedł użytkownik). Nagłówek ten może być powodem wycieku istotnych infromacji w mimencie przejśca na inną, zewnętrzną stronę. Ustawienie wartości "no-referrer" pwooduje że nagłówek Referer nie jest wysyłany. Wartość "same-origin" - wysyłanie pełnej ścieżki w momencie gdy zapytanie następuje z tego samego oriignu. W innym przypadku żadne dane nie były przekazywane w nagłówku Referer.
+
+### X-Content-Type-Options
+
+Nagłówek wskazuje przeglądarce, aby nie próbowała interpretować odpowiedzi HTTP jako inny typ niż ten ustawiony w nagłówku Content-Type. Jedyną dopuszczalną wartością tego nagłówka jest "nosniff"
+
+### Feature-Policy
+
+Nagłówek pozwala na włączenie, wyłączenie lub modyfikację konkretnych API i funkcjionalności webowych przeglądarki dla danej strony oraz dla zawartości załadowanej za pośrednictwem ramki iframe. Obecnie ten nagłówej jest oznaczony jako Deprecated - [Feature policy](https://caniuse.com/feature-policy). Powinniśmy korzystać z [permission policy](https://www.permissionspolicy.com/)
+
+### X-Frame-Options
+
+Nagłówek ten pozwala na określenie, czy możliwe jest załadowanie strony w ramce.
+Nagłówek ten zwiększa ochronę przed atakami Clickjacking.
+Wartość "deny" blokuje wyświetlenie strony w ramce.
+
+## Książki
+
+Wielu autorów, _Bezpieczeństwo aplikacji webowych_, SECURITUM
