@@ -288,3 +288,25 @@ Not So Simple Cors Request:
 CORS:
 
 * CORS daje nam kontrolę nad przeyłaniem danych uwierzytelniających zarówno ciastek, np. sesyjnych, jak i nagłówków związanych z uwierzytelnieniem np. Authorization.
+
+## Clickjacking
+
+Atak polega na umieszczeniu wenątrz niewidocznego elementu `<iframe>` odniesienia do atakowanej witryny i zmuszenia użytkownika (w sposób niewidoczny dla niego) do wykonania akcji przez kliknięcie.
+
+Warunkiem koniecznym do wykonania tego ataku jest element `<iframe>`.
+Wykorzystanie nagłówka "X-Frame-Options" pozwala ograniczyć ten atak.
+Nagłówek ten może przyjmować jedną z dwóch wartości:
+* SAMEORIGIN - strona może być umieszczona w ramce, tylko jeśli jest umieszczona przez stronę z tej samej domeny.
+* DENY - strona nigdy nie może być umieszczona w ramce
+
+## Content Security Policy CSP
+
+CSP jest mechanizmem bezpieczeństwa obecnym w przeglądarkach, którego głownym celem jest ochrona przed skutkami ataku XSS.
+
+Treść nagłówka lub elementu meta CSP zawiera instrukcję dla przeglądarki, które elementy na stronie mają zostać wyświetlone, a które zablokowane.
+
+CSP Evaluator to narzędzie do analizy polityki Content Security Policy (CSP).
+Pomaga sprawdzić, czy konfiguracja CSP chroni przed atakami typu XSS (cross-site scripting). Wskazuje potencjalne luki i daje sugestie, jak wzmocnić zabezpieczenia strony.
+[https://csp-evaluator.withgoogle.com/](CSP Evaluator)
+
+[https://report-uri.com/home/generate](Generator polityki CSP)
