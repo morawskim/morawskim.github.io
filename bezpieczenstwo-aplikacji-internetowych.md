@@ -101,6 +101,8 @@ Aplikacja z którą się komunikujemy musi wykorzystywać bezpieczny kanał komu
 
 Po zalogowaniu się do systemu powiniśmy wygenerować nowy identyfiaktor sesji (atak Session Fixation).
 
+Hasła powinny być przechowywane w bezpieczniej formie - klucz PBKDF.
+
 Dostępne rodzaje uwierzytelniania:
 
 * formularz logowania i ciasteczko HTTP
