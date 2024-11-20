@@ -8,6 +8,7 @@ Nastepnie je aktywujemy `source ./bin/activate`
 Wchodzimy na stronę [PyTorch - Start Locally](https://pytorch.org/get-started/locally/) i wybieramy system operacyjny, język itd.
 Otrzymamy polecenie, które musimy wykonać. W moim przypadku `pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu`
 Następnie zapisujemy pobrane wersje pakietów do pliku `requirements.txt` - `pip3 freeze > requirements.txt`
+Musimy dodać na początku pliku `requirements.txt` adres do dodatkowego repozytorium z pakietami pytorch: `--extra-index-url https://download.pytorch.org/whl/cpu`
 
 ## Demo resnet101
 
