@@ -37,3 +37,11 @@ export function createApp() {
 ```
 
 Ciągle jednak w aplikacji musimy wyszukać znaczniki `template` i dodać do nich atrybut `:ref` np. - `<template data-elem="progress-template" :ref="el => ignoredTemplateRef(el)">`
+
+## jQuery i Vue
+
+Po zamontowaniu aplikacji Vue, dodanie komponentu Vue przez jQuery nie powoduje jego wyświetlenia.
+Tylko aplikacja Vue może dodawać nowe komponenty.
+Jednym z rozwiązań tego problemu jest publikowanie zdarzenia przez jQuery i odebranie go w komponencie.
+W tym celu korzystamy z hooków `onMounted` do nasłuchiwania na zdarzenia i `onBeforeUnmount`.
+W jQuery korzystamy z metody `trigger` do publikowania zdarzenia - `$element.trigger('nazwaZdarzenia', ['arg1', 'arg2']);`
