@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2024-11
+[Google Sheets i Apps Script](google-sheets-i-apps-script.md)
 [Bezpieczeństwo aplikacji internetowych](bezpieczenstwo-aplikacji-internetowych.md)
 [Android AVD, SSL i proxy](android-avd-ssl-i-proxy.md)
 [mDNS](mdns.md)
