@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2024-12
+[Gmail lIMAP extension](gmail-imap-extension.md)
+
 ## 2024-11
 [Google Sheets i Apps Script](google-sheets-i-apps-script.md)
 [Bezpieczeństwo aplikacji internetowych](bezpieczenstwo-aplikacji-internetowych.md)
