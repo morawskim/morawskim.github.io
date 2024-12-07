@@ -41,3 +41,18 @@ $mock->someMethod(); // Returns 2
 ```
 
 Warto jednak pamiętać, że metoda `willReturnOnConsecutiveCalls` jest oznaczona jako deprecated i zostanie skasowana w PHPUnit 12 - [Deprecate InvocationMocker::willReturnOnConsecutiveCalls() #5425](https://github.com/sebastianbergmann/phpunit/issues/5425)
+
+## Yii2 i Active Record
+
+Yii2 wykorzystuje wzorzec Active Record, który utrudnia pisanie testów jednostkowych.
+Gdy próbujemy ustawić wartość dla pola modelu, Yii2 nawiązuje połączenie z bazą danych w celu pobrania informacji o dostępnych kolumnach w bazie danych.
+
+W projekcie mieliśmy model dla którego chciałem utworzyć testy w celu sprawdzenia działania walidacji.
+PHPUnit umożliwia nam utworzenie częściowej atrapy.
+W pliku testy tworzymy atrapę, na której ustawiamy stan i wywołujemy metodę walidacji/walidatora.
+
+```
+$mock = $this->createPartialMock(MyActiveRecordModel::class, ['getRelatedActiveRecordModel', 'attributes']);
+$mock->method('getRelatedActiveRecordModel')->willReturnCallback($myCallable);
+$mock->method('attributes')->willReturn(['status', 'type']);
+```
