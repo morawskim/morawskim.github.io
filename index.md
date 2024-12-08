@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2024-12
+[Rector własna reguła](rector-wlasna-regula.md)
 [Gmail lIMAP extension](gmail-imap-extension.md)
 
 ## 2024-11
