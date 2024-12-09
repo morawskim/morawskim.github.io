@@ -44,3 +44,45 @@ return RectorConfig::configure()
 ```
 
 Uruchamiając testowo rector warto wyłączyć cache - `./vendor/bin/rector process --dry-run --clear-cache`
+
+## Testy jednostkowe
+
+Do tworzenia testów jednostkowych warto skorzystać z klasy `Rector\Testing\PHPUnit\AbstractRectorTestCase`, która upraszcza testowanie reguł refaktoryzacji - \
+Umożliwia porównywanie kodu źródłowego "przed" i "po" zastosowaniu konkretnej reguły.
+
+Musimy zaimplementować metodę `provideConfigFilePath`, która zwraca ścieżkę do plik konfiguracyjny dla Rectora.
+Przykładowy plik konfiguracyjny dla testów:
+```
+<?php
+
+declare(strict_types=1);
+
+use Rector\Config\RectorConfig;
+use Utils\Rector\Rector\RemoveCloneOnDateTimeRector;
+
+return RectorConfig::configure()
+    ->withRules([\Utils\Rector\Rector\MyRuleRector::class]);
+
+```
+
+Tworzymy statyczną metodę, która zwróci nam dane do testów.
+Pliki w katalogu `Fixture` powinny mieć rozszerzenie `.php.inc`, każdy plik to jeden przypadek testowy, a także w jednym pliku umieszczamy kod "przed" i "po" \
+zastosowaniu reguły refaktoryzującej oddzielając je `-----`.
+W przypadku, gdy kod jest taki sam (czyli reguła nie ma zastosowania i nie modyfikuje kodu) możemy podać kod bez wersji "po".
+
+```
+public static function providedDataForTest(): iterable
+{
+    return self::yieldFilesFromDirectory(__DIR__ . '/Fixture');
+}
+```
+
+Tworzymy metodę z testem i podłączamy utworzony provider.
+
+```
+#[DataProvider('providedDataForTest')]
+public function testRule(string $fixtureFilePath)
+{
+    $this->doTestFile($fixtureFilePath);
+}
+```
