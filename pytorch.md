@@ -48,3 +48,18 @@ result = [(labels[idx], percentage[idx].item()) for idx in indices[0][:5]]
 
 print(result)
 ```
+
+## DataSet
+
+Własny DataSet może być przydatny, kiedy dane treningowe/testowe dla naszej sieci neuronowej są przechowywane w niestandardowy sposób.
+Tworzymy go tworząc nową klasę, która dziedziczy po `torch.utils.data.Dataset` i implementuje metody `__len__` i `__getitem__`.
+
+```
+class MyDataSet(torch.utils.data.Dataset):
+    def __len__(self):
+        pass
+
+    def __getitem__(self, index: int):
+        pass
+
+```
