@@ -41,3 +41,7 @@ John L. Viescas, Douglas J. Steele, Ben G. Clothier, _Mistrzowski SQL. 61 techni
 
 * Przechodzimy do półek, odnajdujemy rekord, z którego odczytujemy wartość CustCity i wracamy do katalogu, aby odszukać kolejną pozycję. Właśnie to oznacza operacja sprawdzenia klucza (ang. Key Lookup). Operacja przeszukania indeksu (ang. Index Seek) reprezentuje przeglądanie katalogu, podczas gdy sprawdzenie klucza oznacza przejście do regałów i pobranie dodatkowych informacji niezawartych w fiszce.
 
+* W klauzuli ORDER BY możemy sortować wiersze po wartości w kolumnie - `ORDER BY table1.id = 112232 DESC, table1.id = 112236 DESC, status, id`. Wiersze, w których `table1.id = 112232` (czyli true), będą sortowane jako pierwsze.
+Pozostałe wiersze (gdzie table1.id != 112232) będą niżej w wynikach.
+Efekt sortowanie jest następujący: najpierw wiersze spełniające warunek `table1.id = 112232`, następnie wiersze `table1.id = 112236` i finalnie po statusie i kolumnie id.
+Takie sortowanie może być przydatne, gdy dodajemy nowy wiersze do tabeli przez aplikację i chcemy wyświetlić go na samej górze listy.
