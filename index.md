@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2024-01
+[SPF, DKIM i DMARC](spf-dkim-i-dmarc.md)
+
 ## 2024-12
 [Rector własna reguła](rector-wlasna-regula.md)
 [Gmail lIMAP extension](gmail-imap-extension.md)
