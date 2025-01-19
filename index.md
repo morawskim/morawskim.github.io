@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2024-01
+[microk8s refresh-certs](microk8s.md#refresh-certs)
 [SPF, DKIM i DMARC](spf-dkim-i-dmarc.md)
 
 ## 2024-12
