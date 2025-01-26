@@ -63,3 +63,49 @@ class MyDataSet(torch.utils.data.Dataset):
         pass
 
 ```
+
+## CUDA
+
+Do korzystania z CUDA potrzebujemy karty graficznej od NVIDIA.
+W przypadku dystrybucji z rodziny Ubuntu instalujemy pakiety `sudo apt install nvidia-driver-550 nvidia-utils-550 nvidia-dkms-550`
+Po ponownym uruchomieniu systemu, możemy wywołać program `nvidia-smi`, aby monitorować GPU.
+
+```
+Sat Jan 25 19:38:29 2025
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.120                Driver Version: 550.120        CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+# .....
+```
+
+Jeśli w powłoce python REPL i otrzymamy błąd "Torch not compiled with CUDA enabled", to zainstalowaliśmy PyTorch bez obsługi CUDA.
+
+```
+>>> torch.cuda.is_available()
+False
+>>> torch.zeros(1).cuda()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/zzzzzzzzzzz/lib/python3.12/site-packages/torch/cuda/__init__.py", line 310, in _lazy_init
+    raise AssertionError("Torch not compiled with CUDA enabled")
+AssertionError: Torch not compiled with CUDA enabled
+```
+
+Wchodzimy na stronę [PyTorch - Start Locally](https://pytorch.org/get-started/locally/) i wybieramy system operacyjny, język i wersję CUDA.
+Otrzymamy polecenie, który należy wywołać na naszej maszynie.
+Po pobraniu pakietu torch, wsparcie dla CUDA będzie dostępne.
+
+```
+>>> import torch
+>>> torch.cuda.is_available()
+True
+>>> torch.zeros(1).cuda()
+tensor([0.], device='cuda:0')
+>>>
+```
+
+### Konfiguracja kodu niezależnego od urządzenia
+
+```
+device = "cuda" if torch.cuda.is_available() else "cpu"
+```
