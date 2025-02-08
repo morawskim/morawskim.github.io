@@ -48,3 +48,79 @@ Dodatkowo należy pamiętać, że domyślnie Prometeusz przechowuje dane tylko p
 
 [Backfilling from OpenMetrics format](https://prometheus.io/docs/prometheus/latest/storage/#backfilling-from-openmetrics-format)
 [Prometheus backfilling](https://tlvince.com/prometheus-backfilling)
+
+## Alerty
+
+Konfigurując alerty w Prometheus, możemy skorzystać z [gotowych reguł](https://samber.github.io/awesome-prometheus-alerts/rules.html).
+
+Tworzymy plik z regułami, np. dla node-exportera, a następnie dodajemy go do konfiguracji Prometheusa:
+
+```
+global:
+    # How frequently to scrape targets by default.
+    scrape_interval: 1m
+    # How long until a scrape request times out.
+    scrape_timeout: 10s
+rule_files:
+    - /etc/prometheus/node_exporter.yml
+```
+
+Po wejściu na adres `https://prometheus/alerts` zobaczymy skonfigurowane alerty widoczne w Prometheusie.
+Aby wysłać powiadomienie, gdy alert się pojawi, potrzebujemy dodatkowo Alertmanagera.
+
+### Alertmanager
+
+Przykładowa definicja usługi dla docker compose:
+
+```
+alertmanager:
+    image: prom/alertmanager:v0.27.0
+    restart: unless-stopped
+    volumes:
+      - ./alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml
+    ports:
+      - 9093:9093
+```
+
+Przykładowy plik konfiguracyjny dla Alertmanager do wysyłania powiadomień na czat Telegrama.
+
+```
+route:
+  # `group_wait` default is 30s, indicating the duration to hold off before sending an alert notification.
+  group_wait: 10s
+  receiver: telegram
+receivers:
+  - name: telegram
+    telegram_configs:
+      - bot_token_file: "/secrets/TELEGRAM_BOT_TOKEN"
+        chat_id: WSTAW_TELEGRAM_CHAT_ID
+        send_resolved: false
+        parse_mode: ""
+```
+
+### Testowanie alertów
+
+Aby wywołać alert o wysokim wykorzystaniu procesora, można na monitorowanym serwerze uruchomić: `docker run --rm -it progrium/stress --cpu 2 --timeout 300s`
+Innym sposobem na przetestowanie powiadomień jest skorzystanie z API Alertmanagera i utworzenie testowego alertu:
+
+```
+curl -v -X POST 'https://alertmanager/api/v2/alerts' \
+     -H "Content-Type: application/json" \
+     -d '[
+  {
+    "labels": {
+      "alertname": "TestAlert",
+      "severity": "critical",
+      "instance": "test-instance"
+    },
+    "annotations": {
+      "summary": "This is a test alert"
+    },
+    "startsAt": "'$(date -u +"%Y-%m-%dT%H:%M:%SZ")'",
+    "endsAt": "'$(date -u -d '1 hour' +"%Y-%m-%dT%H:%M:%SZ")'",
+    "generatorURL": "http://localhost/test"
+  }
+]'
+```
+
+Dzięki tym konfiguracjom Prometheus i Alertmanager będą mogły skutecznie monitorować system i wysyłać powiadomienia w przypadku wykrycia problemów.
