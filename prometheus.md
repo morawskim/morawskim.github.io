@@ -53,6 +53,10 @@ Dodatkowo należy pamiętać, że domyślnie Prometeusz przechowuje dane tylko p
 
 Konfigurując alerty w Prometheus, możemy skorzystać z [gotowych reguł](https://samber.github.io/awesome-prometheus-alerts/rules.html).
 
+Dla alarmu HostOomKillDetected natrafiliśmy na problem powiązany z domyślną wartością parametru `evaluation_interval`.
+Alarm nie był zgłaszany, więc rozwiązaniem było wydłużenie przedziału czasu z 1m do 2m.
+Aby przetestować ten alert, możemy uruchomić kontener poleceniem: `docker run --rm --memory=500m progrium/stress --vm 2 --vm-bytes 400M --vm-hang 0`.
+
 Tworzymy plik z regułami, np. dla node-exportera, a następnie dodajemy go do konfiguracji Prometheusa:
 
 ```
