@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2025-03
+[vagrant - shared folder i brak VirtualBox Guest Additions](vagrant.md#shared_folder_i_brak_VirtualBox_Guest_Additions)
+
 ## 2025-01
 [Fluent Bit](fluent-bit.md)
 [PyTorch](pytorch.md)
