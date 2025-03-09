@@ -71,6 +71,39 @@ vars_files:
 Podczas uruchamiania `ansible-playbook` musimy dodać argument `--ask-vault-pass` albo `--vault-password-file` jeśli chcemy podać ścieżkę do pliku z hasłem zamiast wpisywać je. Jeśli nie dodamy tego argumentu to otrzymamy błąd `Attempting to decrypt but no vault secrets found`.
 Warto do zadania dodać klucz `no_log` z wartością `true`, aby zapobiec logowaniu/pokazywaniu wartości sekretnej zmiennej.
 
+### Tworzenie zaszyfrowanego pliku przy użyciu ansible-vault
+
+W celu utworzenia zaszyfrowanego pliku przy użyciu ansible-vault,
+tworzymy playbook o nazwie `split_vault.yml` o następującej zawartości:
+
+```
+- name: Split vault file
+  hosts: localhost
+  become: false
+  gather_facts: no
+  vars:
+    vault_output_file: "{{ inventory_dir }}/vault-worker-split.yml"
+  vars_files:
+    - "{{ inventory_dir }}/vault.yml"
+  tasks:
+    - name: Create YAML string
+      set_fact:
+        app_yaml: |
+          APP_SECRETS:
+            {{ APP_SECRETS | to_yaml | indent(2) }}
+    - name: Create app vault file
+      expect:
+        command: "ansible-vault encrypt --output={{ vault_output_file }}"
+        responses:
+          "New Vault password": "{{ ANSIBLE_APP_VAULT_PASSWORD }}"
+          "Confirm New Vault password": "{{ ANSIBLE_APP_VAULT_PASSWORD }}"
+          "Reading plaintext input from stdin": "{{ app_yaml }}\n\x04" # Send Ctrl-D (EOF) to terminate
+        timeout: 10
+```
+
+Następnie uruchamiamy polecenie `ansible-playbook --ask-vault-password --extra-vars='inventory_dir=/vagrant/inventories/vagrant/' split_vault.yml`
+aby wykonać playbook i utworzyć zaszyfrowany plik.
+
 ## ansible-doc
 
 Komenda `ansible-doc -l` wyświetla zwięzłą listę modułów z krótkim opisem. Jeśli chcemy wyświetlić bardziej szczegółową dokumentację podajemy nazwę modułu - `ansible-doc debug`. Chcąc uzyskać informację nie o modułach, a o innych elementach to korzystamy z parametru `-t 'TYPE', --type 'TYPE'`. Obsługiwane wartości `TYPE` to `become`, `cache`, `callback`, `cliconf`, `connection`, `httpapi`, `inventory`, `lookup`, `netconf`,  `shell`,  `module`, `strategy` lub `vars`. Korzystając z parametru `-s|--snippet` możemy wyświetlić szkielet kodu do wykorzystania w zadaniu playbook.
