@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-03
+[rvc-python](rvc-python.md)
 [vagrant - shared folder i brak VirtualBox Guest Additions](vagrant.md#shared_folder_i_brak_VirtualBox_Guest_Additions)
 
 ## 2025-01
