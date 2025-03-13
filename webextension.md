@@ -95,7 +95,7 @@ Zmiana flagi `xpinstall.signatures.required` na wartość `false` w `about:confi
 Na stronie [Manage API Keys](https://addons.mozilla.org/en-US/developers/addon/api/key/) generujemy klucze API do AMO.
 Następnie tworzymy plik w katalogu domowym `.web-ext-config.cjs` w którym eksportujemy nasze klucze do API AMO.
 
-Zawartość pliku `~/.web-ext-config.js` powinna prezentować się następująco:
+Zawartość pliku `~/.web-ext-config.cjs` powinna prezentować się następująco:
 ```
 module.exports = {
     sign: {
