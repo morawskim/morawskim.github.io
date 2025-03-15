@@ -16,6 +16,8 @@
 
 `Driver Booster 10` -  [narzędzie umożliwiające aktualizowanie sterowników do urządzeń jednym kliknięciem](https://www.iobit.com/pl/driver-booster.php)
 
+`EaseUS Disk Copy` - [klonowanie dysków](https://pl.easeus.com/disk-copy/home-edition/)
+
 ## PortableApps
 
 `KiTTY Portable` - telnet and SSH with added features
