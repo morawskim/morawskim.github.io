@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-03
+[Docker compose: zmienna środowiskowa vs sekret](docker-compose-zmienna-srodowiskowa-vs-sekret.md)
 [rvc-python](rvc-python.md)
 [vagrant - shared folder i brak VirtualBox Guest Additions](vagrant.md#shared_folder_i_brak_VirtualBox_Guest_Additions)
 
