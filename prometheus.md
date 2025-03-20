@@ -129,6 +129,43 @@ curl -v -X POST 'https://alertmanager/api/v2/alerts' \
 
 Dzięki tym konfiguracjom Prometheus i Alertmanager będą mogły skutecznie monitorować system i wysyłać powiadomienia w przypadku wykrycia problemów.
 
+### Unit tests
+
+Prometheus od wersji 2.5 umożliwia testowanie reguł alertów za pomocą testów jednostkowych.
+
+Aby przetestować reguły alertów, należy utworzyć plik testowy w formacie YAML, w którym definiuje się przypadki testowe.
+Każdy przypadek testowy zawiera informacje o seriach danych wejściowych oraz oczekiwanych alertach, które powinny zostać wyzwolone w odpowiedzi na te dane.
+
+Testy można uruchomić poleceniem `promtool test rules node_exporter_test.yml`, aby sprawdzić, czy reguły działają zgodnie z oczekiwaniami. ​
+
+```
+rule_files:
+- node_exporter.yml
+
+evaluation_interval: 1m
+
+tests:
+- name: Node down firres after two minutes
+  interval: 1m
+  input_series:
+  - series: 'up{job="node_exporter", instance="localhost:9090"}'
+    values: "0 0 0 0 0"
+  alert_rule_test:
+  - eval_time: 1m
+    alertname: Node down
+    exp_alerts: []
+  - eval_time: 2m
+    alertname: Node down
+    exp_alerts:
+    - exp_labels:
+        severity: warning
+        instance: localhost:9090
+        job: node_exporter
+      exp_annotations:
+        title: Node localhost:9090 is down
+        description: Failed to scrape node_exporter on localhost:9090 for more than 2 minutes. Node seems down.
+```
+
 ### Slack
 
 Domyślny szablon powiadomień w Slacku jest dość ograniczony i nie zawiera wielu istotnych informacji.
