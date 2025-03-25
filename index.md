@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-03
+[BIMI](spf-dkim-i-dmarc.md#BIMI)
 [Brak zadań w Tekton Dashboard](tekton.md#Brak_zadań_w_Tekton_Dashboard)
 [Prometheus - Alerty unit tests](prometheus.md#Unit_tests)
 [Docker compose: zmienna środowiskowa vs sekret](docker-compose-zmienna-srodowiskowa-vs-sekret.md)
