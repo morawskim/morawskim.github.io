@@ -252,6 +252,28 @@ cy.intercept('https://domain.example.com/api/sessions/refresh', {
 
 Kolejność wywołań poleceń `intercept` ma znaczenie. Mokowanie odpowiedzi dla końcówki refreshToken definiujemy po modyfikacji nagłówka `X-SalesChannel` żądania HTTP.
 
+## cy.session
+
+`cy.session` to funkcja w Cypress, która pozwala na zapamiętanie i ponowne użycie sesji użytkownika między testami.
+Może przechowywać ciasteczka (cookies), localStorage, sessionStorage oraz inne dane sesyjne, co znacznie przyspiesza testy.
+Zamiast ponownie logować się w każdym teście, możemy zapamiętać sesję użytkownika.
+
+Możemy wykorzystać `cy.session` w `beforeEach`, aby logować użytkownika tylko raz na całą sesję:
+
+```
+beforeEach(() => {
+    cy.session('login', () => {
+        loginPage.toSignInPage();
+        loginPage.signIn(...loginPage.getCredentialsFromEnv(PanelAccounts.ACCOUNT_FOO));
+        dashboardPage.isDashboardPage();
+    });
+});
+```
+
+Cypress automatycznie uruchamia test po każdej zmianie w kodzie testowym.
+Dzięki użyciu `cy.session` nie musimy tracić czasu na ponowne logowanie użytkownika przy każdej iteracji testu.
+To pozwala nam skupić się na testowaniu konkretnych przypadków, zamiast powtarzać te same kroki logowania.
+
 ## Ładowanie rozszerzeń Chrome
 
 [How to load the React DevTools extension in Cypress](https://www.cypress.io/blog/2020/01/07/how-to-load-the-react-devtools-extension-in-cypress/)
