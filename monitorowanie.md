@@ -16,9 +16,14 @@ Jednak do monitorowania wskaźników biznesowych nie potrzebujemy tak dużej roz
 Cztery najważniejsze wskaźniki, które należy śledzić:
 
 * Latency - czas potrzebny na dostarczenie żądania
+    * rozróżnienie między opóźnieniem udanych i nieudanych żądań. Na przykład nieudane żądanie może zwrócić z bardzo dużym opóźnieniem, wypaczając wyniki.
 * Traffic - liczba wysyłanych żądań
 * Errors - wskaźnik nieudanych żądań
+    * niezależnie od tego, czy są to jawne niepowodzenia, jak błędy HTTP 500
+    * niejawne niepowodzenia, takie jak zwracana błędna lub nieprawidłowa zawartość
+    * czy też niepowodzenia oparte na zasadach - na przykład, żądanie powyżej 300ms są uważane za błędy
 * Saturation - ilość pracy, która nie jest przetwarzana, która zwykle jest w kolejce
+    * obejmuje to również zbliżające się nasycenie, takie jak szybko zapełniający się dysk
 
 ### RED
 
@@ -75,3 +80,7 @@ Monitorując kondycję i wydajność klastra musimy przynajmniej monitorować:
 * kondycja węzła
 * liczba kontenerów na węzeł i ogółem
 * wykorzystanie/alokacja zasobów na węzeł i ogólnie
+
+* Dobrym podejściem do monitorowania jest zaprojektowanie planu monitorowania opartego na wartości. Zidentyfikuj części aplikacji, które dostarczają wartość i monitoruj je w pierwszej kolejności.
+
+* Obserwacja składa się z wartości, znacznika czasu i czasami szeregu właściwości, które opisują obserwację. Zbiór obserwacji nazywany jest szeregiem czasowym.

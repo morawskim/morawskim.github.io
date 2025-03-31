@@ -13,6 +13,10 @@ Takie ustawienie zabezpiecza nas także przed sytuacją, gdy jedno pobranie dany
 
 > CAUTION: Remember that every unique combination of key-value label pairs represents a new time series, which can dramatically increase the amount of data stored. Do not use labels to store dimensions with high cardinality (many different label values), such as user IDs, email addresses, or other unbounded sets of values.
 
+* Zmiana etykiety lub dodanie nowej etykiety tworzy nowy szereg czasowy.
+
+* Prometheus utworzy metrykę dla każdego alertu w stanach oczekujących (ang. pending) i uruchomionych (ang. firing). Metryka będzie nosiła nazwę `ALERT`. Bedzie posiadać etykietę `alertname`.
+
 * Aby przeładować konfiguracje Prometeusza musimy wysłać sygnał SIGHUP, albo żądanie POST do końcówki `/-/reload`. Domyślnie API Lifecycle nie jest włączone, więc musimy uruchomić proces prometeusza z flagą `--web.enable-lifecycle`. Do weryfikowania poprawności pliku konfiguracyjnego możemy wykorzystać narzędzie promtool - `promtool check config /sciezka/do/prometheus.yml`
 
 * Lista portów wykorzystywanych przez prometeusza i zewnętrzne programy do eksportu metryk - [Default port allocations](https://github.com/prometheus/prometheus/wiki/Default-port-allocations)
@@ -28,6 +32,10 @@ metric with a failed or success label. Similarly, with hit or miss for caches, i
 and another for hits.
 >
 > [Prometheus docs, Writing exporters]((https://prometheus.io/docs/instrumenting/writing_exporters/#naming))
+
+* Zmienne `$labels` i `$value` są wygodniejszymi nazwami dla zmiennych `.Labels` i `.Value` dostępnych w [regułach alarmów](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/#templating).
+
+* Zmienna `.CommonAnnotations` zawiera zestaw adnotacji wspólnych dla grupy alertów. Dostępna jest w [szablonie powiadomień](https://prometheus.io/docs/alerting/latest/notifications/)
 
 ## Backfill
 
