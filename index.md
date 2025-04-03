@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2025-04
+[Kopiowanie danych z jednej tabeli do drugiej w SQL](kopiowanie-danych-z-jednej-tabeli-do-drugiej-w-sql.md)
+
 ## 2025-03
 [grok_exporter](grok_exporter.md)
 [BIMI](spf-dkim-i-dmarc.md#BIMI)
