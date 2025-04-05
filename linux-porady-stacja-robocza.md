@@ -40,3 +40,4 @@ Za pomocą `multipass` możemy w łatwy sposób odpalić maszynę wirtualną Ubu
 | - | - |
 | openmediavault | System operacyjny przygotowany do uruchomienia własnego NAS |
 | TrueNAS (wcześniej FreeNAS) | System operacyjny przygotowany do uruchomienia własnego NAS |
+| [ShredOS](https://github.com/PartialVolume/shredos.x86_64) | Dystrybucja Linuksa przeznaczona do bezpiecznego usuwania danych z dysków twardych. |
