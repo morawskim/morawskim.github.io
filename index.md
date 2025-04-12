@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-04
+[Symfony/JsonStreamer](symfony-jsonstreamer.md)
 [Pushgateway - pułapki](pushgateway.md#Pułapki)
 [Bitbucket pipelines - obraz thecodingmachine/php](bitbucket-pipelines.md#Obraz_thecodingmachine/php)
 [Kopiowanie danych z jednej tabeli do drugiej w SQL](kopiowanie-danych-z-jednej-tabeli-do-drugiej-w-sql.md)
