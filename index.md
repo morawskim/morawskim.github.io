@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-04
+[KVM – Zwiększenie rozmiaru dysku](kvm-zwiekszenie-rozmiaru-dysku.md)
 [Symfony/JsonStreamer](symfony-jsonstreamer.md)
 [Pushgateway - pułapki](pushgateway.md#Pułapki)
 [Bitbucket pipelines - obraz thecodingmachine/php](bitbucket-pipelines.md#Obraz_thecodingmachine/php)
