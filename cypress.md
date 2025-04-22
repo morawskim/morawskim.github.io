@@ -101,6 +101,30 @@ cypress:
 
 [Cypress tests in Docker on GitLab](https://gitlab.com/cypress-io/cypress-example-docker-gitlab)
 
+## Cypress Node.js 20.19 vs 20.18
+
+Lokalnie miałem zainstalowaną wersję Node.js 20.19.0.
+Obecnie nie istnieje obraz cypress/browsers wspierający tę wersję — ostatnia dostępna to 20.18.
+Przy próbie uruchomienia testów pojawił się błąd:
+
+```
+Your configFile is invalid: /e2e/cypress.config.ts
+It threw an error when required, check the stack trace below:
+TypeError: Unknown file extension ".ts" for /e2e/cypress.config.ts
+```
+
+Rozwiązaniem okazało się ustawienie zmiennej środowiskowej: `export NODE_OPTIONS='--experimental-detect-module --experimental-require-module'`
+Po tej zmianie testy uruchomiły się poprawnie, choć w konsoli pojawiły się ostrzeżenia:
+
+```
+(node:653) ExperimentalWarning: Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:665) ExperimentalWarning: Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[677:0422/171955.214271:ERROR:node_bindings.cc(379)] Most NODE_OPTIONs are not supported in packaged apps. See documentation for more details.
+[677:0422/171955.214287:ERROR:node_bindings.cc(379)] Most NODE_OPTIONs are not supported in packaged apps. See documentation for more details.
+```
+
 ## Retries
 
 Polecenia które odpytują drzewo DOM są automatycznie ponawiane aż do przekroczenia parametru limitu czasu (timeout). Dzięki temu nasze testy są bardziej niezawodne. Dodanie do aplikacji asynchronicznego kodu nie powoduje niepowodzenia testów.
