@@ -101,3 +101,20 @@ Za pomocą poleceń `zgrep -i namespace /proc/config.gz` i  `zgrep -i cgroups /p
 W dystrybucji openSUSE Tumbleweed podczas wywoływania polecenia `docker pull` możemy otrzymać błąd "ERROR: Get https://registry-1.docker.io/v2/: dial tcp: lookup registry-1.docker.io on [::1]:53: read udp [::1]:35711->[::1]:53: read: connection refused". Najczęściej jego przyczyną jest odpalenia usługi docker przed aktywacją połączenia z internetem. Plik konfiguracyjny `docker.service` zawiera linię `After=network.target lvm2-monitor.service SuSEfirewall2.service` dodajemy do niej dodatkowo usługę `NetworkManager-wait-online.service`. Do edycji pliku możemy użyć `systemctl edit docker.service`, aby nasze zmiany nie zostały nadpisane przez aktualizacje systemowe.
 
 [ERROR: Get https://registry-1.docker.io/v2/: dial tcp: lookup registry-1.docker.io on](https://github.com/docker/cli/issues/2618)
+
+## Warunkowe wywołanie polecenia w kontenerze (np. instalacja pakietu) w Dockerfile w zależności od architektury
+
+W niektórych przypadkach może być konieczne, aby instalacja pakietu w `Dockerfile` odbywała się tylko dla określonej architektury — na przykład `x86_64`.
+Dla innych architektur (np. `arm64`) chcemy pominąć instalację, nie powodując błędów podczas budowania obrazu.
+
+W tym przypadku instalowany pakiet był dostępny tylko dla architektury `amd64`.
+Próba zainstalowania go na maszynach z procesorami `ARM64` (np. Apple M1/M2), z których korzystają niektórzy deweloperzy, powodował błąd podczas budowy obrazu.
+
+```
+RUN [ "$(uname -m)" = "x86_64" ] && { \
+    TEMP_DEB="$(mktemp)" \
+    && curl -o "$TEMP_DEB" 'https://drive.usercontent.google.com/download?id=xxxxxxxxxxxxx' \
+    && dpkg -i "$TEMP_DEB" \
+    && rm -f "$TEMP_DEB"; \
+} || echo "Skip not x86_64"
+```
