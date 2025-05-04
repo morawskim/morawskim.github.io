@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2025-05
+[Opentofu – szyfrowanie pliku stanu](opentofu-state-encryption.md)
+
 ## 2025-04
 [KVM – Zwiększenie rozmiaru dysku](kvm-zwiekszenie-rozmiaru-dysku.md)
 [Symfony/JsonStreamer](symfony-jsonstreamer.md)
