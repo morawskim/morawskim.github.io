@@ -173,49 +173,89 @@ declare namespace Cypress {
 
 Zrzuty ekranu i film z przebiegu testu są ważną częścią w analizie niepoprawnych testów. W trybie headless testy są odpalane w przeglądarce z rozdzielczością 1000 x 660. Możemy zmienić te ustawienia, ale musimy to zrobić dla każdej przeglądarki oddzielnie. Dodatkowo w pliku konfiguracyjnym ustawiamy dwa parametry: `viewportWidth` i `viewportHeight`. Możemy je także przekazać jako argumenty `--config viewportWidth=1920,viewportHeight=1080`.
 
-W pliku `plugins/index.js` w eksportowanej funkcji (`module.exports`) dodajemy poniższy kod:
+W konfiguracji cypress powiniśmy ustawić parametr `video` na wartość `true`.
+Dodatkowo musimy nasłuchiwać na zdarzenie `before:browser:launch` aby uruchomić okno przeglądarki w większej rozdzielczości.
+A także na zdarzenie `after:spec` aby skasować nagrania testów, które zakończyły się sukcesem.
+
+Pełna konfiguracja `cypress.config.ts`:
 
 ```
-// let's increase the browser window size when running headlessly
-// this will produce higher resolution images and videos
-// https://on.cypress.io/browser-launch-api
-on('before:browser:launch', (browser = {}, launchOptions) => {
-    console.log(
-        'launching browser %s is headless? %s',
-        browser.name,
-        browser.isHeadless,
-    )
+import { defineConfig } from "cypress";
+import fs from 'fs'
 
-    // the browser width and height we want to get
-    // our screenshots and videos will be of that resolution
-    const width = 1920
-    const height = 1080
+export default defineConfig({
+  video: true,
+  e2e: {
+    setupNodeEvents(on, config) {
+      // implement node event listeners here
 
-    console.log('setting the browser window size to %d x %d', width, height)
+      on(
+          'after:spec',
+          (spec: Cypress.Spec, results: CypressCommandLine.RunResult) => {
+            if (results && results.video) {
+              // Do we have failures for any retry attempts?
+              const failures = results.tests.some((test) =>
+                  test.attempts.some((attempt) => attempt.state === 'failed')
+              )
+              if (!failures) {
+                // delete the video if the spec passed and no tests retried
+                fs.unlinkSync(results.video)
+              }
+            }
+          }
+      );
 
-    if (browser.name === 'chrome' && browser.isHeadless) {
-        launchOptions.args.push(`--window-size=${width},${height}`)
+      // let's increase the browser window size when running headlessly
+      // this will produce higher resolution images and videos
+      // https://on.cypress.io/browser-launch-api
+      on('before:browser:launch', (browser, launchOptions) => {
+        console.log(
+            'launching browser %s is headless? %s',
+            browser.name,
+            browser.isHeadless,
+        )
 
-        // force screen to be non-retina and just use our given resolution
-        launchOptions.args.push('--force-device-scale-factor=1')
-    }
+        // the browser width and height we want to get
+        // our screenshots and videos will be of that resolution
+        // const width = 1280
+        // const height = 720;
+        const width = 2420; // 1920 + 500
+        const height = 1361;
 
-    if (browser.name === 'electron' && browser.isHeadless) {
-        // might not work on CI for some reason
-        launchOptions.preferences.width = width
-        launchOptions.preferences.height = height
-    }
+        console.log('setting the browser window size to %d x %d', width, height)
 
-    if (browser.name === 'firefox' && browser.isHeadless) {
-        launchOptions.args.push(`--width=${width}`)
-        launchOptions.args.push(`--height=${height}`)
-    }
+        if (browser.name === 'chrome' && browser.isHeadless) {
+          launchOptions.args.push(`--window-size=${width},${height}`)
 
-    return launchOptions
+          // force screen to be non-retina and just use our given resolution
+          launchOptions.args.push('--force-device-scale-factor=1')
+        }
+
+        if (browser.name === 'electron' && browser.isHeadless) {
+          // might not work on CI for some reason
+          launchOptions.preferences.width = width
+          launchOptions.preferences.height = height
+        }
+
+        if (browser.name === 'firefox' && browser.isHeadless) {
+          launchOptions.args.push(`--width=${width}`)
+          launchOptions.args.push(`--height=${height}`)
+        }
+
+        // launchOptions.preferences.resizable = false;
+
+        return launchOptions
+      });
+
+      return config;
+    },
+  },
 });
 ```
 
 [Generate High-Resolution Videos and Screenshots](https://cypress-io.ghost.io/blog/2021/03/01/generate-high-resolution-videos-and-screenshots/)
+
+[Delete videos for specs without failing or retried tests](https://docs.cypress.io/app/guides/screenshots-and-videos#Delete-videos-for-specs-without-failing-or-retried-tests)
 
 [DEMO](https://github.com/bahmutov/cypress-wikipedia/tree/abc02b74e12ba3f3c38de5635fef6bf4b2875213)
 
