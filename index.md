@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-05
+[Apache proxy vhost](apache-proxy.md)
 [node 20 i "Cannot use import statement outside a module"](jest.md#node-20-i-cannot-use-import-statement-outside-a-module)
 [Opentofu – szyfrowanie pliku stanu](opentofu-state-encryption.md)
 
