@@ -21,3 +21,19 @@ W narzędziach developerskich ustawiłem klucz w localStorage:
 Po tej zmianie lista zadań tektona wyświetliła się poprawnie.
 
 [Add toggle to settings UI to opt-in to Pipelines v1 resources](https://github.com/tektoncd/dashboard/pull/2649)
+
+### failed to create task run
+
+Utworzyłem zasób Task w przestrzeni nazw `tekton-pipelines`.
+Przy wywoływaniu tego zadania otrzymałem błąd:
+
+> failed to create task run pod "hello-run-1734341599166": pods "hello-run-1734341599166-pod" is forbidden: violates PodSecurity
+"restricted:latest": allowPrivilegeEscalation != false (containers "prepare", "place-scripts", "step-echo" must set
+securityContext.allowPrivilegeEscalation=false), unrestricted capabilities (containers "prepare", "place-scripts", "step-echo" must set
+securityContext.capabilities.drop=["ALL"]), runAsNonRoot != true (pod or containers "prepare", "place-scripts", "step-echo" must set
+securityContext.runAsNonRoot=true), seccompProfile (pod or containers "prepare", "place-scripts", "step-echo" must set
+securityContext.seccompProfile.type to "RuntimeDefault" or "Localhost"). Maybe missing or invalid Task tekton-pipelines/hello
+
+Rozwiązanie tego problemu, to utworzenie zadania w innej przestrzeni nazw np. `tekton`.
+
+[securityContext of init containers contradicts new PodSecurity requirements]https://github.com/tektoncd/pipeline/issues/5896#issuecomment-1381177519
