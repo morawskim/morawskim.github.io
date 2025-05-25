@@ -32,3 +32,7 @@ The server certificate will expire in 364 days.
 The front proxy client certificate will expire in 364 days.
 
 Komunikacja z API Kubernetes przez narzędzie kubectl nie powinno już zwracać błędów z nieważnym certyfikatem x509.
+
+## Snippets
+
+Lista obrazów kontenerowych zapisanych w wbudowanym rejestrze microk8s - `microk8s ctr images ls`
