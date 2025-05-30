@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-05
+[Flatpickr](flatpickr.md)
 [pmlogger](pmlogger.md)
 [Select2 - dostosowanie i rozszerzenia](select2-dostosowanie-i-rozszerzenia.md)
 [Apache proxy vhost](apache-proxy.md)
