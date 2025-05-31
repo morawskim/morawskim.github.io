@@ -99,3 +99,14 @@ tmpfs           6.0G     0  6.0G   0% /dev/shm
 
 
 W razie potrzeby, można sprawdzić układ partycji ponownie (`gdisk`/`fdisk`) i ręcznie rozszerzyć partycję oraz system plików, np. przy pomocy `resize2fs` (dla ext4)
+
+Podczas rozruchu maszyny wirtualnej mogą pojawić się wpisy informujące o rozszerzeniu partycji.
+Można je wyświetlić po zakończeniu procesu rozruchu za pomocą polecenia: `sudo dmesg | grep vda`
+
+>
+[    0.954243] virtio_blk virtio2: [vda] 692060160 512-byte logical blocks (354 GB/330 GiB)
+[    1.017805]  vda: vda1 vda14 vda15
+[    3.604452] EXT4-fs (vda1): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
+[    4.274266] EXT4-fs (vda1): re-mounted. Opts: discard,errors=remount-ro. Quota mode: none.
+[    8.536795] EXT4-fs (vda1): resizing filesystem from 20943099 to 86479099 blocks
+[    8.671459] EXT4-fs (vda1): resized filesystem to 86479099
