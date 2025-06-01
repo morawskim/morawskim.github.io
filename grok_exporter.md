@@ -13,7 +13,7 @@ global:
 
 input:
   type: file
-  path: /sciezka/do/pliku..log
+  path: /sciezka/do/pliku.log
   readall: true # Read from the beginning of the file? False means we start at the end of the file and read only new lines.
 imports:
 - type: grok_patterns
