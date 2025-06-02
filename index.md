@@ -1,6 +1,10 @@
 Hello
 =====
 
+## 2025-06
+[Konwersja PDF (pierwsza strona) do pliku PNG](pdf.md)
+[Zdejmowanie hasła z pliku PDF](pdf.md#Zdejmowanie_has%C5%82a_z_pliku_PDF)
+
 ## 2025-05
 [Flatpickr](flatpickr.md)
 [pmlogger](pmlogger.md)
