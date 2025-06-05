@@ -275,3 +275,43 @@ Następnie tworzymy plik `/etc/alertmanager/templates/slack.tmpl` i wklejamy do 
 
 {{- end }}
 ```
+
+## API
+
+Prometheus udostępnia HTTP API, za pomocą którego możemy pobierać metryki pasujące do zapytania PromQL.
+Do tego celu służy endpoint `GET /api/v1/query`.
+
+Obsługiwane parametry zapytania (query string):
+* query – wyrażenie w języku PromQL, np. `up`, `rate(http_requests_total[5m])`
+
+* time – opcjonalny znacznik czasu w formacie RFC3339 lub UNIX timestamp (np. `2015-07-01T20:10:51.781Z` lub `1749081600`). Jeśli nie zostanie podany, Prometheus użyje bieżącego czasu serwera jako domyślnego.
+
+```
+use GuzzleHttp\Client;
+
+class PrometheusClient
+{
+    private Client $client;
+
+    public function __construct(string $baseUrl)
+    {
+        $this->client = new Client(['base_uri' => rtrim($baseUrl, '/') . '/']);
+    }
+
+    public function query(string $promql): array
+    {
+        $response = $this->client->get('api/v1/query', [
+            'query' => ['query' => $promql, 'time' => time()],
+        ]);
+
+        $body = json_decode($response->getBody(), true);
+
+        if ($body['status'] !== 'success') {
+            throw new Exception('Prometheus query failed');
+        }
+
+        return $body['data']['result'];
+    }
+}
+
+```
