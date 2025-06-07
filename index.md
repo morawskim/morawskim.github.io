@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-06
+[SteamOS](steamos.md)
 [Konwersja PDF (pierwsza strona) do pliku PNG](pdf.md)
 [Zdejmowanie hasła z pliku PDF](pdf.md#Zdejmowanie_has%C5%82a_z_pliku_PDF)
 
