@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-06
+[s6-overlay](s6-overlay.md)
 [swoole - Undefined constant SWOOLE_SSL](swoole.md#Undefined_constant_SWOOLE_SSL)
 [SteamOS](steamos.md)
 [Konwersja PDF (pierwsza strona) do pliku PNG](pdf.md)
