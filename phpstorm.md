@@ -110,3 +110,7 @@ Content-Disposition: form-data; name="name"
 foo
 ------WebKitFormBoundary7s2KUwjCtiHdKS0w--
 ```
+
+## AI Assistant
+
+Instalujemy plugin [JetBrains AI Assistant](https://plugins.jetbrains.com/plugin/22282-jetbrains-ai-assistant), a także [JetBrains Junie](https://plugins.jetbrains.com/plugin/26104-jetbrains-junie).
