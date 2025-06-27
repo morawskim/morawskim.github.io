@@ -39,3 +39,12 @@ export default function () {
 ```
 
 Uruchamiamy test K6 poleceniem `CONNECTION_STRING='dbuser:dbpassword@tcp(1.1.2.2:3306)/dbname' LIMIT=500 ./k6 run -d 30s -i 50 test.js`
+
+### Wymuszenie użycia indeksu
+
+W większości przypadków optymalizator zapytań w systemach baz danych sam decyduje, czy i jaki indeks zastosować dla konkretnego zapytania. Jednak nie zawsze jego wybór jest optymalny – może się zdarzyć, że:
+
+```
+SELECT * FROM table USE INDEX (idx_customer_id) WHERE customer_id = 123
+SELECT * FROM Table WITH(INDEX(Index_Name))
+```
