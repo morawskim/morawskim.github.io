@@ -48,3 +48,30 @@ W większości przypadków optymalizator zapytań w systemach baz danych sam dec
 SELECT * FROM table USE INDEX (idx_customer_id) WHERE customer_id = 123
 SELECT * FROM Table WITH(INDEX(Index_Name))
 ```
+
+### Indeksy
+
+Indeks klastrowany (Clustered Index)
+
+* Określa fizyczny porządek wierszy w tabeli.
+
+* Może istnieć tylko jeden taki indeks na tabelę – dane mogą być fizycznie uporządkowane tylko w jeden sposób.
+
+* Umożliwia wydajne zapytania zakresowe i skanowanie w ustalonej kolejności.
+
+* Poprawia efektywność operacji wejścia/wyjścia (I/O), ponieważ powiązane dane znajdują się blisko siebie na dysku.
+
+* Służy jako baza odwołań dla indeksów nieklastrowanych.
+
+
+Indeks nieklastrowany (Non-Clustered Index)
+
+* Jest to oddzielna struktura, zawierająca kopię jednej lub kilku kolumn oraz wskaźniki do rzeczywistych wierszy w tabeli.
+
+* Nie wpływa na fizyczny sposób przechowywania danych.
+
+* Może istnieć wiele indeksów nieklastrowanych w jednej tabeli.
+
+* Stosowany do optymalizacji filtrowania, łączeń (JOIN) oraz agregacji na kolumnach innych niż klucz główny.
+
+* Wymaga dodatkowych odczytów, aby pobrać pełne wiersze – chyba że indeks „pokrywa” zapytanie (ang. covering index).
