@@ -93,3 +93,27 @@ curl -H "Content-Type: application/json" \
   -s -X POST "http://localhost:3100/loki/api/v1/push" \
   --data-raw "{\"streams\": [{ \"stream\": { \"foo\": \"bar2\" }, \"values\": [ [ \"$(date +%s%N)\", \"fizzbuzz\", {\"trace_id\" : \"1111-2222-3333-4444\"} ] ] }]}"
 ```
+
+## Analiza etykiet (labels) i kardynalności
+
+W wersji Loki 1.6.0 i nowszych wprowadzono możliwość analizy etykiet przy użyciu polecenia `logcli series` z flagą `--analyze-labels`, co jest szczególnie przydatne do debugowania etykiet o wysokiej kardynalności - `logcli series '{}' --since=1h --analyze-labels`
+
+Analiza kardynalności etykiet pozwala uniknąć problemów z wydajnością i przechowywaniem danych w systemie Loki. Wysoka kardynalność może znacząco obciążać system, dlatego zaleca się unikać dynamicznych lub unikalnych identyfikatorów jako etykiet.
+
+```
+Total Streams:  25017
+Unique Labels:  8
+
+Label Name  Unique Values  Found In Streams
+requestId   24653          24979
+logStream   1194           25016
+logGroup    140            25016
+accountId   13             25016
+logger      1              25017
+source      1              25016
+transport   1              25017
+format      1              25017
+```
+
+`requestId` posiada bardzo wysoką kardynalność (24 653 unikalnych wartości), co oznacza, że nie powinno być używane jako etykieta.
+Zamiast tego, należy traktować `requestId` jako dane w treści logu (linia logu zawiera requestId=value) i filtrować je za pomocą wyrażeń, np.: `{logGroup="group1"} |= "requestId=32422355"`
