@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-07
+[composer vendor patches](composer-vendor-patches.md)
 [Yii2 testy jednostkowe snippets](yii2-testy-jednostkowe-snippets.md)
 
 ## 2025-06
