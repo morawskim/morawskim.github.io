@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-07
+[Kalibracja monitora](kalibracja-monitora.md)
 [composer vendor patches](composer-vendor-patches.md)
 [Yii2 testy jednostkowe snippets](yii2-testy-jednostkowe-snippets.md)
 
