@@ -21,3 +21,11 @@ pipelines:
               - php -m
               - echo $PHP_EXTENSIONS
 ```
+
+## Dynamic pipelines
+
+Bitbucket Dynamic Pipelines umożliwia dynamiczne sterowanie uruchamianiem i konfiguracją pipeline'ów w oparciu o warunki i dane dostępne w czasie wykonywania pipeline’a.
+
+Dzięki dynamicznym pipeline’om możemy np. uruchamiać konkretne kroki tylko dla wybranych branchy lub tagów.
+
+[Dynamic pipelines](https://support.atlassian.com/bitbucket-cloud/docs/dynamic-pipelines/)
