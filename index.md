@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-07
+[Google Cloud - PHP i uwierzytelnienie z usługą](gcloud.md#PHP_i_uwierzytelnienie_z_us%C5%82ug%C4%85)
 [Analiza nieoczekiwanej modyfikacji danych w systemie](analiza-nieoczekiwanej-modyfikacji-danych-w-systemie.md)
 [Kalibracja monitora](kalibracja-monitora.md)
 [composer vendor patches](composer-vendor-patches.md)
