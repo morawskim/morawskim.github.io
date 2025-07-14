@@ -12,6 +12,51 @@ Z menu po lewej stronie wybieramy „Język i region” i zmieniamy wartość po
 
 [Zmienianie języka konsoli administracyjnej Google](https://support.google.com/cloudidentity/answer/43212?hl=pl)
 
+## OAuth
+
+`gcloud auth print-access-token` - służy do wygenerowania i wyświetlenia tokena
+dostępu (OAuth 2), który może być używany do autoryzacji zapytań HTTP do API Google
+Cloud w imieniu aktualnie zalogowanego użytkownika lub konta serwisowego.
+
+Google Cloud umożliwia stosowanie dodatkowej warstwy zabezpieczeń poprzez zakresy autoryzacji OAuth 2.
+Domyślnie można korzystać z zakresu globalnego, który zapewnia dostęp do wszystkich usług Google Cloud (https://www.googleapis.com/auth/cloud-platform).
+
+Jednak jeśli dana usługa na to pozwala, lepiej ograniczyć dostęp, stosując bardziej precyzyjnie zdefiniowany zakres.
+Lista obsługiwanych zakresów dla konkretnej metody API znajduje się w dokumentacji danej usługi Google Cloud.
+
+## Uwierzytelnianie w Google Cloud za pomocą konta serwisowego w PHP
+
+```
+<?php
+
+use Google\Auth\Credentials\ServiceAccountCredentials;
+use Google\Auth\Middleware\AuthTokenMiddleware;
+use GuzzleHttp\Client;
+use GuzzleHttp\HandlerStack;
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+$sa = new ServiceAccountCredentials(
+    'https://www.googleapis.com/auth/cloud-platform',
+    __DIR__ . '/myproject-aabbccc.json'
+);
+$middleware = new AuthTokenMiddleware($sa);
+$stack = HandlerStack::create();
+$stack->push($middleware);
+
+$client = new Client([
+    'handler' => $stack,
+    'base_uri' => 'https://routeoptimization.googleapis.com',
+    'auth' => 'google_auth' // authorize all requests
+]);
+
+$response = $client->post('/v1/projects/MYPROJECT_ID:optimizeTours', [
+    GuzzleHttp\RequestOptions::JSON => [
+        # ....
+    ]
+]);
+```
+
 ## PHP i uwierzytelnienie z usługą
 
 1. Logujemy się do konsoli Google Cloud i wybieramy (lub tworzymy) nowy projekt.
