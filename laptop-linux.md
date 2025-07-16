@@ -79,7 +79,7 @@ Yakuake Full screen - `Ctrl+Shift+F11`
 
 KWin Overview effect - `Meta (Windows key) + w`
 
-Windows Tiling - `Meta (Windows key) + t`
+Windows Tiling - `Meta (Windows key) + t`. Następnie, przeciągając okno i trzymając `Shift`, możemy zakotwiczyć je w wybranym kafelku.
 
 Spectacle: Przechwytywanie prostokątnego obszaru - `Meta (Windows key) + [SHIFT] + [print]`
 
