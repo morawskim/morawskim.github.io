@@ -75,3 +75,79 @@ Indeks nieklastrowany (Non-Clustered Index)
 * Stosowany do optymalizacji filtrowania, łączeń (JOIN) oraz agregacji na kolumnach innych niż klucz główny.
 
 * Wymaga dodatkowych odczytów, aby pobrać pełne wiersze – chyba że indeks „pokrywa” zapytanie (ang. covering index).
+
+#### Indeksy w bazach danych – porównanie typów
+
+##### B+ Tree
+
+Zalety:
+
+* Oferują przewidywalną wydajność operacji odczytu i zapisu.
+
+* Doskonale nadają się do zapytań zakresowych i filtrowania po dokładnych wartościach.
+
+* Umożliwiają szybkie przeszukiwanie danych po posortowanych kolumnach indeksowanych.
+
+* Idealne do filtrowania po kluczu głównym, datach, paginacji wyników.
+
+Wady:
+
+* Słaba wydajność przy kolumnach o niskiej selektywności (np. is_active, status), gdzie indeks i tak wskazuje na dużą część tabeli – silnik może wybrać pełne skanowanie tabeli.
+
+* Wydajność wstawiania zależy od rozkładu kluczy – sekwencyjne ID (np. AUTO_INCREMENT) sprawdzają się dobrze, ale losowe wartości mogą powodować fragmentację i spowolnienie.
+
+Zastosowania:
+
+* Standardowy wybór dla większości baz danych.
+
+* Sprawdzają się w aplikacjach wymagających sortowania i zakresów.
+
+##### Hash Index
+
+Zalety:
+
+* Bardzo szybkie wyszukiwanie dokładnych wartości – wystarczy obliczyć hash.
+
+* Efektywne wstawianie i usuwanie – również bazują na operacjach haszujących.
+
+* Wydajność wyszukiwania utrzymuje się na stałym poziomie nawet przy wzroście danych (zakładając równomierne rozłożenie hashy).
+
+Wady:
+
+* Brak wsparcia dla porządku i zapytań zakresowych – przy takich zapytaniach silnik nie może wykorzystać indeksu.
+
+* Nie zachowuje naturalnego porządku danych.
+
+Zastosowania:
+
+* Indeksy dla tabel w pamięci RAM, gdzie opóźnienia muszą być minimalne.
+
+* Tymczasowe struktury danych o znanym schemacie dostępu.
+
+* Zapytania o wysokiej kardynalności, np. po tokenach sesji, kluczach API.
+
+* Partycjonowanie haszowe – równomierne rozkładanie danych po węzłach.
+
+##### Bitmap Index
+
+Zalety:
+
+* Świetnie sprawdza się przy kolumnach o niskiej kardynalności (np. płeć, status, region).
+
+* Idealny gdzie dane są głównie statyczne i skoncentrowane na odczycie (read-heavy).
+
+* Umożliwia efektywne filtrowanie po wielu kolumnach jednocześnie.
+
+Wady:
+
+* Słaba wydajność w środowiskach z częstymi zapisami (INSERT, UPDATE, DELETE).
+
+* Nie nadaje się dla kolumn o wysokiej kardynalności (np. user_id, email).
+
+Zastosowania:
+
+* Hurtownie danych, platformy analityczne (OLAP).
+
+* Złożone zapytania filtrujące oparte o wiele kolumn.
+
+* Środowiska o dużym współczynniku odczytów i niskiej liczbie zapisów.
