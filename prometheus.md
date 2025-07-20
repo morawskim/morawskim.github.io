@@ -80,6 +80,15 @@ rule_files:
 Po wejściu na adres `https://prometheus/alerts` zobaczymy skonfigurowane alerty widoczne w Prometheusie.
 Aby wysłać powiadomienie, gdy alert się pojawi, potrzebujemy dodatkowo Alertmanagera.
 
+### alert_relabel_configs
+
+Blok `alerting.alert_relabel_configs` umożliwia modyfikację etykiet alertów tuż przed ich wysłaniem do Alertmanagera.
+Można go wykorzystać również do blokowania wysyłki wybranych alertów poza Prometheusa (np. poprzez action: drop).
+Dzięki temu możliwe jest tworzenie alertów informacyjnych, które będą widoczne tylko w Prometheusie (np. na stronie /alerts), ale nie zostaną przesłane do Alertmanagera.
+
+Możemy z tego skorzystać np. podczas monitorowania instancji testowych, dla których nie chcemy wysyłać alertów po przekroczeniu określonych progów — takich jak niski poziom wolnej pamięci czy wolnego miejsca na dysku, wykrywanych przez reguły alarmowe node_exporter.
+Dla tego typu środowisk stosujemy oddzielne, mniej rygorystyczne alerty.
+
 ### Alertmanager
 
 Przykładowa definicja usługi dla docker compose:
