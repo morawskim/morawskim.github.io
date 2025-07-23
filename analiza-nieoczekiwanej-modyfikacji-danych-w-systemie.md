@@ -5,7 +5,7 @@ Pobrałem kopię bazy danych z dnia poprzedzającego modyfikację (kiedy spodzie
 
 Ze względu na to, że baza miała rozmiar kilkudziesięciu gigabajtów, jej pełny import na moim środowisku trwałby kilka godzin.
 Zdecydowałem się więc wyodrębnić tylko interesującą mnie tabelę za pomocą polecenia:
-`zcat ./dumpdb.gz | sed -n -e '/CREATE TABLE.*`mytable`/,/Table structure for table/p' >  mytable.dump`
+``zcat ./dumpdb.gz | sed -n -e '/CREATE TABLE.*`mytable`/,/Table structure for table/p' >  mytable.dump``
 
 W pliku `mytable.dump` znalazły się wyłącznie dane tej jednej tabeli.
 Za pomocą `grep` przefiltrowałem rekordy, aby odnaleźć interesujący mnie wiersz.
@@ -18,7 +18,7 @@ Aby zlokalizować miejsce w kodzie, które mogło odpowiadać za tę modyfikacj�
 W ten sposób trafiłem na fragment kodu, który potencjalnie mógł zmieniać dane – był on wykonywany w trakcie wywoływania konkretnej akcji w systemie w przypadku spełnienia kilku warunków.
 
 Pobrałem logi dostępu serwera HTTP z produkcji i wyciąłem z nich wpisy z interesującego mnie dnia:
-`zcat access-logs.gz | sed -n -e '/.*08/Jul/2025/,/.*09/Jul/2025/p' >  logs08`
+`zcat access-logs.gz | sed -n -e '/.*08\/Jul\/2025/,/.*09\/Jul\/2025/p' >  logs08`
 
 Następnie, korzystając z uzyskanego wycinka, przefiltrowałem żądania po konkretnej ścieżce:
 `cat logs08 | grep 'POST /controller\/myaction'`
