@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-07
+[lftp](lftp.md)
 [Guzzle Prometheus middleware](guzzle-prometheus-middleware.md)
 [SQL Optymalizacje - Indeksy](sql-optymalizacje.md#Indeksy)
 [Google Cloud - PHP i uwierzytelnienie z usługą](gcloud.md#PHP_i_uwierzytelnienie_z_us%C5%82ug%C4%85)
