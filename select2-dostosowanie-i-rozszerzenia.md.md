@@ -188,3 +188,39 @@ export class Select2DropoffArchived {
 }
 
 ```
+
+## templateResult
+
+Select2 umożliwia formatowanie wyglądu listy opcji.
+Domyślnie wyświetlana jest tylko etykieta, ale można dodać dodatkowe elementy, np. opisy czy metadane.
+W tym celu należy skorzystać z opcji `templateResult` w konfiguracji Select2.
+Poniższy kod dodaje do każdej opcji dodatkową informację: "Dodatkowa informacja", pobieraną z atrybutu `data-extra-data`.
+
+[Select2 - Templating](https://select2.org/dropdown#templating)
+
+```
+$('#myDropDown').select2({
+    templateResult: function formatSearchResult(item) {
+        if (item.loading) {
+            return item.text;
+        }
+
+        const $option = $(item.element);
+        const extraData = $option.data('extraData');
+
+        const $container = $(`<div class="d-flex flex-column">
+            <span class="select2-result-myresource__name fw-bold"></span>
+            <div class="d-flex flex-row">
+                <span class="me-3">Dodatkowa informacja:</span>
+                <span class="select2-result-myresource__extra-data"></span>
+            </div>
+        </div>`);
+
+        $container.find(".select2-result-myresource__name").text(item.text);
+        $container.find(".select2-result-myresource__extra-data").text(extraData ?? '-');
+
+        return $container;
+
+    },
+});
+```
