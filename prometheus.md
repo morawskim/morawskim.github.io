@@ -89,6 +89,15 @@ Dzięki temu możliwe jest tworzenie alertów informacyjnych, które będą wido
 Możemy z tego skorzystać np. podczas monitorowania instancji testowych, dla których nie chcemy wysyłać alertów po przekroczeniu określonych progów — takich jak niski poziom wolnej pamięci czy wolnego miejsca na dysku, wykrywanych przez reguły alarmowe node_exporter.
 Dla tego typu środowisk stosujemy oddzielne, mniej rygorystyczne alerty.
 
+```
+# ...
+alerting:
+  alert_relabel_configs:
+    - source_labels: [ alertname, instance ]
+      regex: "(HostSwapIsFillingUp|HostOutOfDiskSpace|HostMemoryUnderMemoryPressure);test"
+      action: drop
+```
+
 ### Alertmanager
 
 Przykładowa definicja usługi dla docker compose:
