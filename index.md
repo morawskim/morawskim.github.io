@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-08
+[PromQL - increase a zmiana wartości licznika z "brak danych" na 1](promql.md#increase_a_zmiana_wartości_licznika_z_"brak_danych"_na_1)
 [FrankenPHP](fraknkenphp.md)
 
 ## 2025-07
