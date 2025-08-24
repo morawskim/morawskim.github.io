@@ -37,6 +37,20 @@ and another for hits.
 
 * Zmienna `.CommonAnnotations` zawiera zestaw adnotacji wspólnych dla grupy alertów. Dostępna jest w [szablonie powiadomień](https://prometheus.io/docs/alerting/latest/notifications/)
 
+* Opcja annotations pozwala na dostarczenie informacji dodatkowcyh na temat ostrzeżenia, takich jak krótki opis problemu. Ponadto wartośći tej opcji wykorzystują system szablonów języka programowania Go. To pozwala sformatowac wartość zapytania, aby była znacznie czytelniejsza, a także pozwala wykonywać dodatkowe zapytania PromQL w celu zapewnienia kontekstu dla ostrzeżeń.
+
+* Istnieje możliwość przetworzenia zapytań w szablonie adnotacji za pomocą funkcji `query()`. Zwykle chcesz uzyć wywołania range razem z wynikem zapytania:
+
+```
+{{ range query "ip{job=\"node\"} == 0 " }}
+  {{ .Labels.instance }}
+{{ end }}
+```
+
+* Gdy Prometheus działa za proxy odwrotnym, wówczas za pomocą opcji `--web.external-url` należy przekazać adres URL, pod którym będzie dostępny serwer systemu Prometheus, aby interfejs użytkownika systemu Prometheus i generator adresów URL działały poprawnie.
+
+* Modyfikator `offset` pozwala cofnąć się w czasie, a także wykroczyć w przyszłość dzięki użyciu wartości ujemnej. To się przydaje pdoczas przewidywania `rate(process_cpu_seconds_total{job="node"}[5m]) offset -1h - rate(process_cpu_seconds_total{job="node"}[5m])`
+
 ## Backfill
 
 Tworząc kokpit w Grafanie potrzebujemy danych historycznych.
