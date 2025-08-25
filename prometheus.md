@@ -51,6 +51,32 @@ and another for hits.
 
 * Modyfikator `offset` pozwala cofnąć się w czasie, a także wykroczyć w przyszłość dzięki użyciu wartości ujemnej. To się przydaje pdoczas przewidywania `rate(process_cpu_seconds_total{job="node"}[5m]) offset -1h - rate(process_cpu_seconds_total{job="node"}[5m])`
 
+* Sposób działania operatora `or` polega na tym, że dla każdej grupy, w której grupa po lewej stronie zawiera próbki, są one zwracane.
+W przeciwnym razie będą zwrócone próbki w grupie po prawej stronie.
+[...] ten operator może być używany podobnie jak funkcja COALESCE w SQL.
+
+* Zwróć uwagę, że wszystkie przykładowe liczniki wskaźników miały nazwy kończące się na _total, podczas gdy w miernikach nie ma tego rodzaju przyrostka. [...]
+Poza _total istnieją jeszcze przyrostki _count, _sum i _bucket, które mają określone znaczenie i nie powinny być używane jako przyrostki w nazwach Twoich wskaźników, aby w ten sposób uniknąć dezorientacji.
+Zaleca się również, aby na końcu nazwy wskaźnika umieszczać jego jednostkę. Na przykład licznik przechowujący liczbę przetworzonych bajtów może mieć nazwę myapp_requests_processed_bytest_total.
+
+* Jak nietrudno dostrzec na przedstawionych wcześniej przykładach, nazwa może składać się z wielu komponentów połączonych znakami podkreślenia. Spróbuj nadawać ten sam prefiks powiązanym ze sobą wskaźnikom, aby można było łatwiej zrozumieć ich powiązanie.
+queue_size i queue_limit są znacznie użyteczniejsze niż size_queue i limit_queue. Możesz mieć nazwy nawet items i items_limit.
+Ogólnie rzecz biorąc, nazwy przechodzą od ogólnych do bardziej szczegółowych — od lewej do prawej.
+
+* Format OpenMetrics jest podobny do formatu ekspozycji tekstu, choć zawiera kilka zmian niezgodnych z formatem tekstowym systemu Prometheus.
+Nawet pomimo tego, że oba te formaty wyglądają podobnie, dla danego zbioru wskaźników generowane przez nie dane wyjściowe będą — ogólnie rzecz biorąc — odmienne.
+
+## Wektory
+
+* `process_resident_memory_bytes{job="node"}` to selektor zwracający wszystkie szeregi czasowe o nazwie process_resident_memory_bytes i etykiecie job o wartości node. Ten konkretny selektor jest jak najbardziej poprawnie nazywany natychmiastowym selektorem wektora, ponieważ zwraca wartości danych szeregów czasowych w danej chwili.
+Wektor w zasadzie oznacza listę jednowymiarową, ponieważ selektor może zwrócić zero lub więcej szeregów czasowych, a każdy z nich będzie posiadał jedną próbkę.
+
+* Jest jeszcze drugi typ wektora, który być może już znasz — to selektor wektora zakresu. W przeciwieństwie do selektora wektora natychmiastowego, który zwraca jedną próbkę dla szeregu czasowego, selektor zakresu może zwrócić wiele próbek dla poszczególnych szeregów czasowych.
+Wektor zakresu zawsze jest używany w połączeniu z funkcją, np. rate(process_cpu_seconds_total[1m]).
+Wprawdzie wektor zakresu zawsze działa na szeregu czasowym, ale nie może być używany samodzielnie, lecz tylko w połączeniu z funkcjami.
+
+* Dla wektora zakresu zaleca się używanie zakresu, który będzie co najmniej czterokrotnie większy niż odstęp czasu między operacjami pobierania danych. To zagwarantuje, że zawsze będą istniały przynajmniej dwie próbki, nawet jeśli pobieranie danych odbywa się wolno i jedna tego typu operacja zakończyła się niepowodzeniem.
+
 ## Backfill
 
 Tworząc kokpit w Grafanie potrzebujemy danych historycznych.
