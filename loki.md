@@ -117,3 +117,16 @@ format      1              25017
 
 `requestId` posiada bardzo wysoką kardynalność (24 653 unikalnych wartości), co oznacza, że nie powinno być używane jako etykieta.
 Zamiast tego, należy traktować `requestId` jako dane w treści logu (linia logu zawiera requestId=value) i filtrować je za pomocą wyrażeń, np.: `{logGroup="group1"} |= "requestId=32422355"`
+
+## Zapytania
+
+"Log stream" to strumień wpisów dziennika z tymi samymi etykietami.
+
+Wybieranie strumienia logów za pomocą LogQL:
+
+* log selector - Filtrowanie strumieni logów na podstawie dopasowanych etykiet przy użyciu indeksu np. `{app="foo"}`
+
+* filter expression - przeszukuje zawartość linii logu, odrzucając te linie, które nie pasują do wyrażenia np. `|= "error"`
+
+[LogQL: Log query language](https://grafana.com/docs/loki/latest/query/?pg=oss-loki&plcmt=resources#logql-log-query-language)
+
