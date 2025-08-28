@@ -128,5 +128,30 @@ Wybieranie strumienia logów za pomocą LogQL:
 
 * filter expression - przeszukuje zawartość linii logu, odrzucając te linie, które nie pasują do wyrażenia np. `|= "error"`
 
+
+### Dopasowanie adresów IP
+
+`{job_name="myapp"} |= ip("192.168.1.5/24")`
+
+Pojedynczy adres IP `ip("192.0.2.0")`, `ip("::1")`
+Zakres `ip("192.168.0.1-192.189.10.12")`, `ip("2001:db8::1-2001:db8::8")`
+Maska CIDR `ip("192.51.100.0/24")`, `ip("2001:db8::/32")`
+
 [LogQL: Log query language](https://grafana.com/docs/loki/latest/query/?pg=oss-loki&plcmt=resources#logql-log-query-language)
+
+### Pattern match filter operators
+
+"Pattern Filter" pozwala wyeleminować stosowanie złożonych wyrażeń regularnych.
+W składni wzorca symbol `<_>` pełni rolę symbolu wieloznacznego (wildcard), reprezentującego dowolny tekst.
+Umożliwia to dopasowywanie linii logów, w których występuje określony wzorzec — na przykład linie zawierające treść statyczną z fragmentami zmiennej treści pomiędzy nimi.
+
+```
+|> (line match pattern)
+!> (line match not pattern)
+
+
+{service_name=`distributor`} |> `<_> caller=http.go:194 level=debug <_> msg="POST /push.v1.PusherService/Push <_>`
+```
+
+[Pattern match filter operators](https://grafana.com/docs/loki/latest/query/#pattern-match-filter-operators)
 
