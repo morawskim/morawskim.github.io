@@ -46,3 +46,24 @@ Możemy także utworzyć własny detektor dla naszej aplikacji implementując in
 });
 
 ```
+
+## Auto-instrumentation
+
+Musimy zainstalować rozszerzenie `opentelemetry` w PHP - `pecl install opentelemetry`.
+
+Instalujemy pakiety `composer require open-telemetry/opentelemetry-auto-symfony  open-telemetry/exporter-otlp open-telemetry/sdk`
+
+Ustawiamy zmienne środowiskowe:
+
+```
+OTEL_PHP_AUTOLOAD_ENABLED: true
+OTEL_EXPORTER_OTLP_PROTOCOL: http/protobuf
+OTEL_EXPORTER_OTLP_ENDPOINT: http://collector:4318
+OTEL_SERVICE_NAME: myservicename
+```
+
+Korzystam z protokołu "http/protobuf", aby nie instalować rozszerzenie gRPC.
+
+`open-telemetry/opentelemetry-auto-symfony` sam instrumentuje requesty Symfony i podłącza się pod klienta HTTP symfony/http-client.
+
+Trace’y będą automatycznie wysyłane do OpenTelemetry Collector, a stamtąd możesz forwardować je np. do Grafana Cloud.
