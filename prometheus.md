@@ -42,9 +42,12 @@ and another for hits.
 * Istnieje możliwość przetworzenia zapytań w szablonie adnotacji za pomocą funkcji `query()`. Zwykle chcesz uzyć wywołania range razem z wynikem zapytania:
 
 ```
-{{ range query "ip{job=\"node\"} == 0 " }}
+{% raw %}
+{# the raw tag is only for fix build #}
+{{ range query "ip{job=\"node\"} == 0" }}
   {{ .Labels.instance }}
 {{ end }}
+{% endraw %}
 ```
 
 * Gdy Prometheus działa za proxy odwrotnym, wówczas za pomocą opcji `--web.external-url` należy przekazać adres URL, pod którym będzie dostępny serwer systemu Prometheus, aby interfejs użytkownika systemu Prometheus i generator adresów URL działały poprawnie.
