@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2025-09
+[logrotate](logrotate.md)
+
 ## 2025-08
 [opentelemetry-collector](opentelemetry-collector.md)
 [tcpdump](tcpdump.md)
