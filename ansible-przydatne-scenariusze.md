@@ -151,3 +151,24 @@ Ponieważ zainstalowaliśmy rolę w niestandardowym katalogu `path/To/Install` m
         nrinfragent_config:
           license_key: "{{ lookup('env', 'NEWRELIC_LICENSE_KEY') }}"
 ```
+
+## template - przekazanie dodatkowych zmiennych do szablonu
+
+```
+- hosts: localhost
+  gather_facts: no
+  connection: local
+  tasks:
+    - name: template 1
+      template:
+        src: myTemplateFile.j2
+        dest: result1
+      vars:
+        myTemplateVariable: Foo
+    - name: template 2
+      template:
+        src: myTemplateFile.j2
+        dest: result2
+      vars:
+        myTemplateVariable: Bar
+```
