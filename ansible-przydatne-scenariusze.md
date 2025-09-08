@@ -172,3 +172,17 @@ Ponieważ zainstalowaliśmy rolę w niestandardowym katalogu `path/To/Install` m
       vars:
         myTemplateVariable: Bar
 ```
+
+## Wielokrotne użycie import_tasks z różnymi wartościami zmiennych
+
+```
+# ....
+tasks:
+- import_tasks: example.yml
+  vars:
+    foo: bar
+
+- import_tasks: example.yml
+  vars:
+    foo: baz
+```
