@@ -40,7 +40,23 @@ export default function () {
 
 Uruchamiamy test K6 poleceniem `CONNECTION_STRING='dbuser:dbpassword@tcp(1.1.2.2:3306)/dbname' LIMIT=500 ./k6 run -d 30s -i 50 test.js`
 
-### Wymuszenie użycia indeksu
+## MAX_EXECUTION_TIME
+
+W MySQL podobnie jak w MongoDB mozemy ustawic maksymalny czas wykonywania zapytania.
+Po tym czasie MySQL automatycznie przerwie wykonywanie zapytania i dostaniemy błąd:
+
+> [HY000][3024] Query execution was interrupted, maximum statement execution time exceeded
+
+Czas podajemy w milisekundach (1000ms = 1s):
+
+```
+SELECT /*+ MAX_EXECUTION_TIME(1000) */ col1, col2
+FROM mytable
+where col3 = 'XXXXXX'
+ORDER BY create_date ASC LIMIT 1
+```
+
+## Wymuszenie użycia indeksu
 
 W większości przypadków optymalizator zapytań w systemach baz danych sam decyduje, czy i jaki indeks zastosować dla konkretnego zapytania. Jednak nie zawsze jego wybór jest optymalny – może się zdarzyć, że:
 
