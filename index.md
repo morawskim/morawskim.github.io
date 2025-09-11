@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-09
+[MySQL - login-path](mysql-login-path.md)
 [logrotate](logrotate.md)
 
 ## 2025-08
