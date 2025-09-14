@@ -186,3 +186,52 @@ tasks:
   vars:
     foo: baz
 ```
+
+## MySQL - tworzenie bazy danych i konta użytkownika
+
+Instalujemy moduły do obsługi MySQL: `ansible-galaxy collection install community.mysql`
+
+### Przykładowy playbook
+
+```
+- name: Create MySQL db and user
+  hosts: localhost
+  gather_facts: no
+  connection: local
+  tasks:
+    - name: Create a new database 'mydbansible'
+      community.mysql.mysql_db:
+        login_user: "root"
+        login_password: "{{ mysql_root_password }}"
+        #login_host: 127.0.0.1
+        #login_port: 3306
+        name: mydbansible
+        state: present
+    - name: Create database user with all database privileges
+      community.mysql.mysql_user:
+        login_user: "root"
+        login_password: "{{ mysql_root_password }}"
+        #login_host: 127.0.0.1
+        #login_port: 3306
+        name: myuseransible
+        password: "{{ mysql_user_password }}"
+        host: "%"
+        priv: 'mydbansible.*:ALL'
+        update_password: "on_create"
+        state: present
+```
+
+### Troubleshooting
+
+Jeśli pojawi się błąd podczas wykonywania playbooka
+
+>  fatal: [localhost]: FAILED! => {"changed": false, "msg": "A MySQL module is required: for Python 2.7 either PyMySQL, or MySQL-python, or for Python 3.X mysqlclient or PyMySQL. Consider setting ansible_python_interpreter to use the intended Python version."}
+
+to instalujemy pakiet `python3-mysqldb` (w systemie Ubuntu).
+
+
+W przypadku błędu:
+> fatal: [localhost]: FAILED! => {"changed": false, "msg": "unable to find /home/marcin/.my.cnf. Exception message: (2002, \"Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)\")"}
+
+Domyślnie ansible łączy się do MySQL na hoście `localhost`.
+Ustawiamy parametr `login_host` na `127.0.0.1`.
