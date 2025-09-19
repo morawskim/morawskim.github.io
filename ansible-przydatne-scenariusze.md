@@ -229,6 +229,9 @@ Jeśli pojawi się błąd podczas wykonywania playbooka
 
 to instalujemy pakiet `python3-mysqldb` (w systemie Ubuntu).
 
+Mozemy użyć poniższego polecenia do sprawdzenia połączenia z bazą danych i zainstalowaych pakietów pythona do obsługi MySQL.
+
+`MYSQL_PASSWORD=secretpassword ansible all -i localhost, -m community.mysql.mysql_query -a "login_user=root login_password=\"{{ lookup('env','MYSQL_PASSWORD') }}\" login_db=mydb login_host=127.0.0.1 login_port=3306 query='SELECT NOW();'"   -c local`
 
 W przypadku błędu:
 > fatal: [localhost]: FAILED! => {"changed": false, "msg": "unable to find /home/marcin/.my.cnf. Exception message: (2002, \"Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)\")"}
