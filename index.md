@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-09
+[Domain-driven design](ddd.md)
 [Route Optimization API](route-optimization-api.md)
 [MySQL - login-path](mysql-login-path.md)
 [logrotate](logrotate.md)
