@@ -59,3 +59,50 @@ Poddziedziny pomocnicze wspierają działalność firmy. Jednak w przeciwieństw
 Logika tej poddziedziny jest prosta. Są to podstawowe operacje ETL i interfejsy CRUD.
 
 W celu rozróżnienia poddziedziny pomocniczej od ogólnej możemy odpowiedzieć na pytanie: "czy byłoby łatwiej i taniej stworzyć własną implementację zamiast integrować zewnętrzną". Jeśli tak, to jest to poddziedzina pomocnicza.
+
+## Konteksty Ograniczone (ang. Bounded Context)
+
+Kontekst Ograniczony (ang. Bounded Context) definiuje granice podsystemu, w którym pojęcie domenowe ma jednoznaczne znaczenie, ogranicza zasięg definicji i modeluje konkretny obszar biznesowy.
+Nie współdzieli danych modelu z innymi kontekstami.
+Różne bounded contexty muszą komunikować się ze sobą przez jasno zdefiniowane API.
+Inny kontekst ograniczony może reprezentować te same encje biznesowe, ale modelować je w celu rozwiązania innego problemu.
+
+
+Język wszechobecny powinien być spójny w zakresie swojego kontekstu ograniczonego.
+Jednak w różnych kontekstach ograniczonych te same terminy mogą mieć różne znaczenia.
+
+
+Poddziedziny się odkrywa, konteksty ograniczone się projektuje.
+Podział dziedziny na konteksty ograniczone jest strategiczną decyzją projektową.
+
+
+Kontekst ograniczony i związany z nim język wszechobecny powinny być implementowane, rozwijane i utrzymywane tylko przez jeden zespół.
+Żadne dwa zespoły nie powinny współdzielić pracy w tym samym kontekście ograniczonym.
+Zespół może pracować nad wieloma kontekstami ograniczonymi.
+
+
+### Wzorce
+
+**Wzorzec kooperacji** dotyczy kontekstów ograniczonych implementowanych przez zespoły o dobrze ugruntowanej komunikacji.
+W najprostszych przypadkach są to konteksty ograniczone zaimplementowane przez jeden zespół.
+Dotyczy to również zespołów z celami zależnymi od siebie, w których sukces jednego zespołu zależy od sukcesu drugiego i odwrotnie.
+Głównym kryterium w tym przypadku jest jakość komunikacji i współpracy pomiędzy zespołami.
+
+**Wzorzec partnerstwa** - integracja między kontekstami ograniczonymi jest koordynowana w sposób doraźny.
+Gdy jeden zespół powiadomi inny o zmianach w interfejsie API, drugi dostosuje się do tych zmian.
+
+Koordynacja integracji jest w tym przypadku dwukierunkowa. Żaden zespół nie dyktuje języka, który ma być używany do zdefiniowania kontraktu.
+Zespoły mogą pracować nad różnicami i wybierać najbardziej odpowiednie rozwiązanie. Ponadto obie strony współpracują przy rozwiązywaniu wszystkich możliwych problemów z integracją. Żaden zespół nie jest zainteresowany zablokowaniem drugiego.
+
+Wzorzec ten nie wydaje się odpowiedni dla zespołów rozproszonych geograficznie, ponieważ może stanowić wyzwanie dla synchronizacji i komunikacji.
+
+**Wspólne jądro** - dwa lub więcej kontekstów ograniczonych jest zintegrowanych przez współdzielenie modelu, należącego do wszystkich korzystających z tego modelu.
+Wspólny model jest zaprojektowany zgodnie z potrzebami wszystkich kontekstów ograniczonych. Dodatkowo współdzielony model musi być spójny we wszystkich kontekstach ograniczonych, które go stosują.
+
+**Konformista** - konsument dostosowuje się do modelu usługodawcy
+
+**Wartstwa Antykorupcyjna** - konsument tłumaczy model usługodawcy na model odpowiadający potrzebom konsumenta.
+
+**Usługa otwartego hosta** - usługodawca implementuje model zoptymalizowany pod kątem potrzeb konsumenta.
+
+**Różne drogi** - powielenie określonych funkcji jest tańsze niż współpraca i integracja.
