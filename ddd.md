@@ -8,6 +8,12 @@ Są reprezentantami biznesu. To ludzie, którzy zidentyfikowali problem biznesow
 Analitycy systemowi i inżynierowie przekształcają własną wizję modeli dziedziny biznesowej w wymagania dotyczące oprogramowania, a następnie w kod źródłowy.
 Oprogramowanie jest budowane po to, by rozwiązywało problemy ekspertów dziedzinowych.
 
+Niezmienniki - reguły, które muszą być chronione (spełnione) przez cały czas.
+
+Wzorzec skryptu transkacji dobrze pasuje do najprostszych dziedzin w których logika biznesowa przypomina proste operacje proceduralne.
+
+Objekt wartości jest obiektem, który można zidentyfikować na podstawie kompozycji jego wartości.
+
 ## Projektowanie stategiczne vs taktyczne
 
 ### Projektowanie strategiczne
@@ -106,3 +112,36 @@ Wspólny model jest zaprojektowany zgodnie z potrzebami wszystkich kontekstów o
 **Usługa otwartego hosta** - usługodawca implementuje model zoptymalizowany pod kątem potrzeb konsumenta.
 
 **Różne drogi** - powielenie określonych funkcji jest tańsze niż współpraca i integracja.
+
+
+## Agegaty, Usługa dziedziny
+
+Optimistic locking - przed wywołaniem operacji wywołujący odczytuje bieżącą wartość wersji encji. Podczas aktualizacji dane zostaną zmodyfikowane tylko wtedy, gdy wersja będzie równa początkowo odczytanej wartości.
+
+
+Agregat jest granicą egzekwowania spójności. Jego logika musi weryfikować wszystkie przychodzące modyfikacje i dbać o to, aby nie były sprzeczne z regułami biznesowymi.
+
+Agregat pełni również rolę granicy transakcji. Wszystkie zmiany stanu agregatu powinny być implementowane transakcyjnie jako jedna atomowa operacja.
+
+Stan agregatu może być modyfikowany wyłącznie przez jego logikę biznesową.
+Wszystkie procesy lub obiekty zewnętrzne w stosunku do agregatu mogą jedynie odczytywać jego stan.
+Stan agregatu może się zmienić tylko w wyniku wywołania odpowiednich metod publicznego interfejsu agregatu.
+
+Żadna operacja systemowa nie może zakładać transakcji obejmującej wiele agregatów.
+Zmiana stanu agregatu może być zatwierdzona tylko pojedynczo - po jednym agregacie na transakcję bazy danych.
+
+Ograniczenie jednego egzemplarza agregatu na transakcję zmusza do starannego projektowania granic agregatu tak, aby projekt uwzględniał niezmienniki i reguły biznesowe.
+Konieczność zatwierdzania zmian w wielu agregatach sygnalizuje niewłaściwie dobrane  granice transakcji, a co za tym idzie - błędne granice agregatu.
+
+Uzasadnieniem odwoływania się do zewnętrznych agregatów za pomocą identyfikatora jest podkreślenie, że obiekty nie nalezą do granicy danego agregatu oraz zadbanie o to, aby każdy Agregat miał własną granicę transakcji.
+
+Agregaty powinny być zaprojektowane tak, aby były jak najmniejsze, o ile wymagania dotyczące spójności danych w dziedzinie biznesowej są nienaruszone.
+
+Zdarzenie dziedziny to komunikat opisujący istotne wydarzenie, które miało miejsce w dziedzinie biznesowej.
+
+Logikę biznesową, która nie należy do żadnego agregatu ani obiektu wartośći, ale wydaje się istotna, można zaimplementować w usłudze dziedziny.
+
+Usługa dziedziny (ang. domain service) jest obiektem bezstanowym implementującym logikę biznesową. W większości przypadków organizuje ona wywołania różnych komponentów systemu w celu wykonania obliczeń lub analizy.
+
+Usługi dziedziny ułatwiają koordynację pracy wielu agregatów. Zawsze jednak należy pamiętać o ograniczeniach wzorca agregatu polegającym na modyfikowaniu tylko jednego egemplarza agegatu w jednej transakcji bazy danych.
+Usługi dziedziny służa do implementacji logiki obliczeniowej, która wymaga odczytu danych z wielu agregatów.
