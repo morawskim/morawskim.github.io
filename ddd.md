@@ -10,9 +10,11 @@ Oprogramowanie jest budowane po to, by rozwiązywało problemy ekspertów dziedz
 
 Niezmienniki - reguły, które muszą być chronione (spełnione) przez cały czas.
 
-Wzorzec skryptu transkacji dobrze pasuje do najprostszych dziedzin w których logika biznesowa przypomina proste operacje proceduralne.
+Zarówno Skrypt transakcji, jak i Aktywny Rekord są lepiej dostosowane do poddziedzin o prostej logice biznesowej.
 
 Objekt wartości jest obiektem, który można zidentyfikować na podstawie kompozycji jego wartości.
+
+Należy również śledzić logikę biznesową poddziedzin zaimplementowaną w różnych bazach kodu: precedury składowane w bazie danych, funkcje bezserwerowe itd.
 
 ## Projektowanie stategiczne vs taktyczne
 
@@ -86,7 +88,6 @@ Kontekst ograniczony i związany z nim język wszechobecny powinny być implemen
 Żadne dwa zespoły nie powinny współdzielić pracy w tym samym kontekście ograniczonym.
 Zespół może pracować nad wieloma kontekstami ograniczonymi.
 
-
 ### Wzorce
 
 **Wzorzec kooperacji** dotyczy kontekstów ograniczonych implementowanych przez zespoły o dobrze ugruntowanej komunikacji.
@@ -145,3 +146,34 @@ Usługa dziedziny (ang. domain service) jest obiektem bezstanowym implementując
 
 Usługi dziedziny ułatwiają koordynację pracy wielu agregatów. Zawsze jednak należy pamiętać o ograniczeniach wzorca agregatu polegającym na modyfikowaniu tylko jednego egemplarza agegatu w jednej transakcji bazy danych.
 Usługi dziedziny służa do implementacji logiki obliczeniowej, która wymaga odczytu danych z wielu agregatów.
+
+## Event storming
+
+Modele odczytu są reprezentowane przez zielone karteczki samoprzylepne.
+
+Systemy zewnętrzne są reprezentowane przez różowe karteczki samoprzylepne.
+
+Agregaty są reprezentowane jako duże żółte karteczki samoprzylepne, z poleceniami po lewej stronie i zdarzeniami po prawej stronie.
+
+Korzyści z warsztatów EventStorming:
+
+* budowanie języka wszechobecnego
+
+* modelowanie procesu biznesowego
+
+* poznawanie nowych wymagań biznesowych
+
+* odzyskanie wiedzy o dziedzinie
+
+* odkrywanie sposobów na ulepszanie istniejącego procesu biznesowego
+
+* wdrażanie nowych członków zespołu
+
+Zdalne sesje EventStormingu są bardziej skuteczne przy mniejszej liczbie uczestników.
+W osobistej sesji EventStormingu może uczestniczyć nawet 10 osób. Sesje online najlepiej ograniczyć do pięciu uczestników. Gdy potrzeba więcej uczestników do dzielenia się wiedzą, można zorganizować wiele sesji, a następnie porównać i scalić uzyskane modele.
+
+## Porty i adaptery
+
+Abstrakcyjne porty są implementowane przez konkretne adaptery w warstwie infrastruktury.
+
+Architektura Porty i adaptery jest również znana jako sześciokątna, cebulowa lub czysta.
