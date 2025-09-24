@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-09
+[Grafana – konfiguracja paneli na przykładach](grafana-konfiguracja-paneli-na-przykladach.md)
 [Domain-driven design](ddd.md)
 [Route Optimization API](route-optimization-api.md)
 [MySQL - login-path](mysql-login-path.md)
