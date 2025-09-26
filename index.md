@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-09
+[Vue - Dynamiczne komponenty](vue.md#Dynamiczne_komponenty)
 [Grafana – konfiguracja paneli na przykładach](grafana-konfiguracja-paneli-na-przykladach.md)
 [Domain-driven design](ddd.md)
 [Route Optimization API](route-optimization-api.md)
