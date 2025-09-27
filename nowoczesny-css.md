@@ -32,3 +32,7 @@ Za pomocą selektor `::selection` ustawiamy style do części dokumentu, który 
 ## Umieszczenie elementu nad innym za pomocą CSS Grid
 
 W tym [przykładzie](https://codepen.io/morawskim/pen/abgjyYB) za pomocą CSS Grid wyświetlam poświatę (efekt rozmytego tła) na którym umieszczony jest obraz SVG.
+
+## Grid
+
+Za pomocą narzędzia [cssgridgenerator](https://cssgridgenerator.io/) możemy wygenerować układ naszego grid'a.
