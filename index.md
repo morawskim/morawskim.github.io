@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-09
+[Traefik - Auth basic i SSL (v3)](traefik.md#Auth_basic_i_SSL_(v3%29)
 [Vue - Dynamiczne komponenty](vue.md#Dynamiczne_komponenty)
 [Grafana – konfiguracja paneli na przykładach](grafana-konfiguracja-paneli-na-przykladach.md)
 [Domain-driven design](ddd.md)

@@ -51,3 +51,45 @@ services:
     labels:
       traefik.http.services.php-kindle.loadbalancer.server.port: "80"
 ```
+
+## Auth basic i SSL (v3)
+
+Za pomocą narzędzia `htpasswd` generujemy hasło `echo $(htpasswd -nb user mysecretpassword) | sed -e s/\\$/\\$\\$/g`.
+Polecenie sed zdubluje znak $, ponieważ docker compose traktuje pojedyncze $ jako początek zmiennej środowiskowej.
+
+W pliku `.env` umieszczamy wygenerowaną wartość `TREAFIK_USER_PASS=user:$$apr1$$SnYhj1kp$$TiAr.raEh3ZyKuBWotM.A1` (nie dodajemy żadnych `'` ani `"` wokół wartości)
+
+```
+services:
+  nginx:
+    image: nginx:latest
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.nginx.rule=Host(`nginx.example.com`)
+      - traefik.http.routers.nginx.entrypoints=https
+      - traefik.http.services.nginx.loadbalancer.server.port=80
+      - traefik.http.routers.nginx.middlewares=nginx-auth
+      - traefik.http.middlewares.nginx-auth.basicauth.users=${TREAFIK_USER_PASS}
+  traefik:
+    image: traefik:v3.1
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command:
+      #- --log.level=DEBUG
+      #- --log.filePath=/letsencrypt/traefik.log
+      - --api.dashboard=true
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.http.address=:80
+      - --entrypoints.http.http.redirections.entrypoint.to=https
+      - --entrypoints.http.http.redirections.entrypoint.scheme=https
+      - --entrypoints.https.address=:443
+      - --certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=http
+      # - --certificatesresolvers.letsencrypt.acme.tlschallenge=true
+      # - --certificatesresolvers.letsencrypt.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
+      - --certificatesresolvers.letsencrypt.acme.email=email@example.com
+      - --certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json
+```
