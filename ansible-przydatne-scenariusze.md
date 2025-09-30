@@ -238,3 +238,40 @@ W przypadku błędu:
 
 Domyślnie ansible łączy się do MySQL na hoście `localhost`.
 Ustawiamy parametr `login_host` na `127.0.0.1`.
+
+## Reset kontenera dockera, gdy zmienił się plik konfiguracyjny
+
+Aby korzystać z modułu do zarządzania docker musimy wpierw go zainstalować - `ansible-galaxy collection install community.docker`. Dodatkowo musimy mieć zainstalowane pakiety pythona do API dockera - `python3-docker` i `python3-compose`.
+
+```
+- name: Przyklad resetowania kontenera dockera, gdy zmienil sie plik konfiguracyjny
+  hosts: localhost
+  gather_facts: no
+  connection: local
+  tasks:
+    - name: Create config file
+      template:
+        src: templates/ex.j2
+        dest: /somewhere/ex.config
+        owner: root
+        group: root
+        mode: '0640'
+      notify: restart myservice
+    - docker_compose:
+        project_name: mycomposeproject
+        state: present
+        definition:
+          services:
+            myservice:
+              image: nginx:latest
+              volumes:
+                - "/somewhere/ex.config:/etc/ex.config"
+  handlers:
+    - name: restart myservice
+      community.docker.docker_container:
+        name: mycomposeproject_myservice_1
+        restart: true
+
+  - name: Reload backend (SIGHUP)
+    command: docker kill --signal=SIGHUP myapp_backend_1
+```
