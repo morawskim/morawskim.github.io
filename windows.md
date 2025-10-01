@@ -54,6 +54,12 @@
 
 `DUMo Portable (Freeware)` - update local drivers
 
+## Dostosowanie Windowsa
+
+[Winaero Tweaker](https://winaero.com/)
+
+[Windhawk](https://windhawk.net/)
+
 ## Porady
 
 `diskmgmt.msc` - Konsola do zarządzania dyskami
