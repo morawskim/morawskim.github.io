@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2025-10
+[ansible-inventory](ansible-inventory.md)
+
 ## 2025-09
 [Traefik - Auth basic i SSL (v3)](traefik.md#Auth_basic_i_SSL_(v3%29)
 [Vue - Dynamiczne komponenty](vue.md#Dynamiczne_komponenty)
