@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-10
+[MySQL - [HY000][1267] Illegal mix of collations](mysql-hy0001267-illegal-mix-of-collations.md)
 [ansible-inventory](ansible-inventory.md)
 
 ## 2025-09
