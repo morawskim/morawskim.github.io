@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-10
+[MySQL – migracja na nowy serwer](mysql-migracja-na-nowy-serwer.md)
 [MySQL - [HY000][1267] Illegal mix of collations](mysql-hy0001267-illegal-mix-of-collations.md)
 [ansible-inventory](ansible-inventory.md)
 
