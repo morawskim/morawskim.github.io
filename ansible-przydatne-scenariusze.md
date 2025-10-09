@@ -275,3 +275,36 @@ Aby korzystać z modułu do zarządzania docker musimy wpierw go zainstalować -
   - name: Reload backend (SIGHUP)
     command: docker kill --signal=SIGHUP myapp_backend_1
 ```
+
+## Nowy serwer
+
+```
+- name: Put SELinux in permissive mode, logging actions that would be blocked.
+  ansible.posix.selinux:
+    policy: targeted
+    state: permissive
+
+# https://docs.ansible.com/ansible/11/collections/ansible/posix/authorized_key_module.html
+- name: Set authorized keys
+  authorized_key:
+    user: rocky
+    state: "{{ item.state }}"
+    key: "{{ item.key }}"
+  loop:
+    - state: absent
+      key: ecdsa-sha2-nistp256 AAAAE......
+    - state: present
+      key: ecdsa-sha2-nistp256 AAAAE......
+
+# requires community.general: ansible-galaxy collection install community.general
+- name: Set timezone to Europe/Warsaw
+  community.general.timezone:
+    name: Europe/Warsaw
+
+- name: firewalld enable http port
+  firewalld:
+    port: 443/tcp
+    permanent: true
+    state: enabled
+    zone: public
+```
