@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-10
+[php-fpm_exporter](php-fpm_exporter.md)
 [supervisor_exporter](supervisor_exporter.md)
 [mysqld_exporter](mysqld_exporter.md)
 [MySQL – migracja na nowy serwer](mysql-migracja-na-nowy-serwer.md)
