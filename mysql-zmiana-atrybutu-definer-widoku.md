@@ -24,3 +24,11 @@ Narzędzie `mysqldump` nie umożliwia zrobienia backupu tylko widoków. Możemy 
 ``` bash
 mysql -uroot -p INFORMATION_SCHEMA --skip-column-names -e "select table_name from tables where table_type = 'VIEW' and table_schema = 'BAZA_DANYCH'" | xargs mysqldump -u root -p BAZA_DANYCH > views.sql
 ```
+
+## Zmiana DEFINER w zrzucie SQL
+
+W zrzutach MySQL często pojawia się DEFINER=stare_konto.
+Przy imporcie na inną bazę może to powodować błędy.
+Poniższa komenda sed podmienia definera na nowe konto.
+
+`sed 's/DEFINER[ ]*=[ ]*[^*]*\*/DEFINER=NOWE_KONTO_MYSQL \*/' ./sciezkaDoPliku`
