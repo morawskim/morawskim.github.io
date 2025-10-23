@@ -132,3 +132,13 @@ Ansible oferuje także funkcję debugowania zadania. Ustawiając w playbook stra
 Obie metody wymagają zmodyfikowania playbooka. Ustawiając zmienną środowiskową `ANSIBLE_ENABLE_TASK_DEBUGGER` na wartość `true` albo `1`, możemy przejść do trybu debugowania w przypadku wystąpienia błędu bez modyfikowania playbooka - `ANSIBLE_ENABLE_TASK_DEBUGGER=1 ansible-playbook playbook.yml`. Wymaga to jednak ansible w wersji 2.5.
 
 [Debugging tasks](https://docs.ansible.com/ansible/latest/user_guide/playbooks_debugger.html)
+
+## ansible-galaxy
+
+Polecenie do generowania pliku `requirements.yml` z zainstalowanych kolekcji:
+
+```
+ansible-galaxy collection list \
+| awk '/^[a-z0-9]+\.[a-z0-9]+/ { printf "- name: %s\n  version: %s\n", $1, $2 }' \
+| sed '1s/^/collections:\n/' > requirements.yml
+```
