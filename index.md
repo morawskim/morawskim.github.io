@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-10
+[KVM/libvirt - przekazanie urządzenia USB do maszyny wirtualnej (usb-host)](kvmlibvirt-przekazanie-urzadzenia-usb-do-maszyny-wirtualnej-usb-host.md)
 [php-fpm_exporter](php-fpm_exporter.md)
 [supervisor_exporter](supervisor_exporter.md)
 [mysqld_exporter](mysqld_exporter.md)
