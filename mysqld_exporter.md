@@ -27,6 +27,14 @@ Dla Ansible nasze zadania mogą wyglądać w poniższy sposób:
 
 ```
 
+Po utworzeniu konta, możemy sprawdzić czy wartość `MAX_USER_CONNECTIONS` została ustawiona zapytaniem (MySQL 8+) `SHOW CREATE USER 'mysqld_exporter'@'%';`.
+W wyniku otrzymamy:
+
+```
+# ....
+| CREATE USER `mysqld_exporter`@`%` IDENTIFIED WITH 'mysql_native_password' AS '*xxx' REQUIRE NONE WITH MAX_USER_CONNECTIONS 3 ......
+```
+
 Przykładowy docker-compose:
 
 ```
