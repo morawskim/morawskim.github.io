@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-10
+[Flutter i Anroid](flutter-i-anroid.md)
 [symfony/messenger standalone](symfony-messenger-standalone.md)
 [KVM/libvirt - przekazanie urządzenia USB do maszyny wirtualnej (usb-host)](kvmlibvirt-przekazanie-urzadzenia-usb-do-maszyny-wirtualnej-usb-host.md)
 [php-fpm_exporter](php-fpm_exporter.md)
