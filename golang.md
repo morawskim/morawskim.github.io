@@ -6,6 +6,8 @@
 Instaluejmy narzędzie poprzez wydanie polecenia `go install golang.org/x/vuln/cmd/govulncheck@latest`.
 Następnie możemy przeskanować projekt wydając polecenie `~/go/bin/govulncheck .`
 
+`fieldalignment` -  służy do wykrywania struktur, które można zoptymalizować przemieszczając pola w strukturze - `go get -tool golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment/`
+
 ## Pakiety
 
 | Pakiet | Opis |
