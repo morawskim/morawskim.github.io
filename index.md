@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2025-11
+[clair](clair.md)
+
 ## 2025-10
 [Flutter i Anroid](flutter-i-anroid.md)
 [symfony/messenger standalone](symfony-messenger-standalone.md)
