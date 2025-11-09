@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-11
+[Windows 11 Instalator](windows-11-instalator.md)
 [clair](clair.md)
 
 ## 2025-10
