@@ -24,3 +24,35 @@ Powtarzamy kroki, aż dojdziemy do najnowszej wersji PHPUnit.
 W przypadku frameworka Symfony, w którym pakiet PHPUnit jest instalowany w innym katalogu, podczas wywoływania polecenia musimy dodać parametr autoload-file: `--autoload-file=bin/.phpunit/phpunit-6.5/vendor/autoload.php`.
 
 [Still on PHPUnit 4? Come to PHPUnit 8 Together in a Day](https://tomasvotruba.com/blog/2019/11/04/still-on-phpunit-4-come-to-phpunit-8-together-in-a-day/)
+
+## Cache
+
+### Bitbucket Pipelines
+
+```
+definitions:
+  caches:
+    # Any cache which is older than 1 week will be cleared automatically and repopulated during the next build.
+    # https://support.atlassian.com/bitbucket-cloud/docs/cache-dependencies/
+    rector: /tmp/rector
+  steps:
+    # .....
+    - step: &rector
+        name: Run rector
+        image: thecodingmachine/php:8.4-v5-cli
+        script:
+          - composer run rector
+        caches:
+          - rector
+#        size: 2x
+pipelines:
+  pull-requests:
+    '**':
+      - parallel:
+          - step: *composer
+      - parallel:
+          - step: *rector
+
+```
+
+[Cache in CI](https://getrector.com/documentation/cache-in-ci)
