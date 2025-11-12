@@ -67,3 +67,14 @@ volumes:
 `clairctl manifest redis:6` - pobrania i wyświetlenia manifest obrazu kontenera redis:6
 
 `clairctl report redis:6` - generuje raport o podatnościach dla obrazu kontenera redis:6
+
+`clairctl check-config  /config/config.yaml` - scala wszystkie pliki konfiguracyjne i pokazuje, jak wygląda ostateczna konfiguracja
+
+Przykładowa struktura katalogu z plikami konfiguracyjnymi:
+
+```
+.
+├── config.yaml
+└── config.yaml.d
+    └── 10-db-connstring.yaml
+```
