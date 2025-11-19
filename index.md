@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-11
+[Ollama](ollama.md)
 [Windows troubleshooting](windows-troubleshooting.md)
 [Trixter – Chaos Monkey TCP Proxy](trixter-chaos-monkey-tcp-proxy.md)
 [Windows 11 Instalator](windows-11-instalator.md)
