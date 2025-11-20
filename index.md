@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-11
+[Traefik - SNI load balancer](traefik-sni-load-balancer.md)
 [Ollama](ollama.md)
 [Windows troubleshooting](windows-troubleshooting.md)
 [Trixter – Chaos Monkey TCP Proxy](trixter-chaos-monkey-tcp-proxy.md)
