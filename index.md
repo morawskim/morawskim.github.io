@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-11
+[symfony/messenger debounce](symfony-messenger-debounce.md)
 [Traefik - SNI load balancer](traefik-sni-load-balancer.md)
 [Ollama](ollama.md)
 [Windows troubleshooting](windows-troubleshooting.md)
