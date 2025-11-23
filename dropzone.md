@@ -88,3 +88,47 @@ cy.get('.dropzone')
 ## Symfony
 
 Symfony zawiera pakiet [ux-dropzone](https://github.com/symfony/ux-dropzone) do integracji dropzone. Jednak obecnie zainstalowanie tego pakietu powoduje problemy [[Dropzone] Impossible to install on SF4.4](https://github.com/symfony/ux/issues/66). Istnieje pull request, który może naprawić ten problem [Fix prepend twig extension](https://github.com/symfony/ux/pull/67/files).
+
+
+## Obsługa plików HEIC/HEIF
+
+Format HEIC/HEIF są wspierane jedynie przez [wybrane przeglądarki](https://caniuse.com/heif).
+W efekcie użytkownicy mogą przesyłać zdjęcia w tych formatach, ale większość przeglądarek nie będzie potrafiła ich poprawnie wyświetlić ani przetworzyć po stronie frontendu.
+
+Po stronie backendu mamy możliwość konwersji tych plików do formatu JPG, co rozwiązuje problem kompatybilności.
+Jednak Dropzone może generować miniaturki przesyłanych plików i w przypadku HEIC/HEIF będzie to niemożliwe w przeglądarkach, które nie wspierają tych formatów.
+
+Aby umożliwić obsługę HEIC/HEIF w Dropzone, instalujemy bibliotekę `heic2any`, która pozwala na konwersję po stronie przeglądarki.
+Importujemy ją w naszym pliku JS/TS - `import heic2any from "heic2any";`
+Nadpisujemy metodę `addFile` w konfiguracji Dropzone (wewnątrz `init`), aby w razie potrzeby przekonwertować plik HEIC/HEIF na JPEG zanim Dropzone spróbuje wygenerować miniaturkę:
+
+```
+$('dropzone').dropzone({
+    # ....
+    acceptedFiles: 'image/*,.heic,.heif',
+    init: function() {
+        const self = this;
+
+        this.addFile = async function (file) {
+            const prototype = Object.getPrototypeOf(this);
+            const ext = (file.name ? file.name.split(".").pop() : file.path.split(".").pop()).toLowerCase();
+
+            if (ext === "heic" || ext === "heif") {
+                try {
+                    const fileBlob = await heic2any({
+                        blob: file,
+                        toType: "image/jpeg",
+                        quality: 0.8, // cuts the quality and size by half
+                    });
+                    const newFile = new File([fileBlob], file.name + ".jpg", {type: "image/jpeg"});
+                    prototype.addFile.call(self, newFile);
+                } catch (e) {
+                    prototype.addFile.call(self, file);
+                }
+            } else {
+                prototype.addFile.call(self, file);
+            }
+        };
+    },
+});
+```
