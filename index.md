@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-11
+[Google Cloud Billing](google-cloud-billing.md)
 [Dropzone - Obsługa plików HEIC/HEIF](dropzone.md#Obsługa_plików_HEIC/HEIF)
 [symfony/messenger debounce](symfony-messenger-debounce.md)
 [Traefik - SNI load balancer](traefik-sni-load-balancer.md)
