@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2025-12
+[PHP & MCP (Model Context Protocol)](php-and-mcp-model-context-protocol.md)
+
 ## 2025-11
 [Google Cloud Billing](google-cloud-billing.md)
 [Dropzone - Obsługa plików HEIC/HEIF](dropzone.md#Obsługa_plików_HEIC/HEIF)
