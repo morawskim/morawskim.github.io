@@ -41,6 +41,7 @@
 * GitToolBox
 * yamllint
 * [Tailwind CSS](https://plugins.jetbrains.com/plugin/15321-tailwind-css) ([Wymaga skonfigurowania interpretatora Node.js w JetBrains](https://www.jetbrains.com/help/webstorm/tailwind-css.html#ws_css_tailwind_before_you_start))
+* [PHP Dump](https://plugins.jetbrains.com/plugin/28100-php-dump)
 
 ## Porady
 
