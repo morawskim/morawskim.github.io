@@ -53,7 +53,7 @@ $queryJobConfig = $this->client->query($this->getQuery($filters));
 $queryResults = $this->client->runQuery($queryJobConfig);
 
 foreach ($queryResults as $row) {
-# $row zawiera dane pojedynczego wiersza rozlcizenia
+// $row zawiera dane pojedynczego wiersza rozlcizenia
 }
 ```
 
