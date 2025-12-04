@@ -30,3 +30,31 @@ Jeśli chcemy pobrać dane billingowe z BigQuery, musimy przypisać odpowiednie 
 ![IAM Roles List](images/gcloud/iam-roles-list.png)
 1. W edycji roli dodajemy uprawnienie `bigquery.jobs.create`, klikając przycisk "Add permissions".
 ![BigQuery job create permission](images/gcloud/iam-role-edit.png)
+
+## BigQuery zapytanie
+
+1. Z menu po lewej stronie przechodzimy do "Billing". Jeśli mamy wiele konto rozliczeniowych, wybieramy opcję "Go to linked billing account".
+1. Na stronie rozliczeń, ponownie wyświetlamy menu i klikamy "Reports" w sekcji "Cost management".
+![BigQuery job create permission](images/gcloud/billing-reports.png)
+1. Ustawiamy fitry i z paska narzędzi wybieramy "Generate query". (jak na screenie powyżej).
+1. Otworzy się nowe okno z gotowym zapytaniem, służącym do wygenerowania raportu.
+1. Kopiujemy te zapytanie.
+1. Instalujemy pakiet PHP `google/cloud-bigquery`
+1. Tworzymy klienta BigQuery:
+```
+new \Google\Cloud\BigQuery\BigQueryClient([
+    'keyFilePath' => getenv('HOME') . '/.config/gcloud/application_default_credentials.json',
+])
+```
+1. Tworzymy metodę `getQuery`, która zwróci skopiowane zapytanie z Google. W zapytaniu dynamicznie podstawiamy datę początkową i datę końcową okresu rozliczeniowego.
+1. Wykonujemy zapytanie BigQuery:
+```
+$queryJobConfig = $this->client->query($this->getQuery($filters));
+$queryResults = $this->client->runQuery($queryJobConfig);
+
+foreach ($queryResults as $row) {
+# $row zawiera dane pojedynczego wiersza rozlcizenia
+}
+```
+
+[Generate and run a SQL query against your exported billing data](https://cloud.google.com/billing/docs/how-to/reports#generate-query)
