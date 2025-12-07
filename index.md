@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-12
+[OpenWRT](openwrt.md)
 [PHP & MCP (Model Context Protocol)](php-and-mcp-model-context-protocol.md)
 
 ## 2025-11
