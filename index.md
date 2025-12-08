@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-12
+[docker compose scalanie konfiguracji](docker-compose-scalanie-konfiguracji.md)
 [OpenWRT](openwrt.md)
 [PHP & MCP (Model Context Protocol)](php-and-mcp-model-context-protocol.md)
 
