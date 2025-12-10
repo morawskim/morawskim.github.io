@@ -79,6 +79,8 @@
 
 * Statystki z pliku `/proc/net/netstat` możemy sprawsować za pomocą awk - `awk '{for(i=1;i<=NF;i++)title[i] = $i; getline; print title[1]; for(i=2;i<=NF;i++)printf " %s: %s\n", title[i], $i }' /proc/net/netstat`
 
+`TCP_NODELAY` to opcja w protokole TCP, która wpływa na sposób wysyłania małych pakietów. Wyłącza algorytm Nagle’a, co powoduje natychmiastowe wysyłanie danych bez czekania na zebranie większych pakietów.
+
 * Opcje gniazda. Wielkość bufora można dostroić przez aplikację za pomocą funkcji setsockopt. Zwiększenie wielkości (aż do omówionej wcześniej wielkości maksymalnej narzucanej przez system) może poprawić wydajność przepustowości sieci.
 
 Inne parametry TCP, które można ustawić, to między innymi:
