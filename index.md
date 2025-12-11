@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-12
+[Dynamiczny import w Vite](dynamiczny-import-w-vite.md)
 [docker compose scalanie konfiguracji](docker-compose-scalanie-konfiguracji.md)
 [OpenWRT](openwrt.md)
 [PHP & MCP (Model Context Protocol)](php-and-mcp-model-context-protocol.md)
