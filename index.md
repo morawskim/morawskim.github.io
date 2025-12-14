@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-12
+[Modal wyświetlany przy wczytaniu strony](modal-wyswietlany-przy-wczytaniu-strony.md)
 [Dynamiczny import w Vite](dynamiczny-import-w-vite.md)
 [docker compose scalanie konfiguracji](docker-compose-scalanie-konfiguracji.md)
 [OpenWRT](openwrt.md)
