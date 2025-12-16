@@ -8,6 +8,10 @@ Następnie możemy przeskanować projekt wydając polecenie `~/go/bin/govulnchec
 
 `fieldalignment` -  służy do wykrywania struktur, które można zoptymalizować przemieszczając pola w strukturze - `go get -tool golang.org/x/tools/go/analysis/passes/fieldalignment/cmd/fieldalignment/`
 
+[go-size-analyzer](https://github.com/Zxilly/go-size-analyzer) - A tool for analyzing the size of compiled Go binaries
+
+[goleak](https://github.com/uber-go/goleak) Goroutine leak detector
+
 ## Pakiety
 
 | Pakiet | Opis |
