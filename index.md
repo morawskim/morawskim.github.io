@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-12
+[SRE](sre.md)
 [Certyfikaty SSH](certyfikaty-ssh.md)
 [Geospatial - Algorytmy](geospatial.md#Algorytmy)
 [Modal wyświetlany przy wczytaniu strony](modal-wyswietlany-przy-wczytaniu-strony.md)
