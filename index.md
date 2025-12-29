@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-12
+[Loki, Grafana i fluent bit](loki-grafana-fluentbit.md)
 [SRE](sre.md)
 [Certyfikaty SSH](certyfikaty-ssh.md)
 [Geospatial - Algorytmy](geospatial.md#Algorytmy)
