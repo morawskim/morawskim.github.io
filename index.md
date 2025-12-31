@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2025-12
+[AWS EC2 VcpuLimitExceeded](aws-ec2-vcpulimitexceeded.md)
 [Loki, Grafana i fluent bit](loki-grafana-fluentbit.md)
 [SRE](sre.md)
 [Certyfikaty SSH](certyfikaty-ssh.md)
