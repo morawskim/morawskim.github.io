@@ -33,6 +33,32 @@ The front proxy client certificate will expire in 364 days.
 
 Komunikacja z API Kubernetes przez narzędzie kubectl nie powinno już zwracać błędów z nieważnym certyfikatem x509.
 
+## Aktualizacja klastra z jednym węzłem
+
+Na maszynie z Ubuntu miałem zainstalowany klaster Kubernetes w postaci pakietu snap microk8s.
+Aby zaktualizować wersję Kubernetesa, należy wykonać polecenie: `sudo snap refresh microk8s --channel=1.32/stable`
+Dostępne wersje Kubernetesa można sprawdzić poleceniem: `snap info microk8s`
+
+Podczas aktualizacji Kubernetesa nie są automatycznie aktualizowane włączone dodatki microk8s.
+Listę aktualnie włączonych dodatków można wyświetlić poleceniem: `microk8s status`
+
+Przykładowy wynik:
+>microk8s is running
+high-availability: no
+  datastore master nodes: 127.0.0.1:19001
+  datastore standby nodes: none
+addons:
+  enabled:
+    dns                  # (core) CoreDNS
+    #....
+  disabled:
+    cert-manager         # (core) Cloud native certificate management
+    # ....
+
+Aby zaktualizować dodatki, należy je najpierw wyłączyć (`microk8s disable <add-on>`), a następnie ponownie włączyć (`microk8s enable <add-on>`).
+
+[Upgrading MicroK8s](https://canonical.com/microk8s/docs/upgrading)
+
 ## Snippets
 
 Lista obrazów kontenerowych zapisanych w wbudowanym rejestrze microk8s - `microk8s ctr images ls`
