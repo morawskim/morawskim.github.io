@@ -48,6 +48,8 @@ Andreas Wittig i Michael Wittig, _Amazon Web Services w akcji. Wydanie II_, Heli
 
 * Amazon domyślnie blokuje ruch na porcie 25 - [How do I remove the restriction on port 25 from my Amazon EC2 instance or AWS Lambda function?](https://aws.amazon.com/premiumsupport/knowledge-center/ec2-port-25-throttle/)
 
+* Obecnie AWS Key Pair nie pozwala na import kluczy SSH typu ECDSA [Support for ECDSA keys in key-pairs](https://repost.aws/questions/QUXtMAzhh3QnmvuN5zZdi4sA/support-for-ecdsa-keys-in-key-pairs)
+
 ## EBS
 
 * Tylko wolumeny typu gp2/gp3/io1/io2 mogą być użyte jako wolumen root/boot.
