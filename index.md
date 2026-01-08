@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-01
+[Docker MacVLAN](docker-macvlan.md)
 [Grafana Image Renderer](grafana-image-renderer.md)
 
 ## 2025-12
