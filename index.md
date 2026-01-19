@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-01
+[AWS EC2 GPU](aws-ec2-gpu.md)
 [prometheus - metric_relabel_configs](prometheus-metricrelabelconfigs.md)
 [Docker MacVLAN](docker-macvlan.md)
 [Grafana Image Renderer](grafana-image-renderer.md)
