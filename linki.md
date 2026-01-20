@@ -28,6 +28,12 @@ Using xip.io,
           10.0.0.1.xip.io   resolves to   10.0.0.1
       www.10.0.0.1.xip.io   resolves to   10.0.0.1
 
+## nip.io & sslip.io
+
+[https://sslip.io/](https://sslip.io/)
+
+nip.io and sslip.io are a DNS (Domain Name System) service that, when queried with a hostname with an embedded IP address, returns that IP address.
+
 ## End of live
 
 https://endoflife.date/
