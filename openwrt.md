@@ -29,3 +29,7 @@ reboot
 [Complete Guide to OpenWrt in VirtualBox: Setup and Disk Expansion](https://dev.to/ahaoboy/complete-guide-to-openwrt-in-virtualbox-setup-and-disk-expansion-1fe2)
 
 [openwrt-virtualbox-build releases](https://github.com/ahaoboy/openwrt-virtualbox-build/releases/tag/nightly)
+
+## Przewodniki
+
+[AdGuard Home](https://openwrt.org/docs/guide-user/services/dns/adguard-home)
