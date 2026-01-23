@@ -308,3 +308,44 @@ Aby korzystać z modułu do zarządzania docker musimy wpierw go zainstalować -
     state: enabled
     zone: public
 ```
+
+## Tworzenie i włączanie pliku swap
+
+```
+- name: swap
+  # ...
+  vars:
+    swap_file_path: /swapfile
+    swap_size: 1G
+  tasks:
+    - name: Ensure swapfile exists and is enabled
+      block:
+        - name: Create swapfile
+          command: fallocate -l {{ swap_size }} {{ swap_file_path }}
+          args:
+            creates: "{{ swap_file_path }}"
+        - name: Change swap file permissions
+          file:
+            path: "{{ swap_file_path }}"
+            owner: root
+            group: root
+            mode: 0600
+        - name: "Check swap file type"
+          command: file {{ swap_file_path }}
+          register: swapfile
+        - name: Make swap file
+          command: "mkswap {{ swap_file_path }}"
+          when: swapfile.stdout.find('swap file') == -1
+        - name: Write swap entry in fstab
+          mount:
+            name: none
+            src: "{{ swap_file_path }}"
+            fstype: swap
+            opts: sw
+            passno: 0
+            dump: 0
+            state: present
+        - name: Mount swap
+          command: "swapon {{ swap_file_path }}"
+          when: ansible_swaptotal_mb < 1
+```
