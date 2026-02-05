@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2026-02
+[Ubuntu - netplan](ubuntu.md#netplan)
+
 ## 2026-01
 [AWS EC2 GPU](aws-ec2-gpu.md)
 [prometheus - metric_relabel_configs](prometheus-metricrelabelconfigs.md)
