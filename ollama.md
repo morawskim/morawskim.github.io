@@ -3,6 +3,8 @@
 `ollama` - umożliwia uruchamianie lokalnych modeli językowych (LLM) na własnym komputerze.
 
 [Uruchom prywatne AI na zwykłym PC](https://www.youtube.com/watch?v=wTrnXE5LS_4)
+[Uruchom prywatne AI na zwykłym PC (cz.2) - A może Ollama nie na Windows a na Ubuntu Server... ??](https://www.youtube.com/watch?v=hRk759LCQkw)
+[Uruchom prywatne AI na zwykłym PC (cz.3) - Dorzucamy do Ollama: OpenWebUI + Perplexica + Shell-GPT](https://www.youtube.com/watch?v=VcN_Jad5KLI)
 
 ## Docker compose
 
