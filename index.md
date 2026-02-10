@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-02
+[Codeception & PHPUit - generowanie raportu code coverage](codeception-and-phpuit-generowanie-raportu-code-coverage.md)
 [Ubuntu - netplan](ubuntu.md#netplan)
 
 ## 2026-01
