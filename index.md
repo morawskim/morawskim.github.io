@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-02
+[MySQL - pamięć RAM](mysql-pamiec-ram.md)
 [Codeception & PHPUit - generowanie raportu code coverage](codeception-and-phpuit-generowanie-raportu-code-coverage.md)
 [Ubuntu - netplan](ubuntu.md#netplan)
 
