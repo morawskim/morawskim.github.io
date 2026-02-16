@@ -55,3 +55,22 @@ network:
       wakeonlan: true
       # ...
 ```
+
+## Brak mikrofonu Bluetooth w ustawieniach dźwięku
+
+System Ubuntu 24.04 LTS wykrywał słuchawki Bluetooth, jednak w ustawieniach dźwięku nie było możliwości wyboru mikrofonu.
+Ta wersja systemu korzysta z PulseAudio.
+Rozwiązaniem okazało się przejście na PipeWire.
+
+Zainstalowałem wymagane pakiety - `sudo apt install pipewire`.
+Następnie zrestartowałem system.
+
+Za pomocą polecenia `pactl info` (wymagany pakiet pulseaudio-utils) możemy sprawdzić czy korzystamy z PipeWire.
+
+> ...
+> Server Name: PulseAudio (on PipeWire 1.0.5)
+> ....
+
+Po tej zmianie w ustawieniach dźwięku pojawiła się możliwość wyboru mikrofonu Bluetooth i urządzenie zaczęło działać poprawnie.
+
+[Bluetooth headset mic not working/detected in Ubuntu 20.04](https://atish3604.medium.com/solved-bluetooth-headset-mic-not-working-detected-in-ubuntu-20-04-86a5236444d0)
