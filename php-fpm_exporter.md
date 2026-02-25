@@ -15,13 +15,31 @@ Przykładowy docker-compose do testów konfiguracji php-fpm
 
 ```
 services:
-  php:
-    image: yiisoftware/yii2-php:8.4-fpm-nginx
+  caddy:
+    image: caddy:2.10
     volumes:
-      - ./index.php:/app/web/index.php
-      - ./99-www.conf:/usr/local/etc/php-fpm.d/99-www.conf
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./webroot/:/srv/www
     ports:
-      - "5000:80"
+    - 8080:80
+  php:
+    image: php:8.4-fpm
+    volumes:
+      - ./webroot/:/srv/www
+      - ./php-fpm-www.conf:/usr/local/etc/php-fpm.d/zz-php-fpm-www.conf
+```
+
+Caddyfile:
+
+```
+http://localhost:80 http://127.0.0.1:80 {
+    root * /srv/www
+    encode gzip zstd
+
+    php_fastcgi php:9000
+    file_server
+}
+
 ```
 
 Przykładowy docker-compose dla php-fpm_exporter
@@ -36,6 +54,66 @@ services:
     ports:
       - "9253:9253"
 ```
+
+Jeśli mamy zainstalowany plik binarny, możemy również uruchomić: `php-fpm_exporter server --phpfpm.scrape-uri 'tcp://127.0.0.1:9001/status'`
+
+Następnie poleceniem: `curl -s localhost:9253/metrics | grep phpfpm_up` możemy sprawdzić, czy metryki PHP-FPM są dostępne.
+
+## Unix socket
+
+Możemy komunikować się z PHP-FPM nie przez TCP (adres IP + port), lecz przez gniazdo Unix.
+W przypadku domyślnego obrazu php:8.4-fpm wymaga to zmiany konfiguracji PHP-FPM, tak aby proces nasłuchiwał na gnieździe Unix zamiast na porcie TCP.
+Przykładowy plik modyfikujący pule www, który wymusza nasłuchiwanie na gnieździe Unix:
+
+```
+[www]
+listen = /usr/local/var/run/php-fpm.sock
+listen.owner = www-data
+listen.group = www-data
+listen.mode = 0666
+pm.status_path = /status
+
+```
+
+Plik docker-compose
+
+```
+services:
+  caddy:
+    image: caddy:2.10
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./webroot/:/srv/www
+      - ./socket:/socket
+    ports:
+    - 8080:80
+  php:
+    image: php:8.4-fpm
+    volumes:
+      - ./webroot/:/srv/www
+      - ./php-fpm-www.conf:/usr/local/etc/php-fpm.d/zz-php-fpm-www.conf
+      - ./socket:/usr/local/var/run
+
+```
+
+Caddyfile:
+
+```
+http://localhost:80 http://127.0.0.1:80 {
+    root * /srv/www
+    encode gzip zstd
+
+    php_fastcgi unix//socket/php-fpm.sock
+    file_server
+}
+
+```
+
+Jeśli mamy zainstalowany plik binarny eksportera, możemy go uruchomić: `php-fpm_exporter_2.2.0_linux_amd64  server --phpfpm.scrape-uri 'unix:///sciezka/do/pliku/gniazda/php-fpm.sock;/status'`
+
+Następnie poleceniem: `curl -s localhost:9253/metrics | grep phpfpm_up` możemy sprawdzić, czy metryki PHP-FPM są dostępne.
+
+[Access denied when trying to use PHP unix sock #316](https://github.com/hipages/php-fpm_exporter/issues/316#issuecomment-2549720042)
 
 ## Funkcja fpm_get_status
 
