@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-02
+[awesome-prometheus-alerts](awesome-prometheus-alerts.md)
 [Brak mikrofonu Bluetooth w ustawieniach dźwięku](ubuntu.md#Brak_mikrofonu_Bluetooth_w_ustawieniach_dźwięku)
 [MySQL - pamięć RAM](mysql-pamiec-ram.md)
 [Codeception & PHPUit - generowanie raportu code coverage](codeception-and-phpuit-generowanie-raportu-code-coverage.md)
