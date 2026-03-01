@@ -15,3 +15,17 @@ W sekcji `[Engine.GameEngine]` zmieniamy wpis `MainMenuClass=GUI2K4.UT2K4MainMen
 na `MainMenuClass=GUI2K4.UT2K4MainMenuWS`.
 
 W moim przypadku opcja ta była już ustawiona domyślnie.
+
+## EDuke32 - Duke Nukem 3D
+
+Ze [strony](https://dukeworld.com/eduke32/synthesis/latest/) pobieramy archiwum przeznaczone dla systemu Windows. Po pobraniu rozpakowujemy je do wybranego folderu.
+
+Pobieramy wersję shareware gry ze strony [https://hendricks266.duke4.net/d3dbeta.php](https://hendricks266.duke4.net/d3dbeta.php). Następnie rozpakowujemy pobrane archiwum.
+
+Przechodzimy do folderu, w którym rozpakowaliśmy wersję shareware.
+Kopiujemy dwa pliki `DUKE3D.GRP` i `DUKE.RTS`.
+Wklejamy je do folderu, w którym wcześniej rozpakowaliśmy EDuke32.
+Uruchamiamy grę klkając plik `eduke32.exe`.
+
+[Oficjalna strona projektu:](https://www.eduke32.com/)
+[eduke32 - Installation and configuration]https://wiki.eduke32.com/wiki/Installation_and_configuration
