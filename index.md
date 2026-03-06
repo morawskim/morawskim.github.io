@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-03
+[TypeScript & SweetAlert2 - Cannot find name Swal](typescript-pliki-definicji.md#SweetAlert2_-_Cannot_find_name_Swal)
 [AMD Ryzen AI, ROCm i PyTorch](amd-ryzen-ai-rocm-i-pytorch.md)
 [php-cs-fixer](php-cs-fixer.md)
 [Gry retro - EDuke32 - Duke Nukem 3D](gry-retro.md#EDuke32_-_Duke_Nukem_3D)

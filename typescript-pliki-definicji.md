@@ -63,3 +63,31 @@ declare module 'yup' {
     }
 }
 ```
+
+## SweetAlert2 - Cannot find name Swal
+
+W jednym z projektów korzystamy z biblioteki SweetAlert2.
+Nie jest ona jednak zainstalowana jako pakiet npm.
+Biblioteka została wcześniej pobrana ręcznie i dołączona do strony jako zmienna globalna - `Swal`.
+
+W nowszych częściach kodu biblioteki są instalowane przez npm, a frontend budowany jest w oparciu o moduły ES.
+
+W jednym z plików pojawił się błąd TypeScript (TS2552: Cannot find name 'Swal') przy wywołaniu:
+
+```
+Swal.fire({
+  // ...
+});
+```
+
+Ponieważ SweetAlert2 nie był zainstalowany jako pakiet z repozytorium npm, pobrałem plik z definicjami typów TypeScript bezpośrednio [z repozytorium projektu](https://github.com/sweetalert2/sweetalert2/blob/2d365fc4309eb48a0608b0595ae3de2de3f03b04/sweetalert2.d.ts)
+
+Następnie utworzyłem dodatkowy plik z definicjami typów, w którym zaimportowałem definicję SweetAlert2 i przypisałem ją do zmiennej globalnej Swal:
+
+```
+import type SwalType from "sweetalert2";
+
+declare global {
+  const Swal: typeof SwalType;
+}
+```
