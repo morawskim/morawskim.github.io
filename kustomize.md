@@ -228,3 +228,24 @@ patches:
 ```
 
 [Kubernetes: kustomize transformations with patchesStrategicMerge](https://fabianlee.org/2022/04/18/kubernetes-kustomize-transformations-with-patchesstrategicmerge/)
+
+## Kasowanie zasobów
+
+W katalogu `overlay/prod` zakomentowałem zasoby, których nie chciałem usuwać.
+
+Następnie wywołałem polecenie `kustomize build ./prod`, aby upewnić się, że tylko wybrane przeze mnie zasoby zostaną usunięte.
+
+Finalnie uruchomiłem polecenie `kustomize build ./prod | kubectl delete -f -` aby usunąć zasoby z klastra Kubernetes.
+
+W wyniku powinniśmy otrzymać potwierdzenie usunięcia zasobów:
+
+> configmap "ttrss" deleted
+service "ttrss" deleted
+service "ttrss-mysql" deleted
+deployment.apps "ttrss" deleted
+deployment.apps "ttrss-updater" deleted
+statefulset.apps "ttrss-mysql" deleted
+cronjob.batch "ttrss-backup" deleted
+sealedsecret.bitnami.com "backup-ttrss-restic" deleted
+sealedsecret.bitnami.com "ttrss-mysql" deleted
+ingressroute.traefik.io "ttrss" deleted
