@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-03
+[Gmail - zmiana adresu email](gmail-zmiana-adresu-email.md)
 [Kustomize - Kasowanie zasobów](kustomize.md#Kasowanie_zasobów)
 [TypeScript & SweetAlert2 - Cannot find name Swal](typescript-pliki-definicji.md#SweetAlert2_-_Cannot_find_name_Swal)
 [AMD Ryzen AI, ROCm i PyTorch](amd-ryzen-ai-rocm-i-pytorch.md)
