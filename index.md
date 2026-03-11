@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-03
+[Ollama Kimi K2.5 (multifile GGUF)](ollama-kimi-k25-multifile-gguf.md)
 [Caddy - path reverse proxy](caddy.md#Path_reverse_proxy)
 [Gmail - zmiana adresu email](gmail-zmiana-adresu-email.md)
 [Kustomize - Kasowanie zasobów](kustomize.md#Kasowanie_zasobów)
