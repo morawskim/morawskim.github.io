@@ -86,3 +86,22 @@ fix-code-style:
 ## PHPStorm
 
 [Dokumentacja PHPStorm](https://www.jetbrains.com/help/phpstorm/using-php-cs-fixer.html)
+
+## Wyłączenie reguły
+
+W wersji 3.92+ pojawiła się eksperymentalna funkcja umożliwiająca [ignorowanie wybranych reguł dla pliku (Rules exceptions).](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/32fbed69220dcde6bcd713337e786b69e852fd70/doc/rules_exceptions.rst#L32)
+
+W pliku PHP, w którym chcemy np. ignorować regułę `array_indentation`, należy dodać na początku pliku (lub na jego końcu) adnotację: `// @php-cs-fixer-ignore array_indentation`.
+
+Aby sprawdzić, które reguły są naruszane przez dany plik, można użyć polecenia: `vendor/bin/php-cs-fixer check -v sciezka/do/pliku.php`.
+
+Jeśli potrzebujemy debugować działanie php-cs-fixer, należy ustawić zmienną środowiskową `PHP_CS_FIXER_ALLOW_XDEBUG`, np. na wartość 1:
+`PHP_CS_FIXER_ALLOW_XDEBUG=1 vendor/bin/php-cs-fixer fix --dry-run --diff sciezka/do/pliku.php`
+
+[Ability to ignore some rules for some files #3871](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues/3871)
+
+[feat: [PoC] Support disabling PHP-CS-Fixer for single lines and rules#7569](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/pull/7569)
+
+[[@formatter:off] Ignore portion of code #4512](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues/4512)
+
+[feat: Ignore rules for parts of a file#8373](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/pull/8373)
