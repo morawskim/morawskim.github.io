@@ -129,3 +129,13 @@ service:
 ```
 
 [Integrating Deno and Grafana Cloud: How to observe your JavaScript project with zero added code](https://grafana.com/blog/2025/08/15/integrating-deno-and-grafana-cloud-how-to-observe-your-javascript-project-with-zero-added-code/)
+
+### Lista utworzonych tokenów
+
+Logujemy się na swoje konto w [Grafana Cloud](https://grafana.com).
+W menu po lewej stronie, w sekcji "SECURITY" znajduje się link "Access Policies". Klikamy w niego. Powinniśmy zobaczyć widok podobny do poniższego.
+
+![grafana cloud - Access policies](images/grafana-cloud/access-policies.png)
+
+Na liście widzimy utworzone tokeny.
+Tokeny, które nie są już potrzebne, możemy usunąć.
