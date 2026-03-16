@@ -31,6 +31,8 @@ services:
 
 udało mi się zmniejszyć zużycie pamięci RAM do około 220 MiB.
 
+[MySQL Memory Calculator](https://www.mysqlcalculator.com/)
+
 ### innodb_buffer_pool_size
 
 Uruchamiając bazę danych MySQL, nie możemy dowolnie ustawić zmiennej
@@ -60,6 +62,38 @@ SHOW VARIABLES WHERE Variable_name IN (
 );
 
 ```
+
+### Monitorowanie zużycia pamięci
+
+Aktualne zużycie pamięci można sprawdzić w widoku `sys.x$memory_global_by_current_bytes`
+
+```
+SELECT SUBSTRING_INDEX(event_name,'/',2) AS code_area,
+  FORMAT_BYTES(SUM(current_alloc)) AS current_alloc
+FROM sys.x$memory_global_by_current_bytes
+GROUP BY SUBSTRING_INDEX(event_name,'/',2)
+ORDER BY SUM(current_alloc) DESC;
+
++---------------------------+---------------+
+| code_area                 | current_alloc |
++---------------------------+---------------+
+| memory/innodb             | 63.60 GiB     |
+| memory/performance_schema | 276.55 MiB    |
+| memory/sql                | 167.37 MiB    |
+| memory/temptable          | 42.00 MiB     |
+| memory/memory             | 5.95 MiB      |
+| memory/mysys              | 5.07 MiB      |
+| memory/mysqld_openssl     | 534.43 KiB    |
+| memory/mysqlx             | 3.25 KiB      |
+| memory/component_sys_vars | 1.25 KiB      |
+| memory/myisam             |  728 bytes    |
+| memory/csv                |  120 bytes    |
+| memory/blackhole          |  120 bytes    |
+| memory/vio                |   80 bytes    |
++---------------------------+---------------+
+```
+
+[Monitoring MySQL Memory Usage](https://dev.mysql.com/doc/refman/8.4/en/monitor-mysql-memory-use.html)
 
 ### Binlogi
 
