@@ -84,3 +84,16 @@ Windows Tiling - `Meta (Windows key) + t`. Następnie, przeciągając okno i trz
 Spectacle: Przechwytywanie prostokątnego obszaru - `Meta (Windows key) + [SHIFT] + [print]`
 
 Wybór emotikonów- `Meta (Windows key) + .`
+
+## Snapper
+
+Snapper to narzędzie w systemie openSUSE Tumbleweed służące do tworzenia i zarządzania migawkami (snapshotami) systemu plików Btrfs.
+Pozwala ono przywrócić system do wcześniejszego stanu np. po nieudanej aktualizacji.
+
+Migawki są tworzone automaczynie przed i po aktualizacji.
+
+Aby zobaczyć listę migawek używamy polecenia:
+`sudo snapper list -t pre-post`
+Polecenie to pokazuje dostępne migawki wraz z ich numerami.
+
+Jeśli po aktualizacji system działa niepoprawnie, można cofnąć zmiany między migawkami: `sudo snapper -v undochange 350..351`
