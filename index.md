@@ -4,6 +4,7 @@ Hello
 ## 2026-03
 [v4l2loopback](v4l2loopback.md)
 [Bitbucket API tokens](bitbucket-api-token.md)
+[jest - TypeScript](jest.md#TypeScript)
 [Ollama Kimi K2.5 (multifile GGUF)](ollama-kimi-k25-multifile-gguf.md)
 [Caddy - path reverse proxy](caddy.md#Path_reverse_proxy)
 [Gmail - zmiana adresu email](gmail-zmiana-adresu-email.md)
