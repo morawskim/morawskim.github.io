@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-03
+[MySQL Explain](mysql-explain.md)
 [v4l2loopback](v4l2loopback.md)
 [Bitbucket API tokens](bitbucket-api-token.md)
 [jest - TypeScript](jest.md#TypeScript)
