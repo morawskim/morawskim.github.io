@@ -68,7 +68,12 @@ definitions:
           - echo BITBUCKET_PR_DESTINATION_BRANCH - $BITBUCKET_PR_DESTINATION_BRANCH
           - export FILES_TO_CHECK=$(git diff --name-only --diff-filter=AMR origin/$BITBUCKET_PR_DESTINATION_BRANCH...HEAD | grep -E '.php$')
           - echo "$FILES_TO_CHECK"
-          - vendor/bin/php-cs-fixer check
+          - |
+            if [ -n "$FILES_TO_CHECK" ]; then
+              composer run check-code-style
+            else
+              echo "No PHP files to check, skipping php-cs-fixer"
+            fi
 ```
 
 ### Makefile
