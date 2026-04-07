@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2026-04
+[Bezpieczeństwo Linux](bezpieczenstwo-linux.md)
+
 ## 2026-03
 [Swoole - Load Balancing warstwy 4 - TLS SNI](swoole.md#Load_Balancing_warstwy_4_-_TLS_SNI)
 [OpenClaw](openclaw.md)
