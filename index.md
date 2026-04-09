@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-04
+[Bezpieczeństwo SSH](bezpieczenstwo-linux.md#Bezpieczeństwo_SSH)
 [Bezpieczeństwo Linux](bezpieczenstwo-linux.md)
 
 ## 2026-03
