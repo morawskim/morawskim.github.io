@@ -136,3 +136,102 @@ Weryfikacja podpisu pakietu:
 #### RHEL i pokrewne
 
 `dnf install dnf-automatic`
+
+## Listy kontrolne dostępu (mechanizm ACL)
+
+Wyświetlenie ACL dla pliku lub katalogu:
+`getfacl /sciezka/do/pliku/lub/katalogu`
+
+Aby znaleźć wszystkie pliki w systemie, które mają ustawione ACL, trzeba przeskanować całe drzewo katalogów:
+
+`getfacl -R -s -p / | grep "^# file"`
+
+## Bezpieczeństwo SSH
+
+Skróty (odciski palców) kluczy publicznych możemy odczytać lokalnie poleceniem:
+
+`ssh-keygen -l -f /sciezka/do/klucza/publicznego`
+
+Przykładowa konfiguracja SFTP (chroot):
+
+```
+Match Group sftp
+  PasswordAuthentication no
+  DisableForwarding yes
+  ForceCommand internal-sftp
+  ChrootDirectory /srv/sftp
+```
+
+Wskazany katalog musi mieć prawodłowo ustawione uprawnienia, reszta systemu plików także - mechanizm chroot nie jest idealnie szczelny.
+
+Klucze będą pobierane z katalogu domowego użytkownika.
+Jeśli trzeba po stronie klienta zablokować modyfikację pliku `authorized_keys` można ustawić mu atrybut immutable (`chmod +i`).
+
+Blok Match obejmuje wpisy aż do następnego bloku Match lub do końca pliku.
+Najlepiej zatem umieszczać takie bloki na końcu konfiguracji.
+Wcięcia nie są interpretowane przez sshd.
+
+### Wybrane parametry konfiguracyjne sshd
+
+`PasswordAuthentication no` - Wyłączenie logowania hasłem.
+
+`X11Forwarding [yes|no]` - Umożliwia/blokuje tunelowanie protokołu X
+
+`AllowTcpForwarding [yes|no|local|remote]` - Forwardowanie ruchu TCP
+
+`GatewayPorts [yes|no]` - Dla tunelowania TCP z serwera zdalnego: pozwala serwerowi na otwarcie portów do tunelowania na wszystkich interfejscach, nie tylko pętli lokalnej `lo` serwera
+
+`PermitOpen adres:port` - Restrykcja dla tuneli inicjowanych po stronie klienta na jaki adres/port docelowy klient może zażądać połączenia
+
+`PermitListen adres:port` - Restrykcja dla tuneli z przyjmowaniem połączeń przez serwer zdalny - na jakich adresach/portach serwer klienta może zażadać nasłuchu
+
+`AllowAgentForwarding [yes|no]` - Umożliwia/blokuje forwardowanie (tunelowanie) połączenia do agenta SSH
+
+`AllowStreamLocalForwarding [yes|no]` - umożliwia/blokuje forwardowanie gniazd (ang. unix sockets) funkcja dość podobna do forwardowania TCP w obie strony dla intrfejsów `lo`
+
+`DisableForwarding yes` - wyłączenie wszystkich mechanizmów forwardowania
+
+### Plik authorized_keys
+
+Przykład klucza publicznego z dodatkowymi ograniczeniami:
+`from="10.0.5.5", restrict, command="/usr/local/bin/foo" ssh-ed25519 AAAAf....`
+
+[man sshd AUTHORIZED_KEYS FILE FORMAT](https://linux.die.net/man/8/sshd)
+
+### Certyfikaty SSH
+
+[Certyfikaty SSH](certyfikaty-ssh.md)
+
+## Nmap
+
+`namp -Pn -p0- -sV -T4 host.domena.com` - Skanowanie TCP z zewnątrz
+
+## Ustawienia sysctl związane z bezpieczeństwem
+
+`kernel.dmesg_restrict=1` - Blokuje zwykłym użytkownikom możliwość czytania bufora diagnostyucznego jądra za pomoca dmesg
+
+`kernel.kexec_load_disabled=1` - Wyłącza możliwość załadowania i uruchomienia innego kernela bez restartu.
+
+`kernel.yama.ptrace_scope = 1 lub 3` - Ograniczenie działania `ptrace()`.
+0 - brak ograniczeń
+1 - tylko procesy potommne (uruchomione przez debugger)
+2 - debugger moze dzialac tylko jako root lub z capability CAP_SYS_PTRACE
+3 - całkowita blokada (do zmianny konieczny jest restart systemu)
+
+`kernel.unprivileged_bpf_disabled = 1` - Ogranicza prawo użycia eBPF tylko do uprzywilejowanych (root lub posiadacze capability `CAP_BPF`). Po włączeniu nie można zdjąc ograniczenia bez restartu.
+
+`net.core.bpf_jit_harden = 2` - Włącza hardening kompilatora JIT dla programów BPF ładowanych do jadra.
+1 - tylko przez nieuprzywilejowanych użytkowników
+2 - przez wszystkich
+
+`net.ipv4.tcp_syncookies=1` - Ochrona przed atakami TCP SYN-flood
+
+## Inne
+
+* Pliki mające ustawione prawa setuid/setgid `find / -type f -perm /u+s,g+s`. Jądro Linux dla bezpieczeństwa ignoruje setuid ustawiony dla skryptów.
+
+* Zainstalować pakiet aktualizujący mikrokod CPU, właściwy dla producenta procesora (w zależności od dystrybucji: intel-microcode/intel-ucode albo amd-microcode/amd-ucode).
+
+## Książki
+
+Praca zbiorowa, _Wprowadzenie do bezpieczeństwa IT - Tom 2_, Securitum
