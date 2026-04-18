@@ -67,3 +67,15 @@ Korzystam z protokołu "http/protobuf", aby nie instalować rozszerzenie gRPC.
 `open-telemetry/opentelemetry-auto-symfony` sam instrumentuje requesty Symfony i podłącza się pod klienta HTTP symfony/http-client.
 
 Trace’y będą automatycznie wysyłane do OpenTelemetry Collector, a stamtąd możesz forwardować je np. do Grafana Cloud.
+
+### PDO
+
+W przypadku gdy interfejs użytkownika używany do przeglądania danych telemetrycznych nie obsługuje połączeń między elementami span (w moim przypadku Grafana),
+możemy opcjonalnie ustawić zmienną środowiskową `OTEL_PHP_INSTRUMENTATION_PDO_DISTRIBUTE_STATEMENT_TO_LINKED_SPANS=true`,
+która spowoduje ustawienie atrybutu "db statement" dla spanów fetchAll i execute.
+
+### Symfony
+
+[Why We Built Our Own OpenTelemetry Bundle for Symfony](https://medium.com/@jstojiljkovic941/why-we-built-our-own-opentelemetry-bundle-for-symfony-9d1a273c75aa)
+
+[tracewayapp/opentelemetry-symfony-bundle](https://github.com/tracewayapp/opentelemetry-symfony-bundle)
