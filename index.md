@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-04
+[Vue i legacy app - nextTick i Bootstrap Tooltip](vue-i-legacy-app.md#nextTick_i_Bootstrap_Tooltip)
 [Bezpieczeństwo SSH](bezpieczenstwo-linux.md#Bezpieczeństwo_SSH)
 [Bezpieczeństwo Linux](bezpieczenstwo-linux.md)
 
