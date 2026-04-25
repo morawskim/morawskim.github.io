@@ -69,3 +69,11 @@ https://www.sassmeister.com/
 An online SQL database playground for testing, debugging and sharing SQL snippets.
 
 [https://www.db-fiddle.com/](https://www.db-fiddle.com/)
+
+## Discover European Software Alternatives
+
+Strona eualternative.eu to katalog europejskich alternatyw dla popularnych usług cyfrowych, oprogramowania i narzędzi SaaS.
+Jej celem jest promowanie tzw. suwerenności cyfrowej w Europie poprzez wskazywanie rozwiązań tworzonych przez firmy z UE.
+Użytkownicy mogą tam znaleźć zamienniki dla usług spoza UE, np. chmury czy narzędzi AI.
+
+[https://eualternative.eu/](https://eualternative.eu/)
