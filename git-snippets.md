@@ -141,3 +141,7 @@ git archive master --prefix='PROJEKT/' | gzip > `git describe master`.tar.gz
 [includeIf "gitdir:~/projects/client1/"]
     path = ~/.gitconfig-client1
 ```
+
+## Usuwanie scalonych branchy
+
+`git branch --merged origin/main | grep -vE "^\s*(\*|main|develop)" | xargs -n 1 git branch -d`
