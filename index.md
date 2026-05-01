@@ -403,7 +403,7 @@ Hello
 [Sonata/admin-bundle](sonata-admin-bundle.md)
 
 ##2021-03
-[Linux - porady stacja robocza](linux-porady-stacja-robocza.md.md)
+[Linux - porady stacja robocza](linux-porady-stacja-robocza.md)
 
 ##2021-02
 [REST API patterns](rest-api-patterns.md)
