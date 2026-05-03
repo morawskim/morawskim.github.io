@@ -139,3 +139,31 @@ W menu po lewej stronie, w sekcji "SECURITY" znajduje się link "Access Policies
 
 Na liście widzimy utworzone tokeny.
 Tokeny, które nie są już potrzebne, możemy usunąć.
+
+## Sentry
+
+Logujemy się do Sentry i wybieramy projekt, do którego chcemy przesyłać sygnały OpenTelemetry.
+Następnie w menu po lewej stronie najeżdżamy na ikonę koła zębatego i z sekcji "SDK Setup" klikamy "Client Keys".
+Kopiujemy adres OTLP Endpoint oraz token autoryzacyjny.
+Dane te będą potrzebne do skonfigurowania OpenTelemetry Collectora.
+
+[OpenTelemetry Protocol (OTLP)](https://docs.sentry.io/concepts/otlp/)
+
+![Sentry OpenTelemetry](images/otel/sentry.png)
+
+
+```
+# ....
+exporters:
+  otlphttp/sentry:
+    endpoint: https://XXXXXX.ingest.us.sentry.io/api/1111111/integration/otlp
+    headers:
+      x-sentry-auth: "sentry sentry_key=XXXXXAAAAABBBBBDDDDD"
+    compression: gzip
+    encoding: proto
+service:
+  pipelines:
+    traces/dev:
+      # ...
+      exporters: [otlphttp/sentry]
+```
