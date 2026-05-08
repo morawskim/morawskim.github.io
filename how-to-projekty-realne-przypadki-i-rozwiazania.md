@@ -6,6 +6,11 @@
 
 [How Zalando Delivers Real-Time Insights to Its Partners Brands (Delta Sharing)](https://blog.bytebytego.com/p/how-zalando-delivers-real-time-insights)
 
+[How The Heck Does Shazam Work?](https://perthirtysix.com/how-the-heck-does-shazam-work)
+
+Artykuł tłumaczy, że Shazam nie rozpoznaje melodii ani słów piosenki, tylko tworzy jej "odcisk palca" na podstawie charakterystycznych częstotliwości dźwięku.
+Telefon zamienia nagrany dźwięk na spektrogram, wybiera z niego tylko najmocniejsze punkty i łączy je w unikalne pary, które działają jak podpis utworu.
+
 ### Architektura SaaS: multi-tenant w Symfony
 
 [Architektura SaaS: multi-tenant w Symfony](https://bulldogjob.pl/readme/architektura-saas-multi-tenant-w-symfony)
