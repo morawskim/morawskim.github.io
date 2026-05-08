@@ -103,3 +103,21 @@ cli:
 ```
 Podłączamy się do uruchomionego kontenera cli poleceniem `docker-compose exec cli bash`. A następnie wywołuje polecenie `./yii gii/model --tableName food_rating --modelClass FoodRating --ns 'common\models' --enableI18N 1`.
 Model zostanie utworzony. Ich właścicielem będzie użytkownik o uid 1000. Dzięki temu w środowisku programistycznym możemy je edytować, nie zmieniając uprawnień do plików.
+
+## Codeception — konfiguracja wielu aplikacji
+
+W głównym katalogu projektu, w pliku `codeception.yml`, powinien znajdować się klucz `include`.
+
+Dzięki temu Codeception potraktuje wszystkie aplikacje jako jeden zestaw testów.
+
+```
+# global codeception file to run tests from all apps
+include:
+    - common
+    - backend
+    - frontend
+settings:
+    colors: true
+```
+
+Testy uruchamiamy poleceniem: `vendor/bin/codecept run`
