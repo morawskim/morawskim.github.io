@@ -91,3 +91,16 @@ declare global {
   const Swal: typeof SwalType;
 }
 ```
+
+## JQuery definicja typu
+
+Instalujemy pakiet `@types/jquery` - `npm install --save-dev @types/jquery`
+
+Przykład użycia:
+```
+export function someFunction($el: JQuery<HTMLElement>) {
+    // ....
+    $el.val('foo').trigger('change');
+}
+
+```
