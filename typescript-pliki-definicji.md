@@ -104,3 +104,24 @@ export function someFunction($el: JQuery<HTMLElement>) {
 }
 
 ```
+
+## Definicja typu wyliczeniowego
+
+W TypeScript istnieje obsługa typów wyliczeniowych (enum), jednak generują one dodatkowy kod w JavaScript, co może zwiększać rozmiar paczki.
+Dlatego w wielu projektach stosuje się alternatywne podejście oparte na obiektach z as const.
+
+```
+const Status = {
+    NEW: "NEW",
+    ACTIVE: "ACTIVE",
+    DISABLED: "DISABLED"
+} as const;
+
+export type StatusEnum = typeof Status[keyof typeof Status];
+
+// example
+let s: StatusEnum;
+s = Status.NEW;
+s = "ACTIVE";
+s = "FOO"; // Type '"FOO"' is not assignable to type 'StatusEnum'.
+```
