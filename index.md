@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-05
+[TS18028: Private identifiers are only available when targeting ECMAScript 2015 and higher](typescript-snippets.md#TS18028:_Private_identifiers_are_only_available_when_targeting_ECMAScript_2015_and_higher)
 [TypeScript - JQuery definicja typu](typescript-pliki-definicji.md#JQuery_definicja_typu)
 
 ## 2026-04

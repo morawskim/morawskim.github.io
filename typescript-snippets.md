@@ -118,3 +118,39 @@ https://www.typescriptlang.org/docs/handbook/advanced-types.html#discriminated-u
 https://www.typescriptlang.org/docs/handbook/advanced-types.html#exhaustiveness-checking
 
 [Playground Link](https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgMoEcCucooN4BQyyA1qACYBcyARAM5Y4Q0DcRydwAXhNSJgFsARtDYBfAqEixEKAEoQEYOCADmAG3zsyIKrVxKVG5m2IB3YOTAALPoJFRTyaxGCrrYO8NEEJU6PBIyADCwFAImsiExDp6NAhhESbsUHDkwJh0Xg7iBARgAJ4ADiio1nAlyAC8aIy4yAA+yAqGapFNoeGabAQwmCBKwAD2IMhwdHTQYAByEABu0AAUAB5889AAlGsLUFHsNlBDZsggEMcAolCHUIs0AKqnyyVKEOTIQ0IAVoqetMgA1Mhlhtcr1+oMRmNcHBFlk0OUShs9sQ6BYwAhrMhYQA6WJI6LEZAIcYoeh1ZiUdiE5C4MCYKCjOjYzg8ZAAKg4zO4ECcxGJk30PyMmholOpxFp9MZ2Jcbg87M5Fis1l5yAA9Gr+aSEl0KVT1WqJRA6QzkABZOA2bEABQAkgqmal0pl2RyAEyq8gQeCYdSefVGk2jcaTKAzdY3Ogg9gSCR5BAjOhDTTY9RDVSLJgwvCxahk7C4GgAGg43OoAFYxBsQUA)
+
+
+## TS18028: Private identifiers are only available when targeting ECMAScript 2015 and higher
+
+W projekcie wykorzystującym Vite i TypeScript PHPStorm wyświetlał następujący błąd:
+
+>TS18028: Private identifiers are only available when targeting ECMAScript 2015 and higher
+
+Plik konfiguracyjny `tsconfig.json` wyglądał następująco:
+
+```
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false,
+    "paths": {
+      "pickup/*": ["./src/pickup/js/*"]
+    }
+  }
+}
+
+```
+
+Problem wynikał z tego, że TypeScript interpretował projekt jako starszy niż ES2015, podczas gdy w kodzie były używane prywatne pola klas.
+
+Rozwiązaniem było jawne ustawienie wersji ECMAScript w konfiguracji:
+
+```
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    // ....
+  }
+}
+
+```
