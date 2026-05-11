@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-05
+[Rozproszone transakcje](rozproszone-transakcje.md)
 [Definicja typu wyliczeniowego w TypeScript](typescript-pliki-definicji.md#Definicja_typu_wyliczeniowego)
 [TS18028: Private identifiers are only available when targeting ECMAScript 2015 and higher](typescript-snippets.md#TS18028:_Private_identifiers_are_only_available_when_targeting_ECMAScript_2015_and_higher)
 [TypeScript - JQuery definicja typu](typescript-pliki-definicji.md#JQuery_definicja_typu)
