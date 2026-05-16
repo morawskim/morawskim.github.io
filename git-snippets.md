@@ -145,3 +145,13 @@ git archive master --prefix='PROJEKT/' | gzip > `git describe master`.tar.gz
 ## Usuwanie scalonych branchy
 
 `git branch --merged origin/main | grep -vE "^\s*(\*|main|develop)" | xargs -n 1 git branch -d`
+
+## Wyszukiwanie usuniętego kodu w historii Git (zwiększenie limitu diff.renameLimit)
+
+W historii projektu w systemie kontroli wersji GIT chciałem wyszukać ciąg znaków, aby znaleźć commit, który usuwał kod zawierający określoną frazę, np. 'lorem ipsum'.
+Wywołałem polecenie: `git log -S'lorem ipsum' -p`
+Otrzymałem ostrzeżenia:
+>warning: exhaustive rename detection was skipped due to too many files.
+warning: you may want to set your diff.renameLimit variable to at least 2123 and retry the command.
+
+Aby zwiększyć limit bez modyfikowania pliku konfiguracyjnego Git, można dodać parametr `-c`: `git -c diff.renameLimit=3000 log -S'lorem ipsum' -p`
