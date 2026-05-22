@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-05
+[Steam Controller](steam.md#Steam_Controller)
 [Problem z ausearch w cronie](problem-z-ausearch-w-cronie.md)
 [Rozproszone transakcje](rozproszone-transakcje.md)
 [Definicja typu wyliczeniowego w TypeScript](typescript-pliki-definicji.md#Definicja_typu_wyliczeniowego)
@@ -106,7 +107,7 @@ Hello
 ## 2025-06
 [s6-overlay](s6-overlay.md)
 [swoole - Undefined constant SWOOLE_SSL](swoole.md#Undefined_constant_SWOOLE_SSL)
-[SteamOS](steamos.md)
+[SteamOS](steam.md#SteamOS)
 [Konwersja PDF (pierwsza strona) do pliku PNG](pdf.md)
 [Zdejmowanie hasła z pliku PDF](pdf.md#Zdejmowanie_has%C5%82a_z_pliku_PDF)
 
