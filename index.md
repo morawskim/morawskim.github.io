@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-05
+[RabbitMQ metryki](rabbitmq-metryki.md)
 [Steam Controller](steam.md#Steam_Controller)
 [Problem z ausearch w cronie](problem-z-ausearch-w-cronie.md)
 [Rozproszone transakcje](rozproszone-transakcje.md)
