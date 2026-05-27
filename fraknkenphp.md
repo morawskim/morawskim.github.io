@@ -45,3 +45,34 @@ http://:80 {
 	}
 }
 ```
+
+## max_requests
+
+Jeśli chcemy restartować wątek PHP po przetworzeniu określonej liczby żądań, możemy użyć dyrektywy `max_requests` w konfiguracji FrankenPHP (wewnątrz bloku frankenphp w pliku konfiguracyjnym Caddy).
+
+Dyrektywa `max_requests` określa maksymalną liczbę requestów obsługiwanych przez pojedynczy wątek PHP przed jego restartem. Mechanizm ten pomaga ograniczać skutki wycieków pamięci (memory leaks).
+
+Domyślna wartość to 0, co oznacza brak limitu i brak automatycznego restartu wątków.
+
+```
+{
+	# Debug
+	debug
+
+	frankenphp {
+		# ...
+		max_requests {$MAX_REQUESTS:10}
+	}
+}
+```
+
+W tym przykładzie użyj wartości zmiennej środowiskowej `MAX_REQUESTS`, a jeśli nie istnieje — użyj wartości 10.
+
+W logach będziemy widzieć ustawioną wartość `max_requests`: `docker compose logs php | grep  max_requests`
+
+Przykład wpisu:
+> php-1  | {"level":"info","ts":1779626040.8992379,"logger":"frankenphp","msg":"FrankenPHP started 🐘","php_version":"8.2.31","num_threads":25,"max_threads":25,"max_requests":4}
+
+Jeśli mamy włączoną dyrektywę `debug`, to po osiągnięciu limitu przetworzonych żądań w logach zobaczymy wpis (`docker compose logs php | grep -i 'max requests reached'`):
+
+> php-1  | {"level":"debug","ts":1779626087.1332717,"logger":"frankenphp","msg":"max requests reached, restarting","worker":"/app/public/index.php","thread":1,"max_requests":4}
