@@ -36,3 +36,16 @@ W tym [przykładzie](https://codepen.io/morawskim/pen/abgjyYB) za pomocą CSS Gr
 ## Grid
 
 Za pomocą narzędzia [cssgridgenerator](https://cssgridgenerator.io/) możemy wygenerować układ naszego grid'a.
+
+## Selektor :has
+
+Selektor `:has` służy do wybierania elementu na podstawie tego, co znajduje się w środku albo obok niego.
+Pozwala stylować rodzica zależnie od dzieci.
+
+[Demo](https://codepen.io/editor/morawskim/pen/019e6aa6-f9ac-7ee2-b7d6-741858cb707a)
+
+## Container queries
+
+Container Queries pozwalają stylować element na podstawie rozmiaru kontenera, a nie całego viewportu jak w media queries.
+
+[Demo](https://codepen.io/editor/morawskim/pen/019e6abc-1773-754d-933e-34388e6a7493)
