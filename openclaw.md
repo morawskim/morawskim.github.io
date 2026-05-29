@@ -81,3 +81,45 @@ Po zatwierdzeniu urządzenia powinniśmy zobaczyć panel OpenClaw w przeglądarc
 Podgląd logów OpenClaw: `docker compose exec nodejs openclaw logs --follow`
 
 Aby przetestować integrację MCP, uruchom w kontenerze: `mcporter call bitbucket`.
+
+## Ollama — lokalny model i długi prompt
+
+Po uruchomieniu modelu w Ollama odpowiedzi generowały się szybko (`ollama run model`).
+Jednak po podłączeniu modelu do OpenClaw zauważyłem znacznie dłuższy czas oczekiwania na odpowiedź.
+
+Po podłączeniu proxy okazało się, że do modelu przekazywany jest bardzo długi prompt.
+Postanowiłem więc dla tego konkretnego dostawcy wyłączyć przekazywanie informacji o dostępnych narzędziach, ponieważ polecenie `/context list` w czacie OpenClaw pokazywało, że dodanie definicji narzędzi może zajmować nawet:
+
+>Tool list (system prompt text): 0 chars (~0 tok)
+Tool schemas (JSON): 31,415 chars (~7,854 tok) (counts toward context; not shown as text)
+Tools: read, edit, write, apply_patch, exec, process, canvas, nodes, cron, message, tts, gateway, agents_list, update_plan, sessions_list, sessions_history, sessions_send, sessions_spawn, sessions_yield, subagents, session_status, web_search, web_fetch, browser, file_fetch, dir_list, dir_fetch, file_write, memory_search, memory_get
+
+Wprowadziłem zmiany konfiguracyjne w pliku `openclaw.json`
+
+```
+{
+  # ....
+  "tools": {
+    "profile": "full",
+    "byProvider": {
+      "ollama": {
+        "profile": "minimal"
+      }
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "ollama": {
+        # .....
+      }
+    }
+  }
+}
+```
+
+Po wprowadzeniu zmian w konfiguracji OpenClaw i wyłączeniu większości narzędzi dla dostawcy ollama, ponowne wywołanie polecenia `/context list` zwracało już następujący rezultat:
+
+>Tool list (system prompt text): 0 chars (~0 tok)
+Tool schemas (JSON): 89 chars (~23 tok) (counts toward context; not shown as text)
+Tools: session_status
