@@ -76,3 +76,31 @@ Przykład wpisu:
 Jeśli mamy włączoną dyrektywę `debug`, to po osiągnięciu limitu przetworzonych żądań w logach zobaczymy wpis (`docker compose logs php | grep -i 'max requests reached'`):
 
 > php-1  | {"level":"debug","ts":1779626087.1332717,"logger":"frankenphp","msg":"max requests reached, restarting","worker":"/app/public/index.php","thread":1,"max_requests":4}
+
+## OpenTelemetry
+
+Podczas analizy działania OpenTelemetry zauważyłem opóźnienia w publikowaniu sygnałów (w moim przypadku trace'ów) do OpenTelemetry Collector.
+
+Przyczyną okazał się sposób, w jaki SDK OpenTelemetry inicjalizuje proces opróżniania buforów.
+W ramach autokonfiguracji rejestrowana jest funkcja za pomocą `register_shutdown_function`, która podczas zamykania obsługi żądania HTTP wykonuje operacje związane z eksportem zgromadzonych danych.
+
+Rejestracja odbywa się w metodzie [\OpenTelemetry\SDK\SdkAutoloader::environmentBasedInitializer](https://github.com/open-telemetry/opentelemetry-php/blob/086ec77bb2d7733aadd5dc3b9f8cda728fd5bf90/src/SDK/SdkAutoloader.php#L121).
+
+Takie podejście działa poprawnie w środowisku PHP-FPM, gdzie proces obsługujący żądanie wywołuje zarejestrowane funkcje przez `register_shutdown_function` po zakończeniu requestu.
+
+Sytuacja wygląda inaczej w przypadku FrankenPHP działającego w trybie workerów.
+Proces PHP pozostaje aktywny i obsługuje wiele kolejnych żądań, dlatego funkcje zarejestrowane przez `register_shutdown_function` są wykonywane dopiero w momencie zakończenia pracy workera.
+Może to powodować opóźnienia w publikowaniu sygnałów do OpenTelemetry Collector.
+
+Rozwiązaniem jest wymuszenie opróżnienia buforów po zakończeniu obsługi każdego żądania.
+Można to zrealizować poprzez listener uruchamiany na końcu cyklu życia requestu.
+W przypadku Symfony odpowiednim miejscem jest obsługa zdarzenia TerminateEvent.
+
+```
+use OpenTelemetry\API\Globals;
+// ...
+
+$result = Globals::tracerProvider()->forceFlush()
+```
+
+Wywołanie `forceFlush()` po każdym żądaniu powoduje natychmiastowe przesłanie zgromadzonych trace'ów do eksportera.

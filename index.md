@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2026-06
+[FrankenPHP - OpenTelemetry](frankenphp.md#OpenTelemetry)
+
 ## 2026-05
 [Bielik](bielik.md)
 [RabbitMQ metryki](rabbitmq-metryki.md)
