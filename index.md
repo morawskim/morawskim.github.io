@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-06
+[FrankenPHP - Debugowanie przy użyciu Delve](frankenphp.md#Debugowanie_przy_użyciu_Delve)
 [FrankenPHP - OpenTelemetry](frankenphp.md#OpenTelemetry)
 
 ## 2026-05

@@ -104,3 +104,106 @@ $result = Globals::tracerProvider()->forceFlush()
 ```
 
 Wywołanie `forceFlush()` po każdym żądaniu powoduje natychmiastowe przesłanie zgromadzonych trace'ów do eksportera.
+
+## Debugowanie przy użyciu Delve
+
+W ramach jednego z projektów w logach pojawił się błąd związany z FrankenPHP.
+Nie mógł on zarejestrować handlera HTTP dla Mercure.
+Jak się później okazało, był to fałszywy alarm i wystarczyło dostosować konfigurację do nowszej wersji.
+
+Istnieje również osobne repozytorium z [obrazami developerskimi](https://hub.docker.com/r/dunglas/frankenphp-dev), jednak ich nie testowałem.
+
+Pobieramy kod FrankenPHP: `git clone https://github.com/php/frankenphp && cd frankenphp`.
+
+Musimy zmodyfikować plik Dockerfile.
+Nie korzystałem z [docker bake](https://docs.docker.com/build/bake/).
+Dodatkowo należy wyłączyć usuwanie symboli debugowania.
+
+```
+Index: Dockerfile
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Dockerfile b/Dockerfile
+--- a/Dockerfile	(revision edaffab6a00cb6fe8a93ca5699be437b2eed5705)
++++ b/Dockerfile	(date 1780775299728)
+@@ -2,7 +2,7 @@
+ #checkov:skip=CKV_DOCKER_2
+ #checkov:skip=CKV_DOCKER_3
+ #checkov:skip=CKV_DOCKER_7
+-FROM php-base AS common
++FROM php:8.5-zts-trixie AS common
+
+ WORKDIR /app
+
+@@ -56,7 +56,7 @@
+ ARG FRANKENPHP_VERSION='dev'
+ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+-COPY --from=golang-base /usr/local/go /usr/local/go
++COPY --from=golang:1.26-trixie /usr/local/go /usr/local/go
+
+ ENV PATH=/usr/local/go/bin:$PATH
+ ENV GOTOOLCHAIN=local
+@@ -121,7 +121,7 @@
+
+ WORKDIR /go/src/app/caddy/frankenphp
+ RUN GOBIN=/usr/local/bin \
+-	../../go.sh install -ldflags "-w -s -X 'github.com/caddyserver/caddy/v2.CustomVersion=FrankenPHP $FRANKENPHP_VERSION PHP $PHP_VERSION Caddy' -X 'github.com/caddyserver/caddy/v2.CustomBinaryName=frankenphp' -X 'github.com/caddyserver/caddy/v2/modules/caddyhttp.ServerHeader=FrankenPHP Caddy'" -buildvcs=true && \
++	../../go.sh install -gcflags "all=-N -l" -ldflags "-X 'github.com/caddyserver/caddy/v2.CustomVersion=FrankenPHP $FRANKENPHP_VERSION PHP $PHP_VERSION Caddy' -X 'github.com/caddyserver/caddy/v2.CustomBinaryName=frankenphp' -X 'github.com/caddyserver/caddy/v2/modules/caddyhttp.ServerHeader=FrankenPHP Caddy'" -buildvcs=true && \
+ 	setcap cap_net_bind_service=+ep /usr/local/bin/frankenphp && \
+ 	cp Caddyfile /etc/frankenphp/Caddyfile && \
+ 	frankenphp version && \
+```
+
+Obraz kontenera w linii: `FROM php-base AS common` zastępujemy przez: `FROM php:8.5-zts-trixie AS common`
+Następnie w linii: `COPY --from=golang-base /usr/local/go /usr/local/go` podstawiamy obraz: `golang:1.26-trixie`
+Obie wartości można znaleźć w pliku `docker-bake.hcl`.
+
+Kolejnym krokiem jest usunięcie flag `-w -s` z parametru ldflags, aby zachować symbole debugowania, oraz dodanie flagi: `-gcflags "all=-N -l"`.
+Dzięki temu kompilator wyłączy optymalizacje utrudniające debugowanie.
+Budujemy obraz: `docker build -t gnu-ext -f Dockerfile  .`
+
+Następnie w projekcie PHP możemy użyć go zamiast bazowego obrazu: `dunglas/frankenphp:1-php8.5-trixie`.
+
+W konfiguracji usługi w Docker Compose musimy wprowadzić kilka zmian, aby uruchamiać powłokę zamiast serwera FrankenPHP oraz umożliwić działanie Delve:
+
+```
+services:
+  frankenphp:
+    # ....
+    entrypoint: "/usr/bin/bash"
+    tty: true
+    cap_add:
+      - SYS_PTRACE
+    ports:
+      - "2345:2345"
+```
+
+Uruchamiamy kontener: `docker compose up -d`.
+Logujemy się do niego: `docker compose exec frankenphp bash`
+
+W kontenerze instalujemy Go w tej samej wersji, która została użyta do zbudowania FrankenPHP.
+W moim przypadku konieczne było dodanie repozytorium `debian-backports`:
+
+```
+tee /etc/apt/sources.list.d/debian-backports.sources > /dev/null <<'EOF'
+Types: deb deb-src
+URIs: http://deb.debian.org/debian
+Suites: trixie-backports
+Components: main
+Enabled: yes
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+EOF
+```
+
+Następnie aktualizujemy listę pakietów i instalujemy Go 1.26 z nowo dodanego repozytorium:
+`apt update -y && apt install -y -t trixie-backports golang-1.26`
+
+Po zainstalowaniu Go instalujemy Delve: `/usr/lib/go-1.26/bin/go install github.com/go-delve/delve/cmd/dlv@latest`
+Na końcu uruchamiamy Delve wraz z FrankenPHP:
+`/root/go/bin/dlv exec /usr/local/bin/frankenphp --listen=:2345 --headless=true --api-version=2 --accept-multiclient --only-same-user=false --check-go-version=false -- run  --config /etc/frankenphp/Caddyfile --adapter caddyfile`
+
+FrankenPHP nie uruchomi się, dopóki debugger nie połączy się z portem 2345.
+W GoLandzie wystarczy skonfigurować "Run/Debug Configuration" typu "Go Remote" i podłączyć się do działającego procesu Delve.
