@@ -29,3 +29,17 @@ Uruchamiamy grę klkając plik `eduke32.exe`.
 
 [Oficjalna strona projektu:](https://www.eduke32.com/)
 [eduke32 - Installation and configuration]https://wiki.eduke32.com/wiki/Installation_and_configuration
+
+## Emulatory
+
+[Dolphin is an emulator for two recent Nintendo video game consoles: the GameCube and the Wii.](https://dolphin-emu.org/)
+
+[Stella is a multi-platform Atari 2600 VCS emulator](https://stella-emu.github.io/index.html)
+
+[VICE is a program which executes programs intended for the old 8-bit computers.](https://vice-emu.sourceforge.io/)
+
+[RetroDECK is a powerful all-in-one retro gaming platform](https://retrodeck.net/)
+
+[Emulation made easy](https://www.emudeck.com/)
+
+[MAME is a multi-purpose emulation framework.](https://www.mamedev.org/)

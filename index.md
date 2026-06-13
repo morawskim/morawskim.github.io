@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-06
+[Gry retro - emulatory](gry-retro.md#Emulatory)
 [MySQL CTE RECURSIVE](mysql-cte-recursive.md)
 [FrankenPHP - Debugowanie przy użyciu Delve](frankenphp.md#Debugowanie_przy_użyciu_Delve)
 [FrankenPHP - OpenTelemetry](frankenphp.md#OpenTelemetry)
