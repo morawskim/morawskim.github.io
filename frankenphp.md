@@ -207,3 +207,195 @@ Na końcu uruchamiamy Delve wraz z FrankenPHP:
 
 FrankenPHP nie uruchomi się, dopóki debugger nie połączy się z portem 2345.
 W GoLandzie wystarczy skonfigurować "Run/Debug Configuration" typu "Go Remote" i podłączyć się do działającego procesu Delve.
+
+## Mercure
+
+W jednym z projektów wykorzystywany był serwer Mercure dostarczany wraz z FrankenPHP.
+W środowisku deweloperskim pojawił się jednak problem: wiadomości były poprawnie publikowane, ale przeglądarka nie odbierała wysyłanych zdarzeń.
+
+Publikowanie wiadomości na endpoint `/.well-known/mercure` zwracało poprawny status HTTP `200 OK`.
+Odpowiedź zawierała jednak nagłówek `Content-Length: 0`.
+W odpowiedzi powiniśmy otrzymać identyfikator (uuid) wiadomości - [github.com/dunglas/mercure@v0.24.2/publish.go:127](https://github.com/dunglas/mercure/blob/7cefe0184937a1609a9a139cd8eef48cb1d1bedc/publish.go#L127).
+
+Za pomocą polecenia `frankenphp list-modules | grep mercure` można sprawdzić, czy uruchomiona instancja FrankenPHP zawiera moduły odpowiedzialne za obsługę Mercure.
+Prawidłowy wynik powinien być podobny do poniższego:
+
+```
+admin.api.mercure_health
+http.handlers.mercure
+http.handlers.mercure.bolt
+http.handlers.mercure.local
+```
+
+Polecenie: `frankenphp adapt --config Caddyfile --pretty` pozwala wyświetlić konfigurację przekształconą do natywnego formatu JSON serwera Caddy.
+
+```
+{
+  "apps": {
+    "frankenphp": {
+      "workers": [
+        {
+          "file_name": "/app/public/index.php"
+        }
+      ],
+      "max_requests": 5
+    },
+    "http": {
+      "servers": {
+        "srv0": {
+          "listen": [
+            ":80"
+          ],
+          "routes": [
+            {
+              "match": [
+                {
+                  "host": [
+                    "localhost",
+                    "127.0.0.1"
+                  ]
+                }
+              ],
+              "handle": [
+                {
+                  "handler": "subroute",
+                  "routes": [
+                    {
+                      "handle": [
+                        {
+                          "handler": "vars",
+                          "root": "public/"
+                        },
+                        {
+                          "encodings": {
+                            "br": {},
+                            "gzip": {},
+                            "zstd": {}
+                          },
+                          "handler": "encode",
+                          "prefer": [
+                            "zstd",
+                            "br",
+                            "gzip"
+                          ]
+                        },
+                        {
+                          "anonymous": true,
+                          "handler": "mercure",
+                          "publisher_jwt": {
+                            "key": "!publisherKeyOnlyForDevSomePaddingToFulfilLengthRequirements"
+                          },
+                          "subscriber_jwt": {
+                            "key": "!subscriberKeyOnlyForDevPaddingToFulfilLengthRequirements"
+                          }
+                        }
+                      ]
+                    },
+                    // ........
+                }
+              ],
+              "terminal": true
+            }
+          ],
+          "logs": {
+            "logger_names": {
+              "127.0.0.1": [
+                ""
+              ],
+              "localhost": [
+                ""
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+Po analizie wygenerowanej konfiguracji okazało się, że handler Mercure był rejestrowany wyłącznie dla żądań z nagłówkiem `Host` ustawionym na `localhost` lub `127.0.0.1`.
+
+Wykorzystywany plik Caddyfile wyglądał następująco:
+
+```
+# ....
+
+{$SERVER_NAME:http://localhost:80 http://127.0.0.1:80} {
+    log
+    root {$SERVER_ROOT:public/}
+    encode zstd br gzip
+
+    mercure {
+        # Publisher JWT key
+        publisher_jwt {$MERCURE_PUBLISHER_JWT_KEY}
+        # Subscriber JWT key
+        subscriber_jwt {$MERCURE_SUBSCRIBER_JWT_KEY}
+        # Allow anonymous subscribers (double-check that it's what you want)
+        anonymous
+    }
+
+    php_server {
+        #worker /path/to/your/worker.php
+    }
+}
+```
+
+Oznaczało to, że handler był aktywny wyłącznie dla żądań kierowanych pod te hosty.
+W praktyce aplikacja publikująca wiadomości korzystała jednak z innych nazw hostów.
+
+Rozwiązaniem okazało się ustawienie zmiennej środowiskowej `SERVER_NAME` i rozszerzenie listy hostów o dodatkowe nazwy wykorzystywane przez aplikacje komunikujące się z Mercure.
+
+Przykładowa subskrypcja zdarzeń przy użyciu Server-Sent Events (SSE):
+
+```
+const eventSource = new EventSource("/.well-known/mercure?topic=mytopic");
+  eventSource.onmessage = function (event) {
+    console.log("New message:", event.data);
+};
+```
+
+Po zmianie konfiguracji:
+
+```
+{
+  "apps": {
+    "frankenphp": {
+      "workers": [
+        {
+          "file_name": "/app/public/index.php"
+        }
+      ],
+      "max_requests": 5
+    },
+    "http": {
+      "servers": {
+        "srv0": {
+          "listen": [
+            ":80"
+          ],
+          "routes": [
+            {
+              "match": [
+                {
+                  "host": [
+                    "localhost",
+                    "127.0.0.1",
+                    "frankenphp",
+                    "php"
+                  ]
+                }
+              ],
+              "handle": [
+                // ...
+              ],
+              "terminal": true
+            }
+          ],
+          // ....
+        }
+      }
+    }
+  }
+}
+```
