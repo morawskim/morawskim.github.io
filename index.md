@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-06
+[OpenClaw - Bonjour/mDNS bug](openclaw.md#Bonjour/mDNS_bug)
 [OpenCode - opencode in docker container wont start TUI](opencode.md)
 [FrankenPHP - Mercure](frankenphp.md#Mercure)
 [Gry retro - emulatory](gry-retro.md#Emulatory)

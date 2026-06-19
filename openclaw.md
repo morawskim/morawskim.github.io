@@ -123,3 +123,29 @@ Po wprowadzeniu zmian w konfiguracji OpenClaw i wyłączeniu większości narzę
 >Tool list (system prompt text): 0 chars (~0 tok)
 Tool schemas (JSON): 89 chars (~23 tok) (counts toward context; not shown as text)
 Tools: session_status
+
+## Bonjour/mDNS bug
+
+Po aktualizacji OpenClaw do 2026.04.24 gateway przestał działać.
+
+W logach pojawiały się błędy związane z usługą Bonjour/mDNS:
+
+> bonjour: watchdog detected non-announced service; attempting re-advertise (gateway fqdn=0b8228731f8f (OpenClaw)._openclaw-gw._tcp.local. host=openclaw.local. port=18789 state=probing) nodejs-1 | 2026-05-12T08:42:20.566+00:00 [plugins] bonjour: restarting advertiser (service stuck in probing for 8090ms (gateway fqdn=0b8228731f8f (OpenClaw)._openclaw-gw._tcp.local. host=openclaw.local. port=18789 state=probing)) nodejs-1 | 2026-05-12T08:42:20.577+00:00 [plugins] bonjour: advertised gateway fqdn=0b8228731f8f (OpenClaw)._openclaw-gw._tcp.local. host=openclaw.local. port=18789 state=unannounced nodejs-1 | 2026-05-12T08:42:20.579+00:00 [openclaw] Unhandled promise rejection: CIAO PROBING CANCELLED nodejs-1 | 2026-05-12T08:42:20.583+00:00 [openclaw] wrote stability bundle: /home/node/.openclaw/logs/stability/openclaw-stability-2026-05-12T08-42-20-581Z-14-unhandled_rejection.json
+
+Problem był już zgłoszony przez użytkowników:
+
+[Do not upgrade to 2026.4.24](https://www.reddit.com/r/openclaw/comments/1sw1s30/do_not_upgrade_to_2026424/)
+
+[v2026.4.24 multiple instabilities — postinstall pruning, bonjour crash loop, WhatsApp startup probe](https://github.com/openclaw/openclaw/issues/72784)
+
+Rozwiązanie to wyłączenie Bonjour/mDNS poprzez ustawienie zmiennej środowiskowej `OPENCLAW_DISABLE_BONJOUR=1`.
+
+W pliku `docker-compose.yml` należy dodać zmienną do usługi OpenClaw:
+
+```
+services:
+  nodejs:
+    # ...
+    environment:
+        - OPENCLAW_DISABLE_BONJOUR=1
+```
