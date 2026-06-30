@@ -2,13 +2,14 @@ Hello
 =====
 
 ## 2026-06
+[FrankenPHP - OpenTelemetry](frankenphp.md#OpenTelemetry)
 [OpenClaw - Bonjour/mDNS bug](openclaw.md#Bonjour/mDNS_bug)
 [OpenCode - opencode in docker container wont start TUI](opencode.md)
 [FrankenPHP - Mercure](frankenphp.md#Mercure)
 [Gry retro - emulatory](gry-retro.md#Emulatory)
 [MySQL CTE RECURSIVE](mysql-cte-recursive.md)
 [FrankenPHP - Debugowanie przy użyciu Delve](frankenphp.md#Debugowanie_przy_użyciu_Delve)
-[FrankenPHP - OpenTelemetry](frankenphp.md#OpenTelemetry)
+[FrankenPHP - OpenTelemetry PHP SDK i register_shutdown_function](frankenphp.md#OpenTelemetry_PHP_SDK_i_register_shutdown_function)
 
 ## 2026-05
 [Bielik](bielik.md)

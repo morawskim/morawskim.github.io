@@ -77,7 +77,7 @@ Jeśli mamy włączoną dyrektywę `debug`, to po osiągnięciu limitu przetworz
 
 > php-1  | {"level":"debug","ts":1779626087.1332717,"logger":"frankenphp","msg":"max requests reached, restarting","worker":"/app/public/index.php","thread":1,"max_requests":4}
 
-## OpenTelemetry
+## OpenTelemetry PHP SDK i register_shutdown_function
 
 Podczas analizy działania OpenTelemetry zauważyłem opóźnienia w publikowaniu sygnałów (w moim przypadku trace'ów) do OpenTelemetry Collector.
 
@@ -399,3 +399,46 @@ Po zmianie konfiguracji:
   }
 }
 ```
+
+## OpenTelemetry
+
+Metryki i trace'y można włączyć w taki sam sposób jak w serwerze Caddy.
+
+W pliku Caddyfile należy dodać dyrektywę metrics w opcjach globalnych oraz włączyć dyrektywę tracing dla wybranego serwera:
+
+```
+{
+  metrics {
+    per_host
+  }
+}
+
+{$SERVER_NAME::80} {
+    # ...
+    tracing {
+        span web-request
+    }
+}
+```
+
+Domyślnie endpoint z metrykami jest dostępny na porcie 2019.
+Metryki można pobrać za pomocą polecenia: `curl -s http://localhost:2019/metrics`
+
+Aby trace'y były eksportowane do kolektora OpenTelemetry, należy skonfigurować odpowiednie zmienne środowiskowe.
+W pliku `docker-compose.yml` dodajemy:
+
+```
+services:
+  frankenphp:
+    #...
+    environment:
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://collector:4318
+      OTEL_SERVICE_NAME: frankenphp
+      OTEL_TRACES_EXPORTER: otlp
+```
+
+Po uruchomieniu aplikacji span'y generowane przez Caddy/FrankenPHP będą wysyłane do wskazanego endpointu OTLP.
+
+[Monitoring Caddy with metrics](https://caddyserver.com/docs/metrics)
+
+[Caddy tracing](https://caddyserver.com/docs/caddyfile/directives/tracing)
