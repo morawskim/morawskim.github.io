@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2026-07
+[Dodawanie własnych rekordów DNS w Kubernetes](dodawanie-wlasnych-rekordow-dns-w-kubernetes.md)
+
 ## 2026-06
 [FrankenPHP - OpenTelemetry](frankenphp.md#OpenTelemetry)
 [OpenClaw - Bonjour/mDNS bug](openclaw.md#Bonjour/mDNS_bug)
