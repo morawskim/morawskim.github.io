@@ -25,3 +25,14 @@ Dzięki temu zapytaniu ręcznie obliczam przyrost licznika w ostatniej godzinie:
 * od bieżącej wartości odejmuję wartość sprzed godziny (lub 0, jeśli brak danych)
 
 W efekcie uzyskujemy prawidłowy przyrost licznika, nawet jeśli szereg czasowy został utworzony niedawno.
+
+## ALERTS
+
+Na jednym z serwerów aplikacyjnych korzystających z PHP-FPM nie był zainstalowany eksporter metryk PHP-FPM.
+W efekcie, zamiast otrzymać alert informujący o zbliżającym się wyczerpaniu puli połączeń PHP-FPM, otrzymaliśmy jedynie alarm PrometheusTargetMissing.
+
+Gdy endpoint metryk jest obsługiwany przez tę samą pulę PHP-FPM co aplikacja, wyczerpanie tej puli uniemożliwi pobranie metryk.
+W takiej sytuacji Prometheus zgłosi alert PrometheusTargetMissing (przy wykorzystaniu reguły z [Awesome Prometheus Alerts](https://samber.github.io/awesome-prometheus-alerts/rules/basic-resource-monitoring/prometheus-self-monitoring/#rule-1-1-1-2)).
+
+Za pomocą poniższego zapytania PromQL można sprawdzić historię występowania tego alertu dla konkretnej instancji
+`ALERTS{alertname="PrometheusTargetMissing", instance="app.example.com"}`
