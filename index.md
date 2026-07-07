@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-07
+[Automatyczne aktualizacje w systemach Linux - APT](automatyczne-aktualizacje-w-systemach-linux.md#APT)
 [Promql - metryka ALERTS](promql.md)
 [Testowanie rozszerzenia Firefox w Puppeteer](testowanie-rozszerzenia-firefox-w-puppeteer.md)
 [Dodawanie własnych rekordów DNS w Kubernetes](dodawanie-wlasnych-rekordow-dns-w-kubernetes.md)
