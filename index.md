@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-07
+[Automatyczne usuwanie nieaktywnych metryk Prometheusa w PHP](automatyczne-usuwanie-nieaktywnych-metryk-prometheusa-w-php.md)
 [Automatyczne aktualizacje w systemach Linux - APT](automatyczne-aktualizacje-w-systemach-linux.md#APT)
 [Promql - metryka ALERTS](promql.md)
 [Testowanie rozszerzenia Firefox w Puppeteer](testowanie-rozszerzenia-firefox-w-puppeteer.md)
