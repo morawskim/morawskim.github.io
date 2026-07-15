@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-07
+[Ansible - deb822_repository](ansible-przydatne-scenariusze.md#deb822_repository)
 [Automatyczne usuwanie nieaktywnych metryk Prometheusa w PHP](automatyczne-usuwanie-nieaktywnych-metryk-prometheusa-w-php.md)
 [Automatyczne aktualizacje w systemach Linux - APT](automatyczne-aktualizacje-w-systemach-linux.md#APT)
 [Promql - metryka ALERTS](promql.md)

@@ -349,3 +349,28 @@ Aby korzystać z modułu do zarządzania docker musimy wpierw go zainstalować -
           command: "swapon {{ swap_file_path }}"
           when: ansible_swaptotal_mb < 1
 ```
+
+## deb822_repository
+
+Podczas odświeżania listy pakietów poleceniem `apt update` otrzymałem komunikat:
+> apt-key is deprecated. Manage keyring files in trusted.gpg.d instead
+
+Przyczyną jest wykorzystanie przestarzałego mechanizmu `apt-key`, który został oznaczony jako deprecated.
+
+Od wersji Ansible 2.15 dostępny jest moduł `ansible.builtin.deb822_repository`, który umożliwia dodanie repozytorium oraz klucza GPG w jednym kroku.
+Dzięki temu można zrezygnować z używania `apt_key` i wyeliminować powyższe ostrzeżenie.
+
+```
+- name: Add fluent-bit repo
+  ansible.builtin.deb822_repository:
+    name: fluentbit
+    types: [deb]
+    uris: "https://packages.fluentbit.io/ubuntu/{{ ansible_distribution_release }}"
+    signed_by: https://packages.fluentbit.io/fluentbit.key
+    suites: "{{ ansible_distribution_release }}"
+    components: [main]
+    state: present
+    enabled: true
+```
+
+[apt_key deprecated in Debian/Ubuntu - how to fix in Ansible](https://www.jeffgeerling.com/blog/2022/aptkey-deprecated-debianubuntu-how-fix-ansible/)
