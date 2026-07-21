@@ -79,3 +79,48 @@ Test działania bez instalowania aktualizacji: `sudo unattended-upgrades --dry-r
 Log działania unattended-upgrades: `less /var/log/unattended-upgrades/unattended-upgrades.log`
 
 Log operacji wykonywanych przez dpkg podczas instalacji aktualizacji: `less /var/log/unattended-upgrades/unattended-upgrades-dpkg.log`
+
+## DNF
+
+Aby skonfigurować automatyczne aktualizacje pakietów w systemach z rodziny Red Hat, należy zainstalować pakiet `dnf-automatic`.
+
+Pakiet dostarcza domyślną konfigurację w pliku `/etc/dnf/automatic.conf`.
+
+Aby automatycznie pobierać i instalować aktualizacje, należy włączyć timer `systemctl enable --now dnf-automatic-install.timer`
+
+### Instalowanie wyłącznie aktualizacji bezpieczeństwa
+
+Domyślnie instalowane są wszystkie dostępne aktualizacje, a nie tylko poprawki bezpieczeństwa.
+Aby ograniczyć automatyczne aktualizacje wyłącznie do poprawek bezpieczeństwa, należy zmodyfikować plik `/etc/dnf/automatic.conf`.
+W sekcji `[commands]` ustaw opcję:
+```
+upgrade_type = security
+```
+
+### Wysyłanie raportów e-mail
+
+Jeżeli chcemy otrzymywać raport z wykonania aktualizacji, należy zmodyfikować konfigurację w pliku `/etc/dnf/automatic.conf`.
+
+W sekcji `[emitters]` upewnij się, że opcja `emit_via` zawiera wartość: `emit_via = email`
+
+Następnie w sekcji `[email]` ustawiamy adres odbiorcy raportów:
+`email_to = admin@example.com`
+
+### Diagnostyka
+
+W przypadku problemów z automatycznymi aktualizacjami warto przejrzeć logi usługi: `dnf-automatic-install.service` - `journalctl -u dnf-automatic-install.service`
+
+Przykładowy błąd związany z wysyłką wiadomości e-mail:
+
+>Jul 16 18:58:08 localhost.localdomain dnf-automatic[31213]: Failed to send an email via 'localhost': (554, b'5.0.0 Error: transac>
+Jul 16 18:58:08 localhost.localdomain systemd[1]: dnf-automatic-install.service: Deactivated successfully.
+Jul 16 18:58:08 localhost.localdomain systemd[1]: Finished dnf automatic install updates.
+Jul 16 18:58:08 localhost.localdomain systemd[1]: dnf-automatic-install.service: Consumed 1min 16.455s CPU time.
+
+### Dokumentacja
+
+Pełny opis wszystkich dostępnych parametrów konfiguracyjnych znajduje się w [podręczniku man dnf-automatic(8)](https://man7.org/linux/man-pages/man8/dnf-automatic.8.html)
+
+[ansible automaticPackageUpdate](https://github.com/morawskim/provision-dev-servers/blob/85ff4f997b5079e020f00213316d67684521be15/server/ansible/roles/automaticPackageUpdate/tasks/main.yml)
+
+[Chapter 7. Automating software updates in RHEL 9](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/managing_software_with_the_dnf_tool/assembly_automating-software-updates-in-rhel-9_managing-software-with-the-dnf-tool)
