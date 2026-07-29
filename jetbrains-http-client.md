@@ -17,8 +17,11 @@ Chciałem więc ustalić ścieżkę do pliku HTTP i na jej podstawie wyznaczyć 
 Próbowałem użyć standardowego kodu:
 
 ```
+{# the raw tag is only for fix build, this is not part of http client file #}
+{% raw %}
 import { fileURLToPath } from 'url';
 const filename = fileURLToPath(import.meta.url);
+{% endraw %}
 ```
 
 Niestety otrzymałem błąd:
@@ -58,7 +61,10 @@ Okazało się, że to funkcja zwracająca katalog główny projektu, czyli dokł
 
 [JavaScript API supported by HTTP Client](https://www.jetbrains.com/help/idea/javascript-api-supported-by-http-client.html)
 
+
 ```
+{# the raw tag is only for fix build, this is not part of http client file #}
+{% raw %}
 ### Generate request body from command
 < {%
     const requestBody = execSync("docker compose exec app /path/to/script/to/generate/request/body", {
@@ -71,4 +77,5 @@ POST https://httpbin.io/post
 Content-Type: application/json
 
 {{requestBody}}
+{% endraw %}
 ```
