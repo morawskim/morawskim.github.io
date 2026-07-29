@@ -2,7 +2,7 @@ Hello
 =====
 
 ## 2026-07
-[JetBrains HTTP Client - Generowanie request body za pomocą skryptu](jetbrains-http-client.md#a)
+[JetBrains HTTP Client - Generowanie request body za pomocą skryptu](jetbrains-http-client.md#Generowanie_request_body_za_pomocą_skryptu)
 [Automatyczne aktualizacje w systemach Linux - DNF](automatyczne-aktualizacje-w-systemach-linux.md#DNF)
 [Ansible - deb822_repository](ansible-przydatne-scenariusze.md#deb822_repository)
 [Automatyczne usuwanie nieaktywnych metryk Prometheusa w PHP](automatyczne-usuwanie-nieaktywnych-metryk-prometheusa-w-php.md)
