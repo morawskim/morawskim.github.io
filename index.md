@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2026-08
+[Testowanie aplikacji webowej na emulatorze Android](testowanie-aplikacji-webowej-na-emulatorze-android.md)
+
 ## 2026-07
 [JetBrains HTTP Client - Generowanie request body za pomocą skryptu](jetbrains-http-client.md#Generowanie_request_body_za_pomocą_skryptu)
 [Automatyczne aktualizacje w systemach Linux - DNF](automatyczne-aktualizacje-w-systemach-linux.md#DNF)
