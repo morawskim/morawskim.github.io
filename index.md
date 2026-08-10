@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-08
+[AI - Data control](ai.md#Data_control)
 [Testowanie aplikacji webowej na emulatorze Android](testowanie-aplikacji-webowej-na-emulatorze-android.md)
 
 ## 2026-07
