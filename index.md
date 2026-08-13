@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-08
+[RSS-Bridge - własny bridge](rss-bridge.md)
 [AI - Data control](ai.md#Data_control)
 [Testowanie aplikacji webowej na emulatorze Android](testowanie-aplikacji-webowej-na-emulatorze-android.md)
 
