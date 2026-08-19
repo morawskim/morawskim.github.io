@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-08
+[Nextcloud - Integracja z Euro-Office](nextcloud.md#Integracja_z_Euro-Office)
 [Grafonnet](grafonnet.md)
 [AI Prompt - Tagowanie](ai-prompts.md#Tagowanie)
 [RSS-Bridge - własny bridge](rss-bridge.md)
