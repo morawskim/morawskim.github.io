@@ -40,6 +40,40 @@ Przykładowa struktura katalogu może wyglądać następująco:
 └── vendor
 ```
 
+Przykładowy szkielet dashboardu.
+
+```
+local g = import 'g.libsonnet';
+local prometheus = g.query.prometheus;
+local barGauge = g.panel.barGauge;
+
+local createRow(name, panels) =
+  g.panel.row.new('Service A: %s' % name) + g.panel.row.withPanels(panels) + g.panel.row.withCollapsed(true);
+
+local createHeatmapPanel(name, actionId, metricName) =
+  barGauge.new(name)
+  + barGauge.queryOptions.withTargets([
+    prometheus.new(
+      'prometheus',
+      '%s{actionId="%s"}' % [metricName, actionId]
+    )
+    + prometheus.withLegendFormat('{{le}}')
+    + prometheus.withFormat('heatmap'),
+  ]);
+
+g.dashboard.new('MYAPP')
++ g.dashboard.withUid('11111111-1111-1111-1111-111111111111')
++ g.dashboard.withPanels([
+  // ....
+  createRow(name="Foo", panels=[createHeatmapPanel(name="Foo command", actionId="foo/xxx", metricName="myapp_cli_command_execution_time_seconds_bucket")])
+])
+
+```
+
+Za pomocą polecenia `curl -s  http://localhost:9090/api/v1/label/actionId/values | jq  '.data'` możemy pobrać wszystkie wartości etykiety actionId.
+Dzięki temu, korzystając z pętli, możemy zbudować wiele paneli naraz.
+
+
 Nasz kod Jsonnet musimy "skompilować" `jsonnet -J vendor --output-file dashboard.json dashboard.jsonnet`.
 Powstanie plik `dashboard.json` zawierający gotowy dashboard.
 Następnie kopiujemy jego zawartość i importujemy dashboard w Grafanie.
