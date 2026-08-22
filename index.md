@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-08
+[[grok_exporter] php-fpm server reached pm.max_children setting](grok_exporter.md#php-fpm_server_reached_pm.max_children_setting)
 [Nextcloud - Integracja z Euro-Office](nextcloud.md#Integracja_z_Euro-Office)
 [Grafonnet](grafonnet.md)
 [AI Prompt - Tagowanie](ai-prompts.md#Tagowanie)
