@@ -136,6 +136,8 @@ index 784b03c..1d11a6c 100644
 --- a/symfony-app/templates/homepage.html.twig
 +++ b/symfony-app/templates/homepage.html.twig
 @@ -26,7 +26,7 @@
+{# the raw tag is only for fix build, this is not part of diff #}
+{% raw %}
      <div class="mt-3">
          <a href="{{ path('list_newest_jobs') }}">Newest created jobs</a>
          <br />
@@ -144,6 +146,7 @@ index 784b03c..1d11a6c 100644
          <br />
          <a href="javascript:{{ include('bookmark.js.twig')|raw|replace({"\r": '', "\n": ''})}}">Webpage2Kindle Bookmark</a>
      </div>
+{% endraw %}
 ```
 
 ## junie
