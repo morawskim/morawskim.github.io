@@ -69,3 +69,68 @@ const fetchData = async () => {
 };
 
 ```
+
+## Renderowanie TR przy użyciu komponentu
+
+W jednym z projektów legacy, w którym stopniowo przechodziliśmy na Vue, tabela z danymi były renderowane po stronie PHP:
+
+```
+<table class="table table-striped align-middle">
+    <thead>
+        <tr>
+            <thFirma></th>
+            <th>Oddział</th>
+            <th>Domyślny</th>
+            <th>&nbsp</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($rows as $item) : ?>
+            // .....
+        <?php endforeach; ?>
+    </tbody>
+</table>
+```
+
+W pewnym momencie pojawiła się potrzeba dodania filtrowania wierszy, ponieważ w niektórych przypadkach liczba renderowanych wierszy zbliżała się do 50.
+Naturalnym rozwiązaniem wydawało się dodanie komponentu Vue jako kolejnego wiersza tabeli:
+
+```
+<table class="table table-striped align-middle">
+    <thead>
+        <tr>
+            <thFirma></th>
+            <th>Oddział</th>
+            <th>Domyślny</th>
+            <th>&nbsp</th>
+        </tr>
+        <my-filter-row :items='<?= JsonHelper::encodeForView($dataForFilters) ?>'></my-filter-row>
+    </thead>
+    // ..
+```
+
+Niestety komponent nie renderował się wewnątrz tabeli — przeglądarka umieszczała element poza strukturą tabeli.
+
+Problem wynika z tego, w jaki sposób przeglądarka parsuje HTML.
+Komponent Vue `<my-filter-row>` jest z punktu widzenia parsera HTML niestandardowym elementem.
+Tymczasem niektóre elementy HTML mają określone reguły dotyczące tego, gdzie mogą występować.
+
+Vue opisuje ten problem w dokumentacji w sekcji [Element Placement Restrictions ](https://vuejs.org/guide/essentials/component-basics.html#element-placement-restrictions). To ograniczenie dotyczy in-DOM templates (czyli template'ów, które są parsowane bezpośrednio przez przeglądarkę jako HTML).
+
+Rozwiązaniem jest użycie prawidłowego elementu HTML i wskazanie komponentu Vue za pomocą atrybutu `is`:
+
+```
+<table class="table table-striped align-middle">
+    <thead>
+        <tr>
+            <thFirma></th>
+            <th>Oddział</th>
+            <th>Domyślny</th>
+            <th>&nbsp</th>
+        </tr>
+        <tr is="vue:my-filter-row" :items='<?= JsonHelper::encodeForView($dataForFilters) ?>'></tr>
+    </thead>
+    // ....
+```
+
+[Vuejs doesn't render components inside HTML table elements](https://stackoverflow.com/questions/50759981/vuejs-doesnt-render-components-inside-html-table-elements)
