@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-08
+[vue3-google-map - InfoWindow i outside click](vue3-google-map.md#InfoWindow_i_outside_click)
 [Vue - Renderowanie TR przy użyciu komponentu](vue-i-legacy-app.md#Renderowanie_TR_przy_użyciu_komponentu)
 [Agent AI skill - opencode i junie](agent-ai-skill.md)
 [[grok_exporter] php-fpm server reached pm.max_children setting](grok_exporter.md#php-fpm_server_reached_pm.max_children_setting)
