@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2026-09
+[Gdrive - Konfiguracja GCloud](gdrive.md#Konfiguracja_Google_Cloud)
+
 ## 2026-08
 [MySQL - notatki](mysql.md)
 [vue3-google-map - InfoWindow i outside click](vue3-google-map.md#InfoWindow_i_outside_click)
