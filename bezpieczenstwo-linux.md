@@ -146,6 +146,8 @@ Aby znaleźć wszystkie pliki w systemie, które mają ustawione ACL, trzeba prz
 
 `getfacl -R -s -p / | grep "^# file"`
 
+[Linux ACL](linux-acl.md)
+
 ## Bezpieczeństwo SSH
 
 Skróty (odciski palców) kluczy publicznych możemy odczytać lokalnie poleceniem:

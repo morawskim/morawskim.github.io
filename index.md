@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-09
+[Linux ACL](linux-acl.md)
 [Monorepo - splitsh-lite](monorepo-splitsh-lite.md)
 [Gdrive - Konfiguracja GCloud](gdrive.md#Konfiguracja_Google_Cloud)
 
