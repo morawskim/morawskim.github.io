@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-09
+[Gdrive PHP SDK – nadpisanie klienta HTTP](gdrive.md#PHP_SDK_–_nadpisanie_klienta_HTTP)
 [Linux ACL](linux-acl.md)
 [Monorepo - splitsh-lite](monorepo-splitsh-lite.md)
 [Gdrive - Konfiguracja GCloud](gdrive.md#Konfiguracja_Google_Cloud)

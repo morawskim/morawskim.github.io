@@ -55,3 +55,34 @@ Następnie wybieramy opcję utworzenia nowego klucza w formacie JSON i pobieramy
 
 Pobrany plik JSON będzie zawierał dane uwierzytelniające Service Account.
 Konfigurujemy SDK, aby korzystało z tego pliku podczas wysyłania żądań do Google Drive API.
+
+## PHP SDK – nadpisanie klienta HTTP
+
+W ramach zadania integrowałem się z dyskiem Google Drive.
+
+SDK Google korzysta z klienta HTTP – GuzzleHttp.
+Możemy przekazać własną instancję klienta, jeśli nie chcemy korzystać z domyślnej konfiguracji.
+Domyślne ustawienia możemy wyciągnąć, przeglądając metodę `\Google\Client::createDefaultHttpClient`.
+
+W moim przypadku chciałem dodać middleware, który będzie zbierał metryki (m.in. liczbę requestów wysyłanych po metadane przechowywanych plików).
+
+```
+$jsonKeyPath = '/sciekza/do/klucza.json';
+$client = new \Google\Client();
+$client->setAuthConfig(
+    json_decode(file_get_contents($jsonKeyPath), true, flags: JSON_THROW_ON_ERROR),
+);
+$client->addScope(Google\Service\Drive::DRIVE_READONLY);
+
+$stack = \GuzzleHttp\HandlerStack::create();
+//$stack->push(); //dodajemy wlasny middleware
+
+$guzzle = new \GuzzleHttp\Client([
+    'handler' => $stack,
+    'base_uri' => \Google\Client::API_BASE_PATH,
+    'http_errors' => false,
+]);
+$client->setHttpClient($guzzle);
+
+return new \Google\Service\Drive($client);
+```
