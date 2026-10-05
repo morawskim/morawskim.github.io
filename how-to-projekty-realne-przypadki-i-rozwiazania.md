@@ -37,6 +37,11 @@ Zamiast przyspieszać sam proces startu, firma zaczęła kierować wszystkie ż�
 
 [How Google’s Tensor Processing Unit (TPU) Works?](https://blog.bytebytego.com/p/how-googles-tensor-processing-unit)
 
+[How OpenAI Built GPT-Live](https://blog.bytebytego.com/p/how-openai-built-gpt-live)
+Artykuł opisuje rozwój systemów głosowych od rozwiązań opartych na kilku modelach i sztywnych turach rozmowy do architektury full-duplex,
+w której AI może jednocześnie słuchać i mówić.
+Opisuje jak połączyć naturalność, niskie opóźnienia i wysoką jakość odpowiedzi.
+
 ## Migracje
 
 [How Reddit Migrated Comments Functionality from Python to Go](https://blog.bytebytego.com/p/how-reddit-migrated-comments-functionality)
