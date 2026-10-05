@@ -86,3 +86,59 @@ $client->setHttpClient($guzzle);
 
 return new \Google\Service\Drive($client);
 ```
+
+## Powiadomienia o zmianach w katalogach Google Drive
+
+W ramach zadania musiałem pobierać pliki przesyłane przez użytkowników do kilku katalogów w Google Drive.
+Do obsługi tych katalogów wykorzystałem dedykowane konto usługi (service account).
+
+Zamiast cyklicznie odpytywać API o nowe lub zmienione pliki, zdecydowałem się wykorzystać mechanizm powiadomień o zmianach i kanał powiadomień (watch).
+
+Po wykryciu zmiany Google wysyła powiadomienie HTTP do naszego endpointu API.
+Samo powiadomienie nie zawiera jednak informacji o przesłanym pliku.
+
+Początkowo chciałem utworzyć osobny kanał powiadomień dla każdego monitorowanego katalogu.
+Obecnie Google Drive API nie umożliwia jednak subskrybowania zmian dla pojedynczego katalogu - [Changes subscriptions: Allow subscribing to notifications for a single folder](https://issuetracker.google.com/issues/183139209?pli=1)
+
+W związku z tym subskrypcję zmian założyłem na poziomie całego dysku / zasobu dostępnego dla danego konta.
+Katalogi są obsługiwane przez oddzielne konto usługi, więc nie otrzymujemy powiadomień z innych katalogów.
+
+
+Przed utworzeniem kanału powiadomień pobieramy aktualny pageToken, który określa punkt, od którego chcemy śledzić zmiany.
+
+`changes->watch` tworzy kanał powiadomień, za pomocą którego Google informuje nasz endpoint HTTP o dostępności nowych zmian.
+
+```
+// pobierany aktualny token z aktualna pozycja zmian
+$response = $this->drive->changes->getStartPageToken([
+    'supportsAllDrives' => true,
+]);
+$pageToken =  $response->getStartPageToken();
+
+// zakladamy powiadomienie
+$res = $this->drive->changes->watch(
+    $pageToken,
+    ///...
+);
+```
+
+Kolejnym problemem było rozróżnienie, którego z monitorowanych katalogów dotyczy dana zmiana.
+Ponieważ jedna integracja obsługuje kilka katalogów, samo otrzymanie powiadomienia nie pozwalało nam jednoznacznie określić, do którego katalogu przesłano plik.
+
+Rozwiązałem ten problem poprzez pobranie informacji o rodzicu pliku, a następnie rekurencyjne przejście po strukturze katalogów aż do katalogu nadrzędnego, który jest bezpośrednio monitorowany przez naszą integrację.
+
+Na podstawie identyfikatora pliku, a następnie całej ścieżki katalogów, jesteśmy w stanie określić, do którego z monitorowanych katalogów należy dany plik.
+Informacja ta jest następnie wykorzystywana w dalszej logice aplikacji.
+
+```
+//...
+    private function getFileWithParents(string $fileId): Drive\DriveFile
+    {
+        $optParams = [
+            'fields' => 'id, name, parents',
+            'supportsAllDrives' => true,
+        ];
+
+        return $this->drive->files->get($fileId, $optParams);
+    }
+```

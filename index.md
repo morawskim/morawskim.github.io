@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2026-10
+[Powiadomienia o zmianach w katalogach Google Drive](gdrive.md#Powiadomienia_o_zmianach_w_katalogach_Google_Drive)
+
 ## 2026-09
 [Gdrive PHP SDK – nadpisanie klienta HTTP](gdrive.md#PHP_SDK_–_nadpisanie_klienta_HTTP)
 [Linux ACL](linux-acl.md)
