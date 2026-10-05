@@ -58,3 +58,7 @@ Do migracji bazy danych bez przestojów autor wykorzystał mydumper/myloader do 
 [Introduction to PostgreSQL Indexes](https://dlt.github.io/blog/posts/introduction-to-postgresql-indexes/)
 
 Artykuł wyjaśnia jak działają indeksy w PostgreSQL, zaczynając od podstaw: jak dane są fizycznie przechowywane na dysku, a potem pokazując, jak indeksy przyspieszają wyszukiwanie.
+
+## Security
+
+[Field‑Level Encryption in Doctrine, Without Polluting Your Domain](https://medium.com/@przemyslaw.rafal.jez/field-level-encryption-in-doctrine-without-polluting-your-domain-c0104e710c91)
