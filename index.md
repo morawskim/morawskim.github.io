@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-10
+[Architecture narrative](architektura.md#Architecture_narrative)
 [Powiadomienia o zmianach w katalogach Google Drive](gdrive.md#Powiadomienia_o_zmianach_w_katalogach_Google_Drive)
 
 ## 2026-09

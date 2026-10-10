@@ -311,6 +311,47 @@ Risk storming dzieli się na trzy podstawowe etapy:
 W przypadku niesprawdzonych lub nieznanych technologii należy zawsze przypisać najwyższą ocenę ryzyka (9), ponieważ dla tego wymiaru nie można zastosować macierzy ryzyka.
 
 
+## Architecture narrative
+
+### Kontekst
+
+Jaki problem biznesowy rozwiązujemy?
+
+* Jaki jest kontekst problemu?
+* Dlaczego biznes chce to zrobić?
+* Kto jest głównymi interesariuszami zaangażowanymi w problem?
+
+business problem
+constraints
+
+### Uwarunkowania
+
+Jakie są warunki i ograniczenia?
+
+* Jakie są ograniczenia biznesowe i techniczne?
+* Jakie charakterystyki architektury muszą być wspierane?
+* Jakie są unikalne wyzwania związane z tym problemem biznesowym?
+* Jakie są alternatywy i związane z nimi kompromisy?ffs?
+
+unique challenges
+driving characteristics
+alternatives
+tradeoff
+
+### Rozwiązanie
+
+Jakie jest proponowane rozwiązanie?
+
+* Jaka jest proponowana architektura?
+* Czy można skutecznie zobrazować architekturę za pomocą diagramów?
+* Jakie są najważniejsze decyzje architektoniczne?
+* Jakie ryzyka wiążą się z proponowanymi rozwiązaniami?
+
+architecture decision
+architecture diagrams
+
+[Lesson 224 - Creating an Architecture Narrative](https://www.developertoarchitect.com/lessons/lesson224.html)
+
 ## Książki
 
 Matthias Noback, _Object Design Style Guide_, Manning
