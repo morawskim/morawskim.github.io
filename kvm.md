@@ -91,3 +91,9 @@ Wyciągamy ścieżkę do obrazu dysku maszyny wirtualnej `virsh dumpxml <moja-ma
 Ustawiamy hasło do konta `virt-customize -a <sciezka-do-pliku-obrazu> --password <nazwa-konta-w-maszynie-wirtualnej>:password:<nowe-haslo>.
 Możemy zalogować się do maszyny wirtualnej korzystając z nowego hasła. 
 Rozwiązujemy problem i blokujemy konto `sudo passwd -l <nazwa-konta-w-maszynie-wirtualnej>`
+
+## Przydatne polecenia virsh
+
+Wyświetlenie listy utworzonych maszyn wirtualnych - `virsh -c qemu:///system list`
+
+Podłączenie się do konsoli maszyny wirtualnej - `virsh -c qemu:///system console <nazwaMaszynyWirtualnej>`
