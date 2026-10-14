@@ -18,6 +18,8 @@
 
 `EaseUS Disk Copy` - [klonowanie dysków](https://pl.easeus.com/disk-copy/home-edition/)
 
+`FluentCleaner` - [alternatywa dla CCleaner](https://github.com/builtbybel/FluentCleaner)
+
 ## PortableApps
 
 `KiTTY Portable` - telnet and SSH with added features
