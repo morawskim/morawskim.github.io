@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-10
+[Makefile - Przekazywanie argumentów skryptu do celu w Makefile](makefile.md#Przekazywanie_argumentów_skryptu_do_celu_w_Makefile)
 [Windows - klonowanie dysku](windows-klonowanie-dysku.md)
 [Architecture narrative](architektura.md#Architecture_narrative)
 [Powiadomienia o zmianach w katalogach Google Drive](gdrive.md#Powiadomienia_o_zmianach_w_katalogach_Google_Drive)
