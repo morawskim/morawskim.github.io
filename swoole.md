@@ -132,3 +132,21 @@ W Wiresharku można użyć filtra: `tls.handshake.extensions_server_name`
 W logach Traefik zaś znalazła się informacja o przekierowaniu ruchu.
 
 > traefik-1  | 2026-03-27T19:37:18Z DBG github.com/traefik/traefik/v3/pkg/tcp/proxy.go:32 > Handling TCP connection address=172.17.0.1:9500 remoteAddr=172.27.0.1:57882
+
+## Deadlock - all coroutines are asleep
+
+W jednym z projektów wykorzystujących PHP oraz rozszerzenie Swoole w logach pojawił się błąd:
+
+> [FATAL ERROR]: all coroutines (count: 182) are asleep - deadlock!
+
+Projekt wykorzystywał [Swoole](https://github.com/swoole/swoole-src) 6.0.
+Problem występował podczas pobierania zadań z kolejki.
+W trakcie pobierania zadania aplikacja wysyłała przez WebSocket informacje o postępie przetwarzania do klienta.
+
+W naszym przypadku wysyłanie informacji o postępie odbywało się w ramach coroutiny odpowiedzialnej za zwrócenie zadania.
+
+Do zapewnienia autocomplete'u oraz poprawnych definicji API Swoole w IDE zainstalowałem pakiet `composer require --dev swoole/ide-helper:~6.0.2`
+
+Wprowadziłem rozdzielenie przetwarzania zadania od wysyłania informacji o jego postępie.
+Wysyłanie komunikatu przez WebSocket zostało odroczone do osobnej coroutiny.
+Dodatkowo przed wysłaniem danych sprawdzamy, czy połączenie WebSocket jest nadal [nawiązane](https://github.com/swoole/swoole-src/blob/0306f53604f760a147b7faef69a55db2f913c5dc/ext-src/stubs/php_swoole_websocket.stub.php#L6).
