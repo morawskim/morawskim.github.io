@@ -42,6 +42,11 @@ Artykuł opisuje rozwój systemów głosowych od rozwiązań opartych na kilku m
 w której AI może jednocześnie słuchać i mówić.
 Opisuje jak połączyć naturalność, niskie opóźnienia i wysoką jakość odpowiedzi.
 
+[How Netflix Taught an LLM to Recommend Movies So That You Keep Watching](https://blog.bytebytego.com/p/how-uber-built-a-genie-to-answer#%C2%A7the-basic-question-with-recommendations)
+
+Netflix zbudował GenRec — system rekomendacji oparty na LLM.
+Model jest trenowany w dwóch etapach: najpierw poznaje domenę Netflixa, a następnie uczy się właściwego rankingu na podstawie realnych zachowań użytkowników.
+
 ## Migracje
 
 [How Reddit Migrated Comments Functionality from Python to Go](https://blog.bytebytego.com/p/how-reddit-migrated-comments-functionality)
