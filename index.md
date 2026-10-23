@@ -2,6 +2,8 @@ Hello
 =====
 
 ## 2026-10
+[Websocket - websocat](websocket.md#websocat)
+[Swoole - Deadlock - all coroutines are asleep](swoole.md#Deadlock_-_all_coroutines_are_asleep)
 [Makefile - Przekazywanie argumentów skryptu do celu w Makefile](makefile.md#Przekazywanie_argumentów_skryptu_do_celu_w_Makefile)
 [Windows - klonowanie dysku](windows-klonowanie-dysku.md)
 [Architecture narrative](architektura.md#Architecture_narrative)
