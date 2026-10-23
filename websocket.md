@@ -28,3 +28,77 @@ Po nawiązaniu połączenia powinniśmy otrzymać komunikat potwierdzający:
 
 Możemy teraz wysłać wiadomość, wpisując ją bezpośrednio w konsoli lub wklejając gotową treść.
 Odpowiedź serwera zostanie wyświetlona na ekranie.
+
+## k6
+
+Do testowania wydajności serwera WebSocket możemy użyć narzędzia Grafana k6.
+
+Przykładowy test:
+
+```
+import { WebSocket } from 'k6/websockets';
+
+export const options = {
+    vus: 1,
+    iterations: 1,
+};
+
+const WS_URL = __ENV.WS_URL || 'ws://127.0.0.1:9500';
+const CONNECTIONS = 50;
+
+// Min and max lifetime of connection in seconds
+const MIN_LIFETIME = 5;
+const MAX_LIFETIME = 15;
+
+function randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+export default function () {
+    for (let i = 0; i < CONNECTIONS; i++) {
+        createConnection(i);
+    }
+
+    console.log(`Created ${CONNECTIONS} WebSocket connections`);
+}
+
+function createConnection(id) {
+    const ws = new WebSocket(WS_URL);
+
+    const lifetime = randomInt(MIN_LIFETIME, MAX_LIFETIME);
+
+    ws.onopen = () => {
+        console.log(
+            `[${id}] WebSocket connected, closing in ${lifetime}s`
+        );
+
+        // An example message after a connection has been established.
+        ws.send(JSON.stringify({
+            // ...
+        }));
+
+        setTimeout(() => {
+            console.log(`[${id}] Closing WebSocket`);
+            ws.close(1000, 'Test finished');
+        }, lifetime * 1000);
+    };
+
+    ws.onmessage = (event) => {
+        console.log(`[${id}] Received: ${event.data.replace(/(\r\n|\n|\r)/gm, "").substring(0, 100)}`);
+    };
+
+    ws.onerror = (e) => {
+        console.error(`[${id}] WebSocket error: ${e.error()}`);
+    };
+
+    ws.onclose = (event) => {
+        console.log(
+            `[${id}] WebSocket closed, code=${event.code}`
+        );
+    };
+}
+```
+
+Możemy go uruchomić, wykorzystując obraz kontenera:
+
+`docker run --rm -v $PWD:/project --network=host grafana/k6:v1 -e WS_URL=ws://127.0.0.1:9500 /project/websocket-test.js`
