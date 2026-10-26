@@ -80,3 +80,13 @@ Błąd po stronie klienta można przechwycić jak powyżej i przesłać do narz�
 Do sekcji "build" dodajemy opcję "sourcemap" z wartością "hidden" - [vite build.sourcemap](https://vitejs.dev/config/build-options.html#build-sourcemap). W katalogu wyjściowym otrzymamy dodatkowe pliki source map.
 Reszta procesu jest taka sama jak w przypadku webpack.
 Instalujemy pakiet "source-map-cli" i wywołujemy polecenie - `./node_modules/.bin/source-map resolve  --context 20 ./sciezka/do/pliku/source-map.map  liniaBledu kolumna`
+
+W przypadku generowania source map w narzędziu CI/CD możemy wykorzystać zmienną środowiskową CI:
+
+```
+export default defineConfig({
+  // ...
+  build: {
+    ...(process.env.CI ? { sourcemap: "hidden" } : {}),
+  // ...
+```
