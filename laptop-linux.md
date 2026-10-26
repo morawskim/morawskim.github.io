@@ -63,6 +63,15 @@ Aktywujemy ten efekt poprzez wciśnięcie kombinacji klawiszy `Meta (Windows key
 
 [KDE Plasma 5.24 - New overview effect](https://www.youtube.com/watch?v=i1GLKYqm_CM)
 
+#### Efekty
+
+##### Mouse Mark
+
+Pozwala rysować na ekranie za pomocą kursora myszy.
+Przytrzymanie przycisku (`SHIFT + WIN KEY`) i poruszanie myszką powoduje pozostawienie kolorowej linii.
+
+![wlaczenie efektu mouse mark](images/kwin/mouse-mark.png)
+
 ### Zmiana domyślnego programu do otwierania pliku
 
 1. Wywołujemy polecenie `xdg-mime query filetype sciezka/do/pliku`, aby sprawdzić mimetype pliku.
