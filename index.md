@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-10
+[PHPStan - własna reguła ArFatRule](phpstan-wlasna-regula-arfatrule.md)
 [Websocket - k6](websocket.md#k6)
 [Websocket - websocat](websocket.md#websocat)
 [Swoole - Deadlock - all coroutines are asleep](swoole.md#Deadlock_-_all_coroutines_are_asleep)
