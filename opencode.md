@@ -43,3 +43,41 @@ Gotowy obraz można uruchomić poleceniem: `docker run --rm -it opencode`.
 Po zastosowaniu powyższej poprawki interfejs TUI OpenCode powinien uruchomić się poprawnie.
 
 Obraz `ghcr.io/anomalyco/opencode:1.17.6` działa już bez problemu.
+
+## Konfiguracja
+
+Tworzymy plik `~/.config/opencode/opencode.jsonc`.
+
+Konfiguracja dla openai i ollama.
+
+```
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "skill": "allow"
+  },
+  "provider": {
+    "openai": {
+      "apiKey": "${env:OPENAI_API_KEY}"
+    },
+    "ollama": {
+      "name": "ollama",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://adresDoOllamy:8080/v1"
+      },
+      "models": {
+        "bielik:latest": {
+          "name": "bielik:latest"
+        },
+        "qwen3-coder:latest" : {
+          "name": "qwen3-coder:latest"
+        },
+        "qwen3.8:27b": {
+          "name": "qwen3.8:27b"
+        }
+      }
+    }
+  }
+}
+```
