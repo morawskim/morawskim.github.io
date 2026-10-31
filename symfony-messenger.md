@@ -167,3 +167,15 @@ framework:
 ```
 
 Symfony umożliwia nam przekazanie do konstruktora odpowiedniego MessageBus na podstawie nazwy zmiennej i typu - np. `MessageBusInterface $commandBus`.
+
+## RabbitMQ SSL - brak certyfikatu CA
+
+Korzystając z RabbitMQ wraz z Symfony Messenger, przy próbie nawiązania szyfrowanego połączenia z serwerem RabbitMQ otrzymałem następujący błąd:
+
+> No CA certificate has been provided. Set "amqp.cacert" in your php.ini or pass the "cacert" parameter in the DSN to use SSL. Alternatively, you can use amqp:// to use without SSL.
+
+Rozwiązaniem jest dodanie parametru `cacert` do DSN połączenia, np.:
+
+`amqps://foooo:secretpassword@myrabbitmq.internal/myvhost?cacert=/etc/ssl/cert.pem`
+
+[Symfony/Messenger - hasCaCertConfigured](https://github.com/symfony/amqp-messenger/blob/01087117bcd14e254c2cfb9f827a849cf75391b5/Transport/Connection.php#L292)
