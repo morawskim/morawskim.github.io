@@ -43,3 +43,12 @@ Uruchamiamy grę klkając plik `eduke32.exe`.
 [Emulation made easy](https://www.emudeck.com/)
 
 [MAME is a multi-purpose emulation framework.](https://www.mamedev.org/)
+
+## Dystrybucje Linux
+
+Dystrybucje gier retro na Raspberry Pi to:
+
+* [RetroPie](https://retropie.org.uk/)
+* [Batocera](https://batocera.org/)
+* [Lakka](https://www.lakka.tv/)
+* [Recalbox](https://www.recalbox.com/)
