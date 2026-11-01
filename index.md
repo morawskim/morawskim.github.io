@@ -1,6 +1,9 @@
 Hello
 =====
 
+## 2026-11
+[WebMCP](webmcp.md)
+
 ## 2026-10
 [PHPStan - własna reguła ArFatRule](phpstan-wlasna-regula-arfatrule.md)
 [Websocket - k6](websocket.md#k6)
