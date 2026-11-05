@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-11
+[Golang kanały](golang-kanaly.md)
 [WebMCP](webmcp.md)
 
 ## 2026-10
