@@ -134,3 +134,28 @@ Rozwiązaniem jest użycie prawidłowego elementu HTML i wskazanie komponentu Vu
 ```
 
 [Vuejs doesn't render components inside HTML table elements](https://stackoverflow.com/questions/50759981/vuejs-doesnt-render-components-inside-html-table-elements)
+
+## Problem z filtrowaniem PrimeVue Select w modalu Bootstrap 4
+
+Podczas migracji aplikacji ze starego stosu technologicznego (Bootstrap 4 + jQuery) do PrimeVue chciałem wykorzystać komponent Select z biblioteki PrimeVue wewnątrz istniejącego modala Bootstrap.
+
+Po dodaniu atrybutu filter, który umożliwia filtrowanie pozycji na liście, okazało się, że pole tekstowe nie reaguje na kliknięcia.
+Nie pojawiał się kursor i nie było możliwości wpisania żadnej wartości.
+
+Podczas debugowania zauważyłem, że menu rozwijane komponentu Select (panel z listą opcji i polem filtrowania) było renderowane poza węzłem DOM modala Bootstrap.
+
+Po usunięciu modala pole filtrowania zaczynało działać prawidłowo.
+Wskazywało to na konflikt pomiędzy modalem Bootstrap 4 a komponentem PrimeVue.
+
+Problem udało się rozwiązać poprzez dodanie atrybutu `data-focus="false"` do elementu modala.
+W tym konkretnym przypadku skasowanie atrybutu `tabindex="-1"` bez ustawiania elementu `data-focus` także rozwiązywało  ten problem.
+
+```
+<div data-focus="false" class="modal" tabindex="-1">
+...
+</div>
+```
+
+[Modal options](https://getbootstrap.com/docs/4.6/components/modal/#options)
+
+![bootstrap 4, primevue i Select](images/vue-legacy-app/bootstrap-modal-primevue-select.png)

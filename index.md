@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-11
+[Problem z filtrowaniem PrimeVue Select w modalu Bootstrap 4](vue-i-legacy-app.md)
 [Golang kanały](golang-kanaly.md)
 [WebMCP](webmcp.md)
 
