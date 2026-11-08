@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-11
+[Chrome DevTools for agents - Integracja z agentem AI](chrome-devtools-for-agents.md#Integracja_z_agentem_AI)
 [Problem z filtrowaniem PrimeVue Select w modalu Bootstrap 4](vue-i-legacy-app.md)
 [Golang kanały](golang-kanaly.md)
 [WebMCP](webmcp.md)
