@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-11
+[System Architecture - Rejestrowanie zdarzeń i działania systemu](system-architecture.md#Rejestrowanie_zdarzeń_i_działania_systemu)
 [Golang moduły](golang-moduly.md)
 [Golang runtime - zmienne środowiskowe](golang-runtime-zmienne-srodowiskowe.md)
 [Chrome DevTools for agents - Integracja z agentem AI](chrome-devtools-for-agents.md#Integracja_z_agentem_AI)
