@@ -1,5 +1,7 @@
 # Symfony Messenger
 
+[PhpAmqpLibMessengerBundle](https://github.com/jwage/phpamqplib-messenger) Dodaje obsługę php-amqplib/php-amqplib do Symfony Messenger, zapewniając alternatywny sposób łączenia się z RabbitMQ przy użyciu czystej biblioteki PHP zamiast rozszerzenia C php-amqp.
+
 ## Konfiguracja
 
 Wywołując polecenie `php bin/console debug:messenger` otrzymamy informacje o widocznych wiadomościach i obsługujących ich klasach. Za pomocą interfejsu `\Symfony\Component\Messenger\Handler\MessageHandlerInterface` oznaczamy naszą klasę jako handler. Implementując metodę `__invoke` jako parametr przekazujemy instancję klasy wiadomości. Na tej podstawie komponent wie, który handler należy wywołać dla wiadomości.
