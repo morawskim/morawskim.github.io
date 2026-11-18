@@ -2,6 +2,8 @@ Hello
 =====
 
 ## 2026-11
+[Golang - Wzorzec_Option](golang-tips-snippets.md#Wzorzec_Option)
+[Golang - Serwer HTTP wykorzystujący Unix Socket](golang-http.md#Serwer_HTTP_wykorzystujący_Unix_Socket)
 [System Architecture - Rejestrowanie zdarzeń i działania systemu](system-architecture.md#Rejestrowanie_zdarzeń_i_działania_systemu)
 [Golang moduły](golang-moduly.md)
 [Golang runtime - zmienne środowiskowe](golang-runtime-zmienne-srodowiskowe.md)
