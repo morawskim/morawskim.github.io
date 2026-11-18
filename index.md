@@ -52,7 +52,7 @@ Hello
 ## 2026-06
 [FrankenPHP - OpenTelemetry](frankenphp.md#OpenTelemetry)
 [OpenClaw - Bonjour/mDNS bug](openclaw.md#Bonjour/mDNS_bug)
-[OpenCode - opencode in docker container wont start TUI](opencode.md)
+[OpenCode - opencode in docker container wont start TUI](opencode.md#Opencode_in_docker_container_wont_start_TUI)
 [FrankenPHP - Mercure](frankenphp.md#Mercure)
 [Gry retro - emulatory](gry-retro.md#Emulatory)
 [MySQL CTE RECURSIVE](mysql-cte-recursive.md)
