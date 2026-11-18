@@ -37,3 +37,30 @@ return &http.Client{
     },
 }
 ```
+
+## Serwer HTTP wykorzystujący Unix Socket
+
+W Go możemy wykorzystać Unix Socket jako listener dla serwera HTTP.
+
+```
+socketPath := "/tmp/go-server.sock"
+
+listener, err := net.Listen("unix", socketPath)
+if err != nil {
+    log.Fatal("listen unix socket:", err)
+}
+
+// ...
+http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+    w.Write([]byte("Hello from Unix Socket HTTP server!"))
+})
+
+//..
+err = http.Serve(listener, nil)
+if err != nil && err != http.ErrServerClosed {
+    log.Fatal("HTTP server error:", err)
+}
+
+```
+
+Do komunikacji z serwerem możemy wykorzystać np. curl - `curl --unix-socket /tmp/go-server.sock http://localhost/`
