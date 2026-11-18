@@ -52,3 +52,24 @@ Rozwiązaniem tego problemu jest utworzenie zmiennej o typie implementowanego in
 [Demo](https://go.dev/play/p/cEBSKBrjHqm)
 
 [Compile time checks to ensure your type satisfies an interface](https://medium.com/@matryer/golang-tip-compile-time-checks-to-ensure-your-type-satisfies-an-interface-c167afed3aae)
+
+## Wzorzec Option
+
+Pozwala konfigurować obiekty podczas ich tworzenia za pomocą funkcji przekazywanych jako argumenty konstruktora.
+
+Podstawą wzorca jest zdefiniowanie typu Option jako funkcji przyjmującej wskaźnik do struktury konfiguracyjnej.
+
+```
+type Option func(*CliConfig) error
+```
+
+Następnie tworzymy funkcje konfiguracyjne, które zwracają wartości typu Option.
+
+```
+func WithErrStream(errStream io.Writer) Option {
+    return func(c *CliConfig) error {
+        c.ErrStream = errStream
+        return nul
+    }
+}
+```
