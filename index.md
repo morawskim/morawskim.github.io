@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-11
+[mysql-mcp-server, sandboxec i agent AI junie](mysql-mcp-server-sandboxec-i-agent-ai-junie.md)
 [Golang - Wzorzec_Option](golang-tips-snippets.md#Wzorzec_Option)
 [Golang - Serwer HTTP wykorzystujący Unix Socket](golang-http.md#Serwer_HTTP_wykorzystujący_Unix_Socket)
 [System Architecture - Rejestrowanie zdarzeń i działania systemu](system-architecture.md#Rejestrowanie_zdarzeń_i_działania_systemu)
