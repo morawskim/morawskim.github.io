@@ -2,6 +2,7 @@ Hello
 =====
 
 ## 2026-11
+[Send to Kindle - zmiana adresu email](kindle.md#Send_to_Kindle_-_zmiana_adresu_email)
 [mysql-mcp-server, sandboxec i agent AI junie](mysql-mcp-server-sandboxec-i-agent-ai-junie.md)
 [Golang - Wzorzec_Option](golang-tips-snippets.md#Wzorzec_Option)
 [Golang - Serwer HTTP wykorzystujący Unix Socket](golang-http.md#Serwer_HTTP_wykorzystujący_Unix_Socket)
